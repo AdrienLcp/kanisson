@@ -1,0 +1,84 @@
+@mixin flex-center
+  display: flex
+  align-items: center
+  justify-content: center
+
+@mixin centered
+  position: absolute
+  top: 45%
+  left: 50%
+  transform: translate(-50%, -50%)
+
+@mixin absolute ($top: auto, $right: auto, $bottom: auto, $left: auto)
+  position: absolute
+  top: $top
+  right: $right
+  bottom: $bottom
+  left: $left
+
+@mixin fixed ($top: 0, $right: 0, $bottom: auto, $left: auto)
+  position: fixed
+  top: $top
+  right: $right
+  bottom: $bottom
+  left: $left
+
+@mixin full-screen
+  position: fixed
+  top: 0
+  left: 0
+  width: 100vw
+  height: 100svh
+
+@mixin disabled
+  pointer-events: none
+  opacity: 0.5
+
+@mixin visually-hidden
+  position: absolute
+  overflow: hidden
+  white-space: nowrap
+  width: 1px
+  height: 1px
+  margin: -1px
+  padding: 0
+  border: 0
+  clip: rect(0, 0, 0, 0)
+  clip-path: inset(50%)
+
+  &:focus-visible
+    top: 0
+    left: 0
+    border-radius: var(--radius)
+    border: var(--thickness) solid black
+    background-color: white
+    color: black
+    margin: 0
+    padding: var(--spacing)
+    clip: unset
+    clip-path: unset
+    white-space: unset
+    text-decoration: none
+    width: auto
+    height: auto
+    z-index: 2
+
+@mixin success
+  background-color: hsl(var(--green-background))
+  color: hsl(var(--green-foreground))
+  border: var(--thickness) solid hsla(var(--green-foreground), 0.5)
+
+@mixin warning
+  background-color: hsl(var(--orange-background))
+  color: hsl(var(--orange-foreground))
+  border: var(--thickness) solid hsla(var(--orange-foreground), 0.5)
+
+@mixin error
+  background-color: hsl(var(--red-background))
+  color: hsl(var(--red-foreground))
+  border: var(--thickness) solid hsla(var(--red-foreground), 0.5)
+
+@mixin text-ellipsis
+  white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis

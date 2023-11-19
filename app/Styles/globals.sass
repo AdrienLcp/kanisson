@@ -1,8 +1,88 @@
+@import '@/styles/globals.css'
+@import '@/styles/reset.css'
+@import '@/styles/transitions.sass'
+@import '@/styles/animations.sass'
+@import '@/styles/vars.sass'
+@import '@/styles/functions.sass'
+  
+*::-webkit-scrollbar
+  width: 0.5rem
+
+  &-track
+    background-color: hsla(var(--primary), 0.1)
+    border-radius: var(--radius)
+
+  &-thumb
+    background-color: hsla(var(--primary), 0.2)
+    border-radius: var(--radius)
+
+    &:hover
+      background-color: hsla(var(--primary), 0.5)
+
+html
+  scroll-behavior: smooth
+  font-size: 62.5%
+
 body
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+  overflow-x: hidden
   display: flex
   flex-direction: column
   min-height: 100svh
+  line-height: line-height()
+  background-color: hsl(var(--background))
+  color: hsl(var(--foreground))
+  font-family: var(--font-body)
+  font-size: var(--font-size-m)
+
+  &::-webkit-scrollbar
+    width: 1rem
   
+  ::selection
+    background-color: hsl(var(--foreground))
+    color: hsl(var(--background))
+
 main
-  background: green
+  background-color: red
   flex: 1
+
+h1, h2, h3, h4, h5, h6
+  font-family: var(--font-heading)
+
+h1
+  font-size: var(--font-size-xxxl)
+
+h2
+  font-size: var(--font-size-xxl)
+
+h3
+  font-size: var(--font-size-xl)
+
+h4
+  font-size: var(--font-size-l)
+
+h5
+  font-size: var(--font-size-m)
+
+h6
+  font-size: var(--font-size-s)
+
+// Mobile
+@media (width <= 480px)
+
+// Small device
+@media (481px <= width <= 767px)
+
+// Tablet
+@media (768px <= width <= 991px)
+
+// Laptop
+@media (992px <= width <= 1199px)
+
+// Desktop
+@media (1200px <= width <= 1919px)
+
+// Large
+@media (width >= 1920px)
+
