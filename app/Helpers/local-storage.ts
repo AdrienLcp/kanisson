@@ -1,21 +1,17 @@
-import { LOCAL_STORAGE_KEYS } from '@/Config'
+const LOCAL_STORAGE_KEYS = ['locale', 'token'] as const
 
 type LocalStorageKey = typeof LOCAL_STORAGE_KEYS[number]
-
-const parseJSON = <T>(value: string, key: string): T | undefined => {
-  try {
-    return value === 'undefined' ? undefined : JSON.parse(value ?? '')
-  } catch {
-    console.warn(`Parsing error for key "${key}"`, { value })
-    return undefined
-  }
-}
 
 export const getLocalStorageItem = <T>(key: LocalStorageKey): T | undefined => {
   const value = window.localStorage.getItem(key)
 
   if (value) {
-    return parseJSON<T>(value, key)
+    try {
+      return value === 'undefined' ? undefined : JSON.parse(value ?? '')
+    } catch {
+      console.warn(`Parsing error for key "${key}"`, { value })
+      return undefined
+    }
   }
 }
 

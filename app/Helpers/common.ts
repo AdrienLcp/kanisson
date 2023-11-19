@@ -1,4 +1,4 @@
-export const copyToClipboard = async (text: string) => {
+export const copyToClipboard = async (text: string): Promise<boolean> => {
   if (!navigator?.clipboard) {
     console.warn('Clipboard not supported')
     return false
@@ -13,23 +13,9 @@ export const copyToClipboard = async (text: string) => {
   }
 }
 
-export const getErrorMessage = (error: unknown): string => {
-  if (error instanceof Error) {
-    return error.message
-  } else if (typeof error === 'string') {
-    return error
-  } else if (error && typeof error === 'object' && 'message' in error) {
-    return String(error.message)
-  }
-
-  return 'Something went wrong'
-}
-
 export const getRandomNumber = (max: number = 100, min: number = 0): number => {
   return Math.floor(Math.random() * (max - min + 1)) + min
 }
-
-export const isError = (error: unknown): error is Error => error instanceof Error
 
 export const getSortedArray = <T>(array: T[], prop: keyof T, type: 'asc' | 'desc' = 'asc'): T[] => {
   return array.toSorted((a, b) => {

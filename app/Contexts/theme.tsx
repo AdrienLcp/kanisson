@@ -10,14 +10,14 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
 
-    const handleReducedMotionPreferencesChange = () => {
+    const handleMotionPreferencesChange = () => {
       setIsMotionActive(!mediaQuery.matches)
     }
   
-    mediaQuery.addEventListener('change', handleReducedMotionPreferencesChange)
+    mediaQuery.addEventListener('change', handleMotionPreferencesChange)
   
     return () => {
-      mediaQuery.removeEventListener('change', handleReducedMotionPreferencesChange)
+      mediaQuery.removeEventListener('change', handleMotionPreferencesChange)
     }
   }, [])
 
