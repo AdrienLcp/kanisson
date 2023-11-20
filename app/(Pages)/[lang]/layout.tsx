@@ -19,7 +19,7 @@ export const generateStaticParams = async () => {
 type RootLayoutProps = PageProps & React.PropsWithChildren
 
 const RootLayout: React.FC<RootLayoutProps> = async ({ children, params }) => {
-  const strings = await getDictionary (params.lang)
+  const strings = await getDictionary(params.lang)
   return (
     <html lang={params.lang} suppressHydrationWarning>
       <body className={cn(

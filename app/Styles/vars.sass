@@ -21,20 +21,11 @@
   --font-size-xxl: clamp(2.33rem, calc(1.7rem + 3.15vw), 4.14rem)
   --font-size-xxxl: clamp(2.8rem, calc(1.85rem + 4.74vw), 5.52rem)
 
+  --sidebar-width: clamp(15rem, 20vw, 30rem)
+
   --spacing: var(--font-size-m)
   --golden-ratio: 1.618
-
-  --base-width: clamp(260px, 100%, 400px)
-  --large-width: clamp(300px, 100%, 600px)
-
-  --wide-padding: var(--spacing) calc(var(--spacing) * 1.5)
-  --small-padding: calc(var(--spacing) / 1.5) var(--spacing)
 
   --thickness: 1px
   // --radius: calc(var(--spacing) / 3)
   // --shadow: 0 0 var(--spacing) hsla(var(--primary), 0.1)
-
-@media (min-width: 767px)
-  :root
-    --base-width: clamp(260px, 80vw, 400px)
-    --large-width: clamp(300px, 80vw, 600px)
