@@ -1,4 +1,8 @@
+export * from './background/background'
+
 export * from './footer/footer'
+
+export * from './head/head'
 
 export * from './header/header'
 

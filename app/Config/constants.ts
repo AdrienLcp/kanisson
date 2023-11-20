@@ -1,3 +1,8 @@
+export const APP = {
+  TITLE: 'Kanisson',
+  DEFAULT_DESCRIPTION: 'Blind test games',
+} as const
+
 export const API_ERROR_MESSAGES = {
   SERVER: {
     INTERNAL: 'The server encountered a problem. Try again later or contact us',
