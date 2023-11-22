@@ -5,7 +5,7 @@
     border-radius: 0
   
   100% 
-    transform: translateY(-100vh) rotate(720deg)
+    transform: translateY(-120vh) rotate(720deg)
     opacity: 0
     border-radius: 50%
 
@@ -15,8 +15,6 @@
   height: 100svh
   top: 0
   left: 0
-  margin: 0
-  padding: 0
   background-color: hsl(var(--background))
   overflow: hidden
   z-index: -1
@@ -27,29 +25,29 @@
     list-style: none
     width: 2rem
     height: 2rem
-    background-color: rgba(240, 240, 240, 0.2)
-    animation: animate 14s linear infinite
+    background-color: hsla(var(--secondary-foreground) / 0.1)
+    animation: animate 16s linear infinite
 
     &:nth-child(0)
       left: 70%
       width: 12vmin
       height: 12vmin
       bottom: -12vmin
-      animation-delay: 1s
+      animation-delay: 9s
 
     &:nth-child(1)
       left: 58%
       width: 18vmin
       height: 18vmin
       bottom: -18vmin
-      animation-delay: 1s
+      animation-delay: 6s
 
     &:nth-child(2)
       left: 69%
       width: 15vmin
       height: 15vmin
       bottom: -15vmin
-      animation-delay: 1s
+      animation-delay: 11s
 
     &:nth-child(3)
       left: 20%
@@ -70,14 +68,14 @@
       width: 19vmin
       height: 19vmin
       bottom: -19vmin
-      animation-delay: 19s
+      animation-delay: 14s
 
     &:nth-child(6)
       left: 53%
       width: 12vmin
       height: 12vmin
       bottom: -12vmin
-      animation-delay: 5s
+      animation-delay: 3s
 
     &:nth-child(7)
       left: 6%
@@ -119,7 +117,7 @@
       width: 12vmin
       height: 12vmin
       bottom: -12vmin
-      animation-delay: 6s
+      animation-delay: 8s
 
     &:nth-child(13)
       left: 50%
@@ -168,7 +166,7 @@
       width: 13vmin
       height: 13vmin
       bottom: -13vmin
-      animation-delay: 84s
+      animation-delay: 8s
 
 @media (prefers-reduced-motion)
   .background

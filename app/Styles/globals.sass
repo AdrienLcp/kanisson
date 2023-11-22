@@ -2,6 +2,7 @@
 @import '@/styles/reset.css'
 @import '@/styles/transitions.sass'
 @import '@/styles/animations.sass'
+@import '@/styles/colors.sass'
 @import '@/styles/vars.sass'
 @import '@/styles/functions.sass'
   
@@ -9,15 +10,15 @@
   width: 0.5rem
 
   &-track
-    background-color: hsla(var(--secondary), 0.1)
+    background-color: hsla(var(--secondary) / 0.1)
     border-radius: var(--radius)
 
   &-thumb
-    background-color: hsla(var(--secondary), 0.2)
+    background-color: hsla(var(--secondary) / 0.2)
     border-radius: var(--radius)
 
     &:hover
-      background-color: hsla(var(--secondary), 0.5)
+      background-color: hsla(var(--secondary) / 0.5)
 
 html
   scroll-behavior: smooth

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 
 import type { PageProps } from '@/Types'
-import { APP, bodyFont, getDictionary , headingFont, I18N } from '@/Config'
+import { APP, bodyFont, Dictionary, getDictionary , headingFont, I18N } from '@/Config'
 import { Background, Footer, Header, MainNav, Providers } from '@/Layouts'
 import { cn } from '@/Lib'
 
@@ -19,7 +19,7 @@ export const generateStaticParams = async () => {
 type RootLayoutProps = PageProps & React.PropsWithChildren
 
 const RootLayout: React.FC<RootLayoutProps> = async ({ children, params }) => {
-  const strings = await getDictionary(params.lang)
+  const strings: Dictionary = await getDictionary(params.lang)
 
   return (
     <html lang={params.lang} suppressHydrationWarning>
@@ -33,13 +33,13 @@ const RootLayout: React.FC<RootLayoutProps> = async ({ children, params }) => {
 
           <Header title={strings.app.title} />
 
-          <MainNav />
-
           <main>
             {children}
           </main>
           
           <Footer />
+
+          <MainNav />
           
         </Providers>
       </body>

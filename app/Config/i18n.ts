@@ -12,3 +12,5 @@ const dictionaries = {
 } as const
 
 export const getDictionary = async (locale: Locale) => dictionaries[locale]() ?? dictionaries[I18N.defaultLocale]()
+
+export type Dictionary = Awaited<ReturnType<typeof getDictionary>>
