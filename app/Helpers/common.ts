@@ -26,10 +26,14 @@ export const getSortedArray = <T>(array: T[], prop: keyof T, type: 'asc' | 'desc
       return valueA - valueB
     }
 
+    if (typeof valueA === 'boolean' && typeof valueB === 'boolean') {
+      return (valueA === valueB) ? 0 : (valueA ? -1 : 1)
+    }
+
     if (valueA instanceof Date && valueB instanceof Date) {
       return valueA.getTime() - valueB.getTime()
     }
-    
+   
     return String(valueA).localeCompare(String(valueB))
   })
 }

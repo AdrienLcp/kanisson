@@ -19,6 +19,9 @@
   overflow: hidden
   z-index: -1
 
+  @media (prefers-reduced-motion)
+    display: none
+
   &-item
     position: absolute
     display: block
@@ -168,6 +171,3 @@
       bottom: -13vmin
       animation-delay: 8s
 
-@media (prefers-reduced-motion)
-  .background
-    display: none

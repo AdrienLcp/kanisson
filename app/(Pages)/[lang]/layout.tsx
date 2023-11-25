@@ -1,25 +1,30 @@
 import type { Metadata } from 'next'
 
 import type { PageProps } from '@/Types'
-import { APP, bodyFont, Dictionary, getDictionary , headingFont, I18N } from '@/Config'
 import { Background, Footer, Header, MainNav, Providers } from '@/Layouts'
+import { bodyFont, headingFont, I18N } from '@/Config'
+import { getDictionary } from '@/Helpers'
 import { cn } from '@/Lib'
 
 import '@/styles/globals.sass'
 
-export const metadata: Metadata = {
-  title: APP.TITLE,
-  description: APP.DEFAULT_DESCRIPTION,
+export const generateStaticParams = async () => {
+  return I18N.locales.map(locale => ({ lang: locale.key }))
 }
 
-export const generateStaticParams = async () => {
-  return I18N.locales.map(locale => ({ lang: locale }))
+export const generateMetadata = async ({ params }: PageProps): Promise<Metadata> => {
+  const strings = await getDictionary(params.lang)
+
+  return {
+    title: strings.app.title,
+    description: strings.app.description,
+  }
 }
 
 type RootLayoutProps = PageProps & React.PropsWithChildren
 
 const RootLayout: React.FC<RootLayoutProps> = async ({ children, params }) => {
-  const strings: Dictionary = await getDictionary(params.lang)
+  const strings = await getDictionary(params.lang)
 
   return (
     <html lang={params.lang} suppressHydrationWarning>
@@ -31,7 +36,7 @@ const RootLayout: React.FC<RootLayoutProps> = async ({ children, params }) => {
 
           <Background />
 
-          <Header title={strings.app.title} />
+          <Header strings={strings} />
 
           <main>
             {children}
