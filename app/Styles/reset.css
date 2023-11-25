@@ -186,7 +186,6 @@ input[type="number"]::-ms-clear {
 }
 
 button {
-  all: unset;
   cursor: pointer;
 }
 
@@ -195,7 +194,6 @@ button:focus-visible {
 }
 
 input {
-  border: none;
   font-family: inherit;
 }
 
