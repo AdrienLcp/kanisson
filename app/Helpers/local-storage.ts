@@ -1,4 +1,4 @@
-const LOCAL_STORAGE_KEYS = ['hue'] as const
+const LOCAL_STORAGE_KEYS = ['hue', 'theme'] as const
 
 type LocalStorageKey = typeof LOCAL_STORAGE_KEYS[number]
 

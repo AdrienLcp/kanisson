@@ -1,11 +1,12 @@
-export * from './background/background'
+export { default as Background } from './background/background'
 
-export * from './footer/footer'
+export { default as Container } from './container/container'
 
-export * from './header/header'
+export { default as Footer} from './footer/footer'
 
-export * from './main-nav/main-nav'
-export * from './main-nav/navbar'
-export * from './main-nav/sidebar'
+export { default as Header } from './header/header'
 
-export * from './providers/providers'
+export { default as Navbar } from './main-nav/navbar'
+export { default as Sidebar } from './main-nav/sidebar'
+
+export { default as Providers } from './providers/providers'

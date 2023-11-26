@@ -1,2 +1,2 @@
+export * from './breakpoints'
 export * from './contexts'
-export * from './theme'

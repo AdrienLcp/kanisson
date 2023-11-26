@@ -2,12 +2,16 @@
 
 import { SessionProvider } from 'next-auth/react'
 
-import { ThemeProvider } from '@/Contexts'
+import { HueProvider, ThemeProvider } from '@/Contexts'
 
-export const Providers: React.FC<React.PropsWithChildren> = ({ children }) => (
+const Providers: React.FC<React.PropsWithChildren> = ({ children }) => (
   <SessionProvider>
-    <ThemeProvider>
-      {children}
-    </ThemeProvider>
+    <HueProvider>
+      <ThemeProvider>
+        {children}
+      </ThemeProvider>
+    </HueProvider>
   </SessionProvider>
 )
+
+export default Providers

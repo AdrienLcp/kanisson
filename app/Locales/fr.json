@@ -2,5 +2,10 @@
   "app": {
     "title": "Kanisson FRENCH",
     "description": "Jeu de blind test"
+  },
+  "components": {
+    "avatar": {
+      "alt": "Avatar"
+    }
   }
 }

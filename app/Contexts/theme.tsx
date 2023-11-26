@@ -1,36 +1,78 @@
 'use client'
 
-import React from 'react'
-import { ThemeProvider as NextThemesProvider } from 'next-themes'
-import { type ThemeProviderProps } from 'next-themes/dist/types'
+import { createContext, useEffect, useState } from 'react'
 
-export const ThemeProvider = ({ children }: ThemeProviderProps) => {
-  const [isMotionActive, setIsMotionActive] = React.useState<boolean>(false)
+import type { Theme } from '@/Types'
+import { getStoredItem, storeItem } from '@/Helpers'
+import { THEMES } from '@/Config'
 
-  React.useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+type ThemeContext = {
+  isDarkModeActive: boolean
+  selectedTheme: Theme
+  setTheme: (theme: Theme) => void
+}
 
-    const handleMotionPreferencesChange = () => {
-      setIsMotionActive(!mediaQuery.matches)
+const PREFERS_DARK_COLOR_SCHEME = '(prefers-color-scheme: dark)'
+
+export const ThemeContext = createContext<ThemeContext | null>(null)
+
+export const ThemeProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
+  const [selectedTheme, setSelectedTheme] = useState<Theme>('system')
+  const [isDarkModeActive, setIsDarkModeActive] = useState<boolean>(false)
+
+  const setTheme = (theme: Theme) => {
+    if (THEMES.includes(theme)) {
+      setSelectedTheme(theme)
+      storeItem('theme', theme)
+
+      switch (theme) {
+        case 'dark':
+          setIsDarkModeActive(true)
+          break
+        case 'light':
+          setIsDarkModeActive(false)
+          break
+        case 'system':
+        default:
+          const matcher = window.matchMedia(PREFERS_DARK_COLOR_SCHEME)
+          setIsDarkModeActive(matcher.matches)
+          break
+      }
     }
-  
-    mediaQuery.addEventListener('change', handleMotionPreferencesChange)
-  
-    return () => {
-      mediaQuery.removeEventListener('change', handleMotionPreferencesChange)
+  }
+
+  useEffect(() => {
+    const storedTheme = getStoredItem<Theme>('theme')
+
+    if (storedTheme) {
+      setTheme(storedTheme)
     }
   }, [])
 
+  useEffect(() => {
+    const matcher = window.matchMedia(PREFERS_DARK_COLOR_SCHEME)
+
+    const handlePrefersColorSchemeChange = (event: MediaQueryListEvent) => {
+      if (selectedTheme === 'system') {
+        setIsDarkModeActive(event.matches)
+      }
+    }
+
+    if (selectedTheme === 'system') {
+      setIsDarkModeActive(matcher.matches)
+      matcher.addEventListener('change', handlePrefersColorSchemeChange)
+    } else {
+      matcher.removeEventListener('change', handlePrefersColorSchemeChange)
+    }
+
+    return () => {
+      matcher.removeEventListener('change', handlePrefersColorSchemeChange)
+    }
+  }, [selectedTheme])
+
   return (
-    <NextThemesProvider 
-      themes={['light', 'dark', 'sytem']}
-      defaultTheme='system'
-      attribute='class'
-      enableSystem
-      disableTransitionOnChange={!isMotionActive}
-      enableColorScheme
-    >
+    <ThemeContext.Provider value={{ isDarkModeActive, selectedTheme, setTheme }}>
       {children}
-    </NextThemesProvider>
+    </ThemeContext.Provider>
   )
 }

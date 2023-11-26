@@ -1,6 +1,6 @@
 import { NextResponse, type NextFetchEvent, type NextRequest } from 'next/server'
-import Negotiator from 'negotiator'
 import { match as matchLocale } from '@formatjs/intl-localematcher'
+import Negotiator from 'negotiator'
 
 import type { CustomMiddleware } from '@root/middleware'
 import type { Locale } from '@/Types'
@@ -9,6 +9,7 @@ import { I18N } from '@/Config'
 
 const getLocale = (request: NextRequest): string | undefined => {
   const negotiatorHeaders = Object.fromEntries(request.headers)
+  console.log(negotiatorHeaders)
   const locales: Locale[] = [...I18N.locales.map(locale => locale.key)]
 
   const languages = new Negotiator({ headers: negotiatorHeaders }).languages(locales)

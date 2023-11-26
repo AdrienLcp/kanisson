@@ -1,4 +1,4 @@
-import { AuthButton, Input, LocaleSwitcher, ThemeSwitcher } from '@/Components'
+import { AuthButton, HueSwitcher, Input, LocaleSwitcher, ThemeSwitcher } from '@/Components'
 import { getAuthSession } from '@/Lib'
 
 const Home = async () => {
@@ -7,6 +7,11 @@ const Home = async () => {
   return (
     <>
       HOME
+      <AuthButton isAuth={!!session} />
+
+      <LocaleSwitcher />
+      <ThemeSwitcher />
+      <HueSwitcher />
     </>
   )
 }

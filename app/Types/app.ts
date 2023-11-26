@@ -1,5 +1,5 @@
-import { getDictionary } from '@/Helpers'
-import { I18N } from '@/Config'
+import { HUES, I18N, THEMES } from '@/Config'
+import { getDictionary } from '@/I18n'
 
 export type Locale = (typeof I18N)['locales'][number]['key']
 
@@ -12,3 +12,8 @@ export type PageProps = {
 }
 
 export type Dictionary = Awaited<ReturnType<typeof getDictionary>>
+
+export type FCWithStrings<T = {}> =  React.FC<T & { strings: Dictionary }>
+
+export type Theme = typeof THEMES[number]
+export type Hue = typeof HUES[number]
