@@ -1,11 +1,21 @@
 {
   "app": {
-    "title": "Kanisson FRENCH",
-    "description": "Jeu de blind test"
+    "title": "Kanisson",
+    "description": "Jeu de blind test",
+    "links": {
+      "home": "Accueil",
+      "profile": "Profil",
+      "settings": "Paramètres"
+    },
+    "actions": {
+      "login": "Connexion",
+      "logout": "Déconnexion"
+    }
   },
   "components": {
     "avatar": {
-      "alt": "Avatar"
+      "alt": "Avatar",
+      "me": "Moi"
     }
   }
 }

@@ -4,7 +4,9 @@
   top: 0
   left: 0
   min-height: 100svh
-  width: calc(var(--sidebar-width) / 4)
+  border-right: var(--thickness) solid hsl(var(--border))
+  width: calc(var(--sidebar-width) / 3)
+  background-color: hsl(var(--background))
   transition: width var(--transition-300) ease-in-out
 
   &:hover

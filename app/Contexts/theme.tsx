@@ -18,7 +18,7 @@ export const ThemeContext = createContext<ThemeContext | null>(null)
 
 export const ThemeProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
   const [selectedTheme, setSelectedTheme] = useState<Theme>('system')
-  const [isDarkModeActive, setIsDarkModeActive] = useState<boolean>(false)
+  const [isDarkModeActive, setIsDarkModeActive] = useState<boolean>(true)
 
   const setTheme = (theme: Theme) => {
     if (THEMES.includes(theme)) {
@@ -42,14 +42,6 @@ export const ThemeProvider: React.FC<React.PropsWithChildren> = ({ children }) =
   }
 
   useEffect(() => {
-    const storedTheme = getStoredItem<Theme>('theme')
-
-    if (storedTheme) {
-      setTheme(storedTheme)
-    }
-  }, [])
-
-  useEffect(() => {
     const matcher = window.matchMedia(PREFERS_DARK_COLOR_SCHEME)
 
     const handlePrefersColorSchemeChange = (event: MediaQueryListEvent) => {
@@ -69,6 +61,14 @@ export const ThemeProvider: React.FC<React.PropsWithChildren> = ({ children }) =
       matcher.removeEventListener('change', handlePrefersColorSchemeChange)
     }
   }, [selectedTheme])
+
+  useEffect(() => {
+    const storedTheme = getStoredItem<Theme>('theme')
+
+    if (storedTheme) {
+      setTheme(storedTheme)
+    }
+  }, [])
 
   return (
     <ThemeContext.Provider value={{ isDarkModeActive, selectedTheme, setTheme }}>

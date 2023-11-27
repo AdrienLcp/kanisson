@@ -1,11 +1,21 @@
 {
   "app": {
-    "title": "Kanisson ENGLISH",
-    "description": "Blind test games"
+    "title": "Kanisson",
+    "description": "Blind test games",
+    "links": {
+      "home": "Home",
+      "profile": "Profile",
+      "settings": "Settings"
+    },
+    "actions": {
+      "login": "Login",
+      "logout": "Logout"
+    }
   },
   "components": {
     "avatar": {
-      "alt": "Avatar"
+      "alt": "Avatar",
+      "me": "Me"
     }
   }
 }

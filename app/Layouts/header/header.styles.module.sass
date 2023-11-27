@@ -3,8 +3,8 @@
   display: flex
   justify-content: space-between
   align-items: center
-  padding-right: var(--layout-spacing)
+  padding-inline: var(--layout-spacing)
 
   @media (width > 991px)
-    padding-left: var(--sidebar-width)
+    padding-left: calc(var(--sidebar-width) + var(--layout-spacing))
   

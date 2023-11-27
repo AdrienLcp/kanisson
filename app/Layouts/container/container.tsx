@@ -6,7 +6,7 @@ import { useBreakpoint, useHue, useTheme } from '@/Hooks'
 import { bodyFont, headingFont } from '@/Config'
 import { cn } from '@/Lib'
 
-import '@/styles/globals.sass'
+import '@/styles/main.sass'
 
 type ContainerProps = PageProps & React.PropsWithChildren
 
