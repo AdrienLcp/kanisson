@@ -11,12 +11,16 @@ import '@/styles/main.sass'
 type ContainerProps = PageProps & React.PropsWithChildren
 
 const Container: FCWithStrings<ContainerProps> = ({ children, strings, params }) => {
-  const { isMobile } = useBreakpoint()
   const { isDarkModeActive } = useTheme()
+  const { isMobile } = useBreakpoint()
   const { selectedHue } = useHue()
 
   return (
-    <html lang={params.lang} suppressHydrationWarning>
+    <html
+      lang={params.lang}
+      style={{ colorScheme: isDarkModeActive ? 'dark' : 'light' }}
+      suppressHydrationWarning
+    >
       <body className={cn(
         headingFont.variable,
         bodyFont.variable,
