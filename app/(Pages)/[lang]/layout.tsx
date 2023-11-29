@@ -24,8 +24,8 @@ const RootLayout: React.FC<RootLayoutProps> = async ({ children, params }) => {
   const strings = await getDictionary(params.lang)
 
   return (
-    <Providers>
-      <Container strings={strings} params={params}>
+    <Providers strings={strings}>
+      <Container params={params}>
         {children}
       </Container>
     </Providers>

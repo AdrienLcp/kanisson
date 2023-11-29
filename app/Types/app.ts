@@ -1,3 +1,5 @@
+import { useSession } from 'next-auth/react'
+
 import { HUES, I18N, THEMES } from '@/Config'
 import { getDictionary } from '@/I18n'
 
@@ -13,7 +15,13 @@ export type PageProps = {
 
 export type Dictionary = Awaited<ReturnType<typeof getDictionary>>
 
-export type FCWithStrings<T = {}> =  React.FC<T & { strings: Dictionary }>
-
 export type Theme = typeof THEMES[number]
 export type Hue = typeof HUES[number]
+
+export type Session = ReturnType<typeof useSession>
+
+export type AppRoute = {
+  id: string
+  path: string
+  // roles: UserRole[]
+}

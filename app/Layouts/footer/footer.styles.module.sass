@@ -3,6 +3,15 @@
   position: sticky
   bottom: 0
   padding-left: var(--sidebar-width)
+  background: hsl(var(--secondary))
+
+  &__content
+    display: flex
+    justify-content: center
+    align-items: center
+    color: hsl(var(--muted-foreground))
+    padding: calc(var(--spacing) / 3)
+    font-size: var(--size-xs)
 
 @media (width < 992px)
   .footer

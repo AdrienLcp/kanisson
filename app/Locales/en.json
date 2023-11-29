@@ -17,5 +17,10 @@
       "alt": "Avatar",
       "me": "Me"
     }
+  },
+  "layouts": {
+    "footer": {
+      "copyright": "© No reserved rights ®"
+    }
   }
 }

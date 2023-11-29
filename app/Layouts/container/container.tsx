@@ -1,6 +1,6 @@
 'use client'
 
-import type { FCWithStrings, PageProps } from '@/Types'
+import type { PageProps } from '@/Types'
 import { Background, Footer, Header, Navbar, Sidebar } from '@/Layouts'
 import { useBreakpoint, useHue, useTheme } from '@/Hooks'
 import { bodyFont, headingFont } from '@/Config'
@@ -10,7 +10,7 @@ import '@/styles/main.sass'
 
 type ContainerProps = PageProps & React.PropsWithChildren
 
-const Container: FCWithStrings<ContainerProps> = ({ children, strings, params }) => {
+const Container: React.FC<ContainerProps> = ({ children, params }) => {
   const { isDarkModeActive } = useTheme()
   const { isMobile } = useBreakpoint()
   const { selectedHue } = useHue()
@@ -29,7 +29,7 @@ const Container: FCWithStrings<ContainerProps> = ({ children, strings, params })
       )}>
         <Background />
 
-        <Header strings={strings} />
+        <Header />
 
         <main>
           {children}

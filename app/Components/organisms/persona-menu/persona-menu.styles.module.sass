@@ -1,17 +1,18 @@
-.skeleton
-  border-radius: 50%
-  width: 50px
-  height: 50px
-
 .popover
-  padding: var(--size-xs)
-  border: 1px solid hsl(var(--border))
-  border-radius: var(--radius)
-  margin: var(--size-xs) var(--spacing) 0 0
   display: flex
   flex-direction: column
+  padding: var(--size-xs)
+  border-radius: var(--radius)
+  margin: var(--size-xs) var(--spacing) 0 0
   gap: var(--spacing)
 
-  &__links
+  &__username
+    margin-bottom: var(--spacing-s)
+    text-align: center
+
+  &__content
     display: flex
     flex-direction: column
+
+    &__item-label
+      margin-left: var(--spacing-s)

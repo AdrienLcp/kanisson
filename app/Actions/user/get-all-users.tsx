@@ -1,16 +1,14 @@
 import prisma from '@/Lib/prisma'
+import { getAuthSession } from '@/Lib'
 
 type GetUsersRequest = {
 
 }
 
 export const getAllUsers = async () => {
-  const users = prisma.user.findMany({
-    select: {
-      name: true,
-      role: true
-    }
-  })
+  const session = await getAuthSession()
+
+  const users = await prisma.user.findMany()
 
   return users
 }

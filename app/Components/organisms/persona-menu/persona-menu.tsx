@@ -1,64 +1,85 @@
 'use client'
 
-import { signOut, useSession } from 'next-auth/react'
+import type { DefaultUser } from 'next-auth'
+import { LucideIcon, Settings, User, LogOut } from 'lucide-react'
 import Link from 'next/link'
 
 import { Popover, PopoverContent, PopoverTrigger } from '@/Components/base/ui/popover'
 import { buttonVariants } from '@/Components/base/ui/button'
-import { Skeleton } from '@/Components/base/ui/skeleton'
 
-import type { FCWithStrings } from '@/Types'
 import { Avatar, Button } from '@/Components'
-import { login, logout } from '@/Lib'
+import { useLocale } from '@/Hooks'
+import { ROUTES } from '@/Config'
+import { logout } from '@/Lib'
 
 import styles from './persona-menu.styles.module.sass'
 
-const PersonaMenu: FCWithStrings = ({ strings }) => {
-  const session = useSession()
+type PersonaMenuProps = {
+  user: DefaultUser
+}
 
-  if (session.status === 'loading') return <Skeleton className={styles['skeleton']} />
+type PersonaMenuLink = {
+  label: string
+  href: string
+  Icon: LucideIcon
+}
 
-  const isAuth = !!session.data
+const PersonaMenu: React.FC<PersonaMenuProps> = ({ user }) => {
+  const { strings } = useLocale()
 
-  const handleLogin = async () => await login()
   const handleLogout = async () => await logout()
-  
+
+  const personaMenuLinks: PersonaMenuLink[] = [
+    {
+      label: strings.app.links.profile,
+      href: ROUTES.profile.path,
+      Icon: User
+    },
+    {
+      label: strings.app.links.settings,
+      href: ROUTES.settings.path,
+      Icon: Settings
+    }
+  ]
+
   return (
     <Popover>
-      <PopoverTrigger asChild={!isAuth}>
-        {isAuth
-          ? <Avatar
-              user={session.data.user}
-              strings={strings}
-            />
-          : <Button onClick={handleLogin}>
-              {strings.app.actions.login}
-            </Button>
-        }          
+      <PopoverTrigger>
+        <Avatar user={user} />
       </PopoverTrigger>
       
       <PopoverContent className={styles['popover']}>
-        <div className={styles['popover__links']}>
-          <Link
-            className={buttonVariants({ variant: 'link' })}
-            href='/profile'
-          >
-            {strings.app.links.profile}
-          </Link>
+        {user.name && (
+          <h2 className={styles['popover__username']}>
+            {user.name}
+          </h2>
+        )}
 
-          <Link
-            className={buttonVariants({ variant: 'link' })}
-            href='/settings'
-          >
-            {strings.app.links.settings}
-          </Link>
+        <div className={styles['popover__content']}>
+          {personaMenuLinks.map(({ label, href, Icon }) => (
+            <Link
+              key={href}
+              href={href}
+              className={buttonVariants({ variant: 'ghost' })}
+            >
+              <Icon size='1.2em' />
+
+              <span className={styles['popover__content__item-label']}>
+                {label}
+              </span>
+            </Link>
+          ))}
         </div>
 
         <Button
-          variant='outline'
+          variant='destructive'
           onClick={handleLogout}
         >
-          {strings.app.actions.logout}
+          <LogOut size='1.2em' strokeWidth='3' />
+          
+          <span className={styles['popover__content__item-label']}>
+            {strings.app.actions.logout}
+          </span>
         </Button>
       </PopoverContent>
     </Popover>

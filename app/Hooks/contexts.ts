@@ -1,7 +1,7 @@
 
 import { useContext } from 'react'
 
-import { HueContext, ThemeContext } from '@/Contexts'
+import { HueContext, LocaleContext, ThemeContext } from '@/Contexts'
 
 const useValidContext = <T>(currentContext: React.Context<T>, contextName: string) => {
   const context = useContext(currentContext)
@@ -14,4 +14,5 @@ const useValidContext = <T>(currentContext: React.Context<T>, contextName: strin
 }
 
 export const useHue = () => useValidContext(HueContext, 'Hue')
+export const useLocale = () => useValidContext(LocaleContext, 'Locale')
 export const useTheme = () => useValidContext(ThemeContext, 'Theme')
