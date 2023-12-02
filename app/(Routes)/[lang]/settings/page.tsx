@@ -1,6 +1,6 @@
-import { HueSwitcher, Input, LocaleSwitcher, ThemeSwitcher } from '@/Components'
+import { HueSwitcher, LocaleSwitcher, ThemeSwitcher } from '@/Components'
 
-const Settings: React.FC = () => {
+const Settings: React.FC = async () => {
   return (
     <>
       <LocaleSwitcher />

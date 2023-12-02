@@ -8,7 +8,7 @@ const Home = async () => {
 
   return (
     <>
-    
+      HOME
     </>
   )
 }

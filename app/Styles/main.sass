@@ -22,7 +22,6 @@
 
 html
   scroll-behavior: smooth
-  // font-size: 62.5%
 
 body
   -webkit-font-smoothing: antialiased
@@ -48,11 +47,11 @@ body
 main
   grid-area: main
   overflow-y: auto
-  padding: var(--spacing)
+  padding: var(--spacing) var(--layout-spacing)
 
 @media (width > 991px)
   body
     grid-template-areas: "header" "main" "footer"
 
   main
-    padding-left: var(--sidebar-width)
+    padding-left: calc(var(--sidebar-width) + var(--layout-spacing))

@@ -1,16 +1,11 @@
 {
+  "actions": {
+    "login": "Login",
+    "logout": "Logout"
+  },
   "app": {
     "title": "Kanisson",
-    "description": "Blind test games",
-    "links": {
-      "home": "Home",
-      "profile": "Profile",
-      "settings": "Settings"
-    },
-    "actions": {
-      "login": "Login",
-      "logout": "Logout"
-    }
+    "description": "Blind tests games"
   },
   "components": {
     "avatar": {
@@ -20,7 +15,30 @@
   },
   "layouts": {
     "footer": {
-      "copyright": "© No reserved rights ®"
+      "copyright": "© No reserved rights ®",
+      "youtube": "Powered by YouTube API"
+    }
+  },
+  "pages": {
+    "create": {
+      "label": "Create a blind test",
+      "title": "Create a new blind test"
+    },
+    "home": {
+      "label": "Home",
+      "title": "Home page"
+    },
+    "profile": {
+      "label": "Profile",
+      "title": "My profile"
+    },
+    "search":  {
+      "label": "Search",
+      "title": "Search a blind test"
+    },
+    "settings": {
+      "label": "Settings",
+      "title": "My settings"
     }
   }
 }

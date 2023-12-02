@@ -1,14 +1,25 @@
-import prisma from '@/Lib/prisma'
-import { getAuthSession } from '@/Lib'
+import type { ApiResponse, User } from '@/Types'
+import { getDefaultPagination } from '@/Helpers'
+import { prisma } from '@/Lib'
 
-type GetUsersRequest = {
+type GetUsersResponse = ApiResponse<User[]>
 
-}
+export const getAllUsers = async (): Promise<GetUsersResponse> => {
+  const users = await prisma.user.findMany({
+    select: {
+      publicId: true,
+      name: true,
+      pseudo: true,
+      image: true,
+      role: true,
+      status: true,
+      createdAt: true,
+      updatedAt: true
+    }
+  })
 
-export const getAllUsers = async () => {
-  const session = await getAuthSession()
-
-  const users = await prisma.user.findMany()
-
-  return users
+  return {
+    data: users,
+    pagination: getDefaultPagination(users.length)
+  }
 }

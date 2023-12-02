@@ -4,8 +4,8 @@ export const APP = {
 } as const
 
 export const HUES = ['neutral', 'blue', 'green', 'orange', 'pink', 'purple', 'red', 'yellow'] as const
-
 export const THEMES = ['system', 'light', 'dark'] as const
+export const LOCALES = ['fr', 'en'] as const
 
 export const BREAKPOINTS = [
   {

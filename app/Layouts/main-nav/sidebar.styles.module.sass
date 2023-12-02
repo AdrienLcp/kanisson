@@ -1,13 +1,90 @@
-.sidebar
+@import '@/Styles/mixins'
+
+.heading
+  @include flex-center
+  grid-area: heading
+  padding: var(--size-xl) 0 var(--spacing)
+
+  &__logo
+    transition: transform var(--transition-150) ease-in-out
+
+.nav
+  @include flex-center
+  flex-direction: column
+  width: 100%
   grid-area: nav
-  position: fixed
+
+  & ul
+    width: 100%
+
+  &__link
+    @include flex-center
+    position: relative
+    padding: var(--size-s) 0
+
+    &.active
+      color: hsl(var(--primary))
+
+    &:hover
+      background: hsl(var(--secondary))
+
+.icon
+  transition: opacity var(--transition-150) ease-in-out, transform var(--transition-150) ease-in-out, visibility var(--transition-150) ease-in-out
+
+.overlay
+  @include text-ellipsis
+  position: absolute
   top: 0
   left: 0
-  min-height: 100svh
-  border-right: var(--thickness) solid hsl(var(--border))
+  height: 100%
+  width: 100%
+  display: flex
+  align-items: center
+  justify-content: flex-start
+  padding-left: var(--size-m)
+  gap: var(--spacing-s)
+  opacity: 0
+  visibility: hidden
+  transform: translateX(-120%)
+  transition: transform var(--transition-150) ease-in-out, opacity var(--transition-150) ease-in-out, visibility var(--transition-150) ease-in-out
+
+.footer
+  @include flex-center
+  position: relative
+  grid-area: footer
+  padding: var(--spacing-s)
+  font-size: var(--size-xs)
+
+  & .overlay
+    @include flex-center
+
+.sidebar
+  @include fixed(0, auto, auto, 0)
+  grid-area: nav
+  height: 100svh
   width: calc(var(--sidebar-width) / 3)
+  display: grid
+  grid-template-rows: auto 1fr auto
+  grid-template-areas: "heading" "nav" "footer"
+  border-right: var(--thickness) solid hsl(var(--border))
   background-color: hsl(var(--background))
   transition: width var(--transition-150) ease-in-out
 
   &:hover
     width: var(--sidebar-width)
+
+    & .heading__logo
+      transform: scale(3) translateY(100%)
+
+      &:hover
+        transform: scale(3) translateY(100%) rotate(270deg)
+
+    & .icon
+      opacity: 0
+      visibility: hidden
+      transform: translateX(-500%)
+
+    & .overlay
+      transform: translateX(0)
+      opacity: 1
+      visibility: visible

@@ -4,6 +4,7 @@ import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 
 import type { Locale } from '@/Types'
+import { storeItem } from '@/Helpers'
 import { I18N } from '@/Config'
 
 import styles from './locale-switcher.styles.module.sass'
@@ -21,12 +22,17 @@ const LocaleSwitcher: React.FC = () => {
     return segments.join('/')
   }
 
+  const handleLocaleButtonClick = (locale: Locale) => {
+    storeItem('locale', locale)
+  }
+
   return (
     <ul className={styles['locale-switcher']}>
       {I18N.locales.map(locale => (
         <li key={locale.key}>
           <Link
             href={getRedirectedPathname(locale.key)}
+            onClick={() => handleLocaleButtonClick(locale.key)}
             className={styles['locale-switcher__link']}
           >
             {locale.label}

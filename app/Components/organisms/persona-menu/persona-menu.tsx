@@ -31,12 +31,12 @@ const PersonaMenu: React.FC<PersonaMenuProps> = ({ user }) => {
 
   const personaMenuLinks: PersonaMenuLink[] = [
     {
-      label: strings.app.links.profile,
+      label: strings.pages.profile.label,
       href: ROUTES.profile.path,
       Icon: User
     },
     {
-      label: strings.app.links.settings,
+      label: strings.pages.settings.label,
       href: ROUTES.settings.path,
       Icon: Settings
     }
@@ -78,7 +78,7 @@ const PersonaMenu: React.FC<PersonaMenuProps> = ({ user }) => {
           <LogOut size='1.2em' strokeWidth='3' />
           
           <span className={styles['popover__content__item-label']}>
-            {strings.app.actions.logout}
+            {strings.actions.logout}
           </span>
         </Button>
       </PopoverContent>
