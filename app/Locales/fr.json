@@ -3,6 +3,20 @@
     "login": "Connexion",
     "logout": "Déconnexion"
   },
+  "api": {
+    "errors": {
+      "server": {
+        "internal": "Une erreur est survenue sur le serveur, réessayez plus tard ou contactez-nous",
+        "unauthorized": "Vous devez être connecté pour faire cela",
+        "forbidden": "Vous n'avez pas les droits pour faire cela",
+        "notFound": "Ce contenu est introuvable",
+        "badRequest": "Requête invalide"
+      },
+      "user": {
+        "doesnt_exist": "Cet utilisateur n'a pas été trouvé"
+      }
+    }
+  },
   "app": {
     "title": "Kanisson",
     "description": "Jeu de blind test"
@@ -17,12 +31,23 @@
     "footer": {
       "copyright": "© Aucun droit réservé ®",
       "youtube": "Powered by YouTube API"
+    },
+    "nav": {
+      "logo_tooltip": "Revenir à la page d'accueil"
     }
   },
   "pages": {
+    "contact": {
+      "label": "Contact",
+      "title": "Contactez-nous"
+    },
     "create": {
       "label": "Créer un blind test",
       "title": "Créer un nouveau blind test"
+    },
+    "dashboard": {
+      "label": "Administration",
+      "title": "Tableau de bord"
     },
     "home": {
       "label": "Accueil",
@@ -39,6 +64,10 @@
     "settings": {
       "label": "Paramètres",
       "title": "Mes paramètres"
+    },
+    "user": {
+      "label": "Utilisateur",
+      "title": "Profil de"
     }
   }
 }

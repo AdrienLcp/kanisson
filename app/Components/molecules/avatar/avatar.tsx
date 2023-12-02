@@ -1,36 +1,50 @@
-import type { DefaultUser } from 'next-auth'
 import { User } from 'lucide-react'
 
 import { Avatar as ShadcnAvatar , AvatarFallback, AvatarImage } from '@/Components/base/ui/avatar'
+
+import type { User as TUser } from '@/Types'
 import { useLocale } from '@/Hooks'
 
 type AvatarProps = {
-  user: DefaultUser
+  user: TUser
 }
 
 const Avatar: React.FC<AvatarProps> = ({ user }) => {
   const { strings } = useLocale()
 
-  return (
-    <ShadcnAvatar>
-      {user.image && (
-        <AvatarImage
-          src={user.image}
-          alt={strings.components.avatar.alt}
-        />
-      )}
+  const renderAvatar = () => {
+    if (user.image) {
+      return (
+        <>
+          <AvatarImage
+            src={user.image}
+            alt={strings.components.avatar.alt}
+          />
+          <AvatarFallback>
+            {user.name ? user.name[0] : <User />}
+          </AvatarFallback>
+        </>
+      )
+    }
 
-      {user.name && (
+    if (user.name) {
+      return (
         <AvatarFallback>
           {user.name[0]}
         </AvatarFallback>
-      )}
+      )
+    }
 
-      {!user.image && !user.name && (
-        <AvatarFallback>
-          <User />
-        </AvatarFallback>
-      )}
+    return (
+      <AvatarFallback>
+        <User />
+      </AvatarFallback>
+    )
+  }
+
+  return (
+    <ShadcnAvatar>
+      {renderAvatar()}
     </ShadcnAvatar>
   )
 }

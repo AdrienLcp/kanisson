@@ -2,65 +2,80 @@ import { Disc3, Home, PlusCircle, Search, Youtube } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 
-import type { NavLink } from '@/Layouts/main-nav/nav.types'
+import type { NavLink } from '@root/app/Types'
 import { getPathnameWithoutLocale } from '@/Helpers'
-import { useLocale } from '@/Hooks'
+import { useAuth, useLocale } from '@/Hooks'
+import { ROUTES } from '@/Config'
+import { Tooltip } from '@/Components'
 import { cn } from '@/Lib'
 
 import styles from './sidebar.styles.module.sass'
+import { useToast } from '@root/app/Components/base/ui/use-toast'
 
 const Sidebar: React.FC = () => {
   const { strings } = useLocale()
+  const { user } = useAuth()
   const pathname = usePathname()
   const currentPath = getPathnameWithoutLocale(pathname)
 
+  const { toast } = useToast()
+
   const navLinks: NavLink[] = [
     {
-      id: 'home',
+      id: ROUTES.home.id,
+      path: ROUTES.home.path,
       label: strings.pages.home.label,
-      path: '/',
-      Icon: Home
+      Icon: Home,
+      isVisible: true
     },
     {
-      id: 'search',
+      id: ROUTES.search.id,
+      path: ROUTES.search.path,
       label: strings.pages.search.label,
-      path: '/search',
-      Icon: Search
+      Icon: Search,
+      isVisible: true
     },
     {
-      id: 'create',
+      id: ROUTES.create.id,
+      path: ROUTES.create.path,
       label: strings.pages.create.label,
-      path: '/create',
-      Icon: PlusCircle
+      Icon: PlusCircle,
+      isVisible: !!user && user.status !== 'banned'
     }
   ]
 
   return (
     <aside className={styles['sidebar']}>
       <header className={styles['heading']}>
-        <Link href='/' className={styles['heading__logo']}>
-          <Disc3 />
-        </Link>
+        <Tooltip content={strings.layouts.nav.logo_tooltip}>
+          <Link
+            href='/'
+            className={styles['heading__logo']}
+          >
+            <Disc3 />
+          </Link>
+        </Tooltip>
       </header>
 
       <nav className={styles['nav']}>
         <ul>
-          {navLinks.map(({ id, label, path, Icon }) => (
+          {navLinks.map(({ id, label, path, Icon, isVisible }) => isVisible && (
             <li key={id}>
               <Link
                 href={path}
-                title={label}
                 className={cn(
                   styles['nav__link'],
                   currentPath === path && styles['active']
                 )}
               >
-                <Icon size='1.2em' className={styles['icon']} />
+                <Tooltip content={label}>
+                  <Icon size='1.2em' className={styles['icon']} />
 
-                <div className={styles['overlay']}>
-                  <Icon size='1.2em' />
-                  <span>{label}</span>
-                </div>
+                  <div className={styles['overlay']}>
+                    <Icon size='1.2em' />
+                    <span>{label}</span>
+                  </div>
+                </Tooltip>
               </Link>
             </li>
           ))}

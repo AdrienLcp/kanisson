@@ -1,5 +1,6 @@
 export { default as Button } from './atoms/button/button'
 export { default as Input } from './atoms/input/input'
+export { default as Tooltip } from './atoms/tooltip/tooltip' 
 
 export { default as Avatar } from './molecules/avatar/avatar'
 

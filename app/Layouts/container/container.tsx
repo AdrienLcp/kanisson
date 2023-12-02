@@ -1,5 +1,7 @@
 'use client'
 
+import { Toaster } from '@root/app/Components/base/ui/toaster'
+
 import type { PageProps } from '@/Types'
 import { Background, Footer, Header, Navbar, Sidebar } from '@/Layouts'
 import { useBreakpoint, useHue, useTheme } from '@/Hooks'
@@ -42,6 +44,8 @@ const Container: React.FC<ContainerProps> = ({ children, params }) => {
               <Sidebar />
             </>
         }
+
+        <Toaster />
       </body>
     </html>
   )

@@ -9,7 +9,6 @@ import { I18N } from '@/Config'
 
 const getLocale = (request: NextRequest): string | undefined => {
   const negotiatorHeaders = Object.fromEntries(request.headers)
-  console.log(negotiatorHeaders)
   const locales: Locale[] = [...I18N.locales.map(locale => locale.key)]
 
   const languages = new Negotiator({ headers: negotiatorHeaders }).languages(locales)

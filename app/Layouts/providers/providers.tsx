@@ -2,11 +2,13 @@
 
 import { SessionProvider } from 'next-auth/react'
 
-import type { Dictionary, PublicUser } from '@/Types'
+import { TooltipProvider } from '@root/app/Components/base/ui/tooltip'
+
+import type { Dictionary, User } from '@/Types'
 import { AuthProvider, HueProvider, LocaleProvider, ThemeProvider } from '@/Contexts'
 
 type ProvidersProps = React.PropsWithChildren & {
-  user: PublicUser | null
+  user: User | null
   strings: Dictionary
 }
 
@@ -16,7 +18,9 @@ const Providers: React.FC<ProvidersProps> = ({ user, strings, children }) => (
       <LocaleProvider strings={strings}>
         <HueProvider>
           <ThemeProvider>
-            {children}
+            <TooltipProvider>
+              {children}
+            </TooltipProvider>
           </ThemeProvider>
         </HueProvider>
       </LocaleProvider>

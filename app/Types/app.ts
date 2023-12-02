@@ -1,4 +1,4 @@
-import type { UserRole } from '@prisma/client'
+import type { LucideIcon } from 'lucide-react'
 import { useSession } from 'next-auth/react'
 
 import { HUES, LOCALES, THEMES } from '@/Config'
@@ -20,8 +20,10 @@ export type Locale = typeof LOCALES[number]
 
 export type Session = ReturnType<typeof useSession>
 
-export type AppRoute = {
+export type NavLink = {
   id: string
   path: string
-  roles: UserRole[]
+  label?: string
+  Icon: LucideIcon
+  isVisible: boolean
 }

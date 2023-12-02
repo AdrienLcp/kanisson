@@ -1,12 +1,12 @@
 'use client'
 
-import type { DefaultUser } from 'next-auth'
-import { LucideIcon, Settings, User, LogOut } from 'lucide-react'
+import { Settings, User, LogOut, Mail, ShieldHalf } from 'lucide-react'
 import Link from 'next/link'
 
 import { Popover, PopoverContent, PopoverTrigger } from '@/Components/base/ui/popover'
 import { buttonVariants } from '@/Components/base/ui/button'
 
+import type { NavLink, User as TUser } from '@/Types'
 import { Avatar, Button } from '@/Components'
 import { useLocale } from '@/Hooks'
 import { ROUTES } from '@/Config'
@@ -15,13 +15,7 @@ import { logout } from '@/Lib'
 import styles from './persona-menu.styles.module.sass'
 
 type PersonaMenuProps = {
-  user: DefaultUser
-}
-
-type PersonaMenuLink = {
-  label: string
-  href: string
-  Icon: LucideIcon
+  user: TUser
 }
 
 const PersonaMenu: React.FC<PersonaMenuProps> = ({ user }) => {
@@ -29,16 +23,34 @@ const PersonaMenu: React.FC<PersonaMenuProps> = ({ user }) => {
 
   const handleLogout = async () => await logout()
 
-  const personaMenuLinks: PersonaMenuLink[] = [
+  const personaMenuLinks: NavLink[] = [
     {
+      id: ROUTES.profile.id,
+      path: ROUTES.profile.path,
       label: strings.pages.profile.label,
-      href: ROUTES.profile.path,
-      Icon: User
+      Icon: User,
+      isVisible: true
     },
     {
+      id: ROUTES.dashboard.id,
+      path: ROUTES.dashboard.path,
+      label: strings.pages.dashboard.label,
+      Icon: ShieldHalf,
+      isVisible: ROUTES.dashboard.roles.includes(user.role)
+    },
+    {
+      id: ROUTES.contact.id,
+      path: ROUTES.contact.path,
+      label: strings.pages.contact.label,
+      Icon: Mail,
+      isVisible: true
+    },
+    {
+      id: ROUTES.settings.id,
+      path: ROUTES.settings.path,
       label: strings.pages.settings.label,
-      href: ROUTES.settings.path,
-      Icon: Settings
+      Icon: Settings,
+      isVisible: true
     }
   ]
 
@@ -56,10 +68,10 @@ const PersonaMenu: React.FC<PersonaMenuProps> = ({ user }) => {
         )}
 
         <div className={styles['popover__content']}>
-          {personaMenuLinks.map(({ label, href, Icon }) => (
+          {personaMenuLinks.map(({ id, label, Icon, path, isVisible }) => isVisible && (
             <Link
-              key={href}
-              href={href}
+              key={id}
+              href={path}
               className={buttonVariants({ variant: 'ghost' })}
             >
               <Icon size='1.2em' />
