@@ -1,5 +1,25 @@
+@import '@/Styles/mixins'
+  
 .navbar
   grid-area: nav
   width: 100vw
-  height: var(--layout-spacing)
+  display: flex
+  justify-content: center
+  background-color: hsl(var(--background))
   border-top: var(--thickness) solid hsl(var(--border))
+
+  &__list
+    display: flex
+    align-items: center
+    justify-content: space-evenly
+    width: clamp(300px, 100%, 500px)
+
+    &__link
+      @include flex-center
+      padding: 1rem clamp(1rem, 5vw, 2rem)
+
+      &:active
+        background-color: hsl(var(--secondary))
+
+      &.active
+        color: hsl(var(--primary))

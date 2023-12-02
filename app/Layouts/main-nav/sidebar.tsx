@@ -1,24 +1,21 @@
-import { Disc3, Home, PlusCircle, Search, Youtube } from 'lucide-react'
+import { Disc3, Home, ListMusic, PlusCircle, Search, Youtube } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 
-import type { NavLink } from '@root/app/Types'
+import type { NavLink } from '@/Types'
 import { getPathnameWithoutLocale } from '@/Helpers'
 import { useAuth, useLocale } from '@/Hooks'
-import { ROUTES } from '@/Config'
 import { Tooltip } from '@/Components'
+import { ROUTES } from '@/Config'
 import { cn } from '@/Lib'
 
 import styles from './sidebar.styles.module.sass'
-import { useToast } from '@root/app/Components/base/ui/use-toast'
 
 const Sidebar: React.FC = () => {
   const { strings } = useLocale()
   const { user } = useAuth()
   const pathname = usePathname()
   const currentPath = getPathnameWithoutLocale(pathname)
-
-  const { toast } = useToast()
 
   const navLinks: NavLink[] = [
     {
@@ -41,6 +38,13 @@ const Sidebar: React.FC = () => {
       label: strings.pages.create.label,
       Icon: PlusCircle,
       isVisible: !!user && user.status !== 'banned'
+    },
+    {
+      id: ROUTES.playlists.id,
+      path: ROUTES.playlists.path,
+      label: strings.pages.playlists.label,
+      Icon: ListMusic,
+      isVisible: true
     }
   ]
 
@@ -68,14 +72,12 @@ const Sidebar: React.FC = () => {
                   currentPath === path && styles['active']
                 )}
               >
-                <Tooltip content={label}>
-                  <Icon size='1.2em' className={styles['icon']} />
+                <Icon size='1.2em' className={styles['icon']} />
 
-                  <div className={styles['overlay']}>
-                    <Icon size='1.2em' />
-                    <span>{label}</span>
-                  </div>
-                </Tooltip>
+                <div className={styles['overlay']}>
+                  <Icon size='1.2em' />
+                  <span>{label}</span>
+                </div>
               </Link>
             </li>
           ))}

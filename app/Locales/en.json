@@ -53,6 +53,10 @@
       "label": "Home",
       "title": "Home page"
     },
+    "playlists": {
+      "label": "Playlists",
+      "title": "My playlists"
+    },
     "profile": {
       "label": "Profile",
       "title": "My profile"

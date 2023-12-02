@@ -76,7 +76,7 @@ const PersonaMenu: React.FC<PersonaMenuProps> = ({ user }) => {
             >
               <Icon size='1.2em' />
 
-              <span className={styles['popover__content__item-label']}>
+              <span className={styles['popover__content__item__label']}>
                 {label}
               </span>
             </Link>
@@ -89,7 +89,7 @@ const PersonaMenu: React.FC<PersonaMenuProps> = ({ user }) => {
         >
           <LogOut size='1.2em' strokeWidth='3' />
           
-          <span className={styles['popover__content__item-label']}>
+          <span className={styles['popover__content__item__label']}>
             {strings.actions.logout}
           </span>
         </Button>
