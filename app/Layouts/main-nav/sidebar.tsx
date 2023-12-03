@@ -12,7 +12,7 @@ import { cn } from '@/Lib'
 import styles from './sidebar.styles.module.sass'
 
 const Sidebar: React.FC = () => {
-  const { strings } = useLocale()
+  const { dictionary } = useLocale()
   const { user } = useAuth()
   const pathname = usePathname()
   const currentPath = getPathnameWithoutLocale(pathname)
@@ -21,28 +21,28 @@ const Sidebar: React.FC = () => {
     {
       id: ROUTES.home.id,
       path: ROUTES.home.path,
-      label: strings.pages.home.label,
+      label: dictionary.pages.home.label,
       Icon: Home,
       isVisible: true
     },
     {
       id: ROUTES.search.id,
       path: ROUTES.search.path,
-      label: strings.pages.search.label,
+      label: dictionary.pages.search.label,
       Icon: Search,
       isVisible: true
     },
     {
       id: ROUTES.create.id,
       path: ROUTES.create.path,
-      label: strings.pages.create.label,
+      label: dictionary.pages.create.label,
       Icon: PlusCircle,
       isVisible: !!user && user.status !== 'banned'
     },
     {
       id: ROUTES.playlists.id,
       path: ROUTES.playlists.path,
-      label: strings.pages.playlists.label,
+      label: dictionary.pages.playlists.label,
       Icon: ListMusic,
       isVisible: true
     }
@@ -51,7 +51,7 @@ const Sidebar: React.FC = () => {
   return (
     <aside className={styles['sidebar']}>
       <header className={styles['heading']}>
-        <Tooltip content={strings.layouts.nav.logo_tooltip}>
+        <Tooltip content={dictionary.layouts.nav.logoTooltip}>
           <Link
             href='/'
             className={styles['heading__logo']}
@@ -89,7 +89,7 @@ const Sidebar: React.FC = () => {
 
         <div className={styles['overlay']}>
           <Youtube size='1.5em' color='#fe0000' />
-          <span>{strings.layouts.footer.youtube}</span>
+          <span>{dictionary.layouts.footer.youtube}</span>
         </div>
       </footer>
     </aside>

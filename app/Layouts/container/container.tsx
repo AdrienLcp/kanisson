@@ -21,7 +21,6 @@ const Container: React.FC<ContainerProps> = ({ children, params }) => {
     <html
       lang={params.lang}
       style={{ colorScheme: isDarkModeActive ? 'dark' : 'light' }}
-      suppressHydrationWarning
     >
       <body className={cn(
         headingFont.variable,

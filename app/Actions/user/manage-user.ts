@@ -46,7 +46,7 @@ export const manageUser = async (request: PromoteUserRequest): Promise<ApiRespon
     })
 
     if (!managedUser) {
-      return { error: strings.api.errors.user.doesnt_exist }
+      return { error: strings.api.errors.user.doesntExist }
     }
 
     if (managedUser.role !== newRole) {

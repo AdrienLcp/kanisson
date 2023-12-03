@@ -9,13 +9,13 @@ import { AuthProvider, HueProvider, LocaleProvider, ThemeProvider } from '@/Cont
 
 type ProvidersProps = React.PropsWithChildren & {
   user: User | null
-  strings: Dictionary
+  dictionary: Dictionary
 }
 
-const Providers: React.FC<ProvidersProps> = ({ user, strings, children }) => (
+const Providers: React.FC<ProvidersProps> = ({ user, dictionary, children }) => (
   <SessionProvider>
     <AuthProvider user={user}>
-      <LocaleProvider strings={strings}>
+      <LocaleProvider dictionary={dictionary}>
         <HueProvider>
           <ThemeProvider>
             <TooltipProvider>

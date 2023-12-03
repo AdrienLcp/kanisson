@@ -19,7 +19,7 @@ type PersonaMenuProps = {
 }
 
 const PersonaMenu: React.FC<PersonaMenuProps> = ({ user }) => {
-  const { strings } = useLocale()
+  const { dictionary } = useLocale()
 
   const handleLogout = async () => await logout()
 
@@ -27,28 +27,28 @@ const PersonaMenu: React.FC<PersonaMenuProps> = ({ user }) => {
     {
       id: ROUTES.profile.id,
       path: ROUTES.profile.path,
-      label: strings.pages.profile.label,
+      label: dictionary.pages.profile.label,
       Icon: User,
       isVisible: true
     },
     {
       id: ROUTES.dashboard.id,
       path: ROUTES.dashboard.path,
-      label: strings.pages.dashboard.label,
+      label: dictionary.pages.dashboard.label,
       Icon: ShieldHalf,
       isVisible: ROUTES.dashboard.roles.includes(user.role)
     },
     {
       id: ROUTES.contact.id,
       path: ROUTES.contact.path,
-      label: strings.pages.contact.label,
+      label: dictionary.pages.contact.label,
       Icon: Mail,
       isVisible: true
     },
     {
       id: ROUTES.settings.id,
       path: ROUTES.settings.path,
-      label: strings.pages.settings.label,
+      label: dictionary.pages.settings.label,
       Icon: Settings,
       isVisible: true
     }
@@ -90,7 +90,7 @@ const PersonaMenu: React.FC<PersonaMenuProps> = ({ user }) => {
           <LogOut size='1.2em' strokeWidth='3' />
           
           <span className={styles['popover__content__item__label']}>
-            {strings.actions.logout}
+            {dictionary.actions.logout}
           </span>
         </Button>
       </PopoverContent>

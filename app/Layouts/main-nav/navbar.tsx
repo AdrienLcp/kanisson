@@ -11,7 +11,7 @@ import { cn } from '@/Lib'
 import styles from './navbar.styles.module.sass'
 
 const Navbar: React.FC = () => {
-  const { strings } = useLocale()
+  const { dictionary } = useLocale()
   const { user } = useAuth()
   const pathname = usePathname()
   const currentPath = getPathnameWithoutLocale(pathname)
@@ -20,28 +20,28 @@ const Navbar: React.FC = () => {
     {
       id: ROUTES.home.id,
       path: ROUTES.home.path,
-      label: strings.pages.home.label,
+      label: dictionary.pages.home.label,
       Icon: Home,
       isVisible: true
     },
     {
       id: ROUTES.search.id,
       path: ROUTES.search.path,
-      label: strings.pages.search.label,
+      label: dictionary.pages.search.label,
       Icon: Search,
       isVisible: true
     },
     {
       id: ROUTES.create.id,
       path: ROUTES.create.path,
-      label: strings.pages.create.label,
+      label: dictionary.pages.create.label,
       Icon: PlusCircle,
       isVisible: !!user && user.status !== 'banned'
     },
     {
       id: ROUTES.playlists.id,
       path: ROUTES.playlists.path,
-      label: strings.pages.playlists.label,
+      label: dictionary.pages.playlists.label,
       Icon: ListMusic,
       isVisible: true
     }

@@ -1,1 +1,20 @@
+.dropdown-trigger
+  display: flex
+  align-items: center
+  gap: var(--spacing)
+  
+.popover
+  min-width: 150px
+  
+  &__item
+    &__link
+      display: flex
+      align-items: center
+      justify-content: space-between
+      height: 100%
+      width: 100%
+      gap: var(--spacing)
 
+      &.selected
+        pointer-events: none
+        opacity: 0.5

@@ -14,7 +14,7 @@ const Tooltip: React.FC<TooltipProps> = ({ asChild, children, content, side}) =>
           {children}
         </>
       </TooltipTrigger>
-      <TooltipContent side={side} sideOffset={20}>
+      <TooltipContent side={side}>
         {content}
       </TooltipContent>
     </ShadcnTooltip>

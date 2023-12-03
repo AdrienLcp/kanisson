@@ -1,29 +1,69 @@
 'use client'
 
+import { LucideIcon, Moon, Sun, SunMoon } from 'lucide-react'
+import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuTrigger } from '@/Components/base/ui/dropdown-menu'
+
+import type { Theme } from '@/Types'
+import { useLocale, useTheme } from '@/Hooks'
 import { Button } from '@/Components'
-import { useTheme } from '@/Hooks'
+
+import styles from './theme-switcher.styles.module.sass'
+
+type ThemeOption = {
+  key: Theme
+  label: string
+  Icon: LucideIcon
+}
 
 const ThemeSwitcher: React.FC = () => {
-  const { setTheme } = useTheme()
+  const { isDarkModeActive, selectedTheme, setTheme } = useTheme()
+  const { dictionary } = useLocale()
+  const strings = dictionary.components.themeSwitcher
+
+  const themeOptions: ThemeOption[] = [
+    {
+      key: 'system',
+      label: strings.system,
+      Icon: SunMoon
+    },
+    {
+      key: 'dark',
+      label: strings.dark,
+      Icon: Moon
+    },
+    {
+      key: 'light',
+      label: strings.light,
+      Icon: Sun
+    }
+  ]
 
   return (
-    <ul>
-      <li key='0'>
-        <Button onClick={() => setTheme('system')}>
-          system
+    <DropdownMenu>
+      <DropdownMenuTrigger>
+        <Button className={styles['dropdown__trigger']} variant='outline'>
+          {isDarkModeActive
+            ? <Moon size='1.4em' />
+            : <Sun size='1.4em' />
+          }
+
+          {themeOptions.find(option => option.key === selectedTheme)?.label}
         </Button>
-      </li>
-      <li key='1'>
-        <Button onClick={() => setTheme('dark')}>
-          dark
-        </Button>
-      </li>
-      <li key='2'>
-        <Button onClick={() => setTheme('light')}>
-          light
-        </Button>
-      </li>
-    </ul>
+      </DropdownMenuTrigger>
+
+      <DropdownMenuContent align='start'>
+        {themeOptions.map(({ key, label, Icon }) => (
+          <DropdownMenuCheckboxItem
+            key={key}
+            checked={selectedTheme === key}
+            className={styles['dropdown__option']}
+            onClick={() => setTheme(key)}
+          >
+            {label} <Icon size='1.2em' />
+          </DropdownMenuCheckboxItem>
+        ))}
+      </DropdownMenuContent>
+    </DropdownMenu>
   )
 }
 

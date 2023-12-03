@@ -12,7 +12,7 @@ import { login } from '@/Lib'
 import styles from './header.styles.module.sass'
 
 const Header: React.FC = () => {
-  const { strings } = useLocale()
+  const { dictionary } = useLocale()
   const { user } = useAuth()
 
   const handleLogin = async () => await login()
@@ -35,7 +35,7 @@ const Header: React.FC = () => {
   return (
     <header className={styles['header']}>
       <h1 className={styles['header__title']}>
-        {strings.app.title}
+        {dictionary.app.title}
       </h1>
 
       {user
@@ -55,7 +55,7 @@ const Header: React.FC = () => {
             </ul>
 
             <Button onClick={handleLogin}>
-              {strings.actions.login}
+              {dictionary.actions.login}
             </Button>
           </div>
       }

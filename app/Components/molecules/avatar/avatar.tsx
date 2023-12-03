@@ -10,7 +10,8 @@ type AvatarProps = {
 }
 
 const Avatar: React.FC<AvatarProps> = ({ user }) => {
-  const { strings } = useLocale()
+  const { dictionary } = useLocale()
+  const strings = dictionary.components.avatar
 
   const renderAvatar = () => {
     if (user.image) {
@@ -18,7 +19,7 @@ const Avatar: React.FC<AvatarProps> = ({ user }) => {
         <>
           <AvatarImage
             src={user.image}
-            alt={strings.components.avatar.alt}
+            alt={strings.alt}
           />
           <AvatarFallback>
             {user.name ? user.name[0] : <User />}

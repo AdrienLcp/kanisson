@@ -30,11 +30,11 @@ export const generateMetadata = async ({ params }: PageProps): Promise<Metadata>
 type RootLayoutProps = PageProps & React.PropsWithChildren
 
 const RootLayout: React.FC<RootLayoutProps> = async ({ children, params }) => {
-  const strings = await getDictionary(params.lang)
+  const dictionary = await getDictionary(params.lang)
   const user = await getAuthUser()
 
   return (
-    <Providers strings={strings} user={user}>
+    <Providers dictionary={dictionary} user={user}>
       <Container params={params}>
         {children}
       </Container>

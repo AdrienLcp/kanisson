@@ -1,29 +1,29 @@
 'use client'
 
-import { Button } from '@/Components'
 import { useHue } from '@/Hooks'
+import { HUES } from '@/Config'
+import { cn } from '@/Lib'
+
+import styles from './hue-switcher.styles.module.sass'
 
 const HueSwitcher: React.FC = () => {
-  const { setHue } = useHue()
+  const { setHue, selectedHue } = useHue()
 
   return (
-    <div>
-      <Button onClick={() => setHue('neutral')}>
-        NEUTRAL
-      </Button>
-      <Button onClick={() => setHue('blue')}>
-        BLUE
-      </Button>
-      <Button onClick={() => setHue('red')}>
-        RED
-      </Button>
-      <Button onClick={() => setHue('yellow')}>
-        YELLOW
-      </Button>
-      <Button onClick={() => setHue('purple')}>
-        PURPLE
-      </Button>
-    </div>
+    <ul className={styles['switcher-list']}>
+      {HUES.map(hue => (
+        <li key={hue}>
+          <button
+            style={{ '--color': `var(--theme-${hue})` } as React.CSSProperties}
+            className={cn(
+              styles['switcher-list__button'],
+              selectedHue === hue && styles['selected']
+            )}
+            onClick={() => setHue(hue)}
+          />
+        </li>
+      ))}
+    </ul>
   )
 }
 

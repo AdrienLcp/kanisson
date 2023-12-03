@@ -3,21 +3,21 @@
 import { createContext, useCallback, useEffect } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
 
-import { Locale, type Dictionary } from '@/Types'
+import type { Locale, Dictionary } from '@/Types'
 import { getStoredItem } from '@/Helpers'
 import { LOCALES } from '@/Config'
 
 type LocaleContext = {
-  strings: Dictionary
+  dictionary: Dictionary
 }
 
-type LocaleProvider = React.PropsWithChildren &{
-  strings: Dictionary
-}
+type LocaleProvider = React.PropsWithChildren<{
+  dictionary: Dictionary
+}>
 
 export const LocaleContext = createContext<LocaleContext | null>(null)
 
-export const LocaleProvider: React.FC<LocaleProvider> = ({ children, strings }) => {
+export const LocaleProvider: React.FC<LocaleProvider> = ({ children, dictionary }) => {
   const pathname = usePathname()
   const router = useRouter()
   
@@ -40,7 +40,7 @@ export const LocaleProvider: React.FC<LocaleProvider> = ({ children, strings }) 
   }, [getRedirectedPathname, router])
 
   return (
-    <LocaleContext.Provider value={{ strings }}>
+    <LocaleContext.Provider value={{ dictionary }}>
       {children}
     </LocaleContext.Provider>
   )

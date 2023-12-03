@@ -13,7 +13,7 @@
         "badRequest": "Bad request"
       },
       "user": {
-        "doesnt_exist": "This user doesn't exist"
+        "doesntExist": "This user doesn't exist"
       }
     }
   },
@@ -25,6 +25,18 @@
     "avatar": {
       "alt": "Avatar",
       "me": "Me"
+    },
+    "localeSwitcher": {
+      "flagAlt": "Flag of"
+    },
+    "themeSwitcher": {
+      "dark": "Dark",
+      "light": "Light",
+      "system": "System"
+    },
+    "volumeSlider": {
+      "turnOff": "Turn volume off",
+      "turnOn": "Turn volume on"
     }
   },
   "layouts": {
@@ -33,7 +45,7 @@
       "youtube": "Powered by YouTube API"
     },
     "nav": {
-      "logo_tooltip": "Go to home page"
+      "logoTooltip": "Go to home page"
     }
   },
   "pages": {
@@ -67,7 +79,14 @@
     },
     "settings": {
       "label": "Settings",
-      "title": "My settings"
+      "title": "My settings",
+      "description": "Personalize your Kanisson settings",
+      "sections": {
+        "volume": "Sounds volume",
+        "locale": "Language",
+        "theme": "Dark mode",
+        "hue": "Colors"
+      }
     },
     "user": {
       "label": "Utilisateur",

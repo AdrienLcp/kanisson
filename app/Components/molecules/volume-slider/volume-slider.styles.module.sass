@@ -1,0 +1,14 @@
+.volume-controls
+  width: 100%
+  display: flex
+  align-items: center
+  gap: calc(var(--spacing) * 2)
+
+  &__slider
+    &.disabled
+      opacity: 0.5
+
+  &__value
+    display: block
+    min-width: 2ch
+    color: hsl(var(--muted-foreground))

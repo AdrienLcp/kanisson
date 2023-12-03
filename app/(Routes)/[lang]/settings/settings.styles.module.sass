@@ -1,0 +1,25 @@
+@import '@/Styles/mixins'
+  
+.settings
+  &-wrapper
+    @include page-wrapper
+
+  &-container
+    @include page-container
+
+  &__title
+    font-size: var(--size-xl)
+    font-family: var(--font-heading)
+
+  &__description
+    color: hsl(var(--muted-foreground))
+
+.content
+  display: flex
+  flex-direction: column
+  gap: var(--size-xl)
+  margin-top: var(--size-xl)
+
+  &__title
+    margin-bottom: var(--spacing-s)
+
