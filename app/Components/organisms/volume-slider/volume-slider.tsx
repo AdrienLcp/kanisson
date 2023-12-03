@@ -3,10 +3,8 @@
 import { useEffect, useState } from 'react'
 import { Volume, Volume1, Volume2, VolumeX, X } from 'lucide-react'
 
-import { Slider } from '@/Components/base/ui/slider'
-
 import { getStoredItem, storeItem } from '@/Helpers'
-import { Button, Tooltip } from '@/Components'
+import { Button, Slider, Tooltip } from '@/Components'
 import { useLocale } from '@/Hooks'
 import { cn } from '@/Lib'
 

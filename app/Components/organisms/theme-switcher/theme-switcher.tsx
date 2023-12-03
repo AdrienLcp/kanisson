@@ -1,11 +1,10 @@
 'use client'
 
 import { LucideIcon, Moon, Sun, SunMoon } from 'lucide-react'
-import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuTrigger } from '@/Components/base/ui/dropdown-menu'
 
 import type { Theme } from '@/Types'
 import { useLocale, useTheme } from '@/Hooks'
-import { Button } from '@/Components'
+import { Button, DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuTrigger } from '@/Components'
 
 import styles from './theme-switcher.styles.module.sass'
 

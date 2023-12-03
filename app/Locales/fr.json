@@ -26,6 +26,10 @@
       "alt": "Avatar",
       "me": "Moi"
     },
+    "copyButton": {
+      "tooltip": "Copier dans le presse papier",
+      "success": "Copié dans le presse papier"
+    },
     "hueSwitcher": {
       "neutral": "Neutre",
       "blue": "Bleu",
@@ -64,6 +68,8 @@
       "title": "Contactez-nous",
       "description": "Vous pouvez nous envoyer un message en remplissant les champs suivants. Nous vous répondrons dans les plus brefs délais.",
       "form": {
+        "email": "Votre adresse email",
+        "message": "Votre message",
         "submit": "Envoyer",
         "success": "Message envoyé avec succès",
         "error": "Une erreur est survenue, réessayez plus tard"

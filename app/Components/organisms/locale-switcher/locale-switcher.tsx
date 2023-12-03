@@ -4,11 +4,9 @@ import { usePathname } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuTrigger } from '@/Components/base/ui/dropdown-menu'
-
 import type { Locale } from '@/Types'
 import { storeItem } from '@/Helpers'
-import { Button } from '@/Components'
+import { Button, DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuTrigger } from '@/Components'
 import { useLocale } from '@/Hooks'
 import { I18N } from '@/Config'
 import { cn } from '@/Lib'

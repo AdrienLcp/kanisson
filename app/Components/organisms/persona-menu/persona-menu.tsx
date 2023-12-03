@@ -3,11 +3,10 @@
 import { Settings, User, LogOut, Mail, ShieldHalf } from 'lucide-react'
 import Link from 'next/link'
 
-import { Popover, PopoverContent, PopoverTrigger } from '@/Components/base/ui/popover'
 import { buttonVariants } from '@/Components/base/ui/button'
 
 import type { NavLink, User as TUser } from '@/Types'
-import { Avatar, Button } from '@/Components'
+import { Avatar, Button, Popover, PopoverContent, PopoverTrigger } from '@/Components'
 import { useLocale } from '@/Hooks'
 import { ROUTES } from '@/Config'
 import { logout } from '@/Lib'

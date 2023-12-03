@@ -1,5 +1,6 @@
 import { getAuthSession } from '@/Lib'
 import { getAllUsers } from '@/Actions'
+import { CopyButton } from '@/Components'
 
 const Home = async () => {
   const session = await getAuthSession()
@@ -8,7 +9,7 @@ const Home = async () => {
 
   return (
     <>
-      HOME
+      <CopyButton string='test' />
     </>
   )
 }

@@ -26,6 +26,10 @@
       "alt": "Avatar",
       "me": "Me"
     },
+    "copyButton": {
+      "tooltip": "Copy to clipboard",
+      "success": "Copied to clipboard"
+    },
     "hueSwitcher": {
       "neutral": "Neutral",
       "blue": "Blue",
@@ -64,6 +68,8 @@
       "title": "Contact us",
       "description": "You can contact us by filling this form. We will answer you as soon as possible.",
       "form": {
+        "email": "Your email",
+        "message": "Your message",
         "submit": "Send",
         "success": "Message sent successfully",
         "error": "An error occured, please try again later"

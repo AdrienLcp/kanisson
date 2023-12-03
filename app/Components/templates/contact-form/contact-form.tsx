@@ -1,15 +1,12 @@
 'use client'
 
 import { useForm, ValidationError } from '@formspree/react'
+import { Send } from 'lucide-react'
 
-import { Textarea } from '@root/app/Components/base/ui/textarea'
-import { Label } from '@root/app/Components/base/ui/label'
-
-import { Button, Input } from '@/Components'
+import { Button, Input, Label, Textarea } from '@/Components'
 import { useLocale } from '@/Hooks'
 
 import styles from './contact-form.styles.module.sass'
-import { Send } from 'lucide-react'
 
 type ContactFormProps = {
   formSpreeId: string
@@ -41,25 +38,37 @@ const ContactForm: React.FC<ContactFormProps> = ({ formSpreeId }) => {
       className={styles['contact-form']}
       onSubmit={handleSubmit}
     >
-      <Input
-        id='email'
-        type='email'
-        name='email'
-      />
+      <div className={styles['contact-form__input']}>
+        <Label htmlFor='email'>
+          {strings.form.email}
+        </Label>
 
-      <ValidationError 
-        prefix='Email'
-        field='email'
-        errors={state.errors}
-      />
+        <Input
+          id='email'
+          type='email'
+          name='email'
+        />
 
-      <Textarea id='message' name='message' />
+        <ValidationError 
+          prefix='Email'
+          field='email'
+          errors={state.errors}
+        />        
+      </div>
 
-      <ValidationError 
-        prefix='Message'
-        field='message'
-        errors={state.errors}
-      />
+      <div className={styles['contact-form__input']}>
+        <Label htmlFor='message'>
+          {strings.form.message}
+        </Label>
+
+        <Textarea id='message' name='message' />
+
+        <ValidationError 
+          prefix='Message'
+          field='message'
+          errors={state.errors}
+        />
+      </div>
 
       <Button
         type='submit'
