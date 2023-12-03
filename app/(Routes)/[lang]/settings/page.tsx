@@ -1,6 +1,6 @@
 import type { PageProps } from '@/Types'
 import { HueSwitcher, LocaleSwitcher, ThemeSwitcher, VolumeSlider } from '@/Components'
-import { getDictionary } from '@/I18n'
+import { getDictionary } from '@/Locales'
 
 import styles from './settings.styles.module.sass'
 
@@ -19,9 +19,9 @@ const Settings: React.FC<PageProps> = async ({ params }) => {
           {strings.description}
         </p>
 
-        <div className={styles['content']}>
+        <div className={styles['settings__content']}>
           <section>
-            <h3 className={styles['content__title']}>
+            <h3 className={styles['settings__content__title']}>
               {strings.sections.volume}
             </h3>
             
@@ -29,7 +29,7 @@ const Settings: React.FC<PageProps> = async ({ params }) => {
           </section>
 
           <section>
-            <h3 className={styles['content__title']}>
+            <h3 className={styles['settings__content__title']}>
               {strings.sections.locale}
             </h3>
 
@@ -37,7 +37,7 @@ const Settings: React.FC<PageProps> = async ({ params }) => {
           </section>
 
           <section>
-            <h3 className={styles['content__title']}>
+            <h3 className={styles['settings__content__title']}>
               {strings.sections.theme}
             </h3>
             
@@ -45,7 +45,7 @@ const Settings: React.FC<PageProps> = async ({ params }) => {
           </section>
 
           <section>
-            <h3 className={styles['content__title']}>
+            <h3 className={styles['settings__content__title']}>
               {strings.sections.hue}
             </h3>
 

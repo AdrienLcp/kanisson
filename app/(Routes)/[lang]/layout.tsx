@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import type { PageProps } from '@/Types'
 import { Container, Providers } from '@/Layouts'
 import { getAuthUser } from '@/Actions'
-import { getDictionary } from '@/I18n'
+import { getDictionary } from '@/Locales'
 import { I18N } from '@/Config'
 
 export const dynamic = 'auto'

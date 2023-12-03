@@ -59,7 +59,7 @@ const ThemeSwitcher: React.FC = () => {
             className={styles['dropdown__option']}
             onClick={() => setTheme(key)}
           >
-            {label} <Icon size='1.2em' />
+            {label} <Icon size='1.2em' color='hsl(var(--muted-foreground))' />
           </DropdownMenuCheckboxItem>
         ))}
       </DropdownMenuContent>

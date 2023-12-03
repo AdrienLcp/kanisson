@@ -54,7 +54,7 @@
     background-color: white
     color: black
     margin: 0
-    padding: var(--spacing)
+    padding: var(--spacing-m)
     clip: unset
     clip-path: unset
     white-space: unset
@@ -91,6 +91,20 @@
 
 @mixin page-container ($min: 250px, $max: 600px)
   width: clamp($min, 100%, $max)
+  padding: clamp(20px, 5vh, 40px) 0
   display: flex
   flex-direction: column
-  gap: var(--spacing)
+  gap: var(--spacing-m)
+
+@mixin page-title
+  font-size: var(--size-xl)
+  font-family: var(--font-heading)
+
+@mixin page-description
+  color: hsl(var(--muted-foreground))
+
+@mixin page-content
+  display: flex
+  flex-direction: column
+  gap: var(--size-xl)
+  margin-top: var(--size-xxl)

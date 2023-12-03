@@ -26,6 +26,16 @@
       "alt": "Avatar",
       "me": "Me"
     },
+    "hueSwitcher": {
+      "neutral": "Neutral",
+      "blue": "Blue",
+      "green": "Green",
+      "orange": "Orange",
+      "pink": "Pink",
+      "purple": "Purple",
+      "red": "Red",
+      "yellow": "Yellow"
+    },
     "localeSwitcher": {
       "flagAlt": "Flag of"
     },
@@ -51,7 +61,13 @@
   "pages": {
     "contact": {
       "label": "Contact",
-      "title": "Contact us"
+      "title": "Contact us",
+      "description": "You can contact us by filling this form. We will answer you as soon as possible.",
+      "form": {
+        "submit": "Send",
+        "success": "Message sent successfully",
+        "error": "An error occured, please try again later"
+      }
     },
     "create": {
       "label": "Create a blind test",

@@ -26,6 +26,16 @@
       "alt": "Avatar",
       "me": "Moi"
     },
+    "hueSwitcher": {
+      "neutral": "Neutre",
+      "blue": "Bleu",
+      "green": "Vert",
+      "orange": "Orange",
+      "pink": "Rose",
+      "purple": "Violet",
+      "red": "Rouge",
+      "yellow": "Jaune"
+    },
     "localeSwitcher": {
       "flagAlt": "Drapeau de"
     },
@@ -35,8 +45,8 @@
       "system": "Système"
     },
     "volumeSlider": {
-      "turnOff": "Turn volume off",
-      "turnOn": "Turn volume on"
+      "turnOff": "Éteindre les son",
+      "turnOn": "Allumer les son"
     }
   },
   "layouts": {
@@ -51,7 +61,13 @@
   "pages": {
     "contact": {
       "label": "Contact",
-      "title": "Contactez-nous"
+      "title": "Contactez-nous",
+      "description": "Vous pouvez nous envoyer un message en remplissant les champs suivants. Nous vous répondrons dans les plus brefs délais.",
+      "form": {
+        "submit": "Envoyer",
+        "success": "Message envoyé avec succès",
+        "error": "Une erreur est survenue, réessayez plus tard"
+      }
     },
     "create": {
       "label": "Créer un blind test",

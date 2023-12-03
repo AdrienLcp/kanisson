@@ -7,24 +7,25 @@ import { getAuthSession, prisma } from '@/Lib'
 type PromoteUserRequest = {
   userId: string
   newRole: 'moderator' | 'user'
-  strings: Dictionary
+  dictionary: Dictionary
 }
 
-const AUTHORIZED_NEW_ROLES: UserRole[] = ['moderator', 'user']
-const AUTHORIZED_EDITOR_ROLES: UserRole[] = ['moderator', 'admin']
+const AUTHORIZED_ROLES: UserRole[] = ['moderator', 'user']
+const REQUIRED_ROLES: UserRole[] = ['moderator', 'admin']
 
 export const manageUser = async (request: PromoteUserRequest): Promise<ApiResponse<User>> => {
-  const { newRole, strings, userId } = request
+  const { newRole, dictionary, userId } = request
+  const errors = dictionary.api.errors
 
   try {
-    if (!AUTHORIZED_NEW_ROLES.includes(newRole) || typeof userId !== 'string' || typeof newRole !== 'string') {
-      return { error: strings.api.errors.server.badRequest }
+    if (!AUTHORIZED_ROLES.includes(newRole) || typeof userId !== 'string' || typeof newRole !== 'string') {
+      return { error: errors.server.badRequest }
     }
 
     const session = await getAuthSession()
 
     if (!session) {
-      return { error: strings.api.errors.server.unauthorized }
+      return { error: errors.server.unauthorized }
     }
 
     const currentUser = await prisma.user.findUnique({
@@ -32,11 +33,11 @@ export const manageUser = async (request: PromoteUserRequest): Promise<ApiRespon
     })
 
     if (!currentUser) {
-      return { error: strings.api.errors.server.unauthorized }
+      return { error: errors.server.unauthorized }
     }
 
-    if (!AUTHORIZED_EDITOR_ROLES.includes(currentUser.role)) {
-      return { error: strings.api.errors.server.forbidden }
+    if (!REQUIRED_ROLES.includes(currentUser.role)) {
+      return { error: errors.server.forbidden }
     }
 
     const managedUser = await prisma.user.update({
@@ -46,16 +47,16 @@ export const manageUser = async (request: PromoteUserRequest): Promise<ApiRespon
     })
 
     if (!managedUser) {
-      return { error: strings.api.errors.user.doesntExist }
+      return { error: errors.user.doesntExist }
     }
 
     if (managedUser.role !== newRole) {
-      return { error: strings.api.errors.server.internal }
+      return { error: errors.server.internal }
     }
 
     return { data: managedUser }
   } catch (error) {
     console.error(error)
-    return { error: strings.api.errors.server.internal }
+    return { error: errors.server.internal }
   }
 }

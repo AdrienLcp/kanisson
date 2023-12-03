@@ -2,7 +2,7 @@ import type { LucideIcon } from 'lucide-react'
 import { useSession } from 'next-auth/react'
 
 import { HUES, LOCALES, THEMES } from '@/Config'
-import { getDictionary } from '@/I18n'
+import { getDictionary } from '@/Locales'
 
 type PageParam = {
   lang: Locale

@@ -67,25 +67,27 @@ enum PlaylistStatus {
 }
 
 model User {
-  id            String     @id @default(uuid())
-  publicId      String     @unique @default(uuid())
-  name          String?
-  pseudo        String?
-  email         String?    @unique
-  emailVerified DateTime?
-  image         String?
-  role          UserRole   @default(user)
-  status        UserStatus @default(active)
-  createdAt     DateTime   @default(now())
-  updatedAt     DateTime   @updatedAt
-  comments      Comment[]
-  favorites     Favorite[]
-  accounts      Account[]
-  sessions      Session[]
-  playlists     Playlist[]
-  notifications Notification[]
-  games         Game[]
-  ratings       Rating[]
+  id                String     @id @default(uuid())
+  publicId          String     @unique @default(uuid())
+  name              String?
+  pseudo            String?
+  email             String?    @unique
+  emailVerified     DateTime?
+  image             String?
+  role              UserRole   @default(user)
+  status            UserStatus @default(active)
+  createdAt         DateTime   @default(now())
+  updatedAt         DateTime   @updatedAt
+  privateMessages   PrivateMessage[]
+  comments          Comment[]
+  favorites         Favorite[]
+  accounts          Account[]
+  sessions          Session[]
+  playlists         Playlist[]
+  notifications     Notification[]
+  games             Game[]
+  ratings           Rating[]
+  reports           Report[]
 }
 
 model Playlist {
@@ -93,12 +95,14 @@ model Playlist {
   userId        String
   creator       String
   title         String           @unique
-  description   String
-  img           String
+  description   String?
+  img           String?
+  language      String?
   status        PlaylistStatus   @default(inactive)
   createdAt     DateTime         @default(now())
   updatedAt     DateTime         @updatedAt
   user          User             @relation(fields: [userId], references: [publicId])
+  tags          Tag[]
   comments      Comment[]
   favorites     Favorite[]
   tracks        Track[]
@@ -161,7 +165,7 @@ model Favorite {
 }
 
 model Comment {
-  id            Int              @id @default(autoincrement())
+  id            String           @id @default(cuid())
   userId        String
   playlistId    String
   message       String
@@ -169,4 +173,38 @@ model Comment {
   updatedAt     DateTime         @updatedAt
   user          User             @relation(fields: [userId], references: [publicId])
   playlist      Playlist         @relation(fields: [playlistId], references: [id])
+}
+
+enum ReportType {
+  comment
+  playlist
+  user
+}
+
+model Report {
+  id            Int              @id @default(autoincrement())
+  userId        String
+  message       String
+  reportedId    String
+  type          ReportType
+  createdAt     DateTime         @default(now())
+  updatedAt     DateTime         @updatedAt
+  user          User             @relation(fields: [userId], references: [publicId])
+}
+
+model PrivateMessage {
+  id            String           @id @default(cuid())
+  userId        String
+  senderId      String
+  senderName    String
+  message       String
+  createdAt     DateTime         @default(now())
+  updatedAt     DateTime         @updatedAt
+  user          User             @relation(fields: [userId], references: [publicId])
+}
+
+model Tag {
+  id            Int              @id @default(autoincrement())
+  name          String           @unique
+  playlists     Playlist[]
 }

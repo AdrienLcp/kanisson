@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { Volume, Volume1, Volume2, VolumeX } from 'lucide-react'
+import { Volume, Volume1, Volume2, VolumeX, X } from 'lucide-react'
 
 import { Slider } from '@/Components/base/ui/slider'
 
@@ -80,7 +80,7 @@ const VolumeSlider: React.FC = () => {
       />
 
       <span className={styles['volume-controls__value']}>
-        {volume}
+        {isMuted ? <X /> : volume}
       </span>
     </div>
   )
