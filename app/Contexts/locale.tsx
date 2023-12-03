@@ -1,10 +1,10 @@
 'use client'
 
-import { createContext, useCallback, useEffect } from 'react'
+import { createContext, useEffect } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
 
 import type { Locale, Dictionary } from '@/Types'
-import { getStoredItem } from '@/Helpers'
+import { getRedirectedPathname, getStoredItem } from '@/Helpers'
 import { LOCALES } from '@/Config'
 
 type LocaleContext = {
@@ -20,24 +20,18 @@ export const LocaleContext = createContext<LocaleContext | null>(null)
 export const LocaleProvider: React.FC<LocaleProvider> = ({ children, dictionary }) => {
   const pathname = usePathname()
   const router = useRouter()
-  
-  const getRedirectedPathname = useCallback((locale: Locale) => {
-    if (!pathname) {
-      return '/'
-    }
-
-    const segments = pathname.split('/')
-    segments[1] = locale
-    return segments.join('/')
-  }, [pathname])
 
   useEffect(() => {
     const previousLocale = getStoredItem<Locale>('locale')
 
     if (previousLocale && LOCALES.includes(previousLocale)) {
-      router.push(getRedirectedPathname(previousLocale))
+      const newPath = getRedirectedPathname(pathname, previousLocale)
+
+      if (newPath !== pathname) {
+        router.push(newPath)
+      }
     }
-  }, [getRedirectedPathname, router])
+  }, [pathname, router])
 
   return (
     <LocaleContext.Provider value={{ dictionary }}>

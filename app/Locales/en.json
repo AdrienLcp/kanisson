@@ -31,6 +31,7 @@
       "success": "Copied to clipboard"
     },
     "hueSwitcher": {
+      "placeholder": "Choose a color",
       "neutral": "Neutral",
       "blue": "Blue",
       "green": "Green",
@@ -41,9 +42,11 @@
       "yellow": "Yellow"
     },
     "localeSwitcher": {
+      "placeholder": "Choose language",
       "flagAlt": "Flag of"
     },
     "themeSwitcher": {
+      "placeholder": "Choose theme",
       "dark": "Dark",
       "light": "Light",
       "system": "System"

@@ -1,3 +1,5 @@
+import type { Locale } from '@/Types'
+
 export const getPathnameWithoutLocale = (currentPathname: string) => {
   if (!currentPathname) {
     return '/'
@@ -10,4 +12,14 @@ export const getPathnameWithoutLocale = (currentPathname: string) => {
   }
   
   return pathnameWithoutLocale
+}
+
+export const getRedirectedPathname = (pathname: string, locale: Locale) => {
+  if (!pathname) {
+    return '/'
+  }
+
+  const segments = [...pathname.split('/')]
+  segments[1] = locale
+  return segments.join('/')
 }

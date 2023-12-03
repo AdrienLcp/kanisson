@@ -1,87 +1,62 @@
 'use client'
 
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import Image from 'next/image'
-import Link from 'next/link'
 
 import type { Locale } from '@/Types'
-import { storeItem } from '@/Helpers'
-import { Button, DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuTrigger } from '@/Components'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/Components'
+import { getRedirectedPathname, storeItem } from '@/Helpers'
 import { useLocale } from '@/Hooks'
 import { I18N } from '@/Config'
-import { cn } from '@/Lib'
 
 import styles from './locale-switcher.styles.module.sass'
 
 const LocaleSwitcher: React.FC = () => {
   const pathname = usePathname()
+  const router = useRouter()
+
   const { dictionary } = useLocale()
   const strings = dictionary.components.localeSwitcher
 
-  const getRedirectedPathname = (locale: Locale) => {
-    if (!pathname) {
-      return '/'
-    }
-
-    const segments = pathname.split('/')
-    segments[1] = locale
-    return segments.join('/')
-  }
-
   const selectedLocale = I18N.locales.find(locale => locale.key === pathname.split('/')[1])
 
-  const handleLocaleButtonClick = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>, locale: Locale) => {
-    if (selectedLocale?.key === locale) {
-      event.preventDefault()
-      return
+  const handleLocaleSelectionChange = (localeKey: Locale) => {
+    if (I18N.locales.some(locale => locale.key === localeKey)) {
+      const newPath = getRedirectedPathname(pathname, localeKey)
+      
+      if (newPath !== pathname) {
+        storeItem('locale', localeKey)
+        router.push(newPath)
+      }
     }
-
-    storeItem('locale', locale)
   }
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger>
-        <Button variant='outline' className={styles['dropdown-trigger']}>
-          <Image
-            alt={`${strings.flagAlt} ${selectedLocale?.label}`}
-            src={selectedLocale?.icon || ''}
-            width={20}
-            height={20}
-          />
+    <Select
+      defaultValue={selectedLocale?.key}
+      onValueChange={handleLocaleSelectionChange}
+    >
+      <SelectTrigger>
+        <SelectValue placeholder={strings.placeholder} />
+      </SelectTrigger>
 
-          {selectedLocale?.label}
-        </Button>
-      </DropdownMenuTrigger>
-
-      <DropdownMenuContent className={styles['popover']} align='start'>
+      <SelectContent align='start'>
         {I18N.locales.map(locale => (
-          <DropdownMenuCheckboxItem
-            key={locale.key}
-            checked={selectedLocale?.key === locale.key}
-            className={styles['popover__item']}
-          >
-            <Link
-              href={getRedirectedPathname(locale.key)}
-              onClick={(event) => handleLocaleButtonClick(event, locale.key)}
-              className={cn(
-                styles['popover__item__link'],
-                selectedLocale?.key === locale.key && styles['selected']
-              )}
-            >
-              {locale.label}
-
+          <SelectItem key={locale.key} value={locale.key}>
+            <div className={styles['option']}>
               <Image
                 alt={`${strings.flagAlt} ${locale.label}`}
                 src={locale.icon}
                 width={20}
                 height={20}
               />
-            </Link>
-          </DropdownMenuCheckboxItem>
+
+              {locale.label}
+            </div>
+          </SelectItem>
         ))}
-      </DropdownMenuContent>      
-    </DropdownMenu>
+      </SelectContent>
+    </Select>
   )
 }
 

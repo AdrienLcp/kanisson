@@ -21,6 +21,18 @@ export { Label } from './base/ui/label'
 export { Popover, PopoverTrigger, PopoverContent } from './base/ui/popover'
 export { Skeleton } from './base/ui/skeleton'
 export { Slider } from './base/ui/slider'
+export {
+  Select,
+  SelectGroup,
+  SelectValue,
+  SelectTrigger,
+  SelectContent,
+  SelectLabel,
+  SelectItem,
+  SelectSeparator,
+  SelectScrollUpButton,
+  SelectScrollDownButton
+} from './base/ui/select'
 export { Textarea } from './base/ui/textarea'
 
 export { default as CopyButton } from './atoms/copy-button/copy-button'

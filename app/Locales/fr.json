@@ -31,6 +31,7 @@
       "success": "Copié dans le presse papier"
     },
     "hueSwitcher": {
+      "placeholder": "Choisir une couleur",
       "neutral": "Neutre",
       "blue": "Bleu",
       "green": "Vert",
@@ -41,9 +42,11 @@
       "yellow": "Jaune"
     },
     "localeSwitcher": {
+      "placeholder": "Choisir une langue",
       "flagAlt": "Drapeau de"
     },
     "themeSwitcher": {
+      "placeholder": "Choisir un thème",
       "dark": "Sombre",
       "light": "Clair",
       "system": "Système"

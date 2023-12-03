@@ -1,18 +1,11 @@
-.switcher-list
+.option
   display: flex
   align-items: center
-  width: 100%
   gap: var(--spacing-m)
 
-  &__button
-    width: clamp(30px, 5vw, 45px)
-    height: clamp(30px, 5vw, 45px)
+  &__color
+    width: 20px
+    height: 20px
     border-radius: 50%
     background-color: hsl(var(--color))
     border: calc(var(--thickness) * 2.5) solid transparent
-
-    &:hover
-      background-color: hsl(var(--color))
-
-    &.selected
-      border-color: hsl(var(--foreground))

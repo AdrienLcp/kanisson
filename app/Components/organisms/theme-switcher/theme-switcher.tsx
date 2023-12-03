@@ -3,8 +3,8 @@
 import { LucideIcon, Moon, Sun, SunMoon } from 'lucide-react'
 
 import type { Theme } from '@/Types'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/Components'
 import { useLocale, useTheme } from '@/Hooks'
-import { Button, DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuTrigger } from '@/Components'
 
 import styles from './theme-switcher.styles.module.sass'
 
@@ -15,7 +15,7 @@ type ThemeOption = {
 }
 
 const ThemeSwitcher: React.FC = () => {
-  const { isDarkModeActive, selectedTheme, setTheme } = useTheme()
+  const { selectedTheme, setTheme } = useTheme()
   const { dictionary } = useLocale()
   const strings = dictionary.components.themeSwitcher
 
@@ -38,31 +38,25 @@ const ThemeSwitcher: React.FC = () => {
   ]
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger>
-        <Button className={styles['dropdown__trigger']} variant='outline'>
-          {isDarkModeActive
-            ? <Moon size='1.4em' />
-            : <Sun size='1.4em' />
-          }
+    <Select
+      defaultValue={themeOptions.find(option => option.key === selectedTheme)?.key}
+      onValueChange={setTheme}
+    >
+      <SelectTrigger>
+        <SelectValue placeholder={strings.placeholder} />
+      </SelectTrigger>
 
-          {themeOptions.find(option => option.key === selectedTheme)?.label}
-        </Button>
-      </DropdownMenuTrigger>
-
-      <DropdownMenuContent align='start'>
+      <SelectContent align='start'>
         {themeOptions.map(({ key, label, Icon }) => (
-          <DropdownMenuCheckboxItem
-            key={key}
-            checked={selectedTheme === key}
-            className={styles['dropdown__option']}
-            onClick={() => setTheme(key)}
-          >
-            {label} <Icon size='1.2em' color='hsl(var(--muted-foreground))' />
-          </DropdownMenuCheckboxItem>
+          <SelectItem key={key} value={key}>
+            <div className={styles['option']}>
+              <Icon size='1.2em' color='hsl(var(--muted-foreground))' />
+              {label}
+            </div>
+          </SelectItem>
         ))}
-      </DropdownMenuContent>
-    </DropdownMenu>
+      </SelectContent>
+    </Select>
   )
 }
 
