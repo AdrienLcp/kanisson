@@ -47,7 +47,7 @@ body
 main
   grid-area: main
   overflow-y: auto
-  padding: var(--spacing-m) var(--layout-spacing)
+  padding: var(--spacing-m) var(--layout-spacing) clamp(var(--spacing-m), 20vh, 400px)
 
 @media (width > 991px)
   body

@@ -72,11 +72,12 @@ const Sidebar: React.FC = () => {
                   currentPath === path && styles['active']
                 )}
               >
-                <Icon size='1.2em' className={styles['icon']} />
-
                 <div className={styles['overlay']}>
+                  {label}
+                </div>
+                
+                <div className={styles['icon']}>
                   <Icon size='1.2em' />
-                  <span>{label}</span>
                 </div>
               </Link>
             </li>
@@ -85,11 +86,12 @@ const Sidebar: React.FC = () => {
       </nav>
 
       <footer className={styles['footer']}>
-        <Youtube size='1.5em' className={styles['icon']} />
-
         <div className={styles['overlay']}>
-          <Youtube size='1.5em' color='#fe0000' />
-          <span>{dictionary.layouts.footer.youtube}</span>
+          {dictionary.layouts.footer.youtube}
+        </div>
+
+        <div className={styles['icon']}>
+          <Youtube size='1.5em' />
         </div>
       </footer>
     </aside>
