@@ -1,6 +1,6 @@
 @import '@/Styles/mixins'
-  
-.contact
+
+.profile
   &__wrapper
     @include page-wrapper
 
@@ -12,3 +12,9 @@
 
   &__description
     @include page-description
+
+  &__content
+    @include page-content
+
+    &__error-message
+      color: hsl(var(--destructive))

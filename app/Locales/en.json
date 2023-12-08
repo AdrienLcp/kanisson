@@ -13,7 +13,8 @@
         "badRequest": "Bad request"
       },
       "user": {
-        "doesntExist": "This user doesn't exist"
+        "doesntExist": "This user doesn't exist",
+        "banned": "You are banned"
       }
     }
   },
@@ -96,7 +97,12 @@
     },
     "profile": {
       "label": "Profile",
-      "title": "My profile"
+      "title": "My profile",
+      "description": "Update your informations",
+      "form": {
+        "username": "User name",
+        "usernameDescription": "If you want to hide your name, you can add a username. It will be displayed on the site"
+      }
     },
     "search":  {
       "label": "Search",
@@ -117,5 +123,8 @@
       "label": "Utilisateur",
       "title": "User page of"
     }
+  },
+  "states": {
+    "loading": "Loading..."
   }
 }

@@ -1,3 +1,5 @@
+'use client'
+
 import { User } from 'lucide-react'
 
 import { Avatar as ShadcnAvatar , AvatarFallback, AvatarImage } from '@/Components/base/ui/avatar'

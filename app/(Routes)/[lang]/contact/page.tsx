@@ -11,13 +11,13 @@ const Contact: React.FC<PageProps> = async ({ params }) => {
   const strings = dictionary.pages.contact
 
   return (
-    <div className={styles['contact-wrapper']}>
-      <div className={styles['contact-container']}>
-        <h2 className={styles['contact-title']}>
+    <div className={styles['contact__wrapper']}>
+      <div className={styles['contact__container']}>
+        <h2 className={styles['contact__title']}>
           {strings.title}
         </h2>
 
-        <p className={styles['contact-description']}>
+        <p className={styles['contact__description']}>
           {strings.description}
         </p>
 

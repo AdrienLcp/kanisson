@@ -9,8 +9,8 @@ const Settings: React.FC<PageProps> = async ({ params }) => {
   const strings = dictionary.pages.settings
 
   return (
-    <div className={styles['settings-wrapper']}>
-      <div className={styles['settings-container']}>
+    <div className={styles['settings__wrapper']}>
+      <div className={styles['settings__container']}>
         <h2 className={styles['settings__title']}>
           {strings.title}
         </h2>

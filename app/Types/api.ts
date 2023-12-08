@@ -10,17 +10,19 @@ export type PaginationResponse = PaginationRequest & {
 }
 
 type ApiSuccessResponse<T> = {
+  status: 'success'
   data: T
   pagination?: PaginationResponse
 }
 
 type ApiErrorResponse = {
+  status: 'error'
   error: string
 }
 
 export type ApiResponse<T> = ApiSuccessResponse<T> | ApiErrorResponse
 
-export type ApiRequest<T = {}> = {
+export type ApiRequest<T> = {
   request: T
   pagination?: PaginationRequest
 }

@@ -10,6 +10,7 @@ export const getAllUsers = async (): Promise<GetUsersResponse> => {
   })
 
   return {
+    status: 'success',
     data: users,
     pagination: getDefaultPagination(users.length)
   }

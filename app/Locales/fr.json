@@ -13,7 +13,8 @@
         "badRequest": "Requête invalide"
       },
       "user": {
-        "doesntExist": "Cet utilisateur n'a pas été trouvé"
+        "doesntExist": "Cet utilisateur n'a pas été trouvé",
+        "banned": "Vous avez été banni"
       }
     }
   },
@@ -96,7 +97,12 @@
     },
     "profile": {
       "label": "Profil",
-      "title": "Mon profil"
+      "title": "Mon profil",
+      "description": "Mets à jour tes informations",
+      "form": {
+        "username": "Nom d'utilisateur",
+        "usernameDescription": "Si vous voulez cacher votre nom, vous pouvez ajouter un pseudonyme. C'est ce dernier qui sera montré aux autres utilisateurs."
+      }
     },
     "search":  {
       "label": "Chercher",
@@ -117,5 +123,8 @@
       "label": "Utilisateur",
       "title": "Profil de"
     }
+  },
+  "states": {
+    "loading": "Chargement..."
   }
 }
