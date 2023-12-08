@@ -1,9 +1,7 @@
-const HomePageLoading: React.FC = () => {
-  return (
-    <div>
-      Loading home page...
-    </div>
-  )
-}
+'use client'
+
+import { PageLoader } from '@/Layouts'
+
+const HomePageLoading: React.FC = () => <PageLoader />
 
 export default HomePageLoading

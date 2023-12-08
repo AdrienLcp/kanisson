@@ -1,6 +1,6 @@
 import { useLocale } from '@root/app/Hooks'
 
-import styles from './loader.styles.module.sass'
+import styles from './page-loader.styles.module.sass'
 
 const Loader: React.FC = () => {
   const { dictionary } = useLocale()

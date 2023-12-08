@@ -1,7 +1,7 @@
-import { Loader } from '@root/app/Layouts'
+'use client'
 
-const ProfileLoading: React.FC = async () => {
-  return <Loader />
-}
+import { PageLoader } from '@/Layouts'
 
-export default ProfileLoading
+const ProfilePageLoading: React.FC = () => <PageLoader />
+
+export default ProfilePageLoading

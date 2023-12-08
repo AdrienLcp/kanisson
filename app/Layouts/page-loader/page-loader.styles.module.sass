@@ -1,13 +1,13 @@
 @import '@/Styles/mixins'
 
 .container
-  @include full-screen
+  @include flex-center
+  height: 100%
+  flex: 1
   backdrop-filter: blur(0.1rem)
-  background-color: rgba(0, 0, 0, 0.1)
   cursor: wait
 
 .loader
-  @include centered
   display: inline-block
   position: relative
   width: 8rem
