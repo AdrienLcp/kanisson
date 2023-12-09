@@ -4,7 +4,7 @@ import { getDictionary } from '@/Locales'
 
 import styles from './dashboard.styles.module.sass'
 
-const Dashboard: React.FC<PageProps> = async ({ params }) => {
+const DashboardPage: React.FC<PageProps> = async ({ params }) => {
   const dictionary = await getDictionary(params.lang)
   const strings = dictionary.pages.dashboard
 
@@ -27,4 +27,4 @@ const Dashboard: React.FC<PageProps> = async ({ params }) => {
   )
 }
 
-export default Dashboard
+export default DashboardPage

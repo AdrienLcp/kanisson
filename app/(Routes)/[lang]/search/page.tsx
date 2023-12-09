@@ -4,7 +4,7 @@ import { getDictionary } from '@/Locales'
 
 import styles from './search.styles.module.sass'
 
-const Search: React.FC<PageProps> = async ({ params }) => {
+const SearchPage: React.FC<PageProps> = async ({ params }) => {
   const dictionary = await getDictionary(params.lang)
   const strings = dictionary.pages.search
 
@@ -27,4 +27,4 @@ const Search: React.FC<PageProps> = async ({ params }) => {
   )
 }
 
-export default Search
+export default SearchPage

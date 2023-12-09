@@ -1,9 +1,15 @@
 {
   "actions": {
     "login": "Login",
-    "logout": "Logout"
+    "logout": "Logout",
+    "save": "Save"
   },
   "api": {
+    "type": {
+      "error": "Error",
+      "warning": "Warning",
+      "success": "Success"
+    },
     "errors": {
       "server": {
         "internal": "An error occured on the server, try again later or contact us",
@@ -101,7 +107,10 @@
       "description": "Update your informations",
       "form": {
         "username": "User name",
-        "usernameDescription": "If you want to hide your name, you can add a username. It will be displayed on the site"
+        "usernameDescription": "Your name is not visible by other users, you can add a username. It will be displayed on the site",
+        "usernameRequired": "Username required",
+        "usernameLengthError": "Your username must be between 3 and 20 characters",
+        "usernameUpdated": "Profile updated successfully"
       }
     },
     "search":  {

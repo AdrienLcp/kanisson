@@ -1,4 +1,4 @@
-import type { User as PrismaUser } from '@prisma/client'
+import type { User } from '@prisma/client'
 
 export type PaginationRequest = {
   limit: number
@@ -27,4 +27,8 @@ export type ApiRequest<T> = {
   pagination?: PaginationRequest
 }
 
-export type User = Omit<PrismaUser, 'id' | 'email' | 'emailVerified' | 'accounts' | 'sessions'>
+// Private user is for an auth user, he can see his name & his image for example
+export type PrivateUser = Omit<User, 'id' | 'email' | 'emailVerified'>
+
+// Public user if for guests & others users, for example, they can't see google image of other users
+export type PublicUser = Omit<PrivateUser, 'image' | 'name'>

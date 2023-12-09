@@ -4,7 +4,7 @@ import { getDictionary } from '@/Locales'
 
 import styles from './create.styles.module.sass'
 
-const Create: React.FC<PageProps> = async ({ params }) => {
+const CreatePage: React.FC<PageProps> = async ({ params }) => {
   const dictionary = await getDictionary(params.lang)
   const strings = dictionary.pages.create
 
@@ -27,4 +27,4 @@ const Create: React.FC<PageProps> = async ({ params }) => {
   )
 }
 
-export default Create
+export default CreatePage

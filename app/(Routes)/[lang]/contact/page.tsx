@@ -1,12 +1,13 @@
 import type { PageProps } from '@/Types'
 import { getDictionary } from '@/Locales'
-import { ContactForm } from '@/Components'
+
+import ContactForm from './components/contact-form/contact-form'
 
 import styles from './contact.styles.module.sass'
 
 const FORM_SPREE_ID = process.env.FORM_SPREE_KEY || ''
 
-const Contact: React.FC<PageProps> = async ({ params }) => {
+const ContactPage: React.FC<PageProps> = async ({ params }) => {
   const dictionary = await getDictionary(params.lang)
   const strings = dictionary.pages.contact
 
@@ -27,4 +28,4 @@ const Contact: React.FC<PageProps> = async ({ params }) => {
   )
 }
 
-export default Contact
+export default ContactPage

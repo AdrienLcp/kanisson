@@ -1,7 +1,7 @@
 import { getAuthSession } from '@/Lib'
 import { getAllUsers } from '@/Actions'
 
-const Home = async () => {
+const HomePage: React.FC = async () => {
   const session = await getAuthSession()
 
   const users = await getAllUsers()
@@ -13,4 +13,4 @@ const Home = async () => {
   )
 }
 
-export default Home
+export default HomePage

@@ -1,6 +1,6 @@
 import type { UserRole } from '@prisma/client'
 
-import type { ApiResponse, Dictionary, User } from '@/Types'
+import type { ApiResponse, Dictionary, PublicUser } from '@/Types'
 import { getPublicUserSelectedFields } from '@/Helpers'
 import { getAuthSession, prisma } from '@/Lib'
 
@@ -13,7 +13,7 @@ type PromoteUserRequest = {
   dictionary: Dictionary
 }
 
-export const manageUser = async (request: PromoteUserRequest): Promise<ApiResponse<User>> => {
+export const manageUser = async (request: PromoteUserRequest): Promise<ApiResponse<PublicUser>> => {
   const { newRole, dictionary, userId } = request
   const errors = dictionary.api.errors
   

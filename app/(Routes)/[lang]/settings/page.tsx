@@ -4,7 +4,7 @@ import { getDictionary } from '@/Locales'
 
 import styles from './settings.styles.module.sass'
 
-const Settings: React.FC<PageProps> = async ({ params }) => {
+const SettingsPage: React.FC<PageProps> = async ({ params }) => {
   const dictionary = await getDictionary(params.lang)
   const strings = dictionary.pages.settings
 
@@ -57,4 +57,4 @@ const Settings: React.FC<PageProps> = async ({ params }) => {
   )
 }
 
-export default Settings
+export default SettingsPage

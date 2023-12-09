@@ -4,7 +4,7 @@ import { getDictionary } from '@/Locales'
 
 import styles from './playlists.styles.module.sass'
 
-const Playlists: React.FC<PageProps> = async ({ params }) => {
+const PlaylistsPage: React.FC<PageProps> = async ({ params }) => {
   const dictionary = await getDictionary(params.lang)
   const strings = dictionary.pages.playlists
 
@@ -27,4 +27,4 @@ const Playlists: React.FC<PageProps> = async ({ params }) => {
   )
 }
 
-export default Playlists
+export default PlaylistsPage

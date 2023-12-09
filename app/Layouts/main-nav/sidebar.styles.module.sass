@@ -30,7 +30,7 @@
   &__link
     position: relative
     width: 100%
-    padding: 0 
+    padding: 0
     z-index: 1
 
     &.active
@@ -62,6 +62,9 @@
   grid-area: footer
   padding: var(--spacing-s)
   font-size: var(--size-xs)
+
+  & .icon
+    transition: transform var(--transition-150) ease-in-out, color var(--transition-150) ease-in-out
 
   & .overlay
     @include flex-center

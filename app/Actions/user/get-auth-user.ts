@@ -1,8 +1,8 @@
-import type { User } from '@/Types'
+import type { PrivateUser } from '@/Types'
 import { getAuthSession, prisma } from '@/Lib'
-import { getPublicUserSelectedFields } from '@/Helpers'
+import { getPrivateUserSelectedFields } from '@/Helpers'
 
-export const getAuthUser = async (): Promise<User | null> => {
+export const getAuthUser = async (): Promise<PrivateUser | null> => {
   const session = await getAuthSession()
 
   if (!session) {
@@ -13,7 +13,7 @@ export const getAuthUser = async (): Promise<User | null> => {
 
   const user = await prisma.user.findUnique({
     where: { id: session.user.id },
-    select: getPublicUserSelectedFields()
+    select: getPrivateUserSelectedFields()
   })
 
   return user

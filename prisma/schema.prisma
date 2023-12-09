@@ -11,18 +11,18 @@ datasource db {
 }
 
 model Account {
-  id                 String  @id @default(cuid())
-  userId             String
-  type               String
-  provider           String
-  providerAccountId  String
-  refresh_token      String?
-  access_token       String?
-  expires_at         Int?
-  token_type         String?
-  scope              String?
-  id_token           String?
-  session_state      String?
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -67,112 +67,112 @@ enum PlaylistStatus {
 }
 
 model User {
-  id                String     @id @default(uuid())
-  publicId          String     @unique @default(uuid())
-  name              String?
-  pseudo            String?
-  email             String?    @unique
-  emailVerified     DateTime?
-  image             String?
-  role              UserRole   @default(user)
-  status            UserStatus @default(active)
-  createdAt         DateTime   @default(now())
-  updatedAt         DateTime   @updatedAt
-  privateMessages   PrivateMessage[]
-  comments          Comment[]
-  favorites         Favorite[]
-  accounts          Account[]
-  sessions          Session[]
-  playlists         Playlist[]
-  notifications     Notification[]
-  games             Game[]
-  ratings           Rating[]
-  reports           Report[]
+  id              String           @id @default(uuid())
+  publicId        String           @unique @default(uuid())
+  name            String?
+  pseudo          String?
+  email           String?          @unique
+  emailVerified   DateTime?
+  image           String?
+  role            UserRole         @default(user)
+  status          UserStatus       @default(active)
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  privateMessages PrivateMessage[]
+  comments        Comment[]
+  favorites       Favorite[]
+  accounts        Account[]
+  sessions        Session[]
+  playlists       Playlist[]
+  notifications   Notification[]
+  games           Game[]
+  ratings         Rating[]
+  reports         Report[]
 }
 
 model Playlist {
-  id            String           @id @default(cuid())
-  userId        String
-  creator       String
-  title         String           @unique
-  description   String?
-  img           String?
-  language      String?
-  status        PlaylistStatus   @default(inactive)
-  createdAt     DateTime         @default(now())
-  updatedAt     DateTime         @updatedAt
-  user          User             @relation(fields: [userId], references: [publicId])
-  tags          Tag[]
-  comments      Comment[]
-  favorites     Favorite[]
-  tracks        Track[]
-  games         Game[]
-  ratings       Rating[]
+  id          String         @id @default(cuid())
+  userId      String
+  creator     String
+  title       String         @unique
+  description String?
+  img         String?
+  language    String?
+  status      PlaylistStatus @default(inactive)
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+  user        User           @relation(fields: [userId], references: [publicId])
+  tags        Tag[]
+  comments    Comment[]
+  favorites   Favorite[]
+  tracks      Track[]
+  games       Game[]
+  ratings     Rating[]
 }
 
 model Rating {
-  id            String           @id @default(cuid())
-  userId        String
-  playlistId    String
-  value         Int
-  createdAt     DateTime         @default(now())
-  updatedAt     DateTime         @updatedAt
-  user          User             @relation(fields: [userId], references: [publicId])
-  playlist      Playlist         @relation(fields: [playlistId], references: [id])
+  id         String   @id @default(cuid())
+  userId     String
+  playlistId String
+  value      Int
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  user       User     @relation(fields: [userId], references: [publicId])
+  playlist   Playlist @relation(fields: [playlistId], references: [id])
 }
 
 model Track {
-  id            String           @id @default(cuid())
-  playlistId    String
-  youtubeTitle  String
-  title         String
-  artist        String
-  image         String
-  isValid       Boolean          @default(false)
-  playlist      Playlist         @relation(fields: [playlistId], references: [id])
+  id           String   @id @default(cuid())
+  playlistId   String
+  youtubeTitle String
+  title        String
+  artist       String
+  image        String
+  isValid      Boolean  @default(false)
+  playlist     Playlist @relation(fields: [playlistId], references: [id])
 }
 
 model Notification {
-  id            String           @id @default(cuid())
-  userId        String
-  title         String
-  message       String
-  isNew         Boolean          @default(true)
-  createdAt     DateTime         @default(now())
-  user          User             @relation(fields: [userId], references: [publicId])
+  id        String   @id @default(cuid())
+  userId    String
+  title     String
+  message   String
+  isNew     Boolean  @default(true)
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [publicId])
 }
 
 model Game {
-  id            Int              @id @default(autoincrement())
-  userId        String
-  pseudo        String
-  playlistId    String
-  score         Int
-  createdAt     DateTime         @default(now())
-  updatedAt     DateTime         @updatedAt
-  user          User             @relation(fields: [userId], references: [publicId])
-  playlist      Playlist         @relation(fields: [playlistId], references: [id])
+  id         Int      @id @default(autoincrement())
+  userId     String
+  pseudo     String
+  playlistId String
+  score      Int
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  user       User     @relation(fields: [userId], references: [publicId])
+  playlist   Playlist @relation(fields: [playlistId], references: [id])
 }
 
 model Favorite {
-  id            Int              @id @default(autoincrement())
-  userId        String
-  playlistId    String
-  createdAt     DateTime         @default(now())
-  updatedAt     DateTime         @updatedAt
-  user          User             @relation(fields: [userId], references: [publicId])
-  playlist      Playlist         @relation(fields: [playlistId], references: [id])
+  id         Int      @id @default(autoincrement())
+  userId     String
+  playlistId String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  user       User     @relation(fields: [userId], references: [publicId])
+  playlist   Playlist @relation(fields: [playlistId], references: [id])
 }
 
 model Comment {
-  id            String           @id @default(cuid())
-  userId        String
-  playlistId    String
-  message       String
-  createdAt     DateTime         @default(now())
-  updatedAt     DateTime         @updatedAt
-  user          User             @relation(fields: [userId], references: [publicId])
-  playlist      Playlist         @relation(fields: [playlistId], references: [id])
+  id         String   @id @default(cuid())
+  userId     String
+  playlistId String
+  message    String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  user       User     @relation(fields: [userId], references: [publicId])
+  playlist   Playlist @relation(fields: [playlistId], references: [id])
 }
 
 enum ReportType {
@@ -182,29 +182,29 @@ enum ReportType {
 }
 
 model Report {
-  id            Int              @id @default(autoincrement())
-  userId        String
-  message       String
-  reportedId    String
-  type          ReportType
-  createdAt     DateTime         @default(now())
-  updatedAt     DateTime         @updatedAt
-  user          User             @relation(fields: [userId], references: [publicId])
+  id         Int        @id @default(autoincrement())
+  userId     String
+  message    String
+  reportedId String
+  type       ReportType
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
+  user       User       @relation(fields: [userId], references: [publicId])
 }
 
 model PrivateMessage {
-  id            String           @id @default(cuid())
-  userId        String
-  senderId      String
-  senderName    String
-  message       String
-  createdAt     DateTime         @default(now())
-  updatedAt     DateTime         @updatedAt
-  user          User             @relation(fields: [userId], references: [publicId])
+  id         String   @id @default(cuid())
+  userId     String
+  senderId   String
+  senderName String
+  message    String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  user       User     @relation(fields: [userId], references: [publicId])
 }
 
 model Tag {
-  id            Int              @id @default(autoincrement())
-  name          String           @unique
-  playlists     Playlist[]
+  id        Int        @id @default(autoincrement())
+  name      String     @unique
+  playlists Playlist[]
 }

@@ -2,7 +2,7 @@
 
 import { Check, Copy } from 'lucide-react'
 
-import { useCopyToClipboard, useLocale } from '@/Hooks'
+import { useClipboard, useLocale } from '@/Hooks'
 import { Button, Tooltip } from '@/Components'
 
 import styles from './copy-button.styles.module.sass'
@@ -12,7 +12,7 @@ type CopyButtonProps = {
 }
 
 const CopyButton: React.FC<CopyButtonProps> = ({ string }) => {
-  const [copied, copy] = useCopyToClipboard()
+  const [copied, copy] = useClipboard()
   const { dictionary } = useLocale()
   const strings = dictionary.components.copyButton
 

@@ -1,9 +1,15 @@
 {
   "actions": {
     "login": "Connexion",
-    "logout": "Déconnexion"
+    "logout": "Déconnexion",
+    "save": "Sauvegarder"
   },
   "api": {
+    "type": {
+      "error": "Erreur",
+      "warning": "Avertissement",
+      "success": "Succès"
+    },
     "errors": {
       "server": {
         "internal": "Une erreur est survenue sur le serveur, réessayez plus tard ou contactez-nous",
@@ -101,7 +107,10 @@
       "description": "Mets à jour tes informations",
       "form": {
         "username": "Nom d'utilisateur",
-        "usernameDescription": "Si vous voulez cacher votre nom, vous pouvez ajouter un pseudonyme. C'est ce dernier qui sera montré aux autres utilisateurs."
+        "usernameDescription": "Votre nom n'est pas visible par les autres utilisateurs, vous pouvez ajouter un pseudonyme.",
+        "usernameRequired": "Le nom d'utilisateur est requis",
+        "usernameLengthError": "Le nom d'utilisateur doit faire entre 3 et 20 caractères",
+        "usernameUpdated": "Le profil a été mis à jour avec succès"
       }
     },
     "search":  {
