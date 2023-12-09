@@ -14,6 +14,7 @@ import { useToast } from '@/Hooks'
 import { RULES } from '@/Config'
 
 import styles from './profile-form.styles.module.sass'
+import { Save } from 'lucide-react'
 
 type ProfileFormProps = {
   user: PrivateUser
@@ -24,16 +25,16 @@ const USERNAME_RULES = RULES.USER.NAME
 
 export const ProfileForm: React.FC<ProfileFormProps> = ({ user, dictionary }) => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
-
   const { toast } = useToast()
 
   const strings = dictionary.pages.profile.form
 
   const formSchema = z.object({
-    username: z.string().trim()
+    username: z.optional(z.string().trim()
       .min(1, { message: strings.usernameRequired })
       .min(USERNAME_RULES.MIN_LENGTH, { message: strings.usernameLengthError })
       .max(USERNAME_RULES.MAX_LENGTH, { message: strings.usernameLengthError })
+    )
   })
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -44,9 +45,7 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({ user, dictionary }) =>
   })
   
   const onSubmitProfileForm = async (values: z.infer<typeof formSchema>) => {
-    const username = values.username.trim()
-
-    if (username === user.pseudo) {
+    if (!values.username || values.username.trim() === user.pseudo) {
       toast({ description: strings.profileAlreadyUpToDate })
       return
     }
@@ -112,6 +111,7 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({ user, dictionary }) =>
             type='submit'
             className={styles['profile-form__submit-button']}
           >
+            <Save size='1.4em' />
             {dictionary.actions.save}
           </Button>
         </fieldset>

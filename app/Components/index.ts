@@ -38,6 +38,7 @@ export { Textarea } from './base/ui/textarea'
 export { default as CopyButton } from './atoms/copy-button/copy-button'
 export { default as Tooltip } from './atoms/tooltip/tooltip'
 
+export { default as Accordion } from './molecules/accordion/accordion'
 export { default as Avatar } from './molecules/avatar/avatar'
 
 export { default as HueSwitcher } from './organisms/hue-switcher/hue-switcher'
@@ -45,3 +46,5 @@ export { default as LocaleSwitcher } from './organisms/locale-switcher/locale-sw
 export { default as PersonaMenu } from './organisms/persona-menu/persona-menu'
 export { default as ThemeSwitcher } from './organisms/theme-switcher/theme-switcher'
 export { default as VolumeSlider } from './organisms/volume-slider/volume-slider'
+
+export { default as PlaylistForm } from './templates/playlist-form/playlist-form'

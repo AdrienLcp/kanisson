@@ -52,6 +52,20 @@
       "placeholder": "Choose language",
       "flagAlt": "Flag of"
     },
+    "playlistForm": {
+      "title": {
+        "label": "Title",
+        "placeholder": "Choose a title for your blind test",
+        "required": "Title required",
+        "lengthError": "Your title must be between 5 and 50 characters",
+        "alreadyExists": "This title is already used"
+      },
+      "description": {
+        "label": "Description",
+        "placeholder": "You can describe your blind test",
+        "lengthError": "Your description must be between 5 and 200 characters"
+      }
+    },
     "themeSwitcher": {
       "placeholder": "Choose theme",
       "dark": "Dark",
@@ -88,7 +102,23 @@
     "create": {
       "label": "Create a blind test",
       "title": "Create a new blind test",
-      "description": "You can create a playlist of sounds (songs, music, animal cries, sound effects, whatever you want...), which will be visible to other users once it contains at least 10. This playlist will be playable by all visitors of Kanisson, who will have 30 seconds to guess a title and/or an artist (or group, or others) that you have indicated, and they will score points accordingly."
+      "description": "Songs, movie soundtracks, animal sounds, comedians, ... Create a new playlist for Kanisson players.",
+      "accordionTitle": "Need help ?",
+      "steps": {
+        "one": {
+          "title": "Give a title to your blind test",
+          "description": "You can also give it a description"
+        },
+        "two": {
+          "title": "Add sounds",
+          "description": "Thanks to the YouTube API, you can find them by typing the title of a video (of an artist, a piece of music, etc.) in the field below. You will be able to listen to a sample before adding it to your playlist to ensure that players can recognize your sound.",
+          "warning": "As long as your playlist contains fewer than 10 valid sounds (to be valid, a sound must have at least an artist or a title), it will not be visible to other users."
+        },
+        "three": {
+          "title": "That's it !",
+          "description": "You can now share your playlist with all Kanisson users and play with your friends !"
+        }
+      }
     },
     "dashboard": {
       "label": "Dashboard",

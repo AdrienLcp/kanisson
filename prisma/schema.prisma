@@ -91,23 +91,23 @@ model User {
 }
 
 model Playlist {
-  id          String         @id @default(cuid())
-  userId      String
-  creator     String
-  title       String         @unique
-  description String?
-  img         String?
-  language    String?
-  status      PlaylistStatus @default(inactive)
-  createdAt   DateTime       @default(now())
-  updatedAt   DateTime       @updatedAt
-  user        User           @relation(fields: [userId], references: [publicId])
-  tags        Tag[]
-  comments    Comment[]
-  favorites   Favorite[]
-  tracks      Track[]
-  games       Game[]
-  ratings     Rating[]
+  id             String         @id @default(cuid())
+  userId         String
+  title          String         @unique
+  description    String?
+  img            String?
+  language       String?
+  tracksDuration Int            @default(30)
+  status         PlaylistStatus @default(inactive)
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+  user           User           @relation(fields: [userId], references: [publicId])
+  tags           Tag[]
+  comments       Comment[]
+  favorites      Favorite[]
+  tracks         Track[]
+  games          Game[]
+  ratings        Rating[]
 }
 
 model Rating {
@@ -122,14 +122,16 @@ model Rating {
 }
 
 model Track {
-  id           String   @id @default(cuid())
-  playlistId   String
-  youtubeTitle String
-  title        String
-  artist       String
-  image        String
-  isValid      Boolean  @default(false)
-  playlist     Playlist @relation(fields: [playlistId], references: [id])
+  id              String   @id @default(cuid())
+  playlistId      String
+  youtubeTitle    String
+  youtubeDuration Int
+  title           String
+  artist          String
+  image           String?
+  start           Int      @default(30)
+  isValid         Boolean  @default(false)
+  playlist        Playlist @relation(fields: [playlistId], references: [id])
 }
 
 model Notification {

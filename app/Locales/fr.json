@@ -52,6 +52,20 @@
       "placeholder": "Choisir une langue",
       "flagAlt": "Drapeau de"
     },
+    "playlistForm": {
+      "title": {
+        "label": "Titre",
+        "placeholder": "Choisis un titre pour votre blind test",
+        "required": "Le titre est requis",
+        "lengthError": "Le titre doit faire entre 5 et 50 caractères",
+        "alreadyExists": "Ce titre est déjà pris"
+      },
+      "description": {
+        "label": "Description",
+        "placeholder": "Tu peux donner une description à votre blind test",
+        "lengthError": "La description doit faire entre 5 et 500 caractères"
+      }
+    },
     "themeSwitcher": {
       "placeholder": "Choisir un thème",
       "dark": "Sombre",
@@ -88,7 +102,23 @@
     "create": {
       "label": "Créer un blind test",
       "title": "Créer un nouveau blind test",
-      "description": "Tu peux créer une playlist de sons (chansons, musiques, cri d'animaux, bruitages, ce que tu veux...), elle sera visible par les autres utilisateurs quand elle en contiendra au moins 10. Cette playlist sera jouable par tous les visiteurs de Kanisson, ils auront 30 secondes pour deviner un titre et/ou un artiste (ou groupe, ou autre) que tu auras renseigné et marqueront des points en conséquences."
+      "description": "Chansons, musiques de film, bruits d'animaux, humoristes, ... Crées une nouvelle playlist pour les joueurs de Kanisson",
+      "accordionTitle": "Besoin d'aide ?",
+      "steps": {
+        "one": {
+          "title": "Donne un titre unique à ton blind test",
+          "description": "Tu peux aussi lui donner une description si tu veux"
+        },
+        "two": {
+          "title": "Ajoute des sons à ton blind test",
+          "description": "Grâce à l'API Youtube, tu peux en trouver en tapant le titre d'une vidéo (d'un artiste, d'une musique, ...) dans le champs ci dessous. Tu pourras écouter un extrait avant de l'ajouter à ta playlist pour être sûr que les joueurs puissent reconnaitre ton son.",
+          "warning": "Tant que ta playlist contient moins de 10 sons valides (pour être valide, un son doit avoir au moins un artiste ou un titre), elle ne sera pas visible par les autres utilisateurs"
+        },
+        "three": {
+          "title": "C'est tout !",
+          "description": "Tu peux maintenant partager ta playlist à tous les utilisateurs de Kanisson et jouer avec tes amis !"
+        }
+      }
     },
     "dashboard": {
       "label": "Administration",
