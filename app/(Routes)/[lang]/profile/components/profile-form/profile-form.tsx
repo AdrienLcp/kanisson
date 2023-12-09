@@ -7,29 +7,30 @@ import * as z from 'zod'
 
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/Components/base/ui/form'
 
-import type { PrivateUser } from '@/Types'
+import type { Dictionary, PrivateUser } from '@/Types'
 import { updateUsername } from '@/Actions'
 import { Button, Input } from '@/Components'
-import { useLocale, useToast } from '@/Hooks'
+import { useToast } from '@/Hooks'
 import { RULES } from '@/Config'
 
 import styles from './profile-form.styles.module.sass'
 
 type ProfileFormProps = {
   user: PrivateUser
+  dictionary: Dictionary
 }
 
 const USERNAME_RULES = RULES.USER.NAME
 
-export const ProfileForm: React.FC<ProfileFormProps> = ({ user }) => {
+export const ProfileForm: React.FC<ProfileFormProps> = ({ user, dictionary }) => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
+
   const { toast } = useToast()
 
-  const { dictionary } = useLocale()
   const strings = dictionary.pages.profile.form
 
   const formSchema = z.object({
-    username: z.string()
+    username: z.string().trim()
       .min(1, { message: strings.usernameRequired })
       .min(USERNAME_RULES.MIN_LENGTH, { message: strings.usernameLengthError })
       .max(USERNAME_RULES.MAX_LENGTH, { message: strings.usernameLengthError })
@@ -43,6 +44,13 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({ user }) => {
   })
   
   const onSubmitProfileForm = async (values: z.infer<typeof formSchema>) => {
+    const username = values.username.trim()
+
+    if (username === user.pseudo) {
+      toast({ description: strings.profileAlreadyUpToDate })
+      return
+    }
+
     try {
       setIsLoading(true)
 
@@ -52,7 +60,7 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({ user }) => {
       result.status === 'success'
         ? toast({
             title: dictionary.api.type.success,
-            description: strings.usernameUpdated,
+            description: strings.usernameUpdated
           })
         : toast({
             variant: 'destructive',
@@ -61,6 +69,11 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({ user }) => {
           })
     } catch (error) {
       console.error(error)
+      toast({
+        variant: 'destructive',
+        title: dictionary.api.type.error,
+        description: dictionary.api.errors.server.internal
+      })
     } finally {
       setIsLoading(false)
     }
@@ -79,7 +92,7 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({ user }) => {
             render={({ field }) => (
               <FormItem>
                 <FormLabel>
-                  {strings.username}
+                  {strings.usernameLabel}
                 </FormLabel>
 
                 <FormControl>
@@ -95,7 +108,10 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({ user }) => {
             )}
           />
 
-          <Button type='submit' className={styles['profile-form__submit-button']}>
+          <Button
+            type='submit'
+            className={styles['profile-form__submit-button']}
+          >
             {dictionary.actions.save}
           </Button>
         </fieldset>

@@ -1,9 +1,9 @@
 import type { PageProps } from '@/Types'
 
+import { ProfileHeading } from '@root/app/(Routes)/[lang]/profile/components/profile-heading/profile-heading'
 import { ProfileForm } from '@/(Routes)/[lang]/profile/components/profile-form/profile-form'
 import { getUserProfile } from '@/Actions'
 import { getDictionary } from '@/Locales'
-import { Avatar } from '@/Components'
 
 import styles from './profile.styles.module.sass'
 
@@ -16,9 +16,11 @@ const ProfilePage: React.FC<PageProps> = async ({ params }) => {
   return (
     <div className={styles['profile__wrapper']}>
       <div className={styles['profile__container']}>
-        <h2 className={styles['profile__title']}>
-          {strings.title}
-        </h2>
+        <header>
+          <h1 className={styles['profile__title']}>
+            {strings.title}
+          </h1>
+        </header>
 
         <p className={styles['profile__description']}>
           {strings.description}
@@ -27,12 +29,8 @@ const ProfilePage: React.FC<PageProps> = async ({ params }) => {
         <div className={styles['profile__content']}>
           {result.status === 'success'
             ? <>
-                <div className={styles['profile__content__heading']}>
-                  <Avatar user={result.data} />
-                  <span>{result.data.name}</span>
-                </div>
-            
-                <ProfileForm user={result.data} />
+                <ProfileHeading user={result.data} dictionary={dictionary} />
+                <ProfileForm user={result.data} dictionary={dictionary} />
               </>
             : <p className={styles['profile__content__error-message']}>
                 {result.error}

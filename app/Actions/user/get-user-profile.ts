@@ -4,11 +4,13 @@ import type { ApiResponse, Dictionary, PrivateUser } from '@/Types'
 import { getPrivateUserSelectedFields } from '@/Helpers'
 import { getAuthSession, prisma } from '@/Lib'
 
-type GetAuthUserRequest = {
+type GetUserProfileRequest = {
   dictionary: Dictionary
 }
 
-export const getUserProfile = async (request: GetAuthUserRequest): Promise<ApiResponse<PrivateUser>> => {
+type GetUserProfileResponse = ApiResponse<PrivateUser>
+
+export const getUserProfile = async (request: GetUserProfileRequest): Promise<GetUserProfileResponse> => {
   const { dictionary } = request
   const strings = dictionary.api
 

@@ -1,0 +1,24 @@
+@import '@/Styles/mixins'
+
+.profile-heading
+  display: grid
+  grid-template-columns: 1fr auto
+  grid-gap: var(--spacing-m)
+  align-items: center
+
+  &__content
+    display: grid
+    grid-template-columns: 25% 75%
+    align-items: center
+    gap: var(--spacing-m)
+
+    &__label
+      color: hsl(var(--muted-foreground))
+
+    @media (max-width: 768px)
+      display: flex
+      flex-direction: column
+      align-items: flex-start
+      justify-content: center
+      gap: var(--spacing-s)
+      margin-block-end: var(--spacing-xl)

@@ -105,12 +105,18 @@
       "label": "Profil",
       "title": "Mon profil",
       "description": "Mets à jour tes informations",
-      "form": {
+      "heading": {
+        "accountName": "Nom du compte",
         "username": "Nom d'utilisateur",
-        "usernameDescription": "Votre nom n'est pas visible par les autres utilisateurs, vous pouvez ajouter un pseudonyme.",
+        "linkTooltip": "Voir mon profil public"
+      },
+      "form": {
+        "usernameLabel": "Changer mon nom d'utilisateur",
+        "usernameDescription": "Votre nom de compte est privé, vous pouvez ajouter un nom d'utilisateur qui sera visible sur Kanisson.",
         "usernameRequired": "Le nom d'utilisateur est requis",
         "usernameLengthError": "Le nom d'utilisateur doit faire entre 3 et 20 caractères",
-        "usernameUpdated": "Le profil a été mis à jour avec succès"
+        "usernameUpdated": "Le profil a été mis à jour avec succès",
+        "profileAlreadyUpToDate": "Le profil est déjà à jour"
       }
     },
     "search":  {

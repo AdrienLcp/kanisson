@@ -105,12 +105,18 @@
       "label": "Profile",
       "title": "My profile",
       "description": "Update your informations",
-      "form": {
+      "heading": {
+        "accountName": "Account name",
         "username": "User name",
-        "usernameDescription": "Your name is not visible by other users, you can add a username. It will be displayed on the site",
+        "linkTooltip": "Go to my public profile page"
+      },
+      "form": {
+        "usernameLabel": "Update my username",
+        "usernameDescription": "Your account name is not visible by other users, you can add a username. It will be displayed on the site",
         "usernameRequired": "Username required",
         "usernameLengthError": "Your username must be between 3 and 20 characters",
-        "usernameUpdated": "Profile updated successfully"
+        "usernameUpdated": "Profile updated successfully",
+        "profileAlreadyUpToDate": "Your profile is already up to date"
       }
     },
     "search":  {

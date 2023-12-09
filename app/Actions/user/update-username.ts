@@ -1,6 +1,6 @@
 'use server'
 
-import type { Dictionary } from '@/Types'
+import type { ApiResponse, Dictionary, PrivateUser } from '@/Types'
 import { getAuthSession, prisma } from '@/Lib'
 import { getPrivateUserSelectedFields } from '@/Helpers'
 
@@ -9,7 +9,9 @@ type UpdateUserRequest = {
   dictionary: Dictionary
 }
 
-export const updateUsername = async (request: UpdateUserRequest) => {
+type UpdateUserResponse = ApiResponse<PrivateUser>
+
+export const updateUsername = async (request: UpdateUserRequest): Promise<UpdateUserResponse> => {
   const { username, dictionary } = request
   const strings = dictionary.api
   
