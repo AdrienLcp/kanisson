@@ -87,7 +87,8 @@
     },
     "create": {
       "label": "Create a blind test",
-      "title": "Create a new blind test"
+      "title": "Create a new blind test",
+      "description": "You can create a playlist of sounds (songs, music, animal cries, sound effects, whatever you want...), which will be visible to other users once it contains at least 10. This playlist will be playable by all visitors of Kanisson, who will have 30 seconds to guess a title and/or an artist (or group, or others) that you have indicated, and they will score points accordingly."
     },
     "dashboard": {
       "label": "Dashboard",

@@ -87,7 +87,8 @@
     },
     "create": {
       "label": "Créer un blind test",
-      "title": "Créer un nouveau blind test"
+      "title": "Créer un nouveau blind test",
+      "description": "Tu peux créer une playlist de sons (chansons, musiques, cri d'animaux, bruitages, ce que tu veux...), elle sera visible par les autres utilisateurs quand elle en contiendra au moins 10. Cette playlist sera jouable par tous les visiteurs de Kanisson, ils auront 30 secondes pour deviner un titre et/ou un artiste (ou groupe, ou autre) que tu auras renseigné et marqueront des points en conséquences."
     },
     "dashboard": {
       "label": "Administration",
@@ -108,7 +109,7 @@
       "heading": {
         "accountName": "Nom du compte",
         "username": "Nom d'utilisateur",
-        "linkTooltip": "Voir mon profil public"
+        "linkTooltip": "Voir mon profil publique"
       },
       "form": {
         "usernameLabel": "Changer mon nom d'utilisateur",

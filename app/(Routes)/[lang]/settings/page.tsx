@@ -1,6 +1,7 @@
 import type { PageProps } from '@/Types'
 import { HueSwitcher, LocaleSwitcher, ThemeSwitcher, VolumeSlider } from '@/Components'
 import { getDictionary } from '@/Locales'
+import { PageWrapper } from '@/Layouts'
 
 import styles from './settings.styles.module.sass'
 
@@ -9,51 +10,42 @@ const SettingsPage: React.FC<PageProps> = async ({ params }) => {
   const strings = dictionary.pages.settings
 
   return (
-    <div className={styles['settings__wrapper']}>
-      <div className={styles['settings__container']}>
-        <h2 className={styles['settings__title']}>
-          {strings.title}
+    <PageWrapper
+      title={strings.title}
+      description={strings.description}
+    >
+      <section>
+        <h2 className={styles['settings__content__title']}>
+          {strings.sections.volume}
+        </h2>
+        
+        <VolumeSlider />
+      </section>
+
+      <section>
+        <h2 className={styles['settings__content__title']}>
+          {strings.sections.locale}
         </h2>
 
-        <p className={styles['settings__description']}>
-          {strings.description}
-        </p>
+        <LocaleSwitcher />
+      </section>
 
-        <div className={styles['settings__content']}>
-          <section>
-            <h3 className={styles['settings__content__title']}>
-              {strings.sections.volume}
-            </h3>
-            
-            <VolumeSlider />
-          </section>
+      <section>
+        <h2 className={styles['settings__content__title']}>
+          {strings.sections.theme}
+        </h2>
+        
+        <ThemeSwitcher />
+      </section>
 
-          <section>
-            <h3 className={styles['settings__content__title']}>
-              {strings.sections.locale}
-            </h3>
+      <section>
+        <h2 className={styles['settings__content__title']}>
+          {strings.sections.hue}
+        </h2>
 
-            <LocaleSwitcher />
-          </section>
-
-          <section>
-            <h3 className={styles['settings__content__title']}>
-              {strings.sections.theme}
-            </h3>
-            
-            <ThemeSwitcher />
-          </section>
-
-          <section>
-            <h3 className={styles['settings__content__title']}>
-              {strings.sections.hue}
-            </h3>
-
-            <HueSwitcher />
-          </section>
-        </div>
-      </div>
-    </div>
+        <HueSwitcher />
+      </section>
+    </PageWrapper>
   )
 }
 

@@ -5,7 +5,7 @@
 @import '@/styles/_colors.sass'
 @import '@/styles/_vars.sass'
 @import '@/styles/_functions.sass'
-  
+
 *::-webkit-scrollbar
   width: 0.5rem
 
@@ -36,10 +36,10 @@ body
   display: grid
   grid-template-rows: auto 1fr auto
   grid-template-areas: "header" "main" "nav"
-  
+
   ::selection
-    background-color: hsl(var(--foreground))
-    color: hsl(var(--background))
+    background-color: hsl(var(--primary))
+    color: hsl(var(--primary-foreground))
 
   &::-webkit-scrollbar
     width: 1rem

@@ -11,4 +11,6 @@ export { default as Sidebar } from './main-nav/sidebar'
 
 export { default as PageLoader } from './page-loader/page-loader'
 
+export { default as PageWrapper } from './page-wrapper/page-wrapper'
+
 export { default as Providers } from './providers/providers'
