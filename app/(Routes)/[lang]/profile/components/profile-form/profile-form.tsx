@@ -9,12 +9,11 @@ import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, For
 
 import type { Dictionary, PrivateUser } from '@/Types'
 import { updateUsername } from '@/Actions'
-import { Button, Input } from '@/Components'
+import { Input, SubmitButton } from '@/Components'
 import { useToast } from '@/Hooks'
 import { RULES } from '@/Config'
 
 import styles from './profile-form.styles.module.sass'
-import { Save } from 'lucide-react'
 
 type ProfileFormProps = {
   user: PrivateUser
@@ -107,13 +106,11 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({ user, dictionary }) =>
             )}
           />
 
-          <Button
-            type='submit'
+          <SubmitButton
+            label={dictionary.actions.save}
+            isLoading={isLoading}
             className={styles['profile-form__submit-button']}
-          >
-            <Save size='1.4em' />
-            {dictionary.actions.save}
-          </Button>
+          />
         </fieldset>
       </form>
     </Form>

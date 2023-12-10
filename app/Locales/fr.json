@@ -55,14 +55,14 @@
     "playlistForm": {
       "title": {
         "label": "Titre",
-        "placeholder": "Choisis un titre pour votre blind test",
+        "placeholder": "Choisis un titre pour ton blind test",
         "required": "Le titre est requis",
         "lengthError": "Le titre doit faire entre 5 et 50 caractères",
         "alreadyExists": "Ce titre est déjà pris"
       },
       "description": {
         "label": "Description",
-        "placeholder": "Tu peux donner une description à votre blind test",
+        "placeholder": "Tu peux donner une description à ton blind test",
         "lengthError": "La description doit faire entre 5 et 500 caractères"
       }
     },
@@ -71,6 +71,12 @@
       "dark": "Sombre",
       "light": "Clair",
       "system": "Système"
+    },
+    "tracksForm": {
+      "triggers": {
+        "list": "Mes sons",
+        "search": "Chercher"
+      }
     },
     "volumeSlider": {
       "turnOff": "Éteindre les son",

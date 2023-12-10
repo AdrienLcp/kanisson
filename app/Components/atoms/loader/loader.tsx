@@ -1,8 +1,8 @@
-import { useLocale } from '@root/app/Hooks'
+import { useLocale } from '@/Hooks'
 
-import styles from './page-loader.styles.module.sass'
+import styles from './loader.styles.module.sass'
 
-const PageLoader: React.FC = () => {
+const Loader: React.FC = () => {
   const { dictionary } = useLocale()
 
   return (
@@ -24,4 +24,4 @@ const PageLoader: React.FC = () => {
   )
 }
 
-export default PageLoader
+export default Loader

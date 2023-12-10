@@ -1,6 +1,12 @@
 import { useContext } from 'react'
 
-import { AuthContext, HueContext, LocaleContext, ThemeContext } from '@/Contexts'
+import {
+  AuthContext,
+  EditPlaylistContext,
+  HueContext,
+  LocaleContext,
+  ThemeContext
+} from '@/Contexts'
 
 const useValidContext = <T>(currentContext: React.Context<T>, contextName: string) => {
   const context = useContext(currentContext)
@@ -13,6 +19,7 @@ const useValidContext = <T>(currentContext: React.Context<T>, contextName: strin
 }
 
 export const useAuth = () => useValidContext(AuthContext, 'Auth')
+export const useEditPlaylist = () => useValidContext(EditPlaylistContext, 'Edit Playlist')
 export const useHue = () => useValidContext(HueContext, 'Hue')
 export const useLocale = () => useValidContext(LocaleContext, 'Locale')
 export const useTheme = () => useValidContext(ThemeContext, 'Theme')

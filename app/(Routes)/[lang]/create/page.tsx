@@ -1,5 +1,5 @@
 import type { PageProps } from '@/Types'
-import { Accordion, PlaylistForm } from '@/Components'
+import { Accordion, EditPlaylist } from '@/Components'
 import { getDictionary } from '@/Locales'
 import { PageWrapper } from '@/Layouts'
 
@@ -33,11 +33,11 @@ const CreatePage: React.FC<PageProps> = async ({ params }) => {
             <p className={styles['steps__description']}>
               {strings.steps.three.description}
             </p>
-          </div>          
+          </div>
         </div>
       </Accordion>
 
-      <PlaylistForm dictionary={dictionary} />
+      <EditPlaylist />
     </PageWrapper>
   )
 }

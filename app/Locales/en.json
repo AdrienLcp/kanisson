@@ -72,6 +72,13 @@
       "light": "Light",
       "system": "System"
     },
+    "tracksForm": {
+      "triggers": {
+        "list": "My tracks",
+        "search": "Search"
+      }
+
+    },
     "volumeSlider": {
       "turnOff": "Turn volume off",
       "turnOn": "Turn volume on"
