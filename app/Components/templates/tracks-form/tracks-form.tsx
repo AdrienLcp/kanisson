@@ -2,13 +2,29 @@
 
 import { Search } from 'lucide-react'
 
-import { Card, CardContent, Tabs, TabsContent, TabsList, TabsTrigger, TracksList, TracksSearch } from '@/Components'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+  TracksList,
+  TracksSearch
+} from '@/Components'
 import { AudioLines } from '@/Icons'
 import { useLocale } from '@/Hooks'
 
 import styles from './tracks-form.styles.module.sass'
 
-const TracksForm: React.FC = () => {
+type TracksFormProps = {
+  youtubeApiKey: string
+}
+
+const TracksForm: React.FC<TracksFormProps> = ({ youtubeApiKey }) => {
   const { dictionary } = useLocale()
   const strings = dictionary.components.tracksForm
 
@@ -16,16 +32,25 @@ const TracksForm: React.FC = () => {
     <Tabs defaultValue='tracks'>
       <TabsList className={styles['tabs__list']}>
         <TabsTrigger className={styles['tabs__list__trigger']} value='tracks'>
-          <AudioLines /> {strings.triggers.list}
+          <AudioLines /> {strings.list.trigger}
         </TabsTrigger>
 
         <TabsTrigger className={styles['tabs__list__trigger']} value='search'>
-          <Search /> {strings.triggers.search}
+          <Search /> {strings.search.trigger}
         </TabsTrigger>
       </TabsList>
 
       <TabsContent value='tracks'>
         <Card>
+          <CardHeader>
+            <CardTitle>
+              {strings.list.title}
+            </CardTitle>
+            <CardDescription>
+              {strings.list.description}
+            </CardDescription>
+          </CardHeader>
+
           <CardContent>
             <TracksList />
           </CardContent>
@@ -34,8 +59,17 @@ const TracksForm: React.FC = () => {
 
       <TabsContent value='search'>
         <Card>
+          <CardHeader>
+            <CardTitle>
+              {strings.search.title}
+            </CardTitle>
+            <CardDescription>
+              {strings.search.description}
+            </CardDescription>
+          </CardHeader>
+
           <CardContent>
-            <TracksSearch />
+            <TracksSearch youtubeApiKey={youtubeApiKey} />
           </CardContent>
         </Card>
       </TabsContent>

@@ -73,11 +73,19 @@
       "system": "System"
     },
     "tracksForm": {
-      "triggers": {
-        "list": "My tracks",
-        "search": "Search"
+      "list": {
+        "trigger": "Tracks",
+        "title": "Tracks in my playlist",
+        "description": "You can customize the sounds in your playlist by giving them a title and an artist (you must have at least 10 sounds with at least one title or artist for your blind test to be playable)."
+      },
+      "search": {
+        "trigger": "Search",
+        "title": "Find a track",
+        "description": "You can search for a YouTube video by its title; only the sound (up to 30 seconds maximum) will be played during the blind tests. You can customize and add a result from your search."
       }
-
+    },
+    "trackSearchInput": {
+      "label": "Search a track"
     },
     "volumeSlider": {
       "turnOff": "Turn volume off",

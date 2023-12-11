@@ -5,6 +5,8 @@ import { PageWrapper } from '@/Layouts'
 
 import styles from './create.styles.module.sass'
 
+const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY || ''
+
 const CreatePage: React.FC<PageProps> = async ({ params }) => {
   const dictionary = await getDictionary(params.lang)
   const strings = dictionary.pages.create
@@ -37,7 +39,7 @@ const CreatePage: React.FC<PageProps> = async ({ params }) => {
         </div>
       </Accordion>
 
-      <EditPlaylist />
+      <EditPlaylist youtubeApiKey={YOUTUBE_API_KEY} />
     </PageWrapper>
   )
 }

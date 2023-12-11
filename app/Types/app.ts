@@ -27,3 +27,8 @@ export type NavLink = {
   Icon: LucideIcon
   isVisible: boolean
 }
+
+export type TrackResult = {
+  id: string
+  title: string
+}

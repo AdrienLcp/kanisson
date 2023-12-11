@@ -5,6 +5,8 @@ export { default as Tooltip } from './atoms/tooltip/tooltip'
 export { default as Accordion } from './molecules/accordion/accordion'
 export { default as Avatar } from './molecules/avatar/avatar'
 export { default as SubmitButton } from './molecules/submit-button/submit-button'
+export { default as TrackSearchInput } from './molecules//track-search-input/track-search-input'
+export { default as TrackSearchResult } from './molecules/track-search-result/track-search-result'
 
 export { default as HueSwitcher } from './organisms/hue-switcher/hue-switcher'
 export { default as LocaleSwitcher } from './organisms/locale-switcher/locale-switcher'

@@ -15,11 +15,12 @@ import styles from './edit-playlist.styles.module.sass'
 
 type EditPlaylistProps = {
   playlist?: Playlist
+  youtubeApiKey: string
 }
 
 const PLAYLIST_RULES = RULES.PLAYLIST
 
-const EditPlaylist: React.FC<EditPlaylistProps> = ({ playlist }) => {
+const EditPlaylist: React.FC<EditPlaylistProps> = ({ playlist, youtubeApiKey }) => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const { toast } = useToast()
 
@@ -60,7 +61,7 @@ const EditPlaylist: React.FC<EditPlaylistProps> = ({ playlist }) => {
         >
           <PlaylistForm form={form} />
 
-          <TracksForm />
+          <TracksForm youtubeApiKey={youtubeApiKey} />
 
           <SubmitButton
             label={dictionary.actions.save}

@@ -73,10 +73,19 @@
       "system": "Système"
     },
     "tracksForm": {
-      "triggers": {
-        "list": "Mes sons",
-        "search": "Chercher"
+      "list": {
+        "trigger": "Mes sons",
+        "title": "Sons de ma playlist",
+        "description": "Vous pouvez personnaliser les sons de votre playlist en leur donnant un titre et un artiste (vous devez avoir au moins 10 sons avec au moins un titre ou un artiste pour que votre blind test soit jouable)"
+      },
+      "search": {
+        "trigger": "Chercher",
+        "title": "Ajoute un son",
+        "description": "Vous pouvez chercher une vidéo youtube grâce à son titre, seul le son (30 secondes maximum) sera diffusé lors des blind tests. Vous pouvez personnaliser et ajouter un résultat de votre recherche."
       }
+    },
+    "trackSearchInput": {
+      "label": "Chercher un son"
     },
     "volumeSlider": {
       "turnOff": "Éteindre les son",
