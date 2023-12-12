@@ -15,10 +15,12 @@ export { default as ThemeSwitcher } from './organisms/theme-switcher/theme-switc
 export { default as VolumeSlider } from './organisms/volume-slider/volume-slider'
 
 export { default as EditPlaylist } from './templates/edit-playlist/edit-playlist'
+export { default as EditTrack } from './templates/edit-track/edit-track'
 export { default as PlaylistForm } from './templates/playlist-form/playlist-form'
 export { default as TracksForm } from './templates/tracks-form/tracks-form'
 export { default as TracksList } from './templates/tracks-list/tracks-list'
 export { default as TracksSearch } from './templates/tracks-search/tracks-search'
+export { default as TracksSearchList } from './templates/tracks-search-list/tracks-search-list'
 
 export { Button } from './base/ui/button'
 export {

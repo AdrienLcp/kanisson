@@ -23,6 +23,7 @@ export const RULES = {
     ARTIST: {
       MIN_LENGTH: 2,
       MAX_LENGTH: 50
-    }
+    },
+    DEFAULT_START: 30
   }
 } as const

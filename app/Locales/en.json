@@ -84,8 +84,16 @@
         "description": "You can search for a YouTube video by its title; only the sound (up to 30 seconds maximum) will be played during the blind tests. You can customize and add a result from your search."
       }
     },
-    "trackSearchInput": {
+    "tracksSearch": {
+      "youtubeError": "An error occured while searching on YouTube, please try again later",
+      "loadMore": "Load more"
+    },
+    "tracksSearchInput": {
       "label": "Search a track"
+    },
+    "tracksSearchResult": {
+      "youtubeError": "An error occured while searching on YouTube, please try again later",
+      "cardTooltip": "Personalize this track and add it to my playlist"
     },
     "volumeSlider": {
       "turnOff": "Turn volume off",

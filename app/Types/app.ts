@@ -1,3 +1,4 @@
+import type { Track } from '@prisma/client'
 import type { LucideIcon } from 'lucide-react'
 import { useSession } from 'next-auth/react'
 
@@ -32,3 +33,5 @@ export type TrackResult = {
   id: string
   title: string
 }
+
+export type TrackDTO = Omit<Track, 'id' | 'playlistId'>

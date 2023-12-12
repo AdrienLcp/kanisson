@@ -7,8 +7,8 @@ export const useDebounce = <T>(value: T, delay?: number): T => {
 
   useEffect(() => {
     const timerId = setTimeout(() => {
-      setDebouncedValue(value), delay || 500
-    })
+      setDebouncedValue(value)
+    }, delay || 500)
 
     return () => {
       clearTimeout(timerId)

@@ -14,8 +14,9 @@ type TrackSearchInputProps = {
 const TrackSearchInput: React.FC<TrackSearchInputProps> = ({ onSubmitTrackSearch }) => {
   const [searchValue, setSearchValue] = useState<string>('')
   const debouncedSearchValue = useDebounce(searchValue)
+
   const { dictionary } = useLocale()
-  const strings = dictionary.components.trackSearchInput
+  const strings = dictionary.components.tracksSearchInput
 
   useEffect(() => {
     if (debouncedSearchValue) {

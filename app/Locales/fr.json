@@ -55,14 +55,14 @@
     "playlistForm": {
       "title": {
         "label": "Titre",
-        "placeholder": "Choisis un titre pour ton blind test",
+        "placeholder": "Choisissez un titre pour votre blind test",
         "required": "Le titre est requis",
         "lengthError": "Le titre doit faire entre 5 et 50 caractères",
         "alreadyExists": "Ce titre est déjà pris"
       },
       "description": {
         "label": "Description",
-        "placeholder": "Tu peux donner une description à ton blind test",
+        "placeholder": "Vous pouvez donner une description à votre blind test",
         "lengthError": "La description doit faire entre 5 et 500 caractères"
       }
     },
@@ -80,12 +80,20 @@
       },
       "search": {
         "trigger": "Chercher",
-        "title": "Ajoute un son",
+        "title": "Ajouter un son",
         "description": "Vous pouvez chercher une vidéo youtube grâce à son titre, seul le son (30 secondes maximum) sera diffusé lors des blind tests. Vous pouvez personnaliser et ajouter un résultat de votre recherche."
       }
     },
-    "trackSearchInput": {
+    "tracksSearch": {
+      "youtubeError": "Une erreur est survenue lors de la recherche sur Youtube, réessayez plus tard",
+      "loadMore": "Charger plus"
+    },
+    "tracksSearchInput": {
       "label": "Chercher un son"
+    },
+    "tracksSearchResult": {
+      "youtubeError": "Une erreur est survenue lors de la recherche sur Youtube, réessayez plus tard",
+      "cardTooltip": "Personnaliser ce son pour l'ajouter"
     },
     "volumeSlider": {
       "turnOff": "Éteindre les son",

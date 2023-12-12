@@ -30,12 +30,12 @@ body
   height: 100svh
   background-color: hsl(var(--background))
   color: hsl(var(--foreground))
-  font-family: var(--font-body)
+  font-family: var(--font-body), sans-serif
   font-size: var(--size-sm)
   line-height: line-height()
   display: grid
-  grid-template-rows: auto 1fr auto
-  grid-template-areas: "header" "main" "nav"
+  grid-template-rows: auto auto 1fr auto auto
+  grid-template-areas: "header" "overlay-top" "main" "overlay-bottom" "nav"
 
   ::selection
     background-color: hsl(var(--primary))
@@ -48,10 +48,23 @@ main
   grid-area: main
   overflow-y: auto
   padding: var(--spacing-m) var(--layout-spacing) clamp(var(--spacing-m), 20vh, 400px)
+  position: relative
+
+.overlay
+  width: 100%
+  height: 50px
+
+  &__top
+    grid-area: overlay-top
+    background: linear-gradient(to top, hsla(var(--background) / 0) 0%, hsl(var(--background)) 100%)
+
+  &__bottom
+    grid-area: overlay-bottom
+    background: linear-gradient(to bottom, hsla(var(--background) / 0) 0%, hsl(var(--background)) 100%)
 
 @media (width > 991px)
   body
-    grid-template-areas: "header" "main" "footer"
+    grid-template-areas: "header" "overlay-top" "main" "overlay-bottom" "footer"
 
   main
     padding-left: calc(var(--sidebar-width) + var(--layout-spacing))

@@ -32,9 +32,13 @@ const Container: React.FC<ContainerProps> = ({ children, params }) => {
 
         <Header />
 
+        <div className='overlay overlay__top' />
+
         <main>
           {children}
         </main>
+
+        <div className='overlay overlay__bottom' />
 
         {isMobile
           ? <Navbar />
