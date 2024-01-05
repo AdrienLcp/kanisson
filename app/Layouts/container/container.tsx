@@ -1,6 +1,6 @@
 'use client'
 
-import { Toaster } from '@root/app/Components/base/ui/toaster'
+import { Toaster } from '@/Components/base/ui/toaster'
 
 import type { PageProps } from '@/Types'
 import { Background, Footer, Header, Navbar, Sidebar } from '@/Layouts'
@@ -13,8 +13,8 @@ import '@/styles/main.sass'
 type ContainerProps = PageProps & React.PropsWithChildren
 
 const Container: React.FC<ContainerProps> = ({ children, params }) => {
-  const { isDarkModeActive } = useTheme()
   const { isMobile } = useBreakpoint()
+  const { isDarkModeActive } = useTheme()
   const { selectedHue } = useHue()
 
   return (
@@ -32,13 +32,9 @@ const Container: React.FC<ContainerProps> = ({ children, params }) => {
 
         <Header />
 
-        <div className='overlay overlay__top' />
-
         <main>
           {children}
         </main>
-
-        <div className='overlay overlay__bottom' />
 
         {isMobile
           ? <Navbar />
