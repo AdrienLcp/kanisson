@@ -1,7 +1,9 @@
-import type { Locale } from '@/i18n'
+import type { Hue } from '@/theme/hue'
+import type { Theme } from '@/theme'
 
 type LocalStorage = {
-  locale: Locale
+  hue: Hue
+  theme: Theme
 }
 
 type LocaleStorageKey = keyof LocalStorage

@@ -9,12 +9,12 @@ export const LocaleSwitcher: React.FC = () => {
   const { changeLocale, currentLocale } = useI18n()
 
   return (
-    <div className='locale-switcher'>
+    <div>
       {LOCALES.map(locale => (
         <button
           key={locale}
           onClick={() => changeLocale(locale)}
-          style={{ padding: '10px 25px', background: currentLocale === locale ? 'red' : 'blue' }}
+          style={{ padding: '10px 25px', background: currentLocale === locale ? 'green' : 'red' }}
         >
           {locale}
         </button>

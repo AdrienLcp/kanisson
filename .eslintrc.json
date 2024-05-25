@@ -33,7 +33,9 @@
     "react/jsx-uses-react": "off",
     "react/prop-types": "off",
     "no-multiple-empty-lines": ["error", { "max": 1 }],
-    "eol-last": ["error", "always"]
+    "eol-last": ["error", "always"],
+    "no-trailing-spaces": ["error"],
+    "no-useless-return": ["error"]
   },
   "settings": {
     "react": {
