@@ -1,0 +1,20 @@
+@layer scrollbar
+  *::-webkit-scrollbar
+    max-width: 0.5rem
+    max-height: 0.5rem
+
+    &-track
+      background-color: hsl(var(--muted))
+      border-radius: var(--radius-circular, 99rem)
+
+    &-thumb
+      --thumb-color: var(--muted-foreground)
+
+      background-color: hsl(var(--thumb-color))
+      border-radius: var(--radius-circular, 99rem)
+
+      &:hover
+        background-color: hsla(var(--thumb-color) / 0.8)
+
+      &:active
+        background-color: hsla(var(--thumb-color) / 0.6)

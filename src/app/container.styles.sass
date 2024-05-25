@@ -1,0 +1,28 @@
+@import '@/styles/typography'
+
+html
+  -moz-osx-font-smoothing: grayscale
+  -webkit-font-smoothing: antialiased
+  -webkit-tap-highlight-color: transparent
+  accent-color: hsl(var(--accent))
+  caret-color: hsl(var(--accent))
+  color-scheme: dark light
+  scroll-behavior: smooth
+  scroll-padding: var(--layout-spacing-xl)
+
+body
+  @include body-medium
+  background-color: hsl(var(--background))
+  color: hsl(var(--foreground))
+  min-height: 100svh
+
+main
+  margin-inline: auto
+  width: min(1160px, 100% - var(--layout-spacing-m))
+
+h1, h2, h3, h4, h5, h6
+  @include title-medium
+
+::selection
+  background-color: hsl(var(--primary))
+  color: hsl(var(--primary-foreground))
