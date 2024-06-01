@@ -4,9 +4,20 @@
   left: 50%
   transform: translate(-50%, -50%)
 
+@mixin color-transition
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke
+  transition-timing-function: var(--timing, ease-in-out)
+  transition-duration: var(--transition-150, 0s)
+
 @mixin disabled
+  opacity: 0.5
   pointer-events: none
   user-select: none
+
+@mixin focusable
+  &:focus-visible
+    outline: var(--stroke-m, 0.125rem) solid hsl(var(--ring))
+    outline-offset: var(--stroke-m, 0.125rem)
 
 @mixin fixed-center
   position: fixed

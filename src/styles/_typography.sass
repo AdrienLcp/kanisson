@@ -19,7 +19,7 @@
     --font-weight-medium: 500
     --font-weight-bold: 700
 
-    --letter-spacing: 0.125em
+    --letter-spacing: 0.1em
 
 @function get-line-height($font-size: var(--font-size-m))
   @return calc(#{$font-size} * var(--golden-ratio))
@@ -28,99 +28,99 @@
 
 @mixin body-small
   font-family: var(--font-base, var(--font-fallback))
-  font-size: var(--font-size-xxs, 10px)
+  font-size: var(--font-size-xxs, 0.75rem)
   font-weight: var(--font-weight-regular, 400)
-  letter-spacing: var(--letter-spacing, 0.125em)
-  line-height: get-line-height(var(--font-size-xxs, 10px))
+  letter-spacing: var(--letter-spacing, 0.1em)
+  line-height: get-line-height(var(--font-size-xxs, 0.75rem))
 
 @mixin body-medium
   font-family: var(--font-base, var(--font-fallback))
-  font-size: var(--font-size-xs, 12px)
+  font-size: var(--font-size-xs, 0.94rem)
   font-weight: var(--font-weight-regular, 400)
-  letter-spacing: var(--letter-spacing, 0.125em)
-  line-height: get-line-height(var(--font-size-xs, 12px))
+  letter-spacing: var(--letter-spacing, 0.1em)
+  line-height: get-line-height(var(--font-size-xs, 0.94rem))
 
 @mixin body-large
   font-family: var(--font-base, var(--font-fallback))
-  font-size: var(--font-size-s, 14px)
+  font-size: var(--font-size-s, 1.13rem)
   font-weight: var(--font-weight-regular, 400)
-  letter-spacing: var(--letter-spacing, 0.125em)
-  line-height: get-line-height(var(--font-size-s, 14px))
+  letter-spacing: var(--letter-spacing, 0.1em)
+  line-height: get-line-height(var(--font-size-s, 1.13rem))
 
 // Label
 
 @mixin label-small
   font-family: var(--font-base, var(--font-fallback))
-  font-size: var(--font-size-xxs, 10px)
+  font-size: var(--font-size-xxs, 0.75rem)
   font-weight: var(--font-weight-medium, 500)
-  letter-spacing: var(--letter-spacing, 0.125em)
-  line-height: get-line-height(var(--font-size-xxs, 10px))
+  letter-spacing: var(--letter-spacing, 0.1em)
+  line-height: get-line-height(var(--font-size-xxs, 0.75rem))
 
 @mixin label-medium
   font-family: var(--font-base, var(--font-fallback))
-  font-size: var(--font-size-xs, 12px)
+  font-size: var(--font-size-xs, 0.94rem)
   font-weight: var(--font-weight-medium, 500)
-  letter-spacing: var(--letter-spacing, 0.125em)
-  line-height: get-line-height(var(--font-size-xs, 12px))
+  letter-spacing: var(--letter-spacing, 0.1em)
+  line-height: get-line-height(var(--font-size-xs, 0.94rem))
 
 @mixin label-large
   font-family: var(--font-base, var(--font-fallback))
-  font-size: var(--font-size-s, 14px)
+  font-size: var(--font-size-s, 1.13rem)
   font-weight: var(--font-weight-medium, 500)
-  letter-spacing: var(--letter-spacing, 0.125em)
-  line-height: get-line-height(var(--font-size-s, 14px))
+  letter-spacing: var(--letter-spacing, 0.1em)
+  line-height: get-line-height(var(--font-size-s, 1.13rem))
 
 // Title
 
 @mixin title-small
   font-family: var(--font-title, var(--font-fallback))
-  font-size: var(--font-size-xs, 12px)
+  font-size: var(--font-size-xs, 0.94rem)
   font-weight: var(--font-weight-medium, 500)
-  letter-spacing: var(--letter-spacing, 0.125em)
-  line-height: get-line-height(var(--font-size-xs, 12px))
+  letter-spacing: var(--letter-spacing, 0.1em)
+  line-height: get-line-height(var(--font-size-xs, 0.94rem))
 
 @mixin title-medium
   font-family: var(--font-title, var(--font-fallback))
-  font-size: var(--font-size-s, 14px)
+  font-size: var(--font-size-s, 1.13rem)
   font-weight: var(--font-weight-medium, 500)
-  letter-spacing: var(--letter-spacing, 0.125em)
-  line-height: get-line-height(var(--font-size-s, 14px))
+  letter-spacing: var(--letter-spacing, 0.1em)
+  line-height: get-line-height(var(--font-size-s, 1.13rem))
 
 @mixin title-large
   font-family: var(--font-title, var(--font-fallback))
-  font-size: var(--font-size-m, 16px)
+  font-size: var(--font-size-m, 1.35rem)
   font-weight: var(--font-weight-medium, 500)
-  letter-spacing: var(--letter-spacing, 0.125em)
-  line-height: get-line-height(var(--font-size-m, 16px))
+  letter-spacing: var(--letter-spacing, 0.1em)
+  line-height: get-line-height(var(--font-size-m, 1.35rem))
 
 // Headline
 
 @mixin headline-small
   font-family: var(--font-title, var(--font-fallback))
-  font-size: var(--font-size-l)
+  font-size: var(--font-size-l, 1.62rem)
   font-weight: var(--font-weight-bold, 700)
-  letter-spacing: var(--letter-spacing, 0.125em)
-  line-height: get-line-height(var(--font-size-l))
+  letter-spacing: var(--letter-spacing, 0.1em)
+  line-height: get-line-height(var(--font-size-l, 1.62rem))
 
 @mixin headline-medium
   font-family: var(--font-title, var(--font-fallback))
-  font-size: var(--font-size-xl)
+  font-size: var(--font-size-xl, 1.94rem)
   font-weight: var(--font-weight-bold, 700)
-  letter-spacing: var(--letter-spacing, 0.125em)
-  line-height: get-line-height(var(--font-size-xl))
+  letter-spacing: var(--letter-spacing, 0.1em)
+  line-height: get-line-height(var(--font-size-xl, 1.94rem))
 
 @mixin headline-large
   font-family: var(--font-title, var(--font-fallback))
-  font-size: var(--font-size-xxl)
+  font-size: var(--font-size-xxl, 2.33rem)
   font-weight: var(--font-weight-bold, 700)
-  letter-spacing: var(--letter-spacing, 0.125em)
-  line-height: get-line-height(var(--font-size-xxl))
+  letter-spacing: var(--letter-spacing, 0.1em)
+  line-height: get-line-height(var(--font-size-xxl, 2.33rem))
 
 // Display
 
 @mixin display-small
   font-family: var(--font-title, var(--font-fallback))
-  font-size: var(--font-size-xxxl)
+  font-size: var(--font-size-xxxl, 2.8rem)
   font-weight: var(--font-weight-bold, 700)
-  letter-spacing: var(--letter-spacing, 0.125em)
-  line-height: get-line-height(var(--font-size-xxxl))
+  letter-spacing: var(--letter-spacing, 0.1em)
+  line-height: get-line-height(var(--font-size-xxxl, 2.8rem))

@@ -4,6 +4,7 @@ import type { PageProps } from '@/app/[locale]/layout'
 import { LocaleSwitcher } from '@/i18n/locale-switcher'
 import { HueSwitcher } from '@/theme/hue-switcher'
 import { ThemeSwitcher } from '@/theme/theme-switcher'
+import { Button } from '@/components/button'
 
 const Home: React.FC<PageProps> = () => {
 
@@ -17,6 +18,12 @@ const Home: React.FC<PageProps> = () => {
       <LocaleSwitcher />
       <ThemeSwitcher />
       <HueSwitcher />
+
+      <div style={{ padding: 50 }}>
+
+        <Button>Click</Button>
+
+      </div>
     </div>
   )
 }
