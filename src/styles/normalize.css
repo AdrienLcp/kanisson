@@ -159,6 +159,7 @@
 
   * {
     font: inherit;
+    line-height: inherit;
   }
 
   img, picture, svg, video {

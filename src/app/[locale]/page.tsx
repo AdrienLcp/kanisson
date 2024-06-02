@@ -1,3 +1,6 @@
+'use client'
+
+import { UserIcon } from 'lucide-react'
 import React from 'react'
 
 import type { PageProps } from '@/app/[locale]/layout'
@@ -6,8 +9,9 @@ import { HueSwitcher } from '@/theme/hue-switcher'
 import { ThemeSwitcher } from '@/theme/theme-switcher'
 import { Button } from '@/components/button'
 
-const Home: React.FC<PageProps> = () => {
+import './page.styles.sass'
 
+const Home: React.FC<PageProps> = () => {
   //! Il reste deux problèmes coté serveur :
 
   //! 1). "locale" ou "dictionary" à passer en props aux server components qui veulent utiliser i18n (pour pouvoir getI18n() avec la bonne locale)
@@ -21,7 +25,67 @@ const Home: React.FC<PageProps> = () => {
 
       <div style={{ padding: 50 }}>
 
-        <Button>Click</Button>
+        <Button variant='primary' Icon={UserIcon}>Click</Button>
+
+        <p className='test-font-1'>
+          Typography testing
+        </p>
+
+        <p className='test-font-2'>
+          Typography testing
+        </p>
+
+        <p className='test-font-3'>
+          Typography testing
+        </p>
+
+        <p className='test-font-4'>
+          Typography testing
+        </p>
+
+        <p className='test-font-5'>
+          Typography testing
+        </p>
+
+        <p className='test-font-6'>
+          Typography testing
+        </p>
+
+        <p className='test-font-7'>
+          Typography testing
+        </p>
+
+        <p className='test-font-8'>
+          Typography testing
+        </p>
+
+        <p className='test-font-9'>
+          Typography testing
+        </p>
+
+        <p className='test-font-10'>
+          Typography testing
+        </p>
+
+        <p className='test-font-11'>
+          Typography testing
+        </p>
+
+        <p className='test-font-12'>
+          Typography testing
+        </p>
+
+        <p className='test-font-13'>
+          Typography testing
+        </p>
+
+        <p className='test-font-14'>
+          Typography testing
+        </p>
+
+        <p className='test-font-15'>
+          Typography testing
+        </p>
 
       </div>
     </div>

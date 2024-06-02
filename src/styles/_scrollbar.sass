@@ -4,17 +4,17 @@
     max-height: 0.5rem
 
     &-track
-      background-color: hsl(var(--muted))
+      background-color: hsl(var(--muted, 240 3.7% 15.9%))
       border-radius: var(--radius-circular, 99rem)
 
     &-thumb
-      --thumb-color: var(--muted-foreground)
+      --thumb-color: var(--muted-foreground, 240 5% 64.9%)
 
-      background-color: hsl(var(--thumb-color))
+      background-color: hsl(var(--thumb-color, 240 5% 64.9%))
       border-radius: var(--radius-circular, 99rem)
 
       &:hover
-        background-color: hsla(var(--thumb-color) / 0.8)
+        background-color: hsla(var(--thumb-color, 240 5% 64.9%) / 0.8)
 
       &:active
-        background-color: hsla(var(--thumb-color) / 0.6)
+        background-color: hsla(var(--thumb-color, 240 5% 64.9%) / 0.6)

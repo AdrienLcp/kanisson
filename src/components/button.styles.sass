@@ -12,27 +12,27 @@
   border: var(--stroke-m, 0.0125rem) solid transparent
   border-radius: var(--radius-xs, 0.25rem)
   display: flex
-  gap: var(--spacing-m, 0.55rem)
+  gap: var(--spacing-s, 0.45rem)
   height: var(--button-size, 1.94rem)
-  padding-inline: var(--spacing-xxl, 0.96rem)
+  padding-inline: var(--spacing-l, 0.68rem)
 
   &__icon
     aspect-ratio: 1
     width: calc(var(--button-size, 1.94rem) / 2.75)
 
   &.icon-left
-    padding-inline: var(--spacing-xl, 0.82rem) var(--spacing-xxl, 0.96rem)
+    padding-inline: var(--spacing-s, 0.45rem) var(--spacing-l, 0.68rem)
 
   &.icon-right
     flex-direction: row-reverse
-    padding-inline: var(--spacing-xxl, 0.96rem) var(--spacing-xl, 0.82rem)
+    padding-inline: var(--spacing-l, 0.68rem) var(--spacing-s, 0.45rem)
 
   &.icon-size
     justify-content: center
     padding: 0
     width: var(--button-size, 1.94rem)
 
-  &.filled
+  &.primary
     background-color: hsl(var(--primary, 0 0% 98%))
     color: hsl(var(--primary-foreground, 240 5.9% 10%))
 
@@ -43,7 +43,7 @@
     &:active
       background-color: hsla(var(--primary, 0 0% 98%) / var(--active-alpha, 0.8))
 
-  &.outlined
+  &.outline
     border-color: hsl(var(--border, 240 5.9% 90%))
 
     @media (hover: hover)
@@ -53,7 +53,7 @@
     &:active
       background-color: hsla(var(--border, 240 5.9% 90%) / var(--active-alpha, 0.8))
 
-  &.transparent
+  &.ghost
     color: hsl(var(--accent-foreground, 0 0% 98%))
 
     @media (hover: hover)
@@ -63,7 +63,7 @@
     &:active
       background-color: hsla(var(--accent, 240 3.7% 15.9%) / var(--active-alpha, 0.8))
 
-  &.tonal
+  &.secondary
     background-color: hsl(var(--secondary, 240 3.7% 15.9%))
     color: hsl(var(--secondary-foreground, 0 0% 98%))
 

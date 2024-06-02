@@ -11,14 +11,44 @@ import './button.styles.sass'
 type BaseButtonProps = Omit<React.ComponentProps<'button'>, 'disabled'>
 
 type ButtonProps = BaseButtonProps & {
+  /**
+   * Optional icon to display within the button.
+   * @type {LucideIcon}
+   */
   Icon?: LucideIcon
+
+  /**
+   * Determines the side of the button the icon should appear on. Defaults to 'left'.
+   * @default 'left'
+   */
   iconSide?: 'left' | 'right'
+
+  /**
+   * If true, disables the button interaction.
+   */
   isDisabled?: boolean
+
+  /**
+   * Shows a loading spinner inside the button when true.
+   */
   isLoading?: boolean
+
+  /**
+   * Defines the size of the button. Can be 'default' or 'icon' for a button with only an icon.
+   * @default 'default'
+   */
   size?: 'default' | 'icon'
-  variant?: 'destructive' | 'filled' | 'outlined' | 'tonal' | 'transparent'
+
+  /**
+   * The visual style variant of the button.
+   * @default 'outline'
+   */
+  variant?: 'destructive' | 'outline' | 'ghost' | 'primary' | 'secondary'
 }
 
+/**
+ * Button component that supports optional icons, loading state, and icon size.
+ */
 export const Button: React.FC<ButtonProps> = ({
   className,
   children,
@@ -28,7 +58,7 @@ export const Button: React.FC<ButtonProps> = ({
   isLoading,
   size = 'default',
   type = 'button',
-  variant = 'outlined',
+  variant = 'outline',
   ...props
 }) => {
   const hasIcon = Icon !== undefined
@@ -47,6 +77,7 @@ export const Button: React.FC<ButtonProps> = ({
 
   return (
     <button
+      aria-busy={isLoading}
       {...props}
       disabled={isDisabled || isLoading}
       type={type}
