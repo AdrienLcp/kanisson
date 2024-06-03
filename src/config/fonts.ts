@@ -1,7 +1,7 @@
 import { K2D, Neuton } from 'next/font/google'
 
 // /!\ Careful /!\
-// Font's variables need to match with variable names used in src/styles/typography.sass
+// Font's variable name need to match with one of variable names used in src/styles/typography.sass
 
 export const baseFont = K2D({
   subsets: ['latin'],

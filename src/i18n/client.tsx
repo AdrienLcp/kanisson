@@ -29,7 +29,7 @@ export const I18nProvider: React.FC<I18nProviderProps> = ({ children, dictionary
     if (!isLocale(newLocale) || newLocale === locale) {
       return
     }
-    
+
     const newPathname = getRedirectPathname(pathname, newLocale)
 
     if (newPathname !== pathname) {

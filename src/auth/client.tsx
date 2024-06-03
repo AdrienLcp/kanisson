@@ -1,41 +1,43 @@
 'use client'
 
+import { signOut } from 'next-auth/react'
 import React from 'react'
 
+import type { User } from '@/user'
 import { useProvidedContext } from '@/helpers/contexts'
 
-type User = ''
-
-type AuthenticatedUser = {
-  status: 'authenticated'
-  user: User
-}
-
-type LoadingUser = {
-  status: 'loading'
-}
-
-type UnauthenticatedUser = {
-  status: 'unauthenticated'
-}
-
-type Auth = AuthenticatedUser | LoadingUser | UnauthenticatedUser
+type Auth =
+  { status: 'authenticated', user: User } |
+  { status: 'loading' } |
+  { status: 'unauthenticated' }
 
 type AuthContextValue = {
   auth: Auth
   logout: () => void
 }
 
-const DEFAULT_AUTH: Auth = { status: 'loading' }
+export type AuthProviderProps = React.PropsWithChildren & {
+  user: User | null
+}
 
 const AuthContext = React.createContext<AuthContextValue | null>(null)
 
-export const AuthProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
-  const [auth, setAuth] = React.useState<Auth>(DEFAULT_AUTH)
+export const AuthProvider: React.FC<AuthProviderProps> = ({ children, user }) => {
+  const [auth, setAuth] = React.useState<Auth>({ status: 'loading' })
 
   const logout = () => {
     setAuth({ status: 'unauthenticated' })
+    signOut()
   }
+
+  React.useEffect(() => {
+    if (user === null) {
+      setAuth({ status: 'unauthenticated' })
+      return
+    }
+
+    setAuth({ status: 'authenticated', user })
+  }, [user])
 
   return (
     <AuthContext.Provider value={{ auth, logout }}>

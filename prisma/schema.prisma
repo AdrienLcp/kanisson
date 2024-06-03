@@ -1,0 +1,139 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model VerificationToken {
+  identifier String
+  token      String
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+// -------------------------------------- //
+
+model User {
+  id              String          @id @default(cuid())
+  name            String?
+  email           String?         @unique
+  emailVerified   DateTime?
+  image           String?
+
+  avatar          String?
+  pseudo          String?        @unique
+  role            String         @default("user")
+  status          String         @default("active")
+
+  games           Game[]
+  playlists       Playlist[]
+  ratings         Rating[]
+
+  accounts        Account[]
+  sessions        Session[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Playlist {
+  id             String     @id @default(cuid())
+  userId         String
+  title          String     @unique
+  description    String?
+  img            String?
+  language       String?
+  guessDuration  Int        @default(30)
+  status         String     @default("inactive")
+  creator        User       @relation(fields: [userId], references: [id])
+
+  tags           Tag[]
+  tracks         Track[]
+  games          Game[]
+  ratings        Rating[]
+
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+}
+
+model Rating {
+  id         String         @id @default(cuid())
+  userId     String
+  playlistId String
+  value      Int
+  createdAt  DateTime       @default(now())
+  updatedAt  DateTime       @updatedAt
+  user       User           @relation(fields: [userId], references: [id])
+  playlist   Playlist       @relation(fields: [playlistId], references: [id])
+}
+
+model Track {
+  id           String       @id @default(cuid())
+  playlistId   String
+  youtubeTitle String
+  duration     Int
+  title        String
+  artist       String
+  image        String?
+  start        Int          @default(30)
+  isValid      Boolean      @default(false)
+  playlist     Playlist     @relation(fields: [playlistId], references: [id])
+}
+
+model Game {
+  id         Int            @id @default(autoincrement())
+  userId     String
+  pseudo     String
+  playlistId String
+  score      Int
+  createdAt  DateTime       @default(now())
+  updatedAt  DateTime       @updatedAt
+  user       User           @relation(fields: [userId], references: [id])
+  playlist   Playlist       @relation(fields: [playlistId], references: [id])
+}
+
+model Tag {
+  id        Int             @id @default(autoincrement())
+  name      String          @unique
+  playlists Playlist[]
+}

@@ -1,17 +1,15 @@
-'use client'
-
-import { UserIcon } from 'lucide-react'
 import React from 'react'
 
 import type { PageProps } from '@/app/[locale]/layout'
-import { LocaleSwitcher } from '@/i18n/locale-switcher'
-import { HueSwitcher } from '@/theme/hue-switcher'
-import { ThemeSwitcher } from '@/theme/theme-switcher'
-import { Button } from '@/components/button'
+// import { LocaleSwitcher } from '@/i18n/locale-switcher'
+// import { HueSwitcher } from '@/theme/hue-switcher'
+// import { ThemeSwitcher } from '@/theme/theme-switcher'
+// import { Button } from '@/components/button'
 
 import './page.styles.sass'
+import { LoginButton } from '@/auth/login-button'
 
-const Home: React.FC<PageProps> = () => {
+const Home: React.FC<PageProps> = async () => {
   //! Il reste deux problèmes coté serveur :
 
   //! 1). "locale" ou "dictionary" à passer en props aux server components qui veulent utiliser i18n (pour pouvoir getI18n() avec la bonne locale)
@@ -19,13 +17,11 @@ const Home: React.FC<PageProps> = () => {
 
   return (
     <div>
-      <LocaleSwitcher />
+      {/* <LocaleSwitcher />
       <ThemeSwitcher />
-      <HueSwitcher />
+      <HueSwitcher /> */}
 
       <div style={{ padding: 50 }}>
-
-        <Button variant='primary' Icon={UserIcon}>Click</Button>
 
         <p className='test-font-1'>
           Typography testing
@@ -87,6 +83,7 @@ const Home: React.FC<PageProps> = () => {
           Typography testing
         </p>
 
+        <LoginButton />
       </div>
     </div>
   )

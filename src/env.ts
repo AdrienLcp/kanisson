@@ -7,6 +7,9 @@ export const env = createEnv({
     NEXT_PUBLIC_FORM_SPREE_KEY: z.string()
   },
   server: {
+    DATABASE_URL: z.string(),
+    GOOGLE_ID: z.string(),
+    GOOGLE_SECRET: z.string(),
     YOUTUBE_API_KEY: z.string()
   },
   experimental__runtimeEnv: {

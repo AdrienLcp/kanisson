@@ -4,6 +4,7 @@ import React from 'react'
 import { Container } from '@/app/container'
 import { getCommonMetadata } from '@/app/metadata'
 import { Providers } from '@/app/providers'
+import { getAuthUser } from '@/auth/actions/get-auth-user'
 import { type Locale } from '@/i18n'
 import { getDictionary } from '@/i18n/server'
 
@@ -36,8 +37,14 @@ const RootLayout: React.FC<LayoutProps> = async ({ children, params }) => {
   const locale = params.locale
   const dictionary = await getDictionary(locale)
 
+  const user = await getAuthUser()
+
   return (
-    <Providers locale={locale} dictionary={dictionary}>
+    <Providers
+      dictionary={dictionary}
+      locale={locale}
+      user={user}
+    >
       <Container locale={locale}>
         {children}
       </Container>

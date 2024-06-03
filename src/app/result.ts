@@ -1,11 +1,17 @@
-export type ErrorResult = {
+import type { Locale } from '@/i18n'
+
+export type BaseRequest = {
+  locale: Locale
+}
+
+type ErrorResult = {
   error: {
     message: string
   }
   status: 'error'
 }
 
-export type SuccessResult <T> = {
+type SuccessResult <T> = {
   data: T
   status: 'success'
 }

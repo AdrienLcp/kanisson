@@ -1,18 +1,14 @@
-export type Role = 'visitor' | 'user' | 'moderator' | 'admin'
+import type { UserRole } from '@/user'
 
 type PlaylistPermission = '' | ''
 type UserPermission = '' | ''
 
-type RolePermission = {
+export type RolePermissions = {
   playlist: PlaylistPermission[]
   user: UserPermission[]
 }
 
-const permissions: Record<Role, RolePermission> = {
-  visitor: {
-    playlist: [],
-    user: []
-  },
+const permissions: Record<UserRole, RolePermissions> = {
   user: {
     playlist: [],
     user: []
@@ -27,6 +23,6 @@ const permissions: Record<Role, RolePermission> = {
   }
 } as const
 
-export const getUserRights = (role: Role) => {
-  return permissions[role]
+export const getUserPermissions = (role: UserRole) => {
+  return permissions[role] ?? permissions.user
 }
