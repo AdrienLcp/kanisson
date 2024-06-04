@@ -3,11 +3,11 @@
 import { signOut } from 'next-auth/react'
 import React from 'react'
 
-import type { User } from '@/user'
+import type { AuthUser } from '@/auth'
 import { useProvidedContext } from '@/helpers/contexts'
 
 type Auth =
-  { status: 'authenticated', user: User } |
+  { status: 'authenticated', user: AuthUser } |
   { status: 'loading' } |
   { status: 'unauthenticated' }
 
@@ -17,7 +17,7 @@ type AuthContextValue = {
 }
 
 export type AuthProviderProps = React.PropsWithChildren & {
-  user: User | null
+  user: AuthUser | null
 }
 
 const AuthContext = React.createContext<AuthContextValue | null>(null)
@@ -49,7 +49,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, user }) =>
 export const useAuth = () => useProvidedContext(AuthContext, 'Auth')
 
 type UserHookValue = {
-  user: User
+  user: AuthUser
 }
 
 export const useUser = (): UserHookValue => {

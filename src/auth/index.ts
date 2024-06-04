@@ -3,16 +3,18 @@ import type { Game, Playlist, Rating, User } from '@prisma/client'
 import type { UserRole } from '@/user'
 import type { RolePermissions } from '@/user/permissions'
 
-type OmittedUserProps =
+type OmittedUserFields =
   'accounts' |
   'email' |
   'emailVerified' |
   'image' |
+  'role' |
   'sessions' |
   'updatedAt'
 
-type BaseAuthUser = Omit<User, OmittedUserProps>
+type BaseAuthUser = Omit<User, OmittedUserFields>
 
+// Force UserRole type for role field
 type PrismaAuthUser = BaseAuthUser & {
   games: Game[]
   role: UserRole
@@ -20,7 +22,6 @@ type PrismaAuthUser = BaseAuthUser & {
   ratings: Rating[]
 }
 
-// Force UserRole type for role field
 export type AuthUser = PrismaAuthUser & {
   permissions: RolePermissions
 }
