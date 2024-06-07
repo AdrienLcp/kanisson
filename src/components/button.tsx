@@ -1,9 +1,9 @@
 'use client'
 
-import type { LucideIcon } from 'lucide-react'
+import { LoaderCircleIcon, type LucideIcon } from 'lucide-react'
 import React from 'react'
 
-import { Loader } from '@/components/loader'
+import { Motion } from '@/components/motion'
 import { classNames } from '@/helpers/styles'
 
 import './button.styles.sass'
@@ -69,7 +69,11 @@ export const Button: React.FC<ButtonProps> = ({
     }
 
     if (isLoading === true) {
-      return <Loader className='button__icon' />
+      return (
+        <Motion animation='rotate'>
+          <LoaderCircleIcon className='button__icon' size={20} />
+        </Motion>
+      )
     }
 
     return <Icon className='button__icon' />

@@ -1,4 +1,10 @@
 {
+  "components": {
+    "avatar": {
+      "common-alt": "Avatar commun d'utilisateur de Kanisson",
+      "user-alt": "Avatar de {{pseudo}}"
+    }
+  },
   "metadata": {
     "category": "jeu",
     "classification": "jeu en ligne",

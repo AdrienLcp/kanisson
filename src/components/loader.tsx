@@ -2,27 +2,35 @@ import { LoaderCircleIcon } from 'lucide-react'
 import React from 'react'
 
 import { Motion } from '@/components/motion'
-import { classNames } from '@/helpers/styles'
 
 import './loader.styles.sass'
 
+type LoaderSize = 'small' | 'medium' | 'large'
 type LoaderVariant = 'circle'
 
 type LoaderProps = {
   className?: string
-  size?: 'small' | 'medium' | 'large'
+  size?: LoaderSize
   variant?: LoaderVariant
 }
 
-type LoaderVariantProps = Omit<LoaderProps, 'variant'>
+type LoaderVariantProps = Omit<LoaderProps, 'size' | 'variant'> & {
+  size: LoaderSize
+}
+
+const sizes: Record<LoaderSize, string> = {
+  small: '1rem',
+  medium: '3rem',
+  large: '6rem'
+}
 
 const CircleLoader: React.FC<LoaderVariantProps> = ({ size, className }) => (
   <Motion animation='rotate' className='loader__circle'>
-    <LoaderCircleIcon className={classNames(size, className)} />
+    <LoaderCircleIcon className={className} size={sizes[size]} />
   </Motion>
 )
 
-const loaders: Record<LoaderVariant, React.FC<LoaderProps>> = {
+const loaders: Record<LoaderVariant, React.FC<LoaderVariantProps>> = {
   'circle': CircleLoader
 }
 

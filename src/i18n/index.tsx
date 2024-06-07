@@ -17,7 +17,11 @@ export const isLocale = (value: string): value is Locale => {
   return LOCALES.includes(value as Locale)
 }
 
-export const getValidLocale = (locale?: string) => {
+export const getValidLocale = (locale?: unknown) => {
+  if (typeof locale !== 'string') {
+    return DEFAULT_LOCALE
+  }
+
   return locale !== undefined && isLocale(locale)
     ? locale
     : DEFAULT_LOCALE

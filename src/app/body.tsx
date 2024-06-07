@@ -7,8 +7,6 @@ import { classNames } from '@/helpers/styles'
 import { useTheme } from '@/theme'
 import { useHue } from '@/theme/hue'
 
-import './body.styles.sass'
-
 export const Body: React.FC<React.PropsWithChildren> = ({ children }) => {
   const { currentHue } = useHue()
   const { isDarkModeActive } = useTheme()

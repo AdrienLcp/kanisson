@@ -6,10 +6,12 @@ import { Footer } from '@/app/footer'
 import { Header } from '@/app/header'
 import { getCommonMetadata } from '@/app/metadata'
 import { Providers } from '@/app/providers'
+import { getAuthUser } from '@/auth/actions/get-auth-user'
 import { type Locale } from '@/i18n'
 import { getDictionary } from '@/i18n/server'
 
-import './layout.styles.sass'
+import '@/styles/base.sass'
+import { Avatar } from '@/components/avatar'
 
 type CommonParams = {
   locale: Locale
@@ -37,19 +39,22 @@ const RootLayout: React.FC<LayoutProps> = async ({ children, params }) => {
   const locale = params.locale
   const dictionary = await getDictionary(locale)
 
+  const authUser = await getAuthUser()
+
   return (
     <Providers
       dictionary={dictionary}
       locale={locale}
+      user={authUser}
     >
       <html lang={locale}>
         <Body>
           <Header />
 
           <main>
-            <React.Suspense fallback={<div>Loading...</div>}>
-              {children}
-            </React.Suspense>
+            {children}
+
+            <Avatar user={authUser} />
           </main>
 
           <Footer />
