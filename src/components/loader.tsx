@@ -2,15 +2,31 @@ import { LoaderCircleIcon } from 'lucide-react'
 import React from 'react'
 
 import { Motion } from '@/components/motion'
+import type { ComponentSizes } from '@/config/ui'
 
 import './loader.styles.sass'
 
-type LoaderSize = 'small' | 'medium' | 'large'
+type LoaderSize = ComponentSizes
 type LoaderVariant = 'circle'
 
 type LoaderProps = {
+
+  /**
+   * Additional class names to apply to the loader.
+   */
   className?: string
+
+  /**
+   * Size of the loader.
+   * @values 'small', 'medium', 'large'
+   * @default 'medium'
+   */
   size?: LoaderSize
+
+  /**
+   * Visual style variant of the loader.
+   * @default 'circle'
+   */
   variant?: LoaderVariant
 }
 
@@ -34,6 +50,9 @@ const loaders: Record<LoaderVariant, React.FC<LoaderVariantProps>> = {
   'circle': CircleLoader
 }
 
+/**
+ * Loader component that displays a spinning circle by default.
+ */
 export const Loader: React.FC<LoaderProps> = ({
   className,
   size = 'medium',

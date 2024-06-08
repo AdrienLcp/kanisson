@@ -1,7 +1,20 @@
-.avatar
+@import '@/styles/mixins'
 
-  &__image
-    border: var(--stroke-s, 0.0625rem) solid hsl(var(--border))
-    border-radius: var(--radius-circular, 99rem)
-    width: 40px
-    overflow: hidden
+.avatar
+  @include flex-center
+  aspect-ratio: 1
+  border: var(--stroke-s, 0.0625rem) solid hsl(var(--border))
+  border-radius: var(--radius-circular, 99rem)
+  overflow: clip
+
+  &.small
+    width: 1rem
+    font-size: 0.5em
+
+  &.medium
+    width: 2rem
+    font-size: 1em
+  
+  &.large
+    width: 3rem
+    font-size: 1.5em

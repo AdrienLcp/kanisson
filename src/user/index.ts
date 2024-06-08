@@ -12,6 +12,7 @@ type OmittedUserFields =
   'permissions' |
   'role' |
   'sessions' |
+  'status' |
   'updatedAt'
 
 type BasePublicUser = Omit<User, OmittedUserFields>
@@ -40,6 +41,5 @@ export const PUBLIC_USER_SELECTED_FIELDS: Record<keyof PublicUser, true> = {
   id: true,
   playlists: true,
   pseudo: true,
-  role: true,
-  status: true
+  role: true
 }

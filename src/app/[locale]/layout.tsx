@@ -11,7 +11,6 @@ import { type Locale } from '@/i18n'
 import { getDictionary } from '@/i18n/server'
 
 import '@/styles/base.sass'
-import { Avatar } from '@/components/avatar'
 
 type CommonParams = {
   locale: Locale
@@ -49,12 +48,10 @@ const RootLayout: React.FC<LayoutProps> = async ({ children, params }) => {
     >
       <html lang={locale}>
         <Body>
-          <Header />
+          <Header authUser={authUser} />
 
           <main>
             {children}
-
-            <Avatar user={authUser} />
           </main>
 
           <Footer />

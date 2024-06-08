@@ -6,7 +6,15 @@ import React from 'react'
 type Animation = 'accordion' | 'fade-in' | 'rotate' | 'scale'
 
 type MotionProps = FramerMotionProps & {
+  /**
+   * The animation name to apply to the children.
+   * @values 'accordion', 'fade-in', 'rotate', 'scale'
+   */
   animation: Animation
+
+  /**
+   * Additional class names to apply to the motion component.
+   */
   className?: string
 }
 
@@ -32,6 +40,9 @@ const animationsMap: Record<Animation, AnimationProps> = {
   }
 } as const
 
+/**
+ * Motion component that applies a predefined animation to its children.
+ */
 export const Motion: React.FC<MotionProps> = ({ animation, children, className, ...props }) => {
   const animationProps = animationsMap[animation]
 

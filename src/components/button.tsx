@@ -19,6 +19,7 @@ type ButtonProps = BaseButtonProps & {
 
   /**
    * Determines the side of the button the icon should appear on. Defaults to 'left'.
+   * @values 'left', 'right'
    * @default 'left'
    */
   iconSide?: 'left' | 'right'
@@ -35,12 +36,14 @@ type ButtonProps = BaseButtonProps & {
 
   /**
    * Defines the size of the button. Can be 'default' or 'icon' for a button with only an icon.
+   * @values 'default', 'icon'
    * @default 'default'
    */
   size?: 'default' | 'icon'
 
   /**
    * The visual style variant of the button.
+   * @values 'primary', 'secondary', 'outline', 'ghost', 'destructive'
    * @default 'outline'
    */
   variant?: 'destructive' | 'outline' | 'ghost' | 'primary' | 'secondary'

@@ -2,7 +2,7 @@
   "components": {
     "avatar": {
       "common-alt": "Avatar commun d'utilisateur de Kanisson",
-      "user-alt": "Avatar de {{pseudo}}"
+      "user-alt": "Avatar de %{pseudo}"
     }
   },
   "metadata": {

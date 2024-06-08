@@ -10,6 +10,7 @@ type OmittedUserFields =
   'image' |
   'role' |
   'sessions' |
+  'status' |
   'updatedAt'
 
 type BaseAuthUser = Omit<User, OmittedUserFields>
@@ -35,6 +36,5 @@ export const AUTH_USER_SELECTED_FIELDS: Record<keyof PrismaAuthUser, true> = {
   playlists: true,
   pseudo: true,
   ratings: true,
-  role: true,
-  status: true
+  role: true
 }

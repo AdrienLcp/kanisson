@@ -9,7 +9,7 @@ export type DotNestedKeys<T> = (
   : never
 
 export const isValidString = (string: string | null | undefined): string is string => {
-  return string !== undefined && string !== null && string.trim().length > 0
+  return string != null && string.trim().length > 0
 }
 
 /**

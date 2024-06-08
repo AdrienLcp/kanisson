@@ -1,36 +1,60 @@
 'use client'
 
+import type { User } from '@prisma/client'
 import { UserIcon } from 'lucide-react'
 import React from 'react'
 
-import type { AuthUser } from '@/auth'
 import { Image } from '@/components/image'
+import type { ComponentSizes } from '@/config/ui'
+import { isValidString } from '@/helpers/strings'
+import { classNames } from '@/helpers/styles'
 import { useI18n } from '@/i18n/client'
 
 import './avatar.styles.sass'
 
-type AvatarSize = 'small' | 'medium' | 'large'
+type AvatarSize = ComponentSizes
+type AvatarUser = Pick<User, 'avatar' | 'pseudo'>
 
 type AvatarProps = {
-  user: AuthUser | null
+  /**
+   * User with optional pseudo and optional avatar to display.
+   * @type { avatar: string | null, pseudo: string | null }
+   */
+  user: AvatarUser | null
+
+  /**
+   * Size of the avatar.
+   * @values 'small', 'medium', 'large'
+   * @default 'medium'
+   */
   size?: AvatarSize
 }
 
-const AVATAR_PSEUDO_MAX_LENGTH = 3
-
-const avatarSizes: Record<AvatarSize, string> = {
-  small: 'var(--size-80, 1.13rem)',
-  medium: 'var(--size-100, 1.62rem)',
-  large: 'var(--size-120, 2.33rem)'
+type AvatarFallbackProps = {
+  size: AvatarSize
 }
 
-export const Avatar: React.FC<AvatarProps> = ({ size = 'small', user }) => {
+const avatarFallbackIconSizes: Record<AvatarSize, number> = {
+  small: 12,
+  medium: 20,
+  large: 32
+}
+
+const AvatarFallback: React.FC<AvatarFallbackProps> = ({ size }) => (
+  <UserIcon size={avatarFallbackIconSizes[size]} />
+)
+
+/**
+ * Avatar component that displays a user icon fallback if user pseudo or avatar is not provided.
+ */
+export const Avatar: React.FC<AvatarProps> = ({ size = 'medium', user }) => {
+  const [hasImageError, setHasImageError] = React.useState<boolean>(false)
+
   const { i18n } = useI18n()
-  const className = 'avatar__image'
 
   const renderAvatarContent = () => {
     if (user === null) {
-      return <UserIcon />
+      return <AvatarFallback size={size} />
     }
 
     if (user.avatar !== null) {
@@ -40,34 +64,28 @@ export const Avatar: React.FC<AvatarProps> = ({ size = 'small', user }) => {
             ? i18n('components.avatar.common-alt')
             : i18n('components.avatar.user-alt', { pseudo: user.pseudo })
           }
-          className={className}
+          onError={() => setHasImageError(true)}
           src={user.avatar}
         />
       )
     }
 
-    if (user.pseudo !== null) {
-      const letters = user.pseudo
+    if (isValidString(user.pseudo)) {
+      return user.pseudo
         .trim()
-        .split(' ')
-        .filter((_, index) => index < AVATAR_PSEUDO_MAX_LENGTH)
-        .map(word => word.slice(0, 1))
-        .join('')
+        .charAt(0)
         .toUpperCase()
-
-      return (
-        <span className='avatar__text'>
-          {letters}
-        </span>
-      )
     }
 
-    return <UserIcon />
+    return <AvatarFallback size={size} />
   }
 
   return (
-    <span className='avatar'>
-      {renderAvatarContent()}
-    </span>
+    <div className={classNames('avatar', size)}>
+      {hasImageError
+        ? <AvatarFallback size={size} />
+        : renderAvatarContent()
+      }
+    </div>
   )
 }
