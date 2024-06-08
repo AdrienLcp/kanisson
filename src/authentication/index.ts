@@ -38,3 +38,5 @@ export const AUTH_USER_SELECTED_FIELDS: Record<keyof PrismaAuthenticatedUser, tr
   ratings: true,
   role: true
 }
+
+export const PROTECTED_PATHS = ['dashboard']

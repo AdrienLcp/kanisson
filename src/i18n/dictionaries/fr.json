@@ -1,4 +1,12 @@
 {
+  "authentication": {
+    "user-menu": {
+      "user": "Utilisateur :",
+      "options": {
+        "logout": "Logout"
+      }
+    }
+  },
   "components": {
     "avatar": {
       "common-alt": "Avatar commun d'utilisateur de Kanisson",

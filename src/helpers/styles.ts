@@ -1,4 +1,4 @@
-import type { ButtonRenderProps, PopoverRenderProps } from 'react-aria-components'
+import type { ButtonRenderProps, ListBoxRenderProps, PopoverRenderProps } from 'react-aria-components'
 
 export type ResponsiveSize = `${number}rem`
 
@@ -10,6 +10,7 @@ export const classNames = (...classes: ClassNames): string => {
 
 type ElementRenderProps =
   ButtonRenderProps |
+  ListBoxRenderProps |
   PopoverRenderProps
 
 type RenderPropsValues <T extends ElementRenderProps> = T & {

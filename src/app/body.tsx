@@ -2,8 +2,8 @@
 
 import React from 'react'
 
-import { baseFont, titleFont } from '@/config/fonts'
 import { classNames } from '@/helpers/styles'
+import { baseFont, titleFont } from '@/helpers/ui'
 import { useTheme } from '@/theme'
 import { useHue } from '@/theme/hue'
 

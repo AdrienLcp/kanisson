@@ -1,4 +1,17 @@
 import { K2D, Neuton } from 'next/font/google'
+import type { Key } from 'react-aria-components'
+
+export type ComponentSizes = 'small' | 'medium' | 'large'
+
+export type Option <T extends Key> = {
+  Icon?: React.ReactNode
+  isDisabled?: boolean
+  isPrefixedByDivider?: boolean
+  isSelected?: boolean
+  key: T
+  label: string
+  onClick?: (option: Option<T>) => void
+}
 
 // /!\ Careful /!\
 // Font's variable name need to match with one of variable names used in src/styles/typography.sass

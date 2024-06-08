@@ -22,10 +22,7 @@ const chain = (functions: MiddlewareFactory[], index = 0): CustomMiddleware => {
   return (_request, _event, response) => response
 }
 
-export default chain([
-  // withAuth,
-  withLocale
-])
+export default chain([withLocale])
 
 export const config = {
   matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)']

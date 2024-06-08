@@ -12,6 +12,7 @@ import { buildI18n, type Locale } from '@/i18n'
 import { getDictionary } from '@/i18n/server'
 
 import '@/styles/base.sass'
+import { Button } from '@/components/button'
 
 type CommonParams = {
   locale: Locale
@@ -56,6 +57,7 @@ const RootLayout: React.FC<LayoutProps> = async ({ children, params }) => {
           />
 
           <Main>
+            <Button>test</Button>
             {children}
           </Main>
 
