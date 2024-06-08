@@ -3,7 +3,7 @@
 import { type AnimationProps, motion, type MotionProps as FramerMotionProps } from 'framer-motion'
 import React from 'react'
 
-type Animation = 'accordion' | 'fade-in' | 'rotate' | 'scale'
+type Animation = 'accordion' | 'fade-in' | 'fade-in-slow' | 'rotate' | 'scale'
 
 type MotionProps = FramerMotionProps & {
   /**
@@ -25,6 +25,11 @@ const animationsMap: Record<Animation, AnimationProps> = {
     transition: { type: 'spring', duration: 0.2 }
   },
   'fade-in': {
+    initial: { opacity: 0 },
+    animate: { opacity: 1 },
+    transition: { type: 'spring', duration: 0.15 }
+  },
+  'fade-in-slow': {
     initial: { opacity: 0 },
     animate: { opacity: 1 },
     transition: { type: 'spring', duration: 0.5, delay: 1 }

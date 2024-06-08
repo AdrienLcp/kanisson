@@ -13,21 +13,21 @@ type OmittedUserFields =
   'status' |
   'updatedAt'
 
-type BaseAuthUser = Omit<User, OmittedUserFields>
+type BaseAuthenticatedUser = Omit<User, OmittedUserFields>
 
 // Force UserRole type for role field
-type PrismaAuthUser = BaseAuthUser & {
+type PrismaAuthenticatedUser = BaseAuthenticatedUser & {
   games: Game[]
   role: UserRole
   playlists: Playlist[]
   ratings: Rating[]
 }
 
-export type AuthUser = PrismaAuthUser & {
+export type AuthenticatedUser = PrismaAuthenticatedUser & {
   permissions: RolePermissions
 }
 
-export const AUTH_USER_SELECTED_FIELDS: Record<keyof PrismaAuthUser, true> = {
+export const AUTH_USER_SELECTED_FIELDS: Record<keyof PrismaAuthenticatedUser, true> = {
   avatar: true,
   createdAt: true,
   games: true,

@@ -5,7 +5,7 @@ import { classNames } from '@/helpers/styles'
 
 import './image.styles.sass'
 
-const DEFAULT_IMAGE_SIZE = 200
+const DEFAULT_IMAGE_SIZE = 52
 
 export const Image: React.FC<ImageProps> = ({ className, ...props }) => (
   <NextImage

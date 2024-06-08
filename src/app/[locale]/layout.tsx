@@ -4,10 +4,11 @@ import React from 'react'
 import { Body } from '@/app/body'
 import { Footer } from '@/app/footer'
 import { Header } from '@/app/header'
+import { Main } from '@/app/main'
 import { getCommonMetadata } from '@/app/metadata'
 import { Providers } from '@/app/providers'
-import { getAuthUser } from '@/auth/actions/get-auth-user'
-import { type Locale } from '@/i18n'
+import { getAuthenticatedUser } from '@/authentication/actions/get-authenticated-user'
+import { buildI18n, type Locale } from '@/i18n'
 import { getDictionary } from '@/i18n/server'
 
 import '@/styles/base.sass'
@@ -37,22 +38,26 @@ export const generateMetadata = async ({ params }: PageProps): Promise<Metadata>
 const RootLayout: React.FC<LayoutProps> = async ({ children, params }) => {
   const locale = params.locale
   const dictionary = await getDictionary(locale)
+  const i18n = buildI18n(dictionary, locale)
 
-  const authUser = await getAuthUser()
+  const authenticatedUser = await getAuthenticatedUser()
 
   return (
     <Providers
       dictionary={dictionary}
       locale={locale}
-      user={authUser}
+      authenticatedUser={authenticatedUser}
     >
       <html lang={locale}>
         <Body>
-          <Header authUser={authUser} />
+          <Header
+            authenticatedUser={authenticatedUser}
+            i18n={i18n}
+          />
 
-          <main>
+          <Main>
             {children}
-          </main>
+          </Main>
 
           <Footer />
         </Body>

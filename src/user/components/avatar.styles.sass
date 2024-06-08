@@ -1,0 +1,18 @@
+@import '@/styles/mixins'
+
+.avatar
+  @include flex-center
+  aspect-ratio: 1
+  border: var(--element-stroke, 0.125rem) solid hsl(var(--border))
+  border-radius: var(--radius-circular, 99px)
+  letter-spacing: 0
+  overflow: clip
+
+  &.small
+    width: var(--size-70, 0.96rem)
+
+  &.medium
+    width: var(--size-110, 1.94rem)
+  
+  &.large
+    width: var(--size-140, 3.36rem)

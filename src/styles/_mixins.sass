@@ -7,7 +7,7 @@
 @mixin color-transition
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke
   transition-timing-function: var(--timing, ease-in-out)
-  transition-duration: var(--transition-150, 0s)
+  transition-duration: var(--transition-150, 0)
 
 @mixin disabled
   opacity: 0.5
@@ -16,8 +16,8 @@
 
 @mixin focusable
   &:focus-visible
-    outline: var(--stroke-m, 0.125rem) solid hsl(var(--ring, 240 4.9% 83.9%))
-    outline-offset: var(--stroke-m, 0.125rem)
+    outline: var(--element-stroke, 0.125rem) solid hsl(var(--ring, 240 4.9% 83.9%))
+    outline-offset: var(--element-stroke, 0.125rem)
 
 @mixin fixed-center
   position: fixed

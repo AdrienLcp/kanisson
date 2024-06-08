@@ -1,0 +1,15 @@
+@import '@/styles/mixins'
+
+.auth-user-menu
+  max-width: min(95vw, 25ch)
+
+  &__trigger-button
+    @include color-transition
+    border-radius: var(--radius-circular, 99px)
+
+    @media (hover: hover)
+      &:hover
+        background-color: hsl(var(--accent, 240 3.7% 15.9%))
+
+    &:active
+      background-color: hsla(var(--accent, 240 3.7% 15.9%) / var(--active-alpha, 0.84))

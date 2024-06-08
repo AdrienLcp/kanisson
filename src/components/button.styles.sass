@@ -4,21 +4,21 @@
 .button
   @include color-transition
   @include focusable
-  @include label-medium
+  @include label-small
 
-  --button-size: var(--element-size, 1.94rem)
+  --button-size: var(--element-size, 1.62rem)
 
   align-items: center
-  border: var(--stroke-m, 0.0125rem) solid transparent
-  border-radius: var(--radius-xs, 0.25rem)
+  border: var(--element-stroke, 0.125rem) solid transparent
+  border-radius: var(--radius-xs, 2px)
   display: flex
   gap: var(--spacing-s, 0.45rem)
-  height: var(--button-size, 1.94rem)
+  height: var(--button-size, 1.62rem)
   padding-inline: var(--spacing-l, 0.68rem)
 
   &__icon
     aspect-ratio: 1
-    width: calc(var(--button-size, 1.94rem) / 2.75)
+    width: calc(var(--button-size, 1.62rem) / 2.75)
 
   &.icon-left
     padding-inline: var(--spacing-s, 0.45rem) var(--spacing-l, 0.68rem)
@@ -30,7 +30,7 @@
   &.icon-size
     justify-content: center
     padding: 0
-    width: var(--button-size, 1.94rem)
+    width: var(--button-size, 1.62rem)
 
   &.primary
     background-color: hsl(var(--primary, 0 0% 98%))
@@ -38,10 +38,10 @@
 
     @media (hover: hover)
       &:hover
-        background-color: hsla(var(--primary, 0 0% 98%) / var(--hover-alpha, 0.9))
+        background-color: hsla(var(--primary, 0 0% 98%) / var(--hover-alpha, 0.92))
 
     &:active
-      background-color: hsla(var(--primary, 0 0% 98%) / var(--active-alpha, 0.8))
+      background-color: hsla(var(--primary, 0 0% 98%) / var(--active-alpha, 0.84))
 
   &.outline
     border-color: hsl(var(--border, 240 5.9% 90%))
@@ -51,7 +51,7 @@
         background-color: hsl(var(--border, 240 5.9% 90%))
 
     &:active
-      background-color: hsla(var(--border, 240 5.9% 90%) / var(--active-alpha, 0.8))
+      background-color: hsla(var(--border, 240 5.9% 90%) / var(--active-alpha, 0.84))
 
   &.ghost
     color: hsl(var(--accent-foreground, 0 0% 98%))
@@ -61,7 +61,7 @@
         background-color: hsl(var(--accent, 240 3.7% 15.9%))
 
     &:active
-      background-color: hsla(var(--accent, 240 3.7% 15.9%) / var(--active-alpha, 0.8))
+      background-color: hsla(var(--accent, 240 3.7% 15.9%) / var(--active-alpha, 0.84))
 
   &.secondary
     background-color: hsl(var(--secondary, 240 3.7% 15.9%))
@@ -69,10 +69,10 @@
 
     @media (hover: hover)
       &:hover
-        background-color: hsla(var(--secondary, 240 3.7% 15.9%) / var(--hover-alpha, 0.9))
+        background-color: hsla(var(--secondary, 240 3.7% 15.9%) / var(--hover-alpha, 0.92))
 
     &:active
-      background-color: hsla(var(--secondary, 240 3.7% 15.9%) / var(--active-alpha, 0.8))
+      background-color: hsla(var(--secondary, 240 3.7% 15.9%) / var(--active-alpha, 0.84))
 
   &.destructive
     background-color: hsl(var(--destructive, 0 84.2% 60.2%))
@@ -80,10 +80,10 @@
 
     @media (hover: hover)
       &:hover
-        background-color: hsla(var(--destructive, 0 84.2% 60.2%) / var(--hover-alpha, 0.9))
+        background-color: hsla(var(--destructive, 0 84.2% 60.2%) / var(--hover-alpha, 0.92))
 
     &:active
-      background-color: hsla(var(--destructive, 0 84.2% 60.2%) / var(--active-alpha, 0.8))
+      background-color: hsla(var(--destructive, 0 84.2% 60.2%) / var(--active-alpha, 0.84))
 
   &:disabled
     @include disabled

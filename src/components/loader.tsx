@@ -3,6 +3,7 @@ import React from 'react'
 
 import { Motion } from '@/components/motion'
 import type { ComponentSizes } from '@/config/ui'
+import type { ResponsiveSize } from '@/helpers/styles'
 
 import './loader.styles.sass'
 
@@ -25,6 +26,7 @@ type LoaderProps = {
 
   /**
    * Visual style variant of the loader.
+   * @values 'circle'
    * @default 'circle'
    */
   variant?: LoaderVariant
@@ -34,7 +36,7 @@ type LoaderVariantProps = Omit<LoaderProps, 'size' | 'variant'> & {
   size: LoaderSize
 }
 
-const sizes: Record<LoaderSize, string> = {
+const sizes: Record<LoaderSize, ResponsiveSize> = {
   small: '1rem',
   medium: '3rem',
   large: '6rem'
