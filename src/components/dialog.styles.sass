@@ -1,8 +1,7 @@
 .dialog
-  --dialog-radius: var(--radius-s, 5px)
+  --dropdown-radius: var(--radius-s, 5px)
   background-color: hsl(var(--secondary, 240 10% 3.9%))
-  border-radius: var(--dialog-radius, 5px)
-  padding: var(--spacing-m, 0.55rem) var(--spacing-xl, 0.82rem)
+  border-radius: var(--dropdown-radius, 5px)
 
-  &__wrapper
-    border-radius: var(--dialog-radius, 5px)
+  &__popover
+    border-radius: calc(var(--dropdown-radius, 5px) + var(--element-stroke, 2px))

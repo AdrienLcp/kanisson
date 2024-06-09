@@ -2,34 +2,27 @@
 @import '@/styles/typography'
 
 .authenticated-user-menu
-  --menu-max-width: min(95vw, 40ch)
+  --dropdown-max-width: min(95vw, 40ch)
   display: flex
   flex-direction: column
-  gap: var(--spacing-m, 0.55rem)
-  max-width: var(--menu-max-width)
+  max-width: var(--dropdown-max-width)
 
   &__trigger-button
-    @include color-transition
-    --background-color: var(--accent, 240 3.7% 15.9%)
+    @include ghost-clickable
     border-radius: var(--radius-circular, 99px)
-
-    @media (hover: hover)
-      &:hover
-        background-color: hsl(var(--background-color, 240 3.7% 15.9%))
-
-    &:active
-      background-color: hsla(var(--background-color, 240 3.7% 15.9%) / var(--active-alpha, 0.84))
 
   &__heading
     align-items: center
     display: flex
-    gap: 2ch
+    gap: 5ch
     justify-content: space-between
+    padding: var(--spacing-m, 0.55rem) var(--spacing-xl, 0.82rem)
 
     &__label
-      @include body-medium
+      @include body-small
 
     &__username
-      @include label-medium
+      @include label-small
       @include text-ellipsis
+      max-width: 20ch
       flex: 1

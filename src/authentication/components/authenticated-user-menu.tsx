@@ -8,15 +8,16 @@ import type { I18n } from '@/i18n'
 import { Avatar } from '@/user/components/avatar'
 
 import './authenticated-user-menu.styles.sass'
+import { AuthenticatedUserMenuActions } from '@/authentication/components/authenticated-user-menu-actions'
 
-type AuthUserMenuProps = {
+type AuthenticatedUserMenuProps = {
   authenticatedUser: AuthenticatedUser
   i18n: I18n
 }
 
-type AuthUserMenuTriggerProps = Pick<AuthUserMenuProps, 'authenticatedUser'>
+type AuthenticatedUserMenuTriggerProps = Pick<AuthenticatedUserMenuProps, 'authenticatedUser'>
 
-const AuthenticatedUserMenuTrigger: React.FC<AuthUserMenuTriggerProps> = ({ authenticatedUser }) => (
+const AuthenticatedUserMenuTrigger: React.FC<AuthenticatedUserMenuTriggerProps> = ({ authenticatedUser }) => (
   <Pressable className='authenticated-user-menu__trigger-button'>
     <Avatar user={authenticatedUser} />
   </Pressable>
@@ -34,7 +35,7 @@ const getAuthenticatedUsername = (authenticatedUser: AuthenticatedUser) => {
   return null
 }
 
-export const AuthenticatedUserMenu: React.FC<AuthUserMenuProps> = ({ authenticatedUser, i18n }) => {
+export const AuthenticatedUserMenu: React.FC<AuthenticatedUserMenuProps> = ({ authenticatedUser, i18n }) => {
   const DialogTrigger = <AuthenticatedUserMenuTrigger authenticatedUser={authenticatedUser} />
   const username = getAuthenticatedUsername(authenticatedUser)
 
@@ -56,9 +57,7 @@ export const AuthenticatedUserMenu: React.FC<AuthUserMenuProps> = ({ authenticat
         </div>
       )}
 
-      <ul className='authenticated-user-menu__options-list'>
-
-      </ul>
+      <AuthenticatedUserMenuActions />
     </Dialog>
   )
 }

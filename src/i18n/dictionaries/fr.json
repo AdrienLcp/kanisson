@@ -1,10 +1,12 @@
 {
   "authentication": {
     "user-menu": {
-      "user": "Utilisateur :",
+      "menu-aria-label": "Menu de l'utilisateur",
       "options": {
-        "logout": "Logout"
-      }
+        "logout": "Déconnexion"
+      },
+      "user": "Utilisateur :",
+      "trigger-aria-label": "Ouvrir le menu utilisateur"
     }
   },
   "components": {
@@ -36,5 +38,22 @@
     "name": "Kanisson - Site de blind test",
     "short-name": "Kanisson",
     "short-description": "Site de blind test"
+  },
+  "routes": {
+    "create": {
+      "link-label": "Créer"
+    },
+    "home": {
+      "link-label": "Accueil"
+    },
+    "profile": {
+      "link-label": "Profil"
+    },
+    "search": {
+      "link-label": "Rechercher"
+    },
+    "settings": {
+      "link-label": "Paramètres"
+    }
   }
 }

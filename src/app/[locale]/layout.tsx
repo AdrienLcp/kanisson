@@ -10,9 +10,9 @@ import { Providers } from '@/app/providers'
 import { getAuthenticatedUser } from '@/authentication/actions/get-authenticated-user'
 import { buildI18n, type Locale } from '@/i18n'
 import { getDictionary } from '@/i18n/server'
+import { Navbar } from '@/routes/components/navbar'
 
 import '@/styles/base.sass'
-import { Button } from '@/components/button'
 
 type CommonParams = {
   locale: Locale
@@ -24,9 +24,6 @@ type Params <T> = T extends null
 
 type PageParams <T> = {
   params: Params<T>
-  searchParams: {
-    [key: string]: string | string[] | undefined
-  }
 }
 
 export type PageProps <T = null> = Readonly<PageParams<T>>
@@ -37,11 +34,11 @@ export const generateMetadata = async ({ params }: PageProps): Promise<Metadata>
 }
 
 const RootLayout: React.FC<LayoutProps> = async ({ children, params }) => {
+  const authenticatedUser = await getAuthenticatedUser()
+
   const locale = params.locale
   const dictionary = await getDictionary(locale)
   const i18n = buildI18n(dictionary, locale)
-
-  const authenticatedUser = await getAuthenticatedUser()
 
   return (
     <Providers
@@ -57,11 +54,12 @@ const RootLayout: React.FC<LayoutProps> = async ({ children, params }) => {
           />
 
           <Main>
-            <Button>test</Button>
             {children}
           </Main>
 
           <Footer />
+
+          <Navbar />
         </Body>
       </html>
     </Providers>

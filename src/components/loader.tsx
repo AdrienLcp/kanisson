@@ -2,8 +2,8 @@ import { LoaderCircleIcon } from 'lucide-react'
 import React from 'react'
 
 import { Motion } from '@/components/motion'
-import type { ComponentSizes } from '@/config/ui'
 import type { ResponsiveSize } from '@/helpers/styles'
+import type { ComponentSizes } from '@/helpers/ui'
 
 import './loader.styles.sass'
 

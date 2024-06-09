@@ -1,10 +1,12 @@
 {
   "authentication": {
     "user-menu": {
-      "user": "User :",
+      "menu-aria-label": "User menu",
       "options": {
         "logout": "Logout"
-      }
+      },
+      "user": "User :",
+      "trigger-aria-label": "Open user menu"
     }
   },
   "components": {
@@ -36,5 +38,22 @@
     "name": "Kanisson - Blind test games",
     "short-name": "Kanisson",
     "short-description": "Blind test games"
+  },
+  "routes": {
+    "create": {
+      "link-label": "Create"
+    },
+    "home": {
+      "link-label": "Home"
+    },
+    "profile": {
+      "link-label": "Profile"
+    },
+    "search": {
+      "link-label": "Search"
+    },
+    "settings": {
+      "link-label": "Settings"
+    }
   }
 }

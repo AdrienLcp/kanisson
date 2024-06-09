@@ -9,6 +9,10 @@
 @import '@/styles/mixins.sass'
 @import '@/styles/scrollbar.sass'
 
+::selection
+  background-color: hsl(var(--primary, 0 0% 98%))
+  color: hsl(var(--primary-foreground, 240 5.9% 10%))
+
 html
   -moz-osx-font-smoothing: grayscale
   -webkit-font-smoothing: antialiased
@@ -24,21 +28,30 @@ body
   @include body-medium
   background-color: hsl(var(--background, 240 10% 3.9%))
   color: hsl(var(--foreground, 0 0% 98%))
-  display: flex
-  flex-direction: column
+  display: grid
+  grid-template-areas: 'header' 'main' 'footer'
+  grid-template-columns: 1fr
+  grid-template-rows: auto 1fr auto
   min-height: 100svh
 
 main
-  flex: 1
+  grid-area: main
   margin-inline: auto
+  padding-block: var(--layout-spacing-m, 1.94rem)
   width: min(1160px, 100% - var(--layout-spacing-m, 1.94rem))
 
 h1, h2, h3, h4, h5, h6
   @include title-medium
 
-::selection
-  background-color: hsl(var(--primary, 0 0% 98%))
-  color: hsl(var(--primary-foreground, 240 5.9% 10%))
-
 input, button, textarea, select
   @include focusable
+
+@media (width > 991px)
+  body
+    grid-template-areas: 'side-bar header' 'side-bar main' 'side-bar footer'
+    grid-template-columns: auto 1fr
+    grid-template-rows: auto 1fr auto
+    padding-inline-start: var(--side-bar-width, 12rem)
+
+  main
+    padding-block: calc(var(--layout-spacing-m, 1.94rem) + var(--header-height, 4.55rem)) var(--layout-spacing-m, 1.94rem)

@@ -1,0 +1,15 @@
+.side-bar
+  background-color: hsl(var(--background, 240 10% 3.9%))
+  border-right: var(--element-stroke, 2px) solid hsl(var(--border, 240 3.7% 15.9%))
+  grid-area: side-bar
+  height: 100vsh
+  inset: 0
+  overflow: hidden
+  position: fixed
+  transition-duration: var(--transition-150, 0)
+  transition-property: width
+  transition-timing-function: var(--timing, ease-in-out)
+  width: calc(var(--side-bar-width, 12rem) / 4)
+
+  &:hover
+    width: var(--side-bar-width, 12rem)

@@ -1,9 +1,7 @@
-
 import prisma from '@/lib/prisma'
-import { isValidUserRole, PUBLIC_USER_SELECTED_FIELDS, type UserRole, type User } from '@/user'
-import { getUserPermissions } from '@/user/permissions'
+import { getValidRole, type PublicUser, PUBLIC_USER_SELECTED_FIELDS, type UserRole } from '@/user'
 
-export const getUserById = async (id: string): Promise<User | null> => {
+export const getUserById = async (id: string): Promise<PublicUser | null> => {
   try {
     const user = await prisma.user.findUnique({
       where: { id },
@@ -14,21 +12,16 @@ export const getUserById = async (id: string): Promise<User | null> => {
       return null
     }
 
-    const userRole: UserRole = isValidUserRole(user.role)
-      ? user.role
-      : 'user'
+    const userRole: UserRole = getValidRole(user.role)
 
-    const publicUser: User = {
+    const publicUser: PublicUser = {
+      avatar: user.avatar,
       id: user.id,
-      email: user.email,
-      name: user.name,
-      image: user.image,
       pseudo: user.pseudo,
-      status: user.status,
       role: userRole,
-      permissions: getUserPermissions(userRole),
       createdAt: user.createdAt,
-      updatedAt: user.updatedAt
+      games: user.games,
+      playlists: user.playlists
     }
 
     return publicUser

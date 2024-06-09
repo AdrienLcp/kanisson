@@ -10,7 +10,7 @@ export const LoginButton: React.FC = () => (
   <div className='login-button'>
     <Button
       Icon={UserIcon}
-      onClick={async () => {
+      onPress={async () => {
         await signIn()
       }}
       variant='primary'

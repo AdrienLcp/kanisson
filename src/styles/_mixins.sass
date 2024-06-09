@@ -5,9 +5,9 @@
   transform: translate(-50%, -50%)
 
 @mixin color-transition
+  transition-duration: var(--transition-150, 0)
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke
   transition-timing-function: var(--timing, ease-in-out)
-  transition-duration: var(--transition-150, 0)
 
 @mixin disabled
   opacity: 0.5
@@ -16,8 +16,8 @@
 
 @mixin focusable
   &:focus-visible
-    outline: var(--element-stroke, 0.125rem) solid hsl(var(--ring, 240 4.9% 83.9%))
-    outline-offset: var(--element-stroke, 0.125rem)
+    outline: var(--element-stroke, 2px) solid hsl(var(--ring, 240 4.9% 83.9%))
+    outline-offset: var(--element-stroke, 2px)
 
 @mixin fixed-center
   position: fixed
@@ -35,6 +35,16 @@
   inset: 0
   width: 100vw
   height: 100svh
+
+@mixin ghost-clickable
+  @include color-transition
+
+  @media (hover: hover)
+    &:hover
+      background-color: hsl(var(--foreground, 240 3.7% 15.9%) / 0.08)
+
+  &:active
+    background-color: hsla(var(--foreground, 240 3.7% 15.9%) / 0.16)
 
 @mixin text-ellipsis
   white-space: nowrap

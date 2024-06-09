@@ -1,5 +1,3 @@
-'use client'
-
 import React from 'react'
 
 import type { PageProps } from '@/app/[locale]/layout'

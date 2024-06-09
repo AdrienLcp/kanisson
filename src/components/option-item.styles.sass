@@ -1,0 +1,30 @@
+@import '@/styles/mixins'
+@import '@/styles/typography'
+
+.option-item
+  align-items: center
+  border-radius: var(--radius-s, 5px)
+  display: flex
+  gap: var(--spacing-l, 0.68rem)
+  justify-content: space-between
+  padding: var(--spacing-m, 0.55rem) var(--spacing-xl, 0.82rem)
+
+  &:hover
+    @include ghost-clickable
+    cursor: pointer
+
+  &__left-box
+    display: flex
+    align-items: center
+    gap: var(--spacing-m, 0.55rem)
+    
+    &__label
+      @include label-medium
+      @include text-ellipsis
+      max-width: 20ch
+
+  &__right-box
+    @include flex-center
+    aspect-ratio: 1
+    height: 1rem
+

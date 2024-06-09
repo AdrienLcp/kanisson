@@ -5,9 +5,9 @@ import { UserIcon } from 'lucide-react'
 import React from 'react'
 
 import { Image } from '@/components/image'
-import type { ComponentSizes } from '@/config/ui'
 import { isValidString } from '@/helpers/strings'
 import { type ResponsiveSize, classNames } from '@/helpers/styles'
+import type { ComponentSizes } from '@/helpers/ui'
 import type { I18n } from '@/i18n'
 import { useI18n } from '@/i18n/client'
 
