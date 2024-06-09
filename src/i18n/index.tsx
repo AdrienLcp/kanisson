@@ -74,7 +74,7 @@ export const getRedirectPathname = (pathname: string | null, locale: Locale) => 
 
     return isHome
       ? '/'
-      : segments.splice(1, 1).join('/')
+      : `/${segments.splice(2).join('/')}`
   }
 
   const segments = pathname.split('/')

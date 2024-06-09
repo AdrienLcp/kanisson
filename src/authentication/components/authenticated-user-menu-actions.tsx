@@ -1,17 +1,20 @@
 'use client'
 
+import { LogOutIcon, MailIcon, SettingsIcon, UserIcon } from 'lucide-react'
+import type { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime'
 import React from 'react'
 import { Menu, MenuItem } from 'react-aria-components'
 
-import { useAuth } from '@/authentication/client'
+import { useAuthentication } from '@/authentication/client'
 import { type Option, OptionItem } from '@/components/option-item'
 import type { I18n } from '@/i18n'
 import { useI18n } from '@/i18n/client'
 
 import './authenticated-user-menu-actions.styles.sass'
-import { LogOutIcon, MailIcon, SettingsIcon, UserIcon } from 'lucide-react'
+import { useRouter } from 'next/navigation'
+import { ROUTES } from '@/routes'
 
-const getAuthenticatedUserMenuActions = (i18n: I18n, logout: () => void): Option[] => {
+const getAuthenticatedUserMenuActions = (i18n: I18n, logout: () => void, router: AppRouterInstance): Option[] => {
   return [
     {
       key: 'profile',
@@ -28,7 +31,7 @@ const getAuthenticatedUserMenuActions = (i18n: I18n, logout: () => void): Option
     {
       key: 'params',
       label: 'Paramètres',
-      onClick: () => console.log('params'),
+      onClick: () => router.push(ROUTES.settings),
       Icon: SettingsIcon
     },
     {
@@ -47,10 +50,12 @@ const handleItemClick = (action: Option) => {
 }
 
 export const AuthenticatedUserMenuActions: React.FC = () => {
-  const { logout } = useAuth()
+  const { logout } = useAuthentication()
   const { i18n } = useI18n()
 
-  const authenticatedUserMenuActions = getAuthenticatedUserMenuActions(i18n, logout)
+  const router = useRouter()
+
+  const authenticatedUserMenuActions = getAuthenticatedUserMenuActions(i18n, logout, router)
 
   return (
     <Menu
@@ -65,9 +70,10 @@ export const AuthenticatedUserMenuActions: React.FC = () => {
         >
           <OptionItem
             Icon={action.Icon}
-            label={action.label}
             isDisabled={action.isDisabled}
             isSelected={action.isSelected}
+            key={action.key}
+            label={action.label}
           />
         </MenuItem>
       ))}

@@ -3,7 +3,7 @@
 import { type AnimationProps, motion, type MotionProps as FramerMotionProps } from 'framer-motion'
 import React from 'react'
 
-type Animation = 'accordion' | 'fade-in' | 'fade-in-slow' | 'rotate' | 'scale'
+type Animation = 'accordion' | 'fade-in' | 'fade-in-slow' | 'infinite-rotate' | 'scale'
 
 type MotionProps = FramerMotionProps & {
   /**
@@ -44,7 +44,7 @@ const animationsMap: Record<Animation, AnimationProps> = {
     animate: { opacity: 1 },
     transition: { type: 'spring', duration: 1, delay: 0.25 }
   },
-  'rotate': {
+  'infinite-rotate': {
     animate: { rotate: 360 },
     transition: { type: 'spring', duration: 1, repeat: Infinity }
   },

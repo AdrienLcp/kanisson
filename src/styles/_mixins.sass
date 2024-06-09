@@ -15,9 +15,11 @@
   user-select: none
 
 @mixin focusable
+  // &:focus
+  //   outline: none !important
   &:focus-visible
-    outline: var(--element-stroke, 2px) solid hsl(var(--ring, 240 4.9% 83.9%))
-    outline-offset: var(--element-stroke, 2px)
+    outline: var(--element-stroke, 2px) solid hsl(var(--ring, 240 4.9% 83.9%)) !important
+    outline-offset: var(--element-stroke, 2px) !important
 
 @mixin fixed-center
   position: fixed

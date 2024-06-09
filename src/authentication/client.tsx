@@ -46,18 +46,18 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, authentica
   )
 }
 
-export const useAuth = () => useProvidedContext(AuthenticationContext, 'Authentication')
+export const useAuthentication = () => useProvidedContext(AuthenticationContext, 'Authentication')
 
 type UserHookValue = {
-  user: AuthenticatedUser
+  authUser: AuthenticatedUser
 }
 
 export const useUser = (): UserHookValue => {
-  const { authentication } = useAuth()
+  const { authentication } = useAuthentication()
 
   if (authentication.status !== 'authenticated') {
     throw new Error('User needs to be authenticated to use this hook')
   }
 
-  return { user: authentication.authenticatedUser }
+  return { authUser: authentication.authenticatedUser }
 }

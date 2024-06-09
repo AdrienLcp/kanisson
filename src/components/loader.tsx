@@ -43,7 +43,7 @@ const sizes: Record<LoaderSize, ResponsiveSize> = {
 }
 
 const CircleLoader: React.FC<LoaderVariantProps> = ({ size, className }) => (
-  <Motion animation='rotate' className='loader__circle'>
+  <Motion animation='infinite-rotate' className='loader__circle'>
     <LoaderCircleIcon className={className} size={sizes[size]} />
   </Motion>
 )

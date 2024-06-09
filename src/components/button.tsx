@@ -55,7 +55,7 @@ const getButtonIcon = (Icon?: LucideIcon, isLoading?: boolean) => {
 
   if (isLoading === true) {
     return (
-      <Motion animation='rotate'>
+      <Motion animation='infinite-rotate'>
         <LoaderCircleIcon className='button__icon' size={20} />
       </Motion>
     )

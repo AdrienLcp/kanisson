@@ -16,15 +16,20 @@
     width: clamp(150px, 90vw, 800px)
 
     &__item
+      @include color-transition
       @include flex-center
-      @include ghost-clickable
       aspect-ratio: 1
       border-bottom: var(--element-stroke, 2px) solid transparent
-      color: hsl(var(--foreground-light, 0 0% 82%))
+      color: hsl(var(--foreground-light, 0 0% 68%))
       height: var(--bottom-bar-height, 4.55rem)
       width: 100%
       transform: translateY(-2px)
 
+      &:not(.selected):hover
+        color: hsl(var(--foreground, 0 0% 98%))
+
+      &:not(.selected):active
+        color: hsl(var(--muted, 240 3.7% 15.9%))
+
       &.selected
         border-bottom-color: hsl(var(--ring, 240 4.9% 83.9%))
-        color: hsl(var(--foreground, 0 0% 98%))

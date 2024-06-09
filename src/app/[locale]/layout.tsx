@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import React from 'react'
 
-import { Body } from '@/app/body'
+import { Container } from '@/app/container'
 import { Footer } from '@/app/footer'
 import { Header } from '@/app/header'
 import { Main } from '@/app/main'
@@ -46,22 +46,20 @@ const RootLayout: React.FC<LayoutProps> = async ({ children, params }) => {
       locale={locale}
       authenticatedUser={authenticatedUser}
     >
-      <html lang={locale}>
-        <Body>
-          <Header
-            authenticatedUser={authenticatedUser}
-            i18n={i18n}
-          />
+      <Container locale={locale}>
+        <Header
+          authenticatedUser={authenticatedUser}
+          i18n={i18n}
+        />
 
-          <Main>
-            {children}
-          </Main>
+        <Main>
+          {children}
+        </Main>
 
-          <Footer />
+        <Footer />
 
-          <Navbar />
-        </Body>
-      </html>
+        <Navbar />
+      </Container>
     </Providers>
   )
 }
