@@ -1,6 +1,7 @@
 import React from 'react'
 
 import type { AuthenticatedUser } from '@/authentication'
+import { AuthenticatedUserMenuActions } from '@/authentication/components/authenticated-user-menu-actions'
 import { Dialog } from '@/components/dialog'
 import { Pressable } from '@/components/pressable'
 import { isValidString } from '@/helpers/strings'
@@ -8,7 +9,6 @@ import type { I18n } from '@/i18n'
 import { Avatar } from '@/user/components/avatar'
 
 import './authenticated-user-menu.styles.sass'
-import { AuthenticatedUserMenuActions } from '@/authentication/components/authenticated-user-menu-actions'
 
 type AuthenticatedUserMenuProps = {
   authenticatedUser: AuthenticatedUser
@@ -36,14 +36,14 @@ const getAuthenticatedUsername = (authenticatedUser: AuthenticatedUser) => {
 }
 
 export const AuthenticatedUserMenu: React.FC<AuthenticatedUserMenuProps> = ({ authenticatedUser, i18n }) => {
-  const DialogTrigger = <AuthenticatedUserMenuTrigger authenticatedUser={authenticatedUser} />
+  const AuthenticatedUserMenuDialogTrigger = <AuthenticatedUserMenuTrigger authenticatedUser={authenticatedUser} />
   const username = getAuthenticatedUsername(authenticatedUser)
 
   return (
     <Dialog
       className='authenticated-user-menu'
       placement='bottom right'
-      Trigger={DialogTrigger}
+      Trigger={AuthenticatedUserMenuDialogTrigger}
     >
       {username !== null && (
         <div className='authenticated-user-menu__heading'>

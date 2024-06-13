@@ -21,12 +21,13 @@
       aspect-ratio: 1
       border-bottom: var(--element-stroke, 2px) solid transparent
       color: hsl(var(--foreground-light, 0 0% 68%))
-      height: var(--bottom-bar-height, 4.55rem)
+      height: calc(var(--bottom-bar-height, 4.55rem) - var(--element-stroke, 2px))
+      min-width: calc(100% / var(--bottom-bar-item-count, 4))
       width: 100%
-      transform: translateY(-2px)
 
-      &:not(.selected):hover
-        color: hsl(var(--foreground, 0 0% 98%))
+      @media (hover: hover)
+        &:not(.selected):hover
+          color: hsl(var(--foreground, 0 0% 98%))
 
       &:not(.selected):active
         color: hsl(var(--muted, 240 3.7% 15.9%))

@@ -41,19 +41,24 @@
   },
   "routes": {
     "create": {
-      "link-label": "Créer"
+      "link-label": "Créer",
+      "link-aria-label": "Créer un blind test"
     },
     "home": {
-      "link-label": "Accueil"
+      "link-label": "Accueil",
+      "link-aria-label": "Retour à l'accueil"
     },
     "profile": {
-      "link-label": "Profil"
+      "link-label": "Profil",
+      "link-aria-label": "Accéder à votre profil"
     },
     "search": {
-      "link-label": "Rechercher"
+      "link-label": "Rechercher",
+      "link-aria-label": "Rechercher un blind test"
     },
     "settings": {
-      "link-label": "Paramètres"
+      "link-label": "Paramètres",
+      "link-aria-label": "Accéder à vos paramètres"
     }
   }
 }

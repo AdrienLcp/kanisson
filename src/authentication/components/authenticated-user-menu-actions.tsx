@@ -2,51 +2,46 @@
 
 import { LogOutIcon, MailIcon, SettingsIcon, UserIcon } from 'lucide-react'
 import type { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime'
+import { useRouter } from 'next/navigation'
 import React from 'react'
-import { Menu, MenuItem } from 'react-aria-components'
 
 import { useAuthentication } from '@/authentication/client'
 import { type Option, OptionItem } from '@/components/option-item'
 import type { I18n } from '@/i18n'
 import { useI18n } from '@/i18n/client'
-
-import './authenticated-user-menu-actions.styles.sass'
-import { useRouter } from 'next/navigation'
 import { ROUTES } from '@/routes'
 
-const getAuthenticatedUserMenuActions = (i18n: I18n, logout: () => void, router: AppRouterInstance): Option[] => {
-  return [
+import './authenticated-user-menu-actions.styles.sass'
+
+const getAuthenticatedUserMenuActions = (i18n: I18n, logout: () => void, router: AppRouterInstance) => {
+  const authenticatedUserMenuActions: Option[] = [
     {
-      key: 'profile',
+      id: 'profile',
       label: 'Mon profil',
       onClick: () => console.log('profile'),
       Icon: UserIcon
     },
     {
-      key: 'contact',
+      id: 'contact',
       label: 'Contact',
       onClick: () => console.log('contact'),
       Icon: MailIcon
     },
     {
-      key: 'params',
+      id: 'params',
       label: 'Paramètres',
       onClick: () => router.push(ROUTES.settings),
       Icon: SettingsIcon
     },
     {
-      key: 'logout',
+      id: 'logout',
       label: i18n('authentication.user-menu.options.logout'),
       Icon: LogOutIcon,
       onClick: logout
     }
   ]
-}
 
-const handleItemClick = (action: Option) => {
-  if (typeof action.onClick === 'function') {
-    action.onClick(action)
-  }
+  return authenticatedUserMenuActions
 }
 
 export const AuthenticatedUserMenuActions: React.FC = () => {
@@ -58,25 +53,22 @@ export const AuthenticatedUserMenuActions: React.FC = () => {
   const authenticatedUserMenuActions = getAuthenticatedUserMenuActions(i18n, logout, router)
 
   return (
-    <Menu
-      className='authenticated-user-menu-actions'
-      aria-label={i18n('authentication.user-menu.menu-aria-label')}
-    >
-      {authenticatedUserMenuActions.map(action => (
-        <MenuItem
-          key={action.key}
-          onAction={() => handleItemClick(action)}
+    <ul className='authenticated-user-menu-actions'>
+      {authenticatedUserMenuActions.map((action) => (
+        <li
           className='authenticated-user-menu-actions__item'
+          key={action.id}
         >
           <OptionItem
             Icon={action.Icon}
             isDisabled={action.isDisabled}
             isSelected={action.isSelected}
-            key={action.key}
+            id={action.id}
+            onClick={action.onClick}
             label={action.label}
           />
-        </MenuItem>
+        </li>
       ))}
-    </Menu>
+    </ul>
   )
 }

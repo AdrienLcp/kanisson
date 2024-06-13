@@ -1,5 +1,7 @@
 import type { ButtonRenderProps, ListBoxRenderProps, PopoverRenderProps } from 'react-aria-components'
 
+export type Style = Record<string, string | number>
+
 export type ResponsiveSize = `${number}rem`
 
 export type ClassNames = Array<string | undefined | null | false>

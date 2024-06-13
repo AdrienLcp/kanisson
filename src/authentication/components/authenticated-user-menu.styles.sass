@@ -2,10 +2,9 @@
 @import '@/styles/typography'
 
 .authenticated-user-menu
-  --dropdown-max-width: min(95vw, 40ch)
   display: flex
   flex-direction: column
-  max-width: var(--dropdown-max-width)
+  max-width: min(95vw, 40ch)
 
   &__trigger-button
     @include ghost-clickable

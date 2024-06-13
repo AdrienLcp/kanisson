@@ -1,6 +1,6 @@
 import { CheckIcon, type LucideIcon } from 'lucide-react'
 import React from 'react'
-import type { Key } from 'react-aria-components'
+import { Separator, type Key } from 'react-aria-components'
 
 import { Pressable } from '@/components/pressable'
 import { classNames } from '@/helpers/styles'
@@ -36,7 +36,7 @@ export type Option <T extends Key = string> = {
   /**
    * The key of the option item.
    */
-  key: T
+  id: T
 
   /**
    * The label to display on the right side of the option item.
@@ -49,36 +49,53 @@ export type Option <T extends Key = string> = {
   onClick?: (option: Option<T>) => void
 }
 
-type OptionItemProps = Omit<Option, 'isPrefixedByDivider' | 'key' | 'onClick'>
+const handleOptionItemClick = (option: Option) => {
+  if (typeof option.onClick === 'function') {
+    option.onClick(option)
+  }
+}
 
 /**
  * The option item component. Need to be used inside a menu component who handle options user's choice.
  */
-export const OptionItem: React.FC<OptionItemProps> = ({
+export const OptionItem: React.FC<Option> = ({
   className,
   Icon,
   isDisabled,
+  isPrefixedByDivider,
   isSelected,
-  label
-}) => (
-  <Pressable
-    className={classNames(
-      'option-item',
-      Boolean(isSelected) && 'selected',
-      className
-    )}
-    isDisabled={isDisabled}
-  >
-    <span className='option-item__left-box'>
-      {Icon !== undefined && <Icon size='0.75rem' />}
+  id,
+  label,
+  onClick
+}) => {
+  if (isPrefixedByDivider) {
+    return <Separator />
+  }
 
-      <span className='option-item__left-box__label'>
-        {label}
+  return (
+    <Pressable
+      className={classNames(
+        'option-item',
+        Boolean(isSelected) && 'selected',
+        Boolean(isDisabled) && 'disabled',
+        className
+      )}
+      isDisabled={isDisabled}
+      onPress={() => {
+        handleOptionItemClick({ className, Icon, isDisabled, isPrefixedByDivider, isSelected, id, label, onClick })
+      }}
+    >
+      <span className='option-item__left-box'>
+        {Icon !== undefined && <Icon size='0.75rem' />}
+
+        <span className='option-item__left-box__label'>
+          {label}
+        </span>
       </span>
-    </span>
 
-    <div className='option-item__right-box'>
-      {Boolean(isSelected) && <CheckIcon size='1.5rem' />}
-    </div>
-  </Pressable>
-)
+      <div className='option-item__right-box'>
+        {Boolean(isSelected) && <CheckIcon size='1.5rem' />}
+      </div>
+    </Pressable>
+  )
+}

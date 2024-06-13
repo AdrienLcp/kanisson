@@ -41,19 +41,24 @@
   },
   "routes": {
     "create": {
-      "link-label": "Create"
+      "link-label": "Create",
+      "link-aria-label": "Create a new game"
     },
     "home": {
-      "link-label": "Home"
+      "link-label": "Home",
+      "link-aria-label": "Go to the home page"
     },
     "profile": {
-      "link-label": "Profile"
+      "link-label": "Profile",
+      "link-aria-label": "Go to your profile"
     },
     "search": {
-      "link-label": "Search"
+      "link-label": "Search",
+      "link-aria-label": "Search for a game"
     },
     "settings": {
-      "link-label": "Settings"
+      "link-label": "Settings",
+      "link-aria-label": "Go to the settings"
     }
   }
 }
