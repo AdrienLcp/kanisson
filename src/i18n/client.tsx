@@ -1,10 +1,11 @@
 'use client'
 
+import { usePathname, useRouter } from 'next/navigation'
 import React from 'react'
 
 import { useProvidedContext } from '@/helpers/contexts'
-import { type Dictionary, type Locale, type I18n, isLocale, buildI18n, getRedirectPathname } from '@/i18n'
-import { usePathname, useRouter } from 'next/navigation'
+import { isValidString } from '@/helpers/strings'
+import { buildI18n, DEFAULT_LOCALE, type Dictionary, type I18n, isLocale, isPathnameMissingLocale, type Locale } from '@/i18n'
 
 type I18nContextValue = {
   changeLocale: (newLocale: Locale) => void
@@ -17,6 +18,31 @@ export const I18nContext = React.createContext<I18nContextValue | null>(null)
 export type I18nProviderProps = React.PropsWithChildren & {
   dictionary: Dictionary
   locale: Locale
+}
+
+const getRedirectPathname = (pathname: string | null, locale: Locale) => {
+  if (!isValidString(pathname)) {
+    return '/'
+  }
+
+  if (isPathnameMissingLocale(pathname)) {
+    return locale === DEFAULT_LOCALE
+      ? pathname
+      : `/${locale}${pathname}`
+  }
+
+  if (locale === DEFAULT_LOCALE) {
+    const segments = pathname.split('/')
+    const isHome = segments.length === 2
+
+    return isHome
+      ? '/'
+      : `/${segments.splice(2).join('/')}`
+  }
+
+  const segments = pathname.split('/')
+  segments[1] = locale
+  return segments.join('/')
 }
 
 export const I18nProvider: React.FC<I18nProviderProps> = ({ children, dictionary, locale }) => {

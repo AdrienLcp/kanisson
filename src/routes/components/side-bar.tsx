@@ -3,8 +3,9 @@
 import React from 'react'
 
 import { Logo } from '@/components/logo'
+import { Link } from '@/i18n/components/link'
 import { useI18n } from '@/i18n/client'
-import { getCommonNavbarItems } from '@/routes'
+import { getCommonNavbarItems, ROUTES } from '@/routes'
 
 import './side-bar.styles.sass'
 
@@ -15,9 +16,12 @@ export const SideBar: React.FC = () => {
 
   return (
     <div className='side-bar'>
-      <div>
-        <Logo />
-      </div>
+      <Link
+        className='side-bar__heading'
+        href={ROUTES.home}
+      >
+        <Logo className='side-bar__heading__logo' />
+      </Link>
 
       <nav>
         <ul>

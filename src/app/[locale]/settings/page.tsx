@@ -4,48 +4,41 @@ import React from 'react'
 import { Menu, MenuItem, MenuTrigger } from 'react-aria-components'
 
 import { OptionItem, type Option } from '@/components/option-item'
-import { getRedirectPathname, type Locale } from '@/i18n'
+import type { Locale } from '@/i18n'
 import { Button } from '@/components/button'
 import { Popover } from '@/components/popover'
-import { usePathname, useRouter } from 'next/navigation'
 import { type Theme, useTheme } from '@/theme'
+import { useI18n } from '@/i18n/client'
 
 const ParamsPage: React.FC = () => {
-  const pathname = usePathname()
-  const router = useRouter()
-
   const { changeTheme } = useTheme()
+  const { changeLocale } = useI18n()
 
   const localeOptions: Array<Option<Locale>> = [
     {
-      key: 'fr',
+      id: 'fr',
       label: 'Français'
     },
     {
-      key: 'en',
+      id: 'en',
       label: 'English'
     }
   ]
 
   const themesOptions: Array<Option<Theme>> = [
     {
-      key: 'system',
+      id: 'system',
       label: 'System'
     },
     {
-      key: 'dark',
+      id: 'dark',
       label: 'Dark'
     },
     {
-      key: 'light',
+      id: 'light',
       label: 'Light'
     }
   ]
-
-  const handleChangeLocale = (locale: Locale) => {
-    const newPathname = getRedirectPathname(pathname, locale)
-    router.push(newPathname)
-  }
 
   return (
     <>
@@ -57,9 +50,9 @@ const ParamsPage: React.FC = () => {
         <Popover>
           <Menu items={localeOptions}>
             {(item) => (
-              <MenuItem onAction={() => handleChangeLocale(item.key)}>
+              <MenuItem onAction={() => changeLocale(item.id)}>
                 <OptionItem
-                  key={item.key}
+                  id={item.id}
                   label={item.label}
                 />
               </MenuItem>
@@ -76,12 +69,9 @@ const ParamsPage: React.FC = () => {
         <Popover>
           <Menu items={themesOptions}>
             {(item) => (
-              <MenuItem onAction={() => {
-                console.log('changeTheme', item.key)
-                changeTheme(item.key)
-              }}>
+              <MenuItem onAction={() => changeTheme(item.id)}>
                 <OptionItem
-                  key={item.key}
+                  id={item.id}
                   label={item.label}
                 />
               </MenuItem>

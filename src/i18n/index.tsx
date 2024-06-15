@@ -1,6 +1,6 @@
 import Polyglot from './polyglot'
 
-import { isValidString, type DotNestedKeys } from '@/helpers/strings'
+import type { DotNestedKeys } from '@/helpers/strings'
 import type frenchDictionary from '@/i18n/dictionaries/fr.json'
 
 export const LOCALES = ['en', 'fr'] as const
@@ -22,7 +22,7 @@ export const getValidLocale = (locale?: unknown) => {
     return DEFAULT_LOCALE
   }
 
-  return locale !== undefined && isLocale(locale)
+  return isLocale(locale)
     ? locale
     : DEFAULT_LOCALE
 }
@@ -55,29 +55,4 @@ export const getPathnameWithoutLocale = (currentPathname: string) => {
   return pathnameWithoutLocale !== ''
     ? pathnameWithoutLocale
     : '/'
-}
-
-export const getRedirectPathname = (pathname: string | null, locale: Locale) => {
-  if (!isValidString(pathname)) {
-    return '/'
-  }
-
-  if (isPathnameMissingLocale(pathname)) {
-    return locale === DEFAULT_LOCALE
-      ? pathname
-      : `/${locale}${pathname}`
-  }
-
-  if (locale === DEFAULT_LOCALE) {
-    const segments = pathname.split('/')
-    const isHome = segments.length === 2
-
-    return isHome
-      ? '/'
-      : `/${segments.splice(2).join('/')}`
-  }
-
-  const segments = pathname.split('/')
-  segments[1] = locale
-  return segments.join('/')
 }

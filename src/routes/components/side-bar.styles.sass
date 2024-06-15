@@ -1,14 +1,36 @@
+@import '@/styles/mixins'
+
 .side-bar
+  --side-bar-rest-divider: 4
   background-color: hsl(var(--background, 240 10% 3.9%))
   border-right: var(--element-stroke, 2px) solid hsl(var(--border, 240 3.7% 15.9%))
+  display: flex
+  flex-direction: column
   grid-area: side-bar
   height: 100vsh
   inset: 0
+  justify-content: space-between
+  padding-top: var(--layout-spacing-m, 1.94rem)
   position: fixed
   transition-duration: var(--transition-150, 0)
+  transform-origin: center
   transition-property: width
   transition-timing-function: var(--timing, ease-in-out)
-  width: calc(var(--side-bar-width, 12rem) / 4)
+  width: calc(var(--side-bar-width, 12rem) / var(--side-bar-rest-divider, 4))
+
+  &__heading
+    @include flex-center
+
+    &__logo
+      transition: transform var(--transition-150, 0) var(--timing, ease-in-out)
+      transform: scale(calc(1 / var(--side-bar-rest-divider, 4)))
 
   &:hover
-    width: var(--side-bar-width, 12rem)
+    .side-bar
+      width: var(--side-bar-width, 12rem)
+
+      &__heading__logo
+        transform: scale(1)
+
+        &:hover
+          transform: scale(0.8) rotate(360deg)

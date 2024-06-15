@@ -13,6 +13,9 @@
     "avatar": {
       "common-alt": "Common Kanisson's user avatar",
       "user-alt": "%{pseudo}'s avatar"
+    },
+    "logo": {
+      "alt": "Kanisson's logo"
     }
   },
   "metadata": {

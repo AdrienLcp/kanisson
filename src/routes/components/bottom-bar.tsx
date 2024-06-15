@@ -1,11 +1,11 @@
 'use client'
 
-import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React from 'react'
 
 import { classNames, type Style } from '@/helpers/styles'
 import { useI18n } from '@/i18n/client'
+import { Link } from '@/i18n/components/link'
 import { type NavLink, getCommonNavbarItems } from '@/routes'
 
 import './bottom-bar.styles.sass'
