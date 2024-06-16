@@ -47,6 +47,10 @@
       "link-label": "Créer",
       "link-aria-label": "Créer un blind test"
     },
+    "contact": {
+      "link-label": "Contact",
+      "link-aria-label": "Contacte nous"
+    },
     "home": {
       "link-label": "Accueil",
       "link-aria-label": "Retour à l'accueil"

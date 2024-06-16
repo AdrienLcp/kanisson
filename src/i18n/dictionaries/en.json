@@ -47,6 +47,10 @@
       "link-label": "Create",
       "link-aria-label": "Create a new game"
     },
+    "contact": {
+      "link-label": "Contact",
+      "link-aria-label": "Contact us"
+    },
     "home": {
       "link-label": "Home",
       "link-aria-label": "Go to the home page"

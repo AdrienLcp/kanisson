@@ -14,29 +14,29 @@ import { ROUTES } from '@/routes'
 import './authenticated-user-menu-actions.styles.sass'
 
 const getAuthenticatedUserMenuActions = (i18n: I18n, logout: () => void, router: AppRouterInstance) => {
-  const authenticatedUserMenuActions: Option[] = [
+  const authenticatedUserMenuActions: Array<Option<string>> = [
     {
+      Icon: UserIcon,
       id: 'profile',
-      label: 'Mon profil',
-      onClick: () => console.log('profile'),
-      Icon: UserIcon
+      label: i18n('routes.profile.link-label'),
+      onClick: () => router.push(ROUTES.profile)
     },
     {
+      Icon: MailIcon,
       id: 'contact',
-      label: 'Contact',
-      onClick: () => console.log('contact'),
-      Icon: MailIcon
+      label: i18n('routes.contact.link-label'),
+      onClick: () => router.push(ROUTES.contact)
     },
     {
-      id: 'params',
-      label: 'Paramètres',
-      onClick: () => router.push(ROUTES.settings),
-      Icon: SettingsIcon
+      Icon: SettingsIcon,
+      id: 'settings',
+      label: i18n('routes.settings.link-label'),
+      onClick: () => router.push(ROUTES.settings)
     },
     {
+      Icon: LogOutIcon,
       id: 'logout',
       label: i18n('authentication.user-menu.options.logout'),
-      Icon: LogOutIcon,
       onClick: logout
     }
   ]
@@ -54,7 +54,7 @@ export const AuthenticatedUserMenuActions: React.FC = () => {
 
   return (
     <ul className='authenticated-user-menu-actions'>
-      {authenticatedUserMenuActions.map((action) => (
+      {authenticatedUserMenuActions.map(action => (
         <li
           className='authenticated-user-menu-actions__item'
           key={action.id}

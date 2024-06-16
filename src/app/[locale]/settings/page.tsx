@@ -1,18 +1,17 @@
 'use client'
 
 import React from 'react'
-import { Menu, MenuItem, MenuTrigger } from 'react-aria-components'
 
-import { OptionItem, type Option } from '@/components/option-item'
-import type { Locale } from '@/i18n'
 import { Button } from '@/components/button'
-import { Popover } from '@/components/popover'
-import { type Theme, useTheme } from '@/theme'
+import { Dropdown } from '@/components/dropdown'
+import type { Option } from '@/components/option-item'
+import type { Locale } from '@/i18n'
 import { useI18n } from '@/i18n/client'
+import { type Theme, useTheme } from '@/theme'
 
 const ParamsPage: React.FC = () => {
-  const { changeTheme } = useTheme()
   const { changeLocale } = useI18n()
+  const { changeTheme } = useTheme()
 
   const localeOptions: Array<Option<Locale>> = [
     {
@@ -42,43 +41,23 @@ const ParamsPage: React.FC = () => {
 
   return (
     <>
-      <MenuTrigger>
+      <Dropdown
+        items={localeOptions}
+        onClickItem={(item) => { changeLocale(item.id) }}
+      >
         <Button>
           Locale
         </Button>
+      </Dropdown>
 
-        <Popover>
-          <Menu items={localeOptions}>
-            {(item) => (
-              <MenuItem onAction={() => changeLocale(item.id)}>
-                <OptionItem
-                  id={item.id}
-                  label={item.label}
-                />
-              </MenuItem>
-            )}
-          </Menu>
-        </Popover>
-      </MenuTrigger>
-
-      <MenuTrigger>
+      <Dropdown
+        items={themesOptions}
+        onClickItem={(item) => { changeTheme(item.id) }}
+      >
         <Button>
           Theme
         </Button>
-
-        <Popover>
-          <Menu items={themesOptions}>
-            {(item) => (
-              <MenuItem onAction={() => changeTheme(item.id)}>
-                <OptionItem
-                  id={item.id}
-                  label={item.label}
-                />
-              </MenuItem>
-            )}
-          </Menu>
-        </Popover>
-      </MenuTrigger>
+      </Dropdown>
     </>
   )
 }

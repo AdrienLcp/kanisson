@@ -7,7 +7,7 @@ import { classNames } from '@/helpers/styles'
 
 import './option-item.styles.sass'
 
-export type Option <T extends Key = string> = {
+export type Option <T extends Key> = {
   /**
    * Additional class names to apply to the motion component.
    */
@@ -49,7 +49,7 @@ export type Option <T extends Key = string> = {
   onClick?: (option: Option<T>) => void
 }
 
-const handleOptionItemClick = (option: Option) => {
+function handleOptionItemClick <T extends Key> (option: Option<T>) {
   if (typeof option.onClick === 'function') {
     option.onClick(option)
   }
@@ -58,7 +58,7 @@ const handleOptionItemClick = (option: Option) => {
 /**
  * The option item component. Need to be used inside a menu component who handle options user's choice.
  */
-export const OptionItem: React.FC<Option> = ({
+export function OptionItem <T extends Key> ({
   className,
   Icon,
   isDisabled,
@@ -67,7 +67,7 @@ export const OptionItem: React.FC<Option> = ({
   id,
   label,
   onClick
-}) => {
+}: Option<T>) {
   if (isPrefixedByDivider) {
     return <Separator />
   }
