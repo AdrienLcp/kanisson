@@ -14,8 +14,12 @@ type HeaderProps = {
 }
 
 export const Header: React.FC<HeaderProps> = ({ authenticatedUser, i18n }) => (
-  <header className='header'>
-    <Motion animation='fade-in-slow'>
+  <header>
+    <Motion animation='fade-in-slow' className='header'>
+      <h1 className='header__title'>
+        {i18n('metadata.short-name')}
+      </h1>
+
       {authenticatedUser === null
         ? <LoginButton />
         : <AuthenticatedUserMenu authenticatedUser={authenticatedUser} i18n={i18n} />

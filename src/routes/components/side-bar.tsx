@@ -23,19 +23,30 @@ export const SideBar: React.FC = () => {
         <Logo className='side-bar__heading__logo' />
       </Link>
 
-      <nav>
+      <nav className='side-bar__nav'>
         <ul>
-          {navbarItems.map(item => (
-            <li key={item.path}>
-              {item.label}
+          {navbarItems.map(({ Icon, key, label, path }) => (
+            <li key={key} className='side-bar__item'>
+              <Icon
+                className='side-bar__item__icon'
+                size='0.75rem'
+              />
+
+              <Link
+                className='side-bar__item__link'
+                href={path}
+              >
+                <Icon
+                  className='side-bar__item__link__icon'
+                  size='0.75rem'
+                />
+
+                {label}
+              </Link>
             </li>
           ))}
         </ul>
       </nav>
-
-      <div>
-        autre footer
-      </div>
     </div>
   )
 }

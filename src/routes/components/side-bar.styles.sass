@@ -1,4 +1,5 @@
 @import '@/styles/mixins'
+@import '@/styles/typography'
 
 .side-bar
   --side-bar-rest-divider: 4
@@ -9,8 +10,7 @@
   grid-area: side-bar
   height: 100vsh
   inset: 0
-  justify-content: space-between
-  padding-top: var(--layout-spacing-m, 1.94rem)
+  padding-block: var(--layout-spacing-m, 1.94rem)
   position: fixed
   transition-duration: var(--transition-150, 0)
   transform-origin: center
@@ -19,11 +19,38 @@
   width: calc(var(--side-bar-width, 12rem) / var(--side-bar-rest-divider, 4))
 
   &__heading
-    @include flex-center
+    border-radius: var(--radius-circular, 99px)
+    margin-inline: auto
 
     &__logo
       transition: transform var(--transition-150, 0) var(--timing, ease-in-out)
       transform: scale(calc(1 / var(--side-bar-rest-divider, 4)))
+
+  &__nav
+    padding-top: 30vh
+
+  &__item
+    display: flex
+    padding-block: var(--spacing-l, 0.68rem)
+    position: relative
+
+    &__icon
+      margin-inline: auto
+      transition: transform var(--transition-150, 0) var(--timing, ease-in-out)
+
+    &__link
+      @include ghost-clickable
+      @include label-large
+      align-items: center
+      background-color: hsl(var(--background, 240 10% 3.9%))
+      display: flex
+      gap: var(--spacing-l, 0.68rem)
+      padding: var(--spacing-l, 0.68rem) var(--spacing-xl, 0.82rem)
+      position: absolute
+      top: 50%
+      transform: translate(-12rem, -50%)
+      transition: transform var(--transition-150, 0) var(--timing, ease-in-out)
+      width: 100%
 
   &:hover
     width: var(--side-bar-width, 12rem)
@@ -34,3 +61,10 @@
 
         &:hover
           transform: scale(0.8) rotate(360deg)
+
+      &__item
+        &__icon
+          transform: translateX(-12rem)
+        
+        &__link
+          transform: translate(0, -50%)
