@@ -32,6 +32,11 @@ type LoaderProps = {
 }
 
 type LoaderVariantProps = Omit<LoaderProps, 'size' | 'variant'> & {
+  /**
+   * Size of the loader.
+   * @values 'small', 'medium', 'large'
+   * @default 'medium'
+   */
   size: LoaderSize
 }
 

@@ -37,9 +37,12 @@ type ImageInfo = {
 const logoMap: Record<LogoSize, ImageInfo> = {
   small: { size: 48, src: smallLogo },
   medium: { size: 128, src: mediumLogo },
-  large: { size: 512, src: largeLogo },
+  large: { size: 512, src: largeLogo }
 }
 
+/**
+ * Logo component that displays the logo image.
+ */
 export const Logo: React.FC<LogoProps> = ({ className, size = 'medium' }) => {
   const { i18n } = useI18n()
   const selectedLogo = logoMap[size]

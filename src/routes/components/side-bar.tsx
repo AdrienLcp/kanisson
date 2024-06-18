@@ -15,7 +15,7 @@ export const SideBar: React.FC = () => {
   const navbarItems = getCommonNavbarItems(i18n)
 
   return (
-    <div className='side-bar'>
+    <aside className='side-bar'>
       <Link
         className='side-bar__heading'
         href={ROUTES.home}
@@ -47,6 +47,6 @@ export const SideBar: React.FC = () => {
           ))}
         </ul>
       </nav>
-    </div>
+    </aside>
   )
 }

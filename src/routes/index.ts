@@ -2,24 +2,18 @@ import { HomeIcon, PlusCircleIcon, SearchIcon, type LucideIcon } from 'lucide-re
 
 import type { I18n } from '@/i18n'
 
-export type RouteKey =
-  'create' |
-  'contact' |
-  'home' |
-  'profile' |
-  'search' |
-  'settings'
-
-export type RoutePath = '/' | `/${RouteKey}` | `/${RouteKey}/${RouteKey}`
-
-export const ROUTES: Record<RouteKey, RoutePath> = {
-  create: '/create',
+export const ROUTES = {
+  create: '/playlists/create',
   contact: '/contact',
   home: '/',
+  playlists: '/playlists',
   profile: '/profile',
   search: '/search',
   settings: '/settings'
 } as const
+
+export type RouteKey = keyof typeof ROUTES
+export type RoutePath = typeof ROUTES[RouteKey]
 
 export type NavLink = {
   Icon: LucideIcon

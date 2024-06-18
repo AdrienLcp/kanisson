@@ -1,18 +1,31 @@
+'use client'
+
 import React from 'react'
 import { Menu, MenuTrigger, type MenuProps, type Key, MenuItem } from 'react-aria-components'
 
 import { OptionItem, type Option } from '@/components/option-item'
+import { Popover } from '@/components/popover'
+import { classNames } from '@/helpers/styles'
 
 import './dropdown.styles.sass'
-import { classNames } from '@/helpers/styles'
-import { Popover } from '@/components/popover'
 
 type BaseMenuProps <T> = Omit<MenuProps<T>, 'items'>
+type BaseDropdownProps <T extends Key> = {
+  /**
+   * The items to display in the dropdown.
+   */
+  items: Iterable<Option<T>>,
+
+  /**
+   * The function to call when an item is clicked.
+   */
+  onClickItem?: (item: Option<T>) => void
+}
 
 type DropdownProps <T extends Key> =
   React.PropsWithChildren &
   BaseMenuProps<T> &
-  { items: Iterable<Option<T>>, onClickItem?: (item: Option<T>) => void }
+  BaseDropdownProps<T>
 
 function handleClickItem <T extends Key> (item: Option<T>, onClickItem?: (item: Option<T>) => void) {
   if (typeof onClickItem === 'function') {
@@ -24,6 +37,9 @@ function handleClickItem <T extends Key> (item: Option<T>, onClickItem?: (item: 
   }
 }
 
+/**
+ * Dropdown component that displays options.
+ */
 export function Dropdown <T extends Key> ({
   children,
   className,
@@ -42,7 +58,11 @@ export function Dropdown <T extends Key> ({
           items={items}
         >
           {(item) => (
-            <MenuItem onAction={() => handleClickItem(item, onClickItem)}>
+            <MenuItem
+              className='dropdown__item'
+              key={item.id}
+              onAction={() => handleClickItem(item, onClickItem)}
+            >
               <OptionItem
                 label={item.label}
                 id={item.id}

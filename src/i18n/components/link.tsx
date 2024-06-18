@@ -1,9 +1,10 @@
 'use client'
 
-import { DEFAULT_LOCALE, getValidLocale } from '@/i18n'
-import NextLink, { LinkProps as NextLinkProps } from 'next/link'
+import NextLink, { type LinkProps as NextLinkProps } from 'next/link'
 import { useParams } from 'next/navigation'
 import React from 'react'
+
+import { DEFAULT_LOCALE, getValidLocale } from '@/i18n'
 
 type LinkProps = React.PropsWithChildren & NextLinkProps & {
   className?: string
