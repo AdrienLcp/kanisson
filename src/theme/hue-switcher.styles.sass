@@ -1,0 +1,46 @@
+.hue-switcher
+  display: flex
+  flex-wrap: wrap
+  gap: var(--spacing-m, 0.55rem)
+
+  &__button
+    aspect-ratio: 1
+    border: var(--element-stroke, 2px) solid hsl(var(--border, 240 3.7% 15.9%))
+    border-radius: var(--radius-circular, 99px)
+    width: var(--size-100, 1.62rem)
+
+    &.neutral
+      --current-hue: var(--hue-neutral, 0 0% 98%)
+
+    &.blue
+      --current-hue: var(--hue-blue, 217.2 91.2% 59.8%)
+
+    &.green
+      --current-hue: var(--hue-green, 142.1 70.6% 45.3%)
+
+    &.orange
+      --current-hue: var(--hue-orange, 20.5 90.2% 48.2%)
+
+    &.pink
+      --current-hue: var(--hue-pink, 346.8 77.2% 49.8%)
+
+    &.purple
+      --current-hue: var(--hue-purple, 263.4 70% 50.4%)
+
+    &.red
+      --current-hue: var(--hue-red, 0 72.2% 50.6%)
+
+    &.yellow
+      --current-hue: var(--hue-yellow, 47.9 95.8% 53.1%)
+
+    background-color: hsl(var(--current-hue, 0 0% 98%))
+
+    &:hover
+      background-color: hsla(var(--current-hue, 0 0% 98%) / var(--hover-alpha, 0.92))
+
+    &:active
+      background-color: hsla(var(--current-hue, 0 0% 98%) / var(--active-alpha, 0.84))
+
+    &__check-icon
+      color: hsl(var(--background, 240 10% 3.9%))
+

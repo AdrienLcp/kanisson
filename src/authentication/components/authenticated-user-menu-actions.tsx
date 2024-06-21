@@ -7,6 +7,7 @@ import React from 'react'
 
 import { useAuthentication } from '@/authentication/client'
 import { type Option, OptionItem } from '@/components/option-item'
+import { Pressable } from '@/components/pressable'
 import type { I18n } from '@/i18n'
 import { useI18n } from '@/i18n/client'
 import { ROUTES } from '@/routes'
@@ -44,6 +45,12 @@ const getAuthenticatedUserMenuActions = (i18n: I18n, logout: () => void, router:
   return authenticatedUserMenuActions
 }
 
+const handleActionClick = (action: Option<string>) => {
+  if (typeof action.onClick === 'function') {
+    action.onClick(action)
+  }
+}
+
 export const AuthenticatedUserMenuActions: React.FC = () => {
   const { logout } = useAuthentication()
   const { i18n } = useI18n()
@@ -59,14 +66,12 @@ export const AuthenticatedUserMenuActions: React.FC = () => {
           className='authenticated-user-menu-actions__item'
           key={action.id}
         >
-          <OptionItem
-            Icon={action.Icon}
-            isDisabled={action.isDisabled}
-            isSelected={action.isSelected}
-            id={action.id}
-            onClick={action.onClick}
-            label={action.label}
-          />
+          <Pressable
+            className='authenticated-user-menu-actions__item__button'
+            onPress={() => handleActionClick(action)}
+          >
+            <OptionItem {...action} />
+          </Pressable>
         </li>
       ))}
     </ul>

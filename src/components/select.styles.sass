@@ -1,0 +1,17 @@
+@import '@/styles/mixins'
+
+.select
+
+  &__input
+    @include outline-clickable
+    align-items: center
+    border: var(--element-stroke, 2px) solid hsl(var(--border, 240 3.7% 15.9%))
+    border-radius: var(--element-radius, 5px)
+    display: flex
+    justify-content: space-between
+    padding-inline: var(--spacing-l, 0.68rem)
+    height: var(--element-size, 1.94rem)
+    width: 100%
+
+  &__list-box
+    @include popover-menu

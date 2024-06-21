@@ -1,0 +1,11 @@
+@import '@/styles/animations'
+@import '@/styles/typography'
+
+.tooltip
+  @include label-medium
+  @include fade-in
+  background-color: hsl(var(--foreground, 0 0% 98%))
+  border-radius: var(--radius-s, 5px)
+  box-shadow: var(--shadow-m)
+  color: hsl(var(--background, 240 10% 3.9%))
+  padding: var(--spacing-xs, 0.21rem) var(--spacing-m, 0.55rem)

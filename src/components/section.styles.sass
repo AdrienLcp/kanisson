@@ -1,0 +1,17 @@
+@import '@/styles/typography'
+
+.section
+  display: flex
+  flex-direction: column
+  gap: var(--spacing-m, 0.55rem)
+
+  &__header
+    display: flex
+    flex-direction: column
+    gap: var(--spacing-xs, 0.21rem)
+
+    &__title
+      @include title-large
+    
+    &__subtitle
+      @include body-medium

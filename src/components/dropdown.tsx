@@ -14,7 +14,7 @@ type BaseDropdownProps <T extends Key> = {
   /**
    * The items to display in the dropdown.
    */
-  items: Iterable<Option<T>>,
+  items: Array<Option<T>>,
 
   /**
    * The function to call when an item is clicked.
@@ -63,15 +63,7 @@ export function Dropdown <T extends Key> ({
               key={item.id}
               onAction={() => handleClickItem(item, onClickItem)}
             >
-              <OptionItem
-                label={item.label}
-                id={item.id}
-                isSelected={item.isSelected}
-                isDisabled={item.isDisabled}
-                isPrefixedByDivider={item.isPrefixedByDivider}
-                Icon={item.Icon}
-                className={item.className}
-              />
+              <OptionItem {...item} />
             </MenuItem>
           )}
         </Menu>

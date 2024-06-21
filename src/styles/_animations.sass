@@ -1,0 +1,10 @@
+// Some animations from framer-motion don't work with react-aria components
+// So we use CSS animations instead
+
+@mixin fade-in ($transition: var(--transition-250, 0))
+  @keyframes fade-in
+    from
+      opacity: 0
+    to
+      opacity: 1
+  animation: fade-in $transition var(--timing, ease-in-out)

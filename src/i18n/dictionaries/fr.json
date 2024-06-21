@@ -18,6 +18,44 @@
       "alt": "Logo de Kanisson"
     }
   },
+  "hue": {
+    "title": "Couleur",
+    "subtitle": "Sélectionne la couleur principale du site",
+    "colors": {
+      "neutral": {
+        "tooltip": "Neutre",
+        "aria-label": "Couleur neutre"
+      },
+      "blue": {
+        "tooltip": "Bleu",
+        "aria-label": "Couleur bleue"
+      },
+      "green": {
+        "tooltip": "Vert",
+        "aria-label": "Couleur verte"
+      },
+      "orange": {
+        "tooltip": "Orange",
+        "aria-label": "Couleur orange"
+      },
+      "pink": {
+        "tooltip": "Rose",
+        "aria-label": "Couleur rose"
+      },
+      "purple": {
+        "tooltip": "Violet",
+        "aria-label": "Couleur violette"
+      },
+      "red": {
+        "tooltip": "Rouge",
+        "aria-label": "Couleur rouge"
+      },
+      "yellow": {
+        "tooltip": "Jaune",
+        "aria-label": "Couleur jaune"
+      }
+    }
+  },
   "metadata": {
     "category": "jeu",
     "classification": "jeu en ligne",

@@ -1,4 +1,4 @@
-import type { ButtonRenderProps, ListBoxRenderProps, PopoverRenderProps } from 'react-aria-components'
+import type { ButtonRenderProps, ListBoxRenderProps, PopoverRenderProps, SelectRenderProps, TooltipRenderProps } from 'react-aria-components'
 
 export type Style = Record<string, string | number>
 
@@ -13,7 +13,9 @@ export const classNames = (...classes: ClassNames): string => {
 type ElementRenderProps =
   ButtonRenderProps |
   ListBoxRenderProps |
-  PopoverRenderProps
+  PopoverRenderProps |
+  SelectRenderProps |
+  TooltipRenderProps
 
 type RenderPropsValues <T extends ElementRenderProps> = T & {
   defaultClassName: string | undefined

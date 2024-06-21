@@ -2,16 +2,16 @@
 
 import React from 'react'
 
-import { Button } from '@/components/button'
-import { Dropdown } from '@/components/dropdown'
 import type { Option } from '@/components/option-item'
 import type { Locale } from '@/i18n'
 import { useI18n } from '@/i18n/client'
 import { type Theme, useTheme } from '@/theme'
+import { Select } from '@/components/select'
+import { HueSwitcher } from '@/theme/hue-switcher'
 
 const ParamsPage: React.FC = () => {
-  const { changeLocale } = useI18n()
-  const { changeTheme } = useTheme()
+  const { changeLocale, currentLocale } = useI18n()
+  const { changeTheme, currentTheme } = useTheme()
 
   const localeOptions: Array<Option<Locale>> = [
     {
@@ -41,23 +41,21 @@ const ParamsPage: React.FC = () => {
 
   return (
     <>
-      <Dropdown
+      <Select
         items={localeOptions}
-        onClickItem={(item) => { changeLocale(item.id) }}
-      >
-        <Button>
-          Locale
-        </Button>
-      </Dropdown>
+        label='Language'
+        onSelect={(option) => { changeLocale(option.id) }}
+        selectedKey={currentLocale}
+      />
 
-      <Dropdown
+      <Select
         items={themesOptions}
-        onClickItem={(item) => { changeTheme(item.id) }}
-      >
-        <Button>
-          Theme
-        </Button>
-      </Dropdown>
+        label='Theme'
+        onSelect={(option) => { changeTheme(option.id) }}
+        selectedKey={currentTheme}
+      />
+
+      <HueSwitcher />
     </>
   )
 }

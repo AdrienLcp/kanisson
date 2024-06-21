@@ -36,6 +36,16 @@
   width: 100vw
   height: 100svh
 
+@mixin ghost-clickable
+  @include color-transition
+
+  @media (hover: hover)
+    &:hover
+      background-color: hsla(var(--foreground, 0 0% 98%) / 0.08)
+
+  &:active
+    background-color: hsla(var(--foreground, 0 0% 98%) / 0.16)
+
 @mixin outline-clickable
   @include color-transition
 
@@ -46,15 +56,14 @@
   &:active
     background-color: hsla(var(--border, 240 5.9% 90%) / var(--active-alpha, 0.84))
 
-@mixin ghost-clickable
-  @include color-transition
+@mixin popover-menu
+  background-color: hsl(var(--background, 240 10% 3.9%))
+  border-radius: var(--radius-s, 5px)
+  box-shadow: var(--shadow-m)
+  padding-block: var(--spacing-s, 0.38rem)
 
-  @media (hover: hover)
-    &:hover
-      background-color: hsla(var(--foreground, 0 0% 98%) / 0.08)
-
-  &:active
-    background-color: hsla(var(--foreground, 0 0% 98%) / 0.16)
+  &__item:focus-visible
+    outline: none
 
 @mixin text-ellipsis
   white-space: nowrap

@@ -8,7 +8,7 @@ export type DotNestedKeys<T> = (
   ? Extract<D, string>
   : never
 
-export const isValidString = (string: string | null | undefined): string is string => {
+export const isValidString = (string: unknown): string is string => {
   return typeof string === 'string' && string.trim().length > 0
 }
 
