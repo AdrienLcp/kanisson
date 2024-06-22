@@ -8,6 +8,7 @@ import { useI18n } from '@/i18n/client'
 import { getCommonNavbarItems, ROUTES } from '@/routes'
 
 import './side-bar.styles.sass'
+import { DEFAULT_ICON_SIZE } from '@/helpers/styles'
 
 export const SideBar: React.FC = () => {
   const { i18n } = useI18n()
@@ -35,7 +36,10 @@ export const SideBar: React.FC = () => {
                   {label}
                 </span>
 
-                <Icon className='side-bar__link__icon' size='0.75rem' />
+                <Icon
+                  className='side-bar__link__icon'
+                  size={DEFAULT_ICON_SIZE}
+                />
               </Link>
             </li>
           ))}

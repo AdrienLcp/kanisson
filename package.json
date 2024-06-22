@@ -4,6 +4,7 @@
   "dependencies": {
     "@auth/prisma-adapter": "^2.2.0",
     "@formatjs/intl-localematcher": "^0.5.4",
+    "@formspree/react": "^2.5.1",
     "@next/env": "^14.2.3",
     "@next/eslint-plugin-next": "^14.2.4",
     "@prisma/client": "5.14.0",

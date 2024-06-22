@@ -6,7 +6,7 @@ import React from 'react'
 import { Label } from '@/components/label'
 import { Pressable } from '@/components/pressable'
 import { Tooltip } from '@/components/tooltip'
-import { classNames } from '@/helpers/styles'
+import { DEFAULT_ICON_SIZE, classNames } from '@/helpers/styles'
 import { useI18n } from '@/i18n/client'
 import { HUES, useHue } from '@/theme/hue'
 
@@ -33,7 +33,10 @@ export const HueSwitcher: React.FC = () => {
                 onPress={() => changeHue(hue)}
               >
                 {currentHue === hue && (
-                  <CheckIcon className='hue-switcher__list__button__check-icon' />
+                  <CheckIcon
+                    className='hue-switcher__list__button__check-icon'
+                    size={DEFAULT_ICON_SIZE}
+                  />
                 )}
               </Pressable>
             </Tooltip>

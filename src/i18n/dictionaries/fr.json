@@ -18,6 +18,10 @@
       "alt": "Logo de Kanisson"
     }
   },
+  "i18n": {
+    "label": "Langue",
+    "placeholder": "Choisis la langue du site"
+  },
   "metadata": {
     "category": "jeu",
     "classification": "jeu en ligne",
@@ -51,7 +55,24 @@
     "contact": {
       "link-label": "Contact",
       "link-aria-label": "Contacte nous",
-      "page-title": "Nous contacter"
+      "page-title": "Nous contacter",
+      "error-messages": {
+        "message": "Vous devez écrire un message"
+      },
+      "form": {
+        "fields": {
+          "name": {
+            "label": "Nom ou email",
+            "placeholder": "jean-neige@gmail.com"
+          },
+          "message": {
+            "label": "Message",
+            "placeholder": "Idée d'amélioration, signalement de bug, etc..."
+          }
+        },
+        "submit-button": "Envoyer",
+        "success-message": "Message envoyé"
+      }
     },
     "home": {
       "link-label": "Accueil",

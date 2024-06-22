@@ -1,0 +1,25 @@
+@import '@/styles/typography'
+
+.status-message
+  @include label-large
+  align-items: center
+  border: var(--element-stroke, 2px) solid transparent
+  border-radius: var(--radius-m, 8px)
+  display: flex
+  gap: var(--spacing-m, 0.55rem)
+  padding: var(--spacing-m, 0.55rem) var(--spacing-xxl, 0.96rem)
+
+  &.error
+    background-color: hsl(var(--red-background, 354 70% 91%))
+    border-color: hsl(var(--red-foreground, 354 61% 48%))
+    color: hsl(var(--red-foreground, 354 61% 48%))
+
+  &.success
+    background-color: hsl(var(--green-background, 146 70% 91%))
+    border-color: hsl(var(--green-foreground, 146 61% 28%))
+    color: hsl(var(--green-foreground, 146 61% 28%))
+
+  &.warning
+    background-color: hsl(var(--orange-background, 25 70% 91%))
+    border-color: hsl(var(--orange-foreground, 25 68% 52%))
+    color: hsl(var(--orange-foreground, 25 68% 52%))

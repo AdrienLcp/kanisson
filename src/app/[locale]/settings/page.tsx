@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { PageWrapper } from '@/app/components/page-wrapper'
-import type { PageProps } from '@/app/types'
+import type { PageProps } from '@/helpers/next-js'
 import { buildI18n } from '@/i18n'
 import { LocaleSwitcher } from '@/i18n/components/locale-switcher'
 import { getDictionary } from '@/i18n/server'

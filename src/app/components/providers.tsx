@@ -12,7 +12,7 @@ type ProvidersProps =
   I18nProviderProps &
   React.PropsWithChildren
 
-export const Providers: React.FC<ProvidersProps> = ({ children, dictionary, locale, authenticatedUser }) => (
+export const Providers: React.FC<ProvidersProps> = ({ authenticatedUser, children, dictionary, locale }) => (
   <I18nProvider dictionary={dictionary} locale={locale}>
     <AuthProvider authenticatedUser={authenticatedUser}>
       <ThemeProvider>

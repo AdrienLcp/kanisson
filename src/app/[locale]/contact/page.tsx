@@ -1,10 +1,21 @@
 import React from 'react'
 
-const ContactPage: React.FC = () => {
+import { PageWrapper } from '@/app/components/page-wrapper'
+import type { PageProps } from '@/helpers/next-js'
+import { getDictionary } from '@/i18n/server'
+import { buildI18n } from '@/i18n'
+import { ContactForm } from '@/app/[locale]/contact/contact-form'
+
+const ContactPage: React.FC<PageProps> = async ({ params }) => {
+  const locale = params.locale
+
+  const dictionary = await getDictionary(locale)
+  const i18n = buildI18n(dictionary, locale)
+
   return (
-    <div className='page'>
-      Contact page
-    </div>
+    <PageWrapper title={i18n('routes.contact.page-title')}>
+      <ContactForm />
+    </PageWrapper>
   )
 }
 

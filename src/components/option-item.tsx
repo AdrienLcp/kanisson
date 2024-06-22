@@ -2,7 +2,7 @@ import { CheckIcon, type LucideIcon } from 'lucide-react'
 import React from 'react'
 import { Separator, type Key } from 'react-aria-components'
 
-import { classNames } from '@/helpers/styles'
+import { DEFAULT_ICON_SIZE, classNames } from '@/helpers/styles'
 
 import './option-item.styles.sass'
 
@@ -73,7 +73,7 @@ export function OptionItem <T extends Key> ({
       )}
     >
       <span className='option-item__left-box'>
-        {Icon !== undefined && <Icon size='0.75rem' />}
+        {Icon !== undefined && <Icon size={DEFAULT_ICON_SIZE} />}
 
         <span className='option-item__left-box__label'>
           {label}

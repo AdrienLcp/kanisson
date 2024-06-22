@@ -18,6 +18,10 @@
       "alt": "Kanisson's logo"
     }
   },
+  "i18n": {
+    "label": "Lang",
+    "placeholder": "Choose website language"
+  },
   "metadata": {
     "category": "game",
     "classification": "online game",
@@ -51,7 +55,24 @@
     "contact": {
       "link-label": "Contact",
       "link-aria-label": "Contact us",
-      "page-title": "Contact"
+      "page-title": "Contact",
+      "error-messages": {
+        "message": "You need to write a message"
+      },
+      "form": {
+        "fields": {
+          "name": {
+            "label": "Name or email",
+            "placeholder": "john-doe@gmail.com"
+          },
+          "message": {
+            "label": "Message",
+            "placeholder": "Ideas for improvement, bug report, etc..."
+          }
+        },
+        "submit-button": "Send",
+        "success-message": "Message sent"
+      }
     },
     "home": {
       "link-label": "Home",

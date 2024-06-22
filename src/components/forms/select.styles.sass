@@ -3,12 +3,10 @@
 @import '@/styles/typography'
 
 .select
-  display: flex
-  flex-direction: column
-  gap: var(--spacing-xs, 0.21rem)
+  @include base-field
 
   &__input
-    @include form-control
+    @include form-picker
 
     &__value
       padding: 0

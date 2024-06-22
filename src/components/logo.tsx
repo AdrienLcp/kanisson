@@ -7,9 +7,9 @@ import { Image } from '@/components/image'
 import type { ComponentSizes } from '@/helpers/ui'
 import { useI18n } from '@/i18n/client'
 
-import smallLogo from '@/assets/images/logo/png/logo-48x48.png'
-import mediumLogo from '@/assets/images/logo/png/logo-128x128.png'
-import largeLogo from '@/assets/images/logo/png/logo-512x512.png'
+import smallLogo from '@/assets/images/logo/logo-48x48.png'
+import mediumLogo from '@/assets/images/logo/logo-128x128.png'
+import largeLogo from '@/assets/images/logo/logo-512x512.png'
 
 import './logo.styles.sass'
 

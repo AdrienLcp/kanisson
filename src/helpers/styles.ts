@@ -4,6 +4,8 @@ export type Style = Record<`--${string}`, string | number>
 
 export type ResponsiveSize = `${number}rem`
 
+export const DEFAULT_ICON_SIZE: ResponsiveSize = '0.75rem'
+
 export type ClassNames = Array<string | undefined | null | false>
 
 export const classNames = (...classes: ClassNames): string => {

@@ -4,7 +4,7 @@ import { MoonIcon, SunIcon, SunMoonIcon } from 'lucide-react'
 import React from 'react'
 
 import type { Option } from '@/components/option-item'
-import { Select } from '@/components/select'
+import { Select } from '@/components/forms/select'
 import type { I18n } from '@/i18n'
 import { useI18n } from '@/i18n/client'
 import { type Theme, useTheme } from '@/theme'
@@ -38,12 +38,14 @@ export const ThemeSwitcher: React.FC = () => {
   const themesOptions = getThemesOptions(i18n)
 
   return (
-    <Select
-      items={themesOptions}
-      label={i18n('theme.dark-mode.title')}
-      placeholder={i18n('theme.dark-mode.subtitle')}
-      onSelect={(option) => { changeTheme(option.key) }}
-      selectedKey={currentTheme}
-    />
+    <section>
+      <Select
+        items={themesOptions}
+        label={i18n('theme.dark-mode.title')}
+        onSelect={(option) => { changeTheme(option.key) }}
+        placeholder={i18n('theme.dark-mode.subtitle')}
+        selectedKey={currentTheme}
+      />
+    </section>
   )
 }
