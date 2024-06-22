@@ -1,63 +1,32 @@
-'use client'
-
 import React from 'react'
 
-import type { Option } from '@/components/option-item'
-import type { Locale } from '@/i18n'
-import { useI18n } from '@/i18n/client'
-import { type Theme, useTheme } from '@/theme'
-import { Select } from '@/components/select'
+import { PageWrapper } from '@/app/components/page-wrapper'
+import type { PageProps } from '@/app/types'
+import { buildI18n } from '@/i18n'
+import { LocaleSwitcher } from '@/i18n/components/locale-switcher'
+import { getDictionary } from '@/i18n/server'
 import { HueSwitcher } from '@/theme/hue-switcher'
+import { ThemeSwitcher } from '@/theme/theme-switcher'
 
-const ParamsPage: React.FC = () => {
-  const { changeLocale, currentLocale } = useI18n()
-  const { changeTheme, currentTheme } = useTheme()
+import './page.styles.sass'
 
-  const localeOptions: Array<Option<Locale>> = [
-    {
-      id: 'fr',
-      label: 'Français'
-    },
-    {
-      id: 'en',
-      label: 'English'
-    }
-  ]
+const SettingsPage: React.FC<PageProps> = async ({ params }) => {
+  const locale = params.locale
 
-  const themesOptions: Array<Option<Theme>> = [
-    {
-      id: 'system',
-      label: 'System'
-    },
-    {
-      id: 'dark',
-      label: 'Dark'
-    },
-    {
-      id: 'light',
-      label: 'Light'
-    }
-  ]
+  const dictionary = await getDictionary(locale)
+  const i18n = buildI18n(dictionary, locale)
 
   return (
-    <>
-      <Select
-        items={localeOptions}
-        label='Language'
-        onSelect={(option) => { changeLocale(option.id) }}
-        selectedKey={currentLocale}
-      />
+    <PageWrapper title={i18n('routes.settings.page-title')}>
+      <div className='settings-page'>
+        <LocaleSwitcher />
 
-      <Select
-        items={themesOptions}
-        label='Theme'
-        onSelect={(option) => { changeTheme(option.id) }}
-        selectedKey={currentTheme}
-      />
+        <ThemeSwitcher />
 
-      <HueSwitcher />
-    </>
+        <HueSwitcher />
+      </div>
+    </PageWrapper>
   )
 }
 
-export default ParamsPage
+export default SettingsPage

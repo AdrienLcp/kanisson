@@ -16,8 +16,8 @@
 
 @mixin focusable
   &:focus-visible
-    outline: var(--element-stroke, 2px) solid hsl(var(--ring, 240 4.9% 83.9%)) !important
-    outline-offset: var(--element-stroke, 2px) !important
+    outline: var(--element-stroke, 2px) solid hsl(var(--ring, 240 4.9% 83.9%))
+    outline-offset: var(--element-stroke, 2px)
 
 @mixin fixed-center
   position: fixed
@@ -65,7 +65,8 @@
   &__item:focus-visible
     outline: none
 
-@mixin text-ellipsis
-  white-space: nowrap
+@mixin text-ellipsis($max-width: 20ch)
+  max-width: $max-width
   overflow: hidden
   text-overflow: ellipsis
+  white-space: nowrap

@@ -33,6 +33,8 @@
       transform: scale(calc(1 / var(--side-bar-rest-divider, 4)))
 
   &__item
+    @include ghost-clickable
+    background-color: hsl(var(--background, 240 10% 3.9%))
     display: flex
     padding-block: var(--spacing-l, 0.68rem)
     position: relative
@@ -42,10 +44,8 @@
       transition: transform var(--transition-150, 0) var(--timing, ease-in-out)
 
     &__link
-      @include ghost-clickable
       @include label-large
       align-items: center
-      background-color: hsl(var(--background, 240 10% 3.9%))
       display: flex
       gap: var(--spacing-l, 0.68rem)
       padding: var(--spacing-l, 0.68rem) var(--spacing-xl, 0.82rem)

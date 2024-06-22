@@ -37,9 +37,9 @@ export const BottomBar: React.FC = () => {
           return (
             <li key={key}>
               <Link
+                aria-label={i18n(`routes.${key}.link-aria-label`)}
                 className={classNames('bottom-bar__list__item', isSelected && 'selected')}
                 href={path}
-                aria-label={i18n(`routes.${key}.link-aria-label`)}
               >
                 <Icon size='1.8rem' />
               </Link>

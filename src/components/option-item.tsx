@@ -35,7 +35,7 @@ export type Option <T extends Key> = {
   /**
    * The key of the option item.
    */
-  id: T
+  key: T
 
   /**
    * The label to display on the right side of the option item.

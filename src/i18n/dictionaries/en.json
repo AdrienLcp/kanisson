@@ -5,7 +5,7 @@
       "options": {
         "logout": "Logout"
       },
-      "user": "User :",
+      "user": "User:",
       "trigger-aria-label": "Open user menu"
     }
   },
@@ -42,68 +42,85 @@
     "short-name": "Kanisson",
     "short-description": "Blind test games"
   },
-  "hue": {
-    "title": "Color",
-    "subtitle": "Choose the main color theme of the website",
-    "colors": {
-      "neutral": {
-        "tooltip": "Neutral",
-        "aria-label": "Neutral color"
-      },
-      "blue": {
-        "tooltip": "Blue",
-        "aria-label": "Blue color"
-      },
-      "green": {
-        "tooltip": "Green",
-        "aria-label": "Green color"
-      },
-      "orange": {
-        "tooltip": "Orange",
-        "aria-label": "Orange color"
-      },
-      "pink": {
-        "tooltip": "Pink",
-        "aria-label": "Pink color"
-      },
-      "purple": {
-        "tooltip": "Purple",
-        "aria-label": "Purple color"
-      },
-      "red": {
-        "tooltip": "Red",
-        "aria-label": "Red color"
-      },
-      "yellow": {
-        "tooltip": "Yellow",
-        "aria-label": "Yellow color"
-      }
-    }
-  },
   "routes": {
     "create": {
       "link-label": "Create",
-      "link-aria-label": "Create a new game"
+      "link-aria-label": "Create blind test",
+      "page-title": "Create a new blind test"
     },
     "contact": {
       "link-label": "Contact",
-      "link-aria-label": "Contact us"
+      "link-aria-label": "Contact us",
+      "page-title": "Contact"
     },
     "home": {
       "link-label": "Home",
-      "link-aria-label": "Go to the home page"
+      "link-aria-label": "Go to the home page",
+      "page-title": "Home"
     },
     "profile": {
       "link-label": "Profile",
-      "link-aria-label": "Go to your profile"
+      "link-aria-label": "Go to your profile",
+      "page-title": "My space"
     },
     "search": {
       "link-label": "Search",
-      "link-aria-label": "Search for a game"
+      "link-aria-label": "Search a blind test",
+      "page-title": "Search for a blind test"
     },
     "settings": {
       "link-label": "Settings",
-      "link-aria-label": "Go to the settings"
+      "link-aria-label": "Go to the settings",
+      "page-title": "Settings of the website"
+    }
+  },
+  "theme": {
+    "dark-mode": {
+      "title": "Theme",
+      "subtitle": "Switch between dark mode and light mode",
+      "modes": {
+        "dark": "Dark",
+        "light": "Light",
+        "system": "System"
+      }
+    },
+    "hue": {
+      "title": "Color",
+      "subtitle": "Choose the main color theme of the website",
+      "colors": {
+        "neutral": {
+          "tooltip": "Neutral",
+          "aria-label": "Neutral color"
+        },
+        "blue": {
+          "tooltip": "Blue",
+          "aria-label": "Blue color"
+        },
+        "green": {
+          "tooltip": "Green",
+          "aria-label": "Green color"
+        },
+        "orange": {
+          "tooltip": "Orange",
+          "aria-label": "Orange color"
+        },
+        "pink": {
+          "tooltip": "Pink",
+          "aria-label": "Pink color"
+        },
+        "purple": {
+          "tooltip": "Purple",
+          "aria-label": "Purple color"
+        },
+        "red": {
+          "tooltip": "Red",
+          "aria-label": "Red color"
+        },
+        "yellow": {
+          "tooltip": "Yellow",
+          "aria-label": "Yellow color"
+        }
+      }
     }
   }
 }

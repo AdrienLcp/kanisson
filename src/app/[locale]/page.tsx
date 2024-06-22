@@ -1,6 +1,6 @@
 import React from 'react'
 
-import type { PageProps } from '@/app/[locale]/layout'
+import type { PageProps } from '@/app/types'
 
 const Home: React.FC<PageProps> = () => {
 

@@ -3,8 +3,8 @@
 import { CheckIcon } from 'lucide-react'
 import React from 'react'
 
+import { Label } from '@/components/label'
 import { Pressable } from '@/components/pressable'
-import { Section } from '@/components/section'
 import { Tooltip } from '@/components/tooltip'
 import { classNames } from '@/helpers/styles'
 import { useI18n } from '@/i18n/client'
@@ -17,28 +17,29 @@ export const HueSwitcher: React.FC = () => {
   const { i18n } = useI18n()
 
   return (
-    <Section
-      title={i18n('hue.title')}
-      subtitle={i18n('hue.subtitle')}
-    >
-      <ul className='hue-switcher'>
+    <section className='hue-switcher'>
+      <Label>
+        {i18n('theme.hue.title')}
+      </Label>
+
+      <ul className='hue-switcher__list'>
         {HUES.map(hue => (
           <li key={hue}>
-            <Tooltip key={hue} content={i18n(`hue.colors.${hue}.tooltip`)}>
+            <Tooltip content={i18n(`theme.hue.colors.${hue}.tooltip`)}>
               <Pressable
                 aria-label={hue}
-                className={classNames('hue-switcher__button', hue)}
+                className={classNames('hue-switcher__list__button', hue)}
                 key={hue}
                 onPress={() => changeHue(hue)}
               >
                 {currentHue === hue && (
-                  <CheckIcon className='hue-switcher__button__check-icon' />
+                  <CheckIcon className='hue-switcher__list__button__check-icon' />
                 )}
               </Pressable>
             </Tooltip>
           </li>
         ))}
       </ul>
-    </Section>
+    </section>
   )
 }

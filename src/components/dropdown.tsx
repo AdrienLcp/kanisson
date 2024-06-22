@@ -60,10 +60,18 @@ export function Dropdown <T extends Key> ({
           {(item) => (
             <MenuItem
               className='dropdown__item'
-              key={item.id}
+              key={item.key}
               onAction={() => handleClickItem(item, onClickItem)}
             >
-              <OptionItem {...item} />
+              <OptionItem
+                className={item.className}
+                Icon={item.Icon}
+                isDisabled={item.isDisabled}
+                isPrefixedByDivider={item.isPrefixedByDivider}
+                isSelected={item.isSelected}
+                key={item.key}
+                label={item.label}
+              />
             </MenuItem>
           )}
         </Menu>

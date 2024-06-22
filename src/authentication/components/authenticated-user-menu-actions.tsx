@@ -4,39 +4,37 @@ import { LogOutIcon, MailIcon, SettingsIcon, UserIcon } from 'lucide-react'
 import type { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime'
 import { useRouter } from 'next/navigation'
 import React from 'react'
+import { type Key, ListBox, ListBoxItem } from 'react-aria-components'
 
 import { useAuthentication } from '@/authentication/client'
 import { type Option, OptionItem } from '@/components/option-item'
-import { Pressable } from '@/components/pressable'
 import type { I18n } from '@/i18n'
 import { useI18n } from '@/i18n/client'
 import { ROUTES } from '@/routes'
-
-import './authenticated-user-menu-actions.styles.sass'
 
 const getAuthenticatedUserMenuActions = (i18n: I18n, logout: () => void, router: AppRouterInstance) => {
   const authenticatedUserMenuActions: Array<Option<string>> = [
     {
       Icon: UserIcon,
-      id: 'profile',
+      key: 'profile',
       label: i18n('routes.profile.link-label'),
       onClick: () => router.push(ROUTES.profile)
     },
     {
       Icon: MailIcon,
-      id: 'contact',
+      key: 'contact',
       label: i18n('routes.contact.link-label'),
       onClick: () => router.push(ROUTES.contact)
     },
     {
       Icon: SettingsIcon,
-      id: 'settings',
+      key: 'settings',
       label: i18n('routes.settings.link-label'),
       onClick: () => router.push(ROUTES.settings)
     },
     {
       Icon: LogOutIcon,
-      id: 'logout',
+      key: 'logout',
       label: i18n('authentication.user-menu.options.logout'),
       onClick: logout
     }
@@ -45,9 +43,15 @@ const getAuthenticatedUserMenuActions = (i18n: I18n, logout: () => void, router:
   return authenticatedUserMenuActions
 }
 
-const handleActionClick = (action: Option<string>) => {
-  if (typeof action.onClick === 'function') {
-    action.onClick(action)
+const handleActionClick = (key: Key, items: Array<Option<string>>) => {
+  const clickedAction = items.find(option => option.key === key)
+
+  if (clickedAction === undefined) {
+    return
+  }
+
+  if (typeof clickedAction.onClick === 'function') {
+    clickedAction.onClick(clickedAction)
   }
 }
 
@@ -60,20 +64,28 @@ export const AuthenticatedUserMenuActions: React.FC = () => {
   const authenticatedUserMenuActions = getAuthenticatedUserMenuActions(i18n, logout, router)
 
   return (
-    <ul className='authenticated-user-menu-actions'>
-      {authenticatedUserMenuActions.map(action => (
-        <li
-          className='authenticated-user-menu-actions__item'
-          key={action.id}
+    <ListBox
+      aria-label={i18n('authentication.user-menu.menu-aria-label')}
+      items={authenticatedUserMenuActions}
+      onAction={(key) => handleActionClick(key, authenticatedUserMenuActions)}
+    >
+      {action => (
+        <ListBoxItem
+          id={action.key}
+          key={action.key}
+          textValue={action.label}
         >
-          <Pressable
-            className='authenticated-user-menu-actions__item__button'
-            onPress={() => handleActionClick(action)}
-          >
-            <OptionItem {...action} />
-          </Pressable>
-        </li>
-      ))}
-    </ul>
+          <OptionItem
+            className={action.className}
+            Icon={action.Icon}
+            isPrefixedByDivider={action.isPrefixedByDivider}
+            isDisabled={action.isDisabled}
+            isSelected={action.isSelected}
+            key={action.key}
+            label={action.label}
+          />
+        </ListBoxItem>
+      )}
+    </ListBox>
   )
 }

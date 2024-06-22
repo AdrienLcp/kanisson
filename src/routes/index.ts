@@ -6,7 +6,6 @@ export const ROUTES = {
   create: '/playlists/create',
   contact: '/contact',
   home: '/',
-  playlists: '/playlists',
   profile: '/profile',
   search: '/search',
   settings: '/settings'

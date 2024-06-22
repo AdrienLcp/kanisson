@@ -1,6 +1,6 @@
 import type { ButtonRenderProps, ListBoxRenderProps, PopoverRenderProps, SelectRenderProps, TooltipRenderProps } from 'react-aria-components'
 
-export type Style = Record<string, string | number>
+export type Style = Record<`--${string}`, string | number>
 
 export type ResponsiveSize = `${number}rem`
 

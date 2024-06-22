@@ -7,27 +7,13 @@ import { Header } from '@/app/components/header'
 import { Main } from '@/app/components/main'
 import { getCommonMetadata } from '@/app/metadata'
 import { Providers } from '@/app/components/providers'
+import type { LayoutProps, PageProps } from '@/app/types'
 import { getAuthenticatedUser } from '@/authentication/actions/get-authenticated-user'
-import { buildI18n, type Locale } from '@/i18n'
+import { buildI18n } from '@/i18n'
 import { getDictionary } from '@/i18n/server'
 import { Navbar } from '@/routes/components/navbar'
 
 import '@/styles/base.sass'
-
-type CommonParams = {
-  locale: Locale
-}
-
-type Params <T> = T extends null
-  ? CommonParams
-  : CommonParams & T
-
-type PageParams <T> = {
-  params: Params<T>
-}
-
-export type PageProps <T = null> = Readonly<PageParams<T>>
-export type LayoutProps <T = null> = PageProps<T> & React.PropsWithChildren
 
 export const generateMetadata = async ({ params }: PageProps): Promise<Metadata> => {
   return await getCommonMetadata(params.locale)

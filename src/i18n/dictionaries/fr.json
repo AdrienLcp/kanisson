@@ -18,44 +18,6 @@
       "alt": "Logo de Kanisson"
     }
   },
-  "hue": {
-    "title": "Couleur",
-    "subtitle": "Sélectionne la couleur principale du site",
-    "colors": {
-      "neutral": {
-        "tooltip": "Neutre",
-        "aria-label": "Couleur neutre"
-      },
-      "blue": {
-        "tooltip": "Bleu",
-        "aria-label": "Couleur bleue"
-      },
-      "green": {
-        "tooltip": "Vert",
-        "aria-label": "Couleur verte"
-      },
-      "orange": {
-        "tooltip": "Orange",
-        "aria-label": "Couleur orange"
-      },
-      "pink": {
-        "tooltip": "Rose",
-        "aria-label": "Couleur rose"
-      },
-      "purple": {
-        "tooltip": "Violet",
-        "aria-label": "Couleur violette"
-      },
-      "red": {
-        "tooltip": "Rouge",
-        "aria-label": "Couleur rouge"
-      },
-      "yellow": {
-        "tooltip": "Jaune",
-        "aria-label": "Couleur jaune"
-      }
-    }
-  },
   "metadata": {
     "category": "jeu",
     "classification": "jeu en ligne",
@@ -83,27 +45,82 @@
   "routes": {
     "create": {
       "link-label": "Créer",
-      "link-aria-label": "Créer un blind test"
+      "link-aria-label": "Créer un blind test",
+      "page-title": "Créer un nouveau blind test"
     },
     "contact": {
       "link-label": "Contact",
-      "link-aria-label": "Contacte nous"
+      "link-aria-label": "Contacte nous",
+      "page-title": "Nous contacter"
     },
     "home": {
       "link-label": "Accueil",
-      "link-aria-label": "Retour à l'accueil"
+      "link-aria-label": "Retour à l'accueil",
+      "page-title": "Page d'accueil"
     },
     "profile": {
       "link-label": "Profil",
-      "link-aria-label": "Accéder à votre profil"
+      "link-aria-label": "Accéder à votre profil",
+      "page-title": "Mon espace"
     },
     "search": {
       "link-label": "Rechercher",
-      "link-aria-label": "Rechercher un blind test"
+      "link-aria-label": "Rechercher un blind test",
+      "page-title": "Chercher un blind test"
     },
     "settings": {
       "link-label": "Paramètres",
-      "link-aria-label": "Accéder à vos paramètres"
+      "link-aria-label": "Accéder à vos paramètres",
+      "page-title": "Paramètres du site"
+    }
+  },
+  "theme": {
+    "dark-mode": {
+      "title": "Theme",
+      "subtitle": "Sélectionne le thème sombre ou clair du site",
+      "modes": {
+        "dark": "Sombre",
+        "light": "Clair",
+        "system": "Système"
+      }
+    },
+    "hue": {
+      "title": "Couleur",
+      "subtitle": "Sélectionne la couleur principale du site",
+      "colors": {
+        "neutral": {
+          "tooltip": "Neutre",
+          "aria-label": "Couleur neutre"
+        },
+        "blue": {
+          "tooltip": "Bleu",
+          "aria-label": "Couleur bleue"
+        },
+        "green": {
+          "tooltip": "Vert",
+          "aria-label": "Couleur verte"
+        },
+        "orange": {
+          "tooltip": "Orange",
+          "aria-label": "Couleur orange"
+        },
+        "pink": {
+          "tooltip": "Rose",
+          "aria-label": "Couleur rose"
+        },
+        "purple": {
+          "tooltip": "Violet",
+          "aria-label": "Couleur violette"
+        },
+        "red": {
+          "tooltip": "Rouge",
+          "aria-label": "Couleur rouge"
+        },
+        "yellow": {
+          "tooltip": "Jaune",
+          "aria-label": "Couleur jaune"
+        }
+      }
     }
   }
 }

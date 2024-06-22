@@ -1,4 +1,4 @@
-@layer normalize, sizes, colors, transitions, shadows, typography, mixins, scrollbar
+@layer normalize, sizes, colors, transitions, animations, shadows, typography, mixins, forms, scrollbar
 
 @import '@/styles/normalize.css'
 @import '@/styles/sizes.sass'
@@ -8,6 +8,7 @@
 @import '@/styles/shadows.sass'
 @import '@/styles/typography.sass'
 @import '@/styles/mixins.sass'
+@import '@/styles/forms.sass'
 @import '@/styles/scrollbar.sass'
 
 ::selection
@@ -27,6 +28,7 @@ html
 
 body
   @include body-medium
+  @include color-transition
   background-color: hsl(var(--background, 240 10% 3.9%))
   color: hsl(var(--foreground, 0 0% 98%))
   display: grid
