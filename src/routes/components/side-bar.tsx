@@ -26,22 +26,16 @@ export const SideBar: React.FC = () => {
       <nav>
         <ul>
           {navbarItems.map(({ Icon, key, label, path }) => (
-            <li key={key} className='side-bar__item'>
-              <Icon
-                className='side-bar__item__icon'
-                size='0.75rem'
-              />
-
+            <li key={key}>
               <Link
-                className='side-bar__item__link'
+                className='side-bar__link'
                 href={path}
               >
-                <Icon
-                  className='side-bar__item__link__icon'
-                  size='0.75rem'
-                />
+                <span className='side-bar__link__label'>
+                  {label}
+                </span>
 
-                {label}
+                <Icon className='side-bar__link__icon' size='0.75rem' />
               </Link>
             </li>
           ))}

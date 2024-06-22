@@ -3,6 +3,7 @@
 
 .side-bar
   --side-bar-rest-divider: 4
+  --side-bar-rest-width: calc(var(--side-bar-width, 12rem) / var(--side-bar-rest-divider, 4))
   background-color: hsl(var(--background, 240 10% 3.9%))
   border-right: var(--element-stroke, 2px) solid hsl(var(--border, 240 3.7% 15.9%))
   display: flex
@@ -13,11 +14,8 @@
   justify-content: center
   padding-block: var(--layout-spacing-m, 1.94rem)
   position: fixed
-  transition-duration: var(--transition-150, 0)
-  transform-origin: center
-  transition-property: width
-  transition-timing-function: var(--timing, ease-in-out)
-  width: calc(var(--side-bar-width, 12rem) / var(--side-bar-rest-divider, 4))
+  transition: width var(--transition-150, 0) var(--timing, ease-in-out)
+  width: var(--side-bar-rest-width, 3rem)
 
   &__heading
     border-radius: var(--radius-circular, 99px)
@@ -32,28 +30,32 @@
       transition: transform var(--transition-150, 0) var(--timing, ease-in-out)
       transform: scale(calc(1 / var(--side-bar-rest-divider, 4)))
 
-  &__item
+  &__link
     @include ghost-clickable
-    background-color: hsl(var(--background, 240 10% 3.9%))
-    display: flex
-    padding-block: var(--spacing-l, 0.68rem)
+    --side-bar-link-icon-size: 0.75rem
+    --side-bar-link-icon-width: calc(calc(var(--side-bar-rest-width, 3rem) / 2) + var(--side-bar-link-icon-size, 0.75rem))
+    padding-block: var(--spacing-l, 0.55rem)
     position: relative
+    width: 100%
 
-    &__icon
-      margin-inline: auto
-      transition: transform var(--transition-150, 0) var(--timing, ease-in-out)
-
-    &__link
-      @include label-large
-      align-items: center
-      display: flex
-      gap: var(--spacing-l, 0.68rem)
-      padding: var(--spacing-l, 0.68rem) var(--spacing-xl, 0.82rem)
+    &__label
+      @include label-medium
+      opacity: 0
       position: absolute
       top: 50%
       transform: translate(-12rem, -50%)
-      transition: transform var(--transition-150, 0) var(--timing, ease-in-out)
-      width: 100%
+      transition-duration: var(--transition-150, 0)
+      transition-property: opacity, transform
+      transition-timing-function: var(--timing, ease-in-out)
+
+    &__icon
+      @include color-transition
+      background-color: hsl(var(--background, 240 10% 3.9%))
+      height: var(--side-bar-link-icon-size, 0.75rem)
+      padding-left: calc(var(--side-bar-rest-width, 3rem) / 2)
+      position: relative
+      transform: translate(calc(-50% + var(--side-bar-link-icon-size, 0.75rem)))
+      width: var(--side-bar-link-icon-width, 2.25rem)
 
   &:hover
     width: var(--side-bar-width, 12rem)
@@ -65,9 +67,10 @@
         &:hover
           transform: scale(0.8) rotate(360deg)
 
-      &__item
-        &__icon
-          transform: translateX(-12rem)
-        
-        &__link
-          transform: translate(0, -50%)
+      &__link
+        &__label
+          opacity: 1
+          transform: translate(calc(var(--side-bar-link-icon-width, 2.25rem) + 0.4ch), -50%)
+
+        &:hover .side-bar__link__icon
+          background-color: transparent
