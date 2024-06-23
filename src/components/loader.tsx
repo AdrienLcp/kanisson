@@ -11,9 +11,7 @@ type LoaderSize = ComponentSizes
 type LoaderVariant = 'circle'
 
 type LoaderProps = {
-  /**
-   * Additional class names to apply to the loader.
-   */
+  /** Additional class names to apply to the loader. */
   className?: string
 
   /**

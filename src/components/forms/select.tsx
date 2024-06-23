@@ -1,42 +1,20 @@
 import React from 'react'
 import {
   type Key,
-  ListBox,
   Select as ReactAriaSelect,
-  type SelectProps as ReactAriaSelectProps,
-  ListBoxItem
+  type SelectProps as ReactAriaSelectProps
 } from 'react-aria-components'
 
 import { Chevron } from '@/components/chevron'
-import { Label } from '@/components/label'
+import { BasePicker, type CommonPickerProps, type Items, type OnSelect } from '@/components/forms/base-picker'
 import { type Option, OptionItem } from '@/components/option-item'
-import { Popover } from '@/components/popover'
 import { Pressable } from '@/components/pressable'
 import { isValidString } from '@/helpers/strings'
-import { type Style, classNames, getReactAriaClassName } from '@/helpers/styles'
+import { classNames, DEFAULT_MENU_MIN_WIDTH, getReactAriaClassName } from '@/helpers/styles'
 
 import './select.styles.sass'
-import { Motion } from '@/components/motion'
 
-type Items <T extends Key> = Array<Option<T>>
-type OnSelect <T extends Key> = ((item: Option<T>) => void) | undefined
-
-type SelectProps <T extends Key> = ReactAriaSelectProps<Option<T>> & {
-  /**
-   * Items to display in the select component.
-   */
-  items: Array<Option<T>>
-
-  /**
-   * The label of the select component, displayed above the select input.
-   */
-  label?: string
-
-  /**
-   * The function to call when user click on select option.
-   */
-  onSelect?: OnSelect<T>
-}
+type SelectProps <T extends Key> = ReactAriaSelectProps<Option<T>> & CommonPickerProps<T>
 
 function handleSelectItem <T extends Key> (key: Key, items: Items<T>, onSelect: OnSelect<T>) {
   const selectedItem = items.find(item => item.key === key)
@@ -93,26 +71,21 @@ export function Select <T extends Key> ({
   ...props
 }: SelectProps<T>) {
   const [isSelectMenuOpen, setIsSelectMenuOpen] = React.useState<boolean>(false)
-  const [menuMinWidth, setMenuMinWidth] = React.useState<number | null>(null)
+  const [selectMenuMinWidth, setSelectMenuMinWidth] = React.useState<number>(DEFAULT_MENU_MIN_WIDTH)
 
-  const pressableRef = React.useRef<HTMLDivElement | null>(null)
+  const selectRef = React.useRef<HTMLDivElement | null>(null)
 
   React.useEffect(() => {
-    if (pressableRef.current !== null) {
-      setMenuMinWidth(pressableRef.current.offsetWidth)
+    if (selectRef.current !== null) {
+      setSelectMenuMinWidth(selectRef.current.offsetWidth)
     }
-  }, [pressableRef])
-
-  const listBoxStyle: Style = {
-    '--select-min-width': menuMinWidth !== null
-      ? `${menuMinWidth}px`
-      : 'var(--size-200, 12rem)'
-  }
+  }, [selectRef])
 
   return (
     <ReactAriaSelect
       {...props}
       className={(values) => getReactAriaClassName(values, className, 'select')}
+      isDisabled={isDisabled}
       onOpenChange={(isOpen) => {
         setIsSelectMenuOpen(isOpen)
 
@@ -120,44 +93,22 @@ export function Select <T extends Key> ({
           onOpenChange(isOpen)
         }
       }}
+      onSelectionChange={(key) => handleSelectItem(key, items, onSelect)}
     >
-      <Label>{label}</Label>
+      <BasePicker
+        items={items}
+        label={label}
+        menuMinWidth={selectMenuMinWidth}
+        selectedKey={selectedKey}
+      >
+        <div ref={selectRef}>
+          <Pressable className='select__input'>
+            {renderValue(items, selectedKey, placeholder, isDisabled)}
 
-      <div ref={pressableRef}>
-        <Pressable className='select__input'>
-          {renderValue(items, selectedKey, placeholder, isDisabled)}
-
-          <Chevron isRotated={isSelectMenuOpen} />
-        </Pressable>
-      </div>
-
-      <Popover>
-        <Motion animation='fade-in'>
-          <ListBox
-            className='select__list-box'
-            items={items}
-            onAction={(key) => handleSelectItem(key, items, onSelect)}
-            style={listBoxStyle}
-          >
-            {item => (
-              <ListBoxItem
-                className='select__list-box__item'
-                textValue={item.label}
-              >
-                <OptionItem
-                  className={item.className}
-                  Icon={item.Icon}
-                  isDisabled={item.isDisabled}
-                  isPrefixedByDivider={item.isPrefixedByDivider}
-                  isSelected={item.key === selectedKey}
-                  key={item.key}
-                  label={item.label}
-                />
-              </ListBoxItem>
-            )}
-          </ListBox>
-        </Motion>
-      </Popover>
+            <Chevron isRotated={isSelectMenuOpen} />
+          </Pressable>
+        </div>
+      </BasePicker>
     </ReactAriaSelect>
   )
 }

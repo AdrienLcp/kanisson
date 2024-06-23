@@ -6,6 +6,7 @@ import { BaseTextField, type BaseTextFieldProps } from '@/components/forms/base-
 import './text-area.styles.sass'
 
 type TextAreaProps = BaseTextFieldProps & {
+  /** Placeholder text to display in the input. */
   placeholder?: string
 }
 

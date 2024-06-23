@@ -1,0 +1,24 @@
+@import '@/styles/forms'
+@import '@/styles/mixins'
+
+.combo-box
+  @include base-field
+
+  &__control
+    @include form-picker
+    padding-inline: 0
+
+    &__input
+      background-color: transparent
+      border: none
+      border-radius: var(--input-radius, 5px)
+      color: hsl(var(--foreground, 0 0% 98%))
+      height: 100%
+      padding-inline: var(--input-padding, 0.55rem)
+      width: 100%
+      
+    &__button
+      @include ghost-clickable
+      border-radius: 0 var(--radius-xs, 3px) var(--radius-xs, 3px) 0
+      height: 100%
+      padding-inline: var(--input-padding, 0.55rem)

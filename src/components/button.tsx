@@ -28,9 +28,7 @@ type ButtonProps = ReactAriaButtonProps & {
    */
   iconSide?: ButtonIconSide
 
-  /**
-   * Shows a loading spinner inside the button when true.
-   */
+  /** Shows a loading spinner inside the button when true.*/
   isLoading?: boolean
 
   /**

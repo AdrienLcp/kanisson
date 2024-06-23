@@ -6,6 +6,7 @@ import { DEFAULT_ICON_SIZE, classNames } from '@/helpers/styles'
 import './chevron.styles.sass'
 
 type ChevronProps = LucideProps & {
+  /** Determines if the chevron should be rotated 180 degrees. */
   isRotated?: boolean
 }
 

@@ -1,5 +1,9 @@
 @import '@/styles/mixins'
 
+:root
+  --input-padding: var(--spacing-m, 0.55rem)
+  --input-radius: var(--element-radius, 5px)
+
 @mixin base-field
   display: flex
   flex-direction: column
@@ -10,9 +14,9 @@
   align-items: center
   background-color: transparent
   border: var(--element-stroke, 2px) solid hsl(var(--border, 240 3.7% 15.9%))
-  border-radius: var(--element-radius, 5px)
+  border-radius: var(--input-radius, 5px)
   display: flex
-  padding-inline: var(--spacing-m, 0.55rem)
+  padding-inline: var(--input-padding, 0.55rem)
   width: 100%
 
   &::placeholder

@@ -16,9 +16,7 @@ import './logo.styles.sass'
 type LogoSize = ComponentSizes
 
 type LogoProps = {
-  /**
-   * Additional class names to apply to the loader.
-   */
+  /** Additional class names to apply to the loader. */
   className?: string
 
   /**

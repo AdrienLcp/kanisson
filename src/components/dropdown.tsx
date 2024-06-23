@@ -11,14 +11,10 @@ import './dropdown.styles.sass'
 
 type BaseMenuProps <T> = Omit<MenuProps<T>, 'items'>
 type BaseDropdownProps <T extends Key> = {
-  /**
-   * The items to display in the dropdown.
-   */
+  /** The items to display in the dropdown. */
   items: Array<Option<T>>,
 
-  /**
-   * The function to call when an item is clicked.
-   */
+  /** The function to call when an item is clicked. */
   onClickItem?: (item: Option<T>) => void
 }
 

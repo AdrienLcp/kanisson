@@ -6,29 +6,19 @@ import { isValidString } from '@/helpers/strings'
 import { StatusMessageBar } from '@/components/status-message'
 
 type FormProps = ReactAriaFormProps & {
-  /**
-   * Displays a red message on top of the form if provided.
-   */
+  /** Displays a red message on top of the form if provided. */
   errorMessage?: string | null
 
-  /**
-   * Disable all children controls if true.
-   */
+  /** Disable all children controls if true. */
   isDisabled?: boolean
 
-  /**
-   * Displays a submit button if provided.
-   */
+  /** Displays a submit button if provided. */
   submitLabel?: string
 
-  /**
-   * Optional subtitle to display above the title.
-   */
+  /** Optional subtitle to display above the title. */
   subtitle?: string
 
-  /**
-   * Optional title to display above the form.
-   */
+  /** Optional title to display above the form. */
   title?: string
 }
 

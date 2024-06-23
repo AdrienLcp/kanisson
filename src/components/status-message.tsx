@@ -8,12 +8,21 @@ import './status-message.styles.sass'
 type StatusMessageType = 'error' | 'success' | 'warning'
 
 export type StatusMessage = {
+  /** The message to display. */
   message: string
+
+  /**
+   * The type of status message.
+   * @values 'error', 'success', 'warning'
+   */
   type: StatusMessageType
 }
 
 type StatusMessageProps = {
+  /** Additional class names to apply to the motion component. */
   className?: string
+
+  /** The status message to display. */
   status: StatusMessage | null
 }
 

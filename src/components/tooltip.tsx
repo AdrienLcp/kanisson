@@ -10,19 +10,13 @@ import { getReactAriaClassName } from '@/helpers/styles'
 import './tooltip.styles.sass'
 
 type TooltipProps = ReactAriaTooltipProps & React.PropsWithChildren & {
-  /**
-   * The content to display in the tooltip.
-   */
+  /** The content to display in the tooltip. */
   content?: React.ReactNode
 
-  /**
-   * Delay to close the tooltip.
-   */
+  /** Delay to close the tooltip. */
   closeDelay?: number
 
-  /**
-   * Delay to display the tooltip.
-   */
+  /** Delay to display the tooltip. */
   delay?: number
 }
 

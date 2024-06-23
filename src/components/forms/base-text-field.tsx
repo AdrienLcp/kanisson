@@ -10,9 +10,16 @@ import './base-text-field.styles.sass'
 type FilteredTextFieldProps = Omit<TextFieldProps, 'className'>
 
 export type BaseTextFieldProps = FilteredTextFieldProps & {
+  /** Additional class names to apply to the motion component. */
   className?: string
+
+  /** Description to display below the input. */
   description?: React.ReactNode
+
+  /** Label to display above the input. */
   label?: React.ReactNode
+
+  /** Placeholder text to display in the input. */
   placeholder?: string
 }
 

@@ -22,9 +22,7 @@ type DialogProps = ReactAriaDialogProps & React.PropsWithChildren & {
    */
   placement: PopoverProps['placement']
 
-  /**
-   * Trigger needs to be a pressable component.
-   */
+  /** Trigger needs to be a pressable component. */
   Trigger: React.ReactNode
 }
 

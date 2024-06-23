@@ -8,23 +8,17 @@ type Animation = 'accordion' | 'fade-in' | 'fade-in-slow' | 'infinite-rotate' | 
 type MotionProps = FramerMotionProps & {
   /**
    * The animation name to apply to the children.
-   * @values 'accordion', 'fade-in', 'rotate', 'scale'
+   * @values 'accordion', 'fade-in', 'fade-in-slow', 'infinite-rotate', 'scale'
    */
   animation: Animation
 
-  /**
-   * Additional class names to apply to the motion component.
-   */
+  /** Additional class names to apply to the motion component. */
   className?: string
 
-  /**
-   * Override the default delay of the animation.
-   */
+  /** Override the default delay of the animation. */
   delay?: number
 
-  /**
-   * Override the default duration of the animation.
-   */
+  /** Override the default duration of the animation. */
   duration?: number
 }
 

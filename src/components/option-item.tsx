@@ -7,44 +7,28 @@ import { DEFAULT_ICON_SIZE, classNames } from '@/helpers/styles'
 import './option-item.styles.sass'
 
 export type Option <T extends Key> = {
-  /**
-   * Additional class names to apply to the motion component.
-   */
+  /** Additional class names to apply to the motion component. */
   className?: string
 
-  /**
-   * The icon to display on the left side of the option item.
-   */
+  /** The icon to display on the left side of the option item. */
   Icon?: LucideIcon
 
-  /**
-   * Whether the option item is disabled.
-   */
+  /** Whether the option item is disabled. */
   isDisabled?: boolean
 
-  /**
-   * Whether the option item is prefixed by a divider.
-   */
+  /** Whether the option item is prefixed by a divider. */
   isPrefixedByDivider?: boolean
 
-  /**
-   * Whether the option item is selected.
-   */
+  /** Whether the option item is selected. */
   isSelected?: boolean
 
-  /**
-   * The key of the option item.
-   */
+  /** The key of the option item. */
   key: T
 
-  /**
-   * The label to display on the right side of the option item.
-   */
+  /** The label to display on the right side of the option item. */
   label?: string
 
-  /**
-   * The function to call when the option item is clicked.
-   */
+  /** The function to call when the option item is clicked. */
   onClick?: (option: Option<T>) => void
 }
 
