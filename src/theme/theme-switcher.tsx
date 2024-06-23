@@ -8,7 +8,6 @@ import { Select } from '@/components/forms/select'
 import type { I18n } from '@/i18n'
 import { useI18n } from '@/i18n/client'
 import { type Theme, useTheme } from '@/theme'
-import { ComboBox } from '@/components/forms/combo-box'
 
 const getThemesOptions = (i18n: I18n) => {
   const themesOptionsConfig: Array<Option<Theme>> = [
@@ -41,14 +40,6 @@ export const ThemeSwitcher: React.FC = () => {
   return (
     <section>
       <Select
-        items={themesOptions}
-        label={i18n('theme.dark-mode.title')}
-        onSelect={(option) => { changeTheme(option.key) }}
-        placeholder={i18n('theme.dark-mode.subtitle')}
-        selectedKey={currentTheme}
-      />
-
-      <ComboBox
         items={themesOptions}
         label={i18n('theme.dark-mode.title')}
         onSelect={(option) => { changeTheme(option.key) }}
