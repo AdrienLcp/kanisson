@@ -1,4 +1,4 @@
-import type { ButtonRenderProps, ComboBoxRenderProps, ListBoxRenderProps, PopoverRenderProps, SelectRenderProps, TooltipRenderProps } from 'react-aria-components'
+import type { ButtonRenderProps, ComboBoxRenderProps, ListBoxRenderProps, PopoverRenderProps, SelectRenderProps, TextFieldRenderProps, TooltipRenderProps } from 'react-aria-components'
 
 export type Style = Record<`--${string}`, string | number>
 
@@ -19,6 +19,7 @@ type ElementRenderProps =
   ListBoxRenderProps |
   PopoverRenderProps |
   SelectRenderProps |
+  TextFieldRenderProps |
   TooltipRenderProps
 
 type RenderPropsValues <T extends ElementRenderProps> = T & {

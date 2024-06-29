@@ -20,11 +20,15 @@ export const generateMetadata = async ({ params }: PageProps): Promise<Metadata>
 }
 
 const RootLayout: React.FC<LayoutProps> = async ({ children, params }) => {
-  const authenticatedUser = await getAuthenticatedUser()
-
   const locale = params.locale
   const dictionary = await getDictionary(locale)
   const i18n = buildI18n(dictionary, locale)
+
+  const authenticatedUserResponse = await getAuthenticatedUser()
+
+  const authenticatedUser = authenticatedUserResponse.status === 'success'
+    ? authenticatedUserResponse.data
+    : null
 
   return (
     <Providers

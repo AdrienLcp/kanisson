@@ -1,14 +1,12 @@
 import React from 'react'
-import {
-  type Key,
-  ListBox,
-  ListBoxItem
-} from 'react-aria-components'
+import { type Key, ListBox } from 'react-aria-components'
 
-import { Label } from '@/components/label'
+import { ListBoxItem } from '@/components/list-box-item'
 import { Motion } from '@/components/motion'
 import { type Option, OptionItem } from '@/components/option-item'
 import { Popover } from '@/components/popover'
+import type { CommonFormFieldProps } from '@/forms'
+import { BaseField } from '@/forms/components/base-field'
 import type { Style } from '@/helpers/styles'
 
 import './base-picker.styles.sass'
@@ -16,16 +14,11 @@ import './base-picker.styles.sass'
 export type Items <T extends Key> = Array<Option<T>>
 export type OnSelect <T extends Key> = ((item: Option<T>) => void) | undefined
 
-export type CommonPickerProps <T extends Key> = {
+export type CommonPickerProps <T extends Key> = CommonFormFieldProps & {
   /**
    * Items to display in the select component.
    */
   items: Items<T>
-
-  /**
-   * The label of the select component, displayed above the select input.
-   */
-  label?: string
 
   /**
    * The function to call when user click on select option.
@@ -35,7 +28,8 @@ export type CommonPickerProps <T extends Key> = {
 
 type BasePickerProps <T extends Key> =
   React.PropsWithChildren &
-  Pick<CommonPickerProps<T>, 'items' | 'label'> & {
+  Pick<CommonPickerProps<T>, 'items' | 'label'> &
+  CommonFormFieldProps & {
   /**
    * Min width of the list box.
    */
@@ -49,6 +43,7 @@ type BasePickerProps <T extends Key> =
 
 export function BasePicker <T extends Key> ({
   children,
+  description,
   items,
   label,
   menuMinWidth,
@@ -60,14 +55,17 @@ export function BasePicker <T extends Key> ({
 
   return (
     <>
-      <Label>{label}</Label>
-
-      {children}
+      <BaseField
+        description={description}
+        label={label}
+      >
+        {children}
+      </BaseField>
 
       <Popover>
         <Motion animation='fade-in'>
           <ListBox
-            className='base-picker'
+            className='base-picker__list-box'
             items={items}
             style={listBoxStyle}
           >

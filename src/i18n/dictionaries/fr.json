@@ -1,5 +1,9 @@
 {
   "authentication": {
+    "errors": {
+      "non-existent": "Cet utilisateur n'existe pas",
+      "unauthenticated": "L'utilisateur n'est pas authentifié"
+    },
     "user-menu": {
       "menu-aria-label": "Menu de l'utilisateur",
       "options": {
@@ -17,6 +21,9 @@
     "logo": {
       "alt": "Logo de Kanisson"
     }
+  },
+  "errors": {
+    "500": "Une erreur est survenue, veuillez réessayer plus tard"
   },
   "i18n": {
     "label": "Langue",
@@ -46,12 +53,27 @@
     "short-name": "Kanisson",
     "short-description": "Site de blind test"
   },
-  "routes": {
-    "create": {
-      "link-label": "Créer",
-      "link-aria-label": "Créer un blind test",
-      "page-title": "Créer un nouveau blind test"
+  "playlists": {
+    "errors": {
+      "description-too-long": "La description doit contenir au maximum %{max} caractères",
+      "title-too-long": "Le titre doit contenir au maximum %{max} caractères",
+      "title-too-short": "Le titre doit contenir au moins %{min} caractères"
     },
+    "form": {
+      "fields": {
+        "description": {
+          "label": "Description",
+          "placeholder": "Les meilleurs tubes des années 80 !"
+        },
+        "title": {
+          "label": "Titre",
+          "placeholder": "Années 80"
+        }
+      },
+      "submit-label": "Créer"
+    }
+  },
+  "routes": {
     "contact": {
       "link-label": "Contact",
       "link-aria-label": "Contacte nous",
@@ -78,6 +100,13 @@
       "link-label": "Accueil",
       "link-aria-label": "Retour à l'accueil",
       "page-title": "Page d'accueil"
+    },
+    "playlists": {
+      "create": {
+        "link-label": "Créer",
+        "link-aria-label": "Créer un blind test",
+        "page-title": "Créer un nouveau blind test"
+      }
     },
     "profile": {
       "link-label": "Profil",

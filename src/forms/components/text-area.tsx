@@ -1,7 +1,7 @@
 import React from 'react'
 import { TextArea as ReactAriaTextArea } from 'react-aria-components'
 
-import { BaseTextField, type BaseTextFieldProps } from '@/components/forms/base-text-field'
+import { BaseTextField, type BaseTextFieldProps } from '@/forms/components/base-text-field'
 
 import './text-area.styles.sass'
 

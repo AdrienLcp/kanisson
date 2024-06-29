@@ -29,7 +29,9 @@
     "@typescript-eslint/consistent-type-definitions": ["error", "type"],
     "semi": ["error", "never"],
     "comma-dangle": ["error", "never"],
-    "indent": ["error", 2],
+    "indent": ["error", 2, {
+      "SwitchCase": 1
+    }],
     "react/jsx-uses-react": "off",
     "react/prop-types": "off",
     "no-multiple-empty-lines": ["error", { "max": 1 }],

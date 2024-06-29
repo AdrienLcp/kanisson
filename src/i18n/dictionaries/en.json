@@ -1,5 +1,9 @@
 {
   "authentication": {
+    "errors": {
+      "non-existent": "The user does not exist",
+      "unauthenticated": "User not authenticated"
+    },
     "user-menu": {
       "menu-aria-label": "User menu",
       "options": {
@@ -17,6 +21,9 @@
     "logo": {
       "alt": "Kanisson's logo"
     }
+  },
+  "errors": {
+    "500": "An error occurred, please try again later"
   },
   "i18n": {
     "label": "Lang",
@@ -46,12 +53,27 @@
     "short-name": "Kanisson",
     "short-description": "Blind test games"
   },
-  "routes": {
-    "create": {
-      "link-label": "Create",
-      "link-aria-label": "Create blind test",
-      "page-title": "Create a new blind test"
+  "playlists": {
+    "errors": {
+      "description-too-long": "Description must contain at most %{max} characters",
+      "title-too-long": "Title must contain at most %{max} characters",
+      "title-too-short": "Title must contain at least %{min} characters"
     },
+    "form": {
+      "fields": {
+        "description": {
+          "label": "Description",
+          "placeholder": "A playlist of the best songs of the 80s"
+        },
+        "title": {
+          "label": "Title",
+          "placeholder": "80s"
+        }
+      },
+      "submit-label": "Create"
+    }
+  },
+  "routes": {
     "contact": {
       "link-label": "Contact",
       "link-aria-label": "Contact us",
@@ -78,6 +100,13 @@
       "link-label": "Home",
       "link-aria-label": "Go to the home page",
       "page-title": "Home"
+    },
+    "playlists": {
+      "create": {
+        "link-label": "Create",
+        "link-aria-label": "Create blind test",
+        "page-title": "Create a new blind test"
+      }
     },
     "profile": {
       "link-label": "Profile",

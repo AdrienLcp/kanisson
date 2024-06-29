@@ -38,10 +38,11 @@ body
   min-height: 100svh
 
 main
+  --main-max-width: 1160px
   grid-area: main
   margin-inline: auto
   padding-block: var(--layout-spacing-m, 1.94rem)
-  width: min(1160px, 100% - var(--layout-spacing-m, 1.94rem))
+  width: min(var(--main-max-width, 1160px), 100% - var(--layout-spacing-xxs, 1.13rem))
 
 h1, h2, h3, h4, h5, h6
   @include title-medium
@@ -54,7 +55,8 @@ input, button, textarea, select
     grid-template-areas: 'side-bar header' 'side-bar main' 'side-bar footer'
     grid-template-columns: auto 1fr
     grid-template-rows: auto 1fr auto
-    padding-inline-start: var(--side-bar-width, 12rem)
+    padding-inline-start: var(--side-bar-rest-width, 3rem)
 
   main
     padding-block: calc(var(--layout-spacing-m, 1.94rem) + var(--header-height, 4.55rem)) var(--layout-spacing-m, 1.94rem)
+    width: min(var(--main-max-width, 1160px), 100% - calc(var(--layout-spacing-m, 1.94rem) + var(--side-bar-rest-width, 0)))

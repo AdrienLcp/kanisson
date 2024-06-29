@@ -1,15 +1,20 @@
-import { AUTH_USER_SELECTED_FIELDS, type AuthenticatedUser } from '@/authentication'
+'use server'
+
+import { AUTH_USER_SELECTED_FIELDS, type AuthenticatedUser, type AuthenticatedUserErrorCode } from '@/authentication'
 import { getAuthSession } from '@/authentication/server'
+import { error, handleError, type Result, success } from '@/helpers/result'
 import prisma from '@/lib/prisma'
 import { getValidRole } from '@/user'
 import { getUserPermissions } from '@/user/permissions'
 
-export const getAuthenticatedUser = async (): Promise<AuthenticatedUser | null> => {
+type GetAuthenticatedUserResponse = Result<AuthenticatedUser, AuthenticatedUserErrorCode>
+
+export const getAuthenticatedUser = async (): Promise<GetAuthenticatedUserResponse> => {
   try {
     const authSession = await getAuthSession()
 
     if (authSession === null) {
-      return null
+      return error('unauthenticated')
     }
 
     const user = await prisma.user.findUnique({
@@ -18,7 +23,7 @@ export const getAuthenticatedUser = async (): Promise<AuthenticatedUser | null> 
     })
 
     if (user === null) {
-      return null
+      return error('user_not_found')
     }
 
     const userRole = getValidRole(user.role)
@@ -29,9 +34,8 @@ export const getAuthenticatedUser = async (): Promise<AuthenticatedUser | null> 
       permissions: getUserPermissions(userRole)
     }
 
-    return authenticatedUser
+    return success(authenticatedUser)
   } catch (error) {
-    console.error(error)
-    return null
+    return handleError(error)
   }
 }

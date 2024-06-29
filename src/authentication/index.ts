@@ -27,6 +27,10 @@ export type AuthenticatedUser = PrismaAuthenticatedUser & {
   permissions: RolePermissions
 }
 
+export type AuthenticatedUserErrorCode =
+  'user_not_found' |
+  'unauthenticated'
+
 export const AUTH_USER_SELECTED_FIELDS: Record<keyof PrismaAuthenticatedUser, true> = {
   avatar: true,
   createdAt: true,
@@ -39,4 +43,4 @@ export const AUTH_USER_SELECTED_FIELDS: Record<keyof PrismaAuthenticatedUser, tr
   role: true
 }
 
-export const PROTECTED_PATHS = ['dashboard']
+export const PROTECTED_PATHS = ['admin']

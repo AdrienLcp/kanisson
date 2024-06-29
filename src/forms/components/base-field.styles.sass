@@ -1,0 +1,11 @@
+@import '@/styles/typography'
+
+.base-field
+  &__description
+    @include body-small
+
+  &__errors
+    @include body-medium
+    display: flex
+    flex-direction: column
+    color: hsl(var(--red-foreground, 354 61% 48%))

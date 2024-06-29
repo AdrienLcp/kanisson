@@ -1,0 +1,7 @@
+@import '@/styles/mixins'
+
+.base-picker
+
+  &__list-box
+    @include popover-menu
+    min-width: var(--picker-menu-min-width, var(--size-200, 12rem))

@@ -3,12 +3,12 @@
 import React from 'react'
 
 import { Logo } from '@/components/logo'
+import { DEFAULT_ICON_SIZE } from '@/helpers/styles'
 import { Link } from '@/i18n/components/link'
 import { useI18n } from '@/i18n/client'
 import { getCommonNavbarItems, ROUTES } from '@/routes'
 
 import './side-bar.styles.sass'
-import { DEFAULT_ICON_SIZE } from '@/helpers/styles'
 
 export const SideBar: React.FC = () => {
   const { i18n } = useI18n()

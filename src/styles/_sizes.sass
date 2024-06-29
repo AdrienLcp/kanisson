@@ -55,6 +55,15 @@
     --element-radius: var(--radius-s, 5px)
     --element-stroke: var(--stroke-m, 2px)
 
-    --side-bar-width: var(--size-200, 12rem)
     --bottom-bar-height: var(--size-160, 4.55rem)
     --header-height: var(--size-160, 4.55rem)
+
+    --side-bar-rest-divider: 4
+    --side-bar-rest-width: 0
+    --side-bar-width: 0
+
+  @media (width > 991px)
+    :root
+      --bottom-bar-height: 0
+      --side-bar-width: var(--size-200, 12rem)
+      --side-bar-rest-width: calc(var(--side-bar-width, 12rem) / var(--side-bar-rest-divider, 4))

@@ -31,13 +31,13 @@ export const BottomBar: React.FC = () => {
         className='bottom-bar__list'
         style={bottomBarStyle}
       >
-        {bottomBarItems.map(({ Icon, key, path }) => {
+        {bottomBarItems.map(({ ariaLabel, Icon, key, path }) => {
           const isSelected = pathname === path
 
           return (
             <li key={key}>
               <Link
-                aria-label={i18n(`routes.${key}.link-aria-label`)}
+                aria-label={ariaLabel}
                 className={classNames('bottom-bar__list__item', isSelected && 'selected')}
                 href={path}
               >

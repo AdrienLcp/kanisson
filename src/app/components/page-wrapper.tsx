@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { PageTitle } from '@/app/components/page-title'
-import { isValidString } from '@/helpers/strings'
 import { classNames } from '@/helpers/styles'
 
 import './page-wrapper.styles.sass'
@@ -13,15 +12,11 @@ type PageWrapperProps = React.PropsWithChildren & {
 
 export const PageWrapper: React.FC<PageWrapperProps> = ({ children, className, title }) => (
   <div className={classNames('page-wrapper', className)}>
-    {isValidString(title) && (
-      <header>
-        {isValidString(title) && (
-          <PageTitle>
-            {title}
-          </PageTitle>
-        )}
-      </header>
-    )}
+    <header>
+      <PageTitle>
+        {title}
+      </PageTitle>
+    </header>
 
     <div className='page-wrapper__content'>
       {children}

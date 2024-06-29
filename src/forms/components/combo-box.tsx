@@ -7,7 +7,7 @@ import {
 } from 'react-aria-components'
 
 import { Chevron } from '@/components/chevron'
-import { BasePicker, type CommonPickerProps, type Items, type OnSelect } from '@/components/forms/base-picker'
+import { BasePicker, type CommonPickerProps, type Items, type OnSelect } from '@/forms/components/base-picker'
 import type { Option } from '@/components/option-item'
 import { Pressable } from '@/components/pressable'
 import { DEFAULT_MENU_MIN_WIDTH, getReactAriaClassName } from '@/helpers/styles'
