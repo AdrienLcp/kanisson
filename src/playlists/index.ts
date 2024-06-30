@@ -19,4 +19,13 @@ export type PlaylistErrorCode =
 export const playlistFormFields = {
   title: 'title',
   description: 'description'
+} as const
+
+export type PlaylistFormField = ValueOf<typeof playlistFormFields>
+
+const playlistZodErrorsCodes: string[] = Object.values(playlistZodErrors)
+
+export const isPlaylistZodErrorCode = (errorCode: string): errorCode is PlaylistErrorCode => {
+  return playlistZodErrorsCodes.includes(errorCode)
 }
+

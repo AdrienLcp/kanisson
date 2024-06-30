@@ -10,14 +10,16 @@ import { Providers } from '@/app/components/providers'
 import { Toaster } from '@/app/components/toaster'
 import { getAuthenticatedUser } from '@/authentication/actions/get-authenticated-user'
 import { buildI18n } from '@/i18n'
-import { getDictionary } from '@/i18n/server'
+import { getDictionary, getI18n } from '@/i18n/server'
 import type { LayoutProps, PageProps } from '@/lib/next-js'
 import { Navbar } from '@/routes/components/navbar'
 
 import '@/styles/base.sass'
 
 export const generateMetadata = async ({ params }: PageProps): Promise<Metadata> => {
-  return await getCommonMetadata(params.locale)
+  const locale = params.locale
+  const i18n = await getI18n(locale)
+  return await getCommonMetadata(i18n, locale)
 }
 
 const RootLayout: React.FC<LayoutProps> = async ({ children, params }) => {

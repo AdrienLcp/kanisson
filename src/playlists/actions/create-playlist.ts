@@ -8,7 +8,8 @@ import { getAuthenticatedUser } from '@/authentication/actions/get-authenticated
 import { type CommonErrorCode, error, type Result, success, handleUnknownError } from '@/helpers/result'
 import prisma, { getPrismaError } from '@/lib/prisma'
 import { getZodErrorMessages } from '@/lib/zod'
-import { type PlaylistErrorCode, playlistZodErrors, PLAYLIST_RULES, playlistFormFields } from '@/playlists'
+import { type PlaylistErrorCode, playlistZodErrors, PLAYLIST_RULES, playlistFormFields, isPlaylistZodErrorCode } from '@/playlists'
+import { NextResponse } from 'next/server'
 
 export type PlaylistCreationErrorCode = PlaylistErrorCode | AuthenticationErrorCode | CommonErrorCode
 
@@ -24,12 +25,6 @@ const PlaylistCreationSchema = z.object({
     .max(PLAYLIST_RULES.DESCRIPTION_MAX_LENGTH, { message: playlistZodErrors.descriptionTooLong })
     .optional()
 })
-
-const playlistZodErrorsCodes: string[] = Object.values(playlistZodErrors)
-
-const isPlaylistZodErrorCode = (errorCode: string): errorCode is PlaylistErrorCode => {
-  return playlistZodErrorsCodes.includes(errorCode)
-}
 
 const getPlaylistCreationZodErrorCode = (message: string): PlaylistCreationErrorCode => {
   if (isPlaylistZodErrorCode(message)) {
@@ -51,19 +46,20 @@ export const createPlaylist = async (formData: FormData): Promise<CreatePlaylist
     if (playlistCreationValidation.error) {
       const zodErrorMessages = getZodErrorMessages(playlistCreationValidation.error)
       const errorCodes = zodErrorMessages.map(message => getPlaylistCreationZodErrorCode(message))
-
       return error(errorCodes)
     }
 
     const authenticationResponse = await getAuthenticatedUser()
 
     if (authenticationResponse.status === 'error') {
+      NextResponse.json({ error: 'Internal Server Error' }, { status: 500 })
       return authenticationResponse
     }
 
     const playlistCreator = authenticationResponse.data
 
     if (!playlistCreator.permissions.includes('create_playlist')) {
+      NextResponse.json<{ error: PlaylistCreationErrorCode }>({ error: 'unauthorized' }, { status: 500 })
       return error('unauthorized')
     }
 
@@ -89,10 +85,12 @@ export const createPlaylist = async (formData: FormData): Promise<CreatePlaylist
       }
 
       if (playlistsPrismaErrors.length > 0) {
+        NextResponse.json({ error: 'Internal Server Error' }, { status: 500 })
         return error(playlistsPrismaErrors)
       }
     }
 
+    NextResponse.json({ error: 'Internal Server Error' }, { status: 500 })
     return handleUnknownError(baseError)
   }
 }

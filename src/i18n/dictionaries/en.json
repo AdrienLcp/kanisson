@@ -53,9 +53,14 @@
     },
     "name": "Kanisson - Blind test games",
     "short-name": "Kanisson",
-    "short-description": "Blind test games"
+    "short-description": "Blind test games",
+    "suffix-title": "• Kanisson - Blind test games"
   },
   "playlists": {
+    "create": {
+      "submit-label": "Create",
+      "success": "Playlist created successfully"
+    },
     "errors": {
       "description-too-long": "Description must contain at most %{max} characters",
       "title-already-exists": "This playlist title already exists",
@@ -72,14 +77,14 @@
           "label": "Title",
           "placeholder": "80s"
         }
-      },
-      "submit-label": "Create"
+      }
     }
   },
   "routes": {
     "contact": {
       "link-label": "Contact",
       "link-aria-label": "Contact us",
+      "metadata-title": "Contact",
       "page-title": "Contact",
       "error-messages": {
         "message": "You need to write a message"
@@ -108,22 +113,32 @@
       "create": {
         "link-label": "Create",
         "link-aria-label": "Create blind test",
+        "metadata-title": "Create a blind test",
         "page-title": "Create a new blind test"
+      },
+      "edit": {
+        "link-label": "Edit",
+        "link-aria-label": "Edit blind test",
+        "metadata-title": "Edit your blind test",
+        "page-title": "Edit your blind test"
       }
     },
     "profile": {
       "link-label": "Profile",
       "link-aria-label": "Go to your profile",
+      "metadata-title": "My space",
       "page-title": "My space"
     },
     "search": {
       "link-label": "Search",
       "link-aria-label": "Search a blind test",
+      "metadata-title": "Search a blind test",
       "page-title": "Search for a blind test"
     },
     "settings": {
       "link-label": "Settings",
       "link-aria-label": "Go to the settings",
+      "metadata-title": "Settings",
       "page-title": "Settings of the website"
     }
   },
