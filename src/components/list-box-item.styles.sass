@@ -1,2 +1,5 @@
+@import '@/styles/mixins'
+
 .list-box-item
-  outline: none
+  @include focusable
+  border-radius: var(--element-radius, 5px)

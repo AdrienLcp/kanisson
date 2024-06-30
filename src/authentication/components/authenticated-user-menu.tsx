@@ -18,7 +18,7 @@ type AuthenticatedUserMenuProps = {
 type AuthenticatedUserMenuTriggerProps = Pick<AuthenticatedUserMenuProps, 'authenticatedUser'>
 
 const AuthenticatedUserMenuTrigger: React.FC<AuthenticatedUserMenuTriggerProps> = ({ authenticatedUser }) => (
-  <Pressable className='authenticated-user-menu__trigger-button'>
+  <Pressable className='authenticated-user-menu__trigger-button' aria-label='test'>
     <Avatar user={authenticatedUser} />
   </Pressable>
 )

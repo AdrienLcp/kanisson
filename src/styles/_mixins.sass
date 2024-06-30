@@ -15,7 +15,10 @@
   user-select: none
 
 @mixin focusable
-  &:focus-visible
+  &:focus
+    outline: none
+
+  &[data-focus-visible='true']
     outline: var(--element-stroke, 2px) solid hsl(var(--ring, 240 4.9% 83.9%))
     outline-offset: var(--element-stroke, 2px)
 
@@ -57,13 +60,11 @@
     background-color: hsla(var(--border, 240 5.9% 90%) / var(--active-alpha, 0.84))
 
 @mixin popover-menu
+  @include focusable
   background-color: hsl(var(--background, 240 10% 3.9%))
   border-radius: var(--radius-s, 5px)
   box-shadow: var(--shadow-m)
-  padding-block: var(--spacing-s, 0.38rem)
-
-  &__item:focus-visible
-    outline: none
+  padding-block: var(--spacing-s, 0.38rem) var(--spacing-xs, 0.21rem)
 
 @mixin text-ellipsis($max-width: 20ch)
   max-width: $max-width

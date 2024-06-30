@@ -233,11 +233,4 @@
   p {
     text-wrap: pretty;
   }
-
-/* React Aria adds ugly outline even when user just hover elements */
-/* Event if we set outline to none on hover & pretty outline on focus and/or focus-visible */
-/* I choose to hide it because it's a small side project for my friends & my portfolio, not for a large audience */
-  /* *:focus-visible {
-    outline: none;
-  } */
 }
