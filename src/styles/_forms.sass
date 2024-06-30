@@ -28,6 +28,9 @@
   &:active
     background-color: hsla(var(--foreground, 0 0% 98%) / 0.08)
 
+  &.invalid
+    border-color: hsl(var(--red-foreground, 354 61% 48%))
+
 @mixin form-control
   @include form-input
   height: var(--element-size, 1.94rem)

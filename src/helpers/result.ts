@@ -1,4 +1,6 @@
-type CommonErrorCode =
+import type { I18n } from '@/i18n'
+
+export type CommonErrorCode =
   'bad_request' |
   'internal_server_error'
 
@@ -39,4 +41,14 @@ export const handleError = <E extends string> (baseError: unknown, errors: Error
 
 export const success = <T> (data: T): SuccessResult<T> => {
   return { data, status: 'success' }
+}
+
+export const getCommonErrorMessage = (errorCode: CommonErrorCode, i18n: I18n): string => {
+  switch (errorCode) {
+    case 'bad_request':
+      return i18n('errors.bad-request')
+    case 'internal_server_error':
+    default:
+      return i18n('errors.internal-server-error')
+  }
 }

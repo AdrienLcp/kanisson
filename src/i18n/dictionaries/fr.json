@@ -1,8 +1,8 @@
 {
   "authentication": {
     "errors": {
-      "non-existent": "Cet utilisateur n'existe pas",
-      "unauthenticated": "L'utilisateur n'est pas authentifié"
+      "not-found": "Cet utilisateur n'existe pas",
+      "unauthenticated": "Vous devez être connecté"
     },
     "user-menu": {
       "menu-aria-label": "Menu de l'utilisateur",
@@ -23,7 +23,8 @@
     }
   },
   "errors": {
-    "500": "Une erreur est survenue, veuillez réessayer plus tard"
+    "bad-request": "Requête incorrecte",
+    "internal-server-error": "Une erreur est survenue, veuillez réessayer plus tard"
   },
   "i18n": {
     "label": "Langue",

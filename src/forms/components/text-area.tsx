@@ -2,18 +2,14 @@ import React from 'react'
 import { TextArea as ReactAriaTextArea } from 'react-aria-components'
 
 import { BaseTextField, type BaseTextFieldProps } from '@/forms/components/base-text-field'
+import { classNames } from '@/helpers/styles'
 
 import './text-area.styles.sass'
 
-type TextAreaProps = BaseTextFieldProps & {
-  /** Placeholder text to display in the input. */
-  placeholder?: string
-}
-
-export const TextArea: React.FC<TextAreaProps> = ({ placeholder, ...props }) => (
+export const TextArea: React.FC<BaseTextFieldProps> = ({ hasError, placeholder, ...props }) => (
   <BaseTextField {...props}>
     <ReactAriaTextArea
-      className='text-area'
+      className={classNames('text-area', hasError && 'invalid')}
       placeholder={placeholder}
     />
   </BaseTextField>

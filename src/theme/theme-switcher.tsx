@@ -4,7 +4,7 @@ import { MoonIcon, SunIcon, SunMoonIcon } from 'lucide-react'
 import React from 'react'
 
 import type { Option } from '@/components/option-item'
-import { Select } from '@/components/forms/select'
+import { Select } from '@/forms/components/select'
 import type { I18n } from '@/i18n'
 import { useI18n } from '@/i18n/client'
 import { type Theme, useTheme } from '@/theme'

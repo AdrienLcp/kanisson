@@ -3,7 +3,7 @@
 import React from 'react'
 
 import type { Option } from '@/components/option-item'
-import { Select } from '@/components/forms/select'
+import { Select } from '@/forms/components/select'
 import type { Locale } from '@/i18n'
 import { useI18n } from '@/i18n/client'
 

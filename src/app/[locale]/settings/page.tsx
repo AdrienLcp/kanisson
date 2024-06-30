@@ -1,9 +1,9 @@
 import React from 'react'
 
 import { PageWrapper } from '@/app/components/page-wrapper'
-import type { PageProps } from '@/helpers/next-js'
 import { LocaleSwitcher } from '@/i18n/components/locale-switcher'
 import { getI18n } from '@/i18n/server'
+import type { PageProps } from '@/lib/next-js'
 import { HueSwitcher } from '@/theme/hue-switcher'
 import { ThemeSwitcher } from '@/theme/theme-switcher'
 

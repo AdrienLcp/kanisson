@@ -1,8 +1,8 @@
 {
   "authentication": {
     "errors": {
-      "non-existent": "The user does not exist",
-      "unauthenticated": "User not authenticated"
+      "not-found": "The user does not exist",
+      "unauthenticated": "You must be authenticated"
     },
     "user-menu": {
       "menu-aria-label": "User menu",
@@ -23,7 +23,8 @@
     }
   },
   "errors": {
-    "500": "An error occurred, please try again later"
+    "bad-request": "Bad request",
+    "internal-server-error": "An error occurred, please try again later"
   },
   "i18n": {
     "label": "Lang",

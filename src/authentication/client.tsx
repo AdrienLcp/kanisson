@@ -3,8 +3,9 @@
 import { signOut } from 'next-auth/react'
 import React from 'react'
 
-import type { AuthenticatedUser } from '@/authentication'
+import type { AuthenticatedUser, AuthenticationErrorCode } from '@/authentication'
 import { useProvidedContext } from '@/helpers/contexts'
+import type { I18n } from '@/i18n'
 
 type Authentication =
   { status: 'authenticated', authenticatedUser: AuthenticatedUser } |
@@ -60,4 +61,14 @@ export const useUser = (): UserHookValue => {
   }
 
   return { authUser: authentication.authenticatedUser }
+}
+
+export const getAuthenticationErrorMessage = (errorCode: AuthenticationErrorCode, i18n: I18n): string => {
+  switch (errorCode) {
+    case 'unauthenticated':
+      return i18n('authentication.errors.unauthenticated')
+    case 'user_not_found':
+    default:
+      return i18n('authentication.errors.not-found')
+  }
 }

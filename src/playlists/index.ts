@@ -1,6 +1,4 @@
-import { z } from 'zod'
-
-import type { ValueOf } from '@/helpers/types'
+import type { ValueOf } from '@/helpers/objects'
 
 export const PLAYLIST_RULES = {
   DESCRIPTION_MAX_LENGTH: 500,
@@ -8,28 +6,15 @@ export const PLAYLIST_RULES = {
   TITLE_MIN_LENGTH: 3
 }
 
-const playlistErrors = {
+export const playlistErrors = {
   descriptionTooLong: 'description_too_long',
   titleTooLong: 'title_too_long',
   titleTooShort: 'title_too_short'
 } as const
 
-type PlaylistError = typeof playlistErrors
-export type PlaylistErrorCode = ValueOf<PlaylistError>
+export type PlaylistErrorCode = ValueOf<typeof playlistErrors>
 
-const PLAYLIST_ERRORS_CODES: PlaylistErrorCode[] = Object.values(playlistErrors)
-
-export const isPlaylistErrorCode = (value: unknown): value is PlaylistErrorCode => {
-  return PLAYLIST_ERRORS_CODES.includes(value as PlaylistErrorCode)
+export const playlistFormFields = {
+  title: 'title',
+  description: 'description'
 }
-
-export const PlaylistCreationSchema = z.object({
-  title: z
-    .string()
-    .min(PLAYLIST_RULES.TITLE_MIN_LENGTH, { message: playlistErrors.titleTooShort })
-    .max(PLAYLIST_RULES.TITLE_MAX_LENGTH, { message: playlistErrors.titleTooLong }),
-  description: z
-    .string()
-    .max(PLAYLIST_RULES.DESCRIPTION_MAX_LENGTH, { message: playlistErrors.descriptionTooLong })
-    .optional()
-})

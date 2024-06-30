@@ -27,7 +27,7 @@ export type AuthenticatedUser = PrismaAuthenticatedUser & {
   permissions: RolePermissions
 }
 
-export type AuthenticatedUserErrorCode =
+export type AuthenticationErrorCode =
   'user_not_found' |
   'unauthenticated'
 

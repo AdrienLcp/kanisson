@@ -1,3 +1,5 @@
+export type ValueOf <T extends object> = T[keyof T]
+
 export const getObjectKeys = <T extends Record<string, unknown>> (obj: T): Array<keyof T> => {
   return Object.keys(obj)
 }

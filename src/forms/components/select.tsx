@@ -61,9 +61,10 @@ function renderValue <T extends Key> (items: Items<T>, selectedKey?: Key | null,
  */
 export function Select <T extends Key> ({
   className,
-  label,
+  hasError,
   isDisabled,
   items,
+  label,
   onOpenChange,
   onSelect,
   placeholder,
@@ -102,7 +103,7 @@ export function Select <T extends Key> ({
         selectedKey={selectedKey}
       >
         <div ref={selectRef}>
-          <Pressable className='select__input'>
+          <Pressable className={classNames('select__input', hasError && 'invalid')}>
             {renderValue(items, selectedKey, placeholder, isDisabled)}
 
             <Chevron isRotated={isSelectMenuOpen} />

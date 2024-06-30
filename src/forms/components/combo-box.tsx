@@ -10,7 +10,7 @@ import { Chevron } from '@/components/chevron'
 import { BasePicker, type CommonPickerProps, type Items, type OnSelect } from '@/forms/components/base-picker'
 import type { Option } from '@/components/option-item'
 import { Pressable } from '@/components/pressable'
-import { DEFAULT_MENU_MIN_WIDTH, getReactAriaClassName } from '@/helpers/styles'
+import { DEFAULT_MENU_MIN_WIDTH, classNames, getReactAriaClassName } from '@/helpers/styles'
 
 import './combo-box.styles.sass'
 
@@ -37,9 +37,10 @@ function handleSelectItem <T extends Key> (key: Key | null, items: Items<T>, onS
 
 export function ComboBox <T extends Key> ({
   className,
-  label,
+  hasError,
   isDisabled,
   items,
+  label,
   onOpenChange,
   onSelect,
   placeholder,
@@ -82,7 +83,7 @@ export function ComboBox <T extends Key> ({
           ref={comboBoxRef}
         >
           <Input
-            className='combo-box__control__input'
+            className={classNames('combo-box__control__input', hasError && 'invalid')}
             placeholder={placeholder}
           />
 

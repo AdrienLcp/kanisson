@@ -1,13 +1,13 @@
 'use server'
 
-import { AUTH_USER_SELECTED_FIELDS, type AuthenticatedUser, type AuthenticatedUserErrorCode } from '@/authentication'
+import { AUTH_USER_SELECTED_FIELDS, type AuthenticatedUser, type AuthenticationErrorCode } from '@/authentication'
 import { getAuthSession } from '@/authentication/server'
 import { error, handleError, type Result, success } from '@/helpers/result'
 import prisma from '@/lib/prisma'
 import { getValidRole } from '@/user'
 import { getUserPermissions } from '@/user/permissions'
 
-type GetAuthenticatedUserResponse = Result<AuthenticatedUser, AuthenticatedUserErrorCode>
+type GetAuthenticatedUserResponse = Result<AuthenticatedUser, AuthenticationErrorCode>
 
 export const getAuthenticatedUser = async (): Promise<GetAuthenticatedUserResponse> => {
   try {

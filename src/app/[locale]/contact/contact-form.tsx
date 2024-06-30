@@ -5,11 +5,12 @@ import { SendIcon } from 'lucide-react'
 import React from 'react'
 
 import { Button } from '@/components/button'
-import { Form } from '@/components/forms/form'
-import { TextArea } from '@/components/forms/text-area'
-import { TextField } from '@/components/forms/text-field'
+import { Form } from '@/forms/components/form'
+import { TextArea } from '@/forms/components/text-area'
+import { TextField } from '@/forms/components/text-field'
 import { StatusMessageBar } from '@/components/status-message'
 import { env } from '@/env'
+import type { ValueOf } from '@/helpers/objects'
 import { isValidString } from '@/helpers/strings'
 import { useI18n } from '@/i18n/client'
 
@@ -25,7 +26,7 @@ const CONTACT_FORM_KEYS = {
   message: 'message'
 }
 
-type ContactFormKey = typeof CONTACT_FORM_KEYS[keyof typeof CONTACT_FORM_KEYS]
+type ContactFormKey = ValueOf<typeof CONTACT_FORM_KEYS>
 
 const getContactFormValues = (formData: FormData) => {
   const getFormValue = (key: ContactFormKey) => {
