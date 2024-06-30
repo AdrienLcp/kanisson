@@ -1,9 +1,9 @@
 import React from 'react'
 import { FieldError } from 'react-aria-components'
 
-import type { CommonFormFieldProps } from '@/forms'
 import { Label } from '@/components/label'
 import { Text } from '@/components/text'
+import type { CommonFormFieldProps } from '@/forms'
 
 import './base-field.styles.sass'
 
@@ -11,9 +11,11 @@ type FilteredBaseFieldProps = Omit<CommonFormFieldProps, 'placeholder'>
 
 type BaseFieldProps = React.PropsWithChildren<FilteredBaseFieldProps>
 
-export const BaseField: React.FC<BaseFieldProps> = ({ children, description, label }) => (
+export const BaseField: React.FC<BaseFieldProps> = ({ children, description, isRequired, label }) => (
   <>
-    <Label>{label}</Label>
+    <Label isRequired={isRequired}>
+      {label}
+    </Label>
 
     <>{children}</>
 

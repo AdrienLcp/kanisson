@@ -44,6 +44,7 @@ type BasePickerProps <T extends Key> =
 export function BasePicker <T extends Key> ({
   children,
   description,
+  isRequired,
   items,
   label,
   menuMinWidth,
@@ -57,6 +58,7 @@ export function BasePicker <T extends Key> ({
     <>
       <BaseField
         description={description}
+        isRequired={isRequired}
         label={label}
       >
         {children}

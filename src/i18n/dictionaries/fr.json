@@ -27,6 +27,9 @@
     "bad-request": "Requête incorrecte",
     "internal-server-error": "Une erreur est survenue, veuillez réessayer plus tard"
   },
+  "forms": {
+    "required-asterisk": "Les champs marqués d'un * sont obligatoires"
+  },
   "i18n": {
     "label": "Langue",
     "placeholder": "Choisis la langue du site"

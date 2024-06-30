@@ -6,8 +6,8 @@ import { classNames } from '@/helpers/styles'
 
 import './text-field.styles.sass'
 
-export const TextField: React.FC<BaseTextFieldProps> = ({ hasError, placeholder, ...props }) => (
-  <BaseTextField {...props}>
+export const TextField: React.FC<BaseTextFieldProps> = ({ hasError, isRequired, placeholder, ...props }) => (
+  <BaseTextField {...props} isRequired={isRequired}>
     <Input
       className={classNames('text-field', hasError && 'invalid')}
       placeholder={placeholder}

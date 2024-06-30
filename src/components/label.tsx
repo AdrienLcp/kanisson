@@ -1,16 +1,20 @@
 import React from 'react'
-import { Label as ReactAriaLabel, type LabelProps } from 'react-aria-components'
+import { Label as ReactAriaLabel, type LabelProps as ReactAriaLabelProps } from 'react-aria-components'
 
-import { isValidChildren } from '@/lib/react'
+import { areValidChildren } from '@/lib/react'
 
-export const Label: React.FC<LabelProps> = ({ children, ...props }) => {
-  if (!isValidChildren(children)) {
+type LabelProps = ReactAriaLabelProps & {
+  isRequired?: boolean
+}
+
+export const Label: React.FC<LabelProps> = ({ children, isRequired, ...props }) => {
+  if (!areValidChildren(children)) {
     return null
   }
 
   return (
     <ReactAriaLabel {...props}>
-      {children}
+      {children} {isRequired && (<>*</>)}
     </ReactAriaLabel>
   )
 }

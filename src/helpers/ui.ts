@@ -16,7 +16,3 @@ export const titleFont = Neuton({
   variable: '--font-title',
   weight: ['200', '300', '400', '700', '800']
 })
-
-export const areValidChildren = (children: React.ReactNode): boolean => {
-  return children !== null && children !== undefined
-}

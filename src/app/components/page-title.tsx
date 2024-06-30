@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { areValidChildren } from '@/helpers/ui'
 import { classNames } from '@/helpers/styles'
+import { areValidChildren } from '@/lib/react'
 
 import './page-title.styles.sass'
 

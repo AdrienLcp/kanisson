@@ -1,0 +1,17 @@
+@import '@/styles/typography'
+
+.form-wrapper
+  display: flex
+  flex-direction: column
+  gap: var(--spacing-xxl, 0.96rem)
+
+  &__heading
+    display: flex
+    flex-direction: column
+    gap: var(--spacing-s, 0.38rem)
+
+    &__title
+      @include title-medium
+
+    &__subtitle
+      @include label-medium

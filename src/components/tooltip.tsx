@@ -8,7 +8,7 @@ import {
 import { getReactAriaClassName } from '@/helpers/styles'
 
 import './tooltip.styles.sass'
-import { isValidChildren } from '@/lib/react'
+import { areValidChildren } from '@/lib/react'
 
 type TooltipProps = ReactAriaTooltipProps & React.PropsWithChildren & {
   /** The content to display in the tooltip. */
@@ -30,7 +30,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
   offset = 8,
   ...props
 }) => {
-  if (!isValidChildren(content)) {
+  if (!areValidChildren(content)) {
     return children
   }
 

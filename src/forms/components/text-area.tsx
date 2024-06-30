@@ -6,8 +6,8 @@ import { classNames } from '@/helpers/styles'
 
 import './text-area.styles.sass'
 
-export const TextArea: React.FC<BaseTextFieldProps> = ({ hasError, placeholder, ...props }) => (
-  <BaseTextField {...props}>
+export const TextArea: React.FC<BaseTextFieldProps> = ({ hasError, isRequired, placeholder, ...props }) => (
+  <BaseTextField {...props} isRequired={isRequired}>
     <ReactAriaTextArea
       className={classNames('text-area', hasError && 'invalid')}
       placeholder={placeholder}

@@ -1,7 +1,13 @@
+@import '@/styles/typography'
+
 .form
   display: flex
   flex-direction: column
   gap: var(--spacing-l, 0.68rem)
+
+  &__required-fields
+    @include label-small
+    align-self: flex-end
 
   &__fields
     display: flex

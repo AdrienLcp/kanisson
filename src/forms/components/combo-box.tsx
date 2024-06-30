@@ -39,6 +39,7 @@ export function ComboBox <T extends Key> ({
   className,
   hasError,
   isDisabled,
+  isRequired,
   items,
   label,
   onOpenChange,
@@ -73,6 +74,7 @@ export function ComboBox <T extends Key> ({
       onSelectionChange={(key) => handleSelectItem(key, items, onSelect)}
     >
       <BasePicker
+        isRequired={isRequired}
         items={items}
         label={label}
         menuMinWidth={comboBoxMenuMinWidth}

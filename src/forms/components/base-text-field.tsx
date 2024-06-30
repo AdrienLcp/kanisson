@@ -13,6 +13,7 @@ export const BaseTextField: React.FC<BaseTextFieldProps> = ({
   children,
   className,
   description,
+  isRequired,
   label,
   ...props
 }) => (
@@ -22,6 +23,7 @@ export const BaseTextField: React.FC<BaseTextFieldProps> = ({
   >
     <BaseField
       description={description}
+      isRequired={isRequired}
       label={label}
     >
       <>{children}</>

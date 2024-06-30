@@ -27,6 +27,9 @@
     "bad-request": "Bad request",
     "internal-server-error": "An error occurred, please try again later"
   },
+  "forms": {
+    "required-asterisk": "Fields marked with an asterisk (*) are required."
+  },
   "i18n": {
     "label": "Lang",
     "placeholder": "Choose website language"
