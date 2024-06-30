@@ -1,19 +1,16 @@
 import type { Game, Playlist, Rating, User } from '@prisma/client'
 
+import type { Permission } from '@/authentication/permissions'
 import type { UserRole } from '@/user'
-import type { RolePermissions } from '@/user/permissions'
 
-type OmittedUserFields =
-  'accounts' |
-  'email' |
-  'emailVerified' |
-  'image' |
-  'role' |
-  'sessions' |
-  'status' |
-  'updatedAt'
+type PickedUserFields =
+  'avatar' |
+  'createdAt' |
+  'id' |
+  'name' |
+  'pseudo'
 
-type BaseAuthenticatedUser = Omit<User, OmittedUserFields>
+type BaseAuthenticatedUser = Pick<User, PickedUserFields>
 
 // Force UserRole type for role field
 type PrismaAuthenticatedUser = BaseAuthenticatedUser & {
@@ -24,12 +21,13 @@ type PrismaAuthenticatedUser = BaseAuthenticatedUser & {
 }
 
 export type AuthenticatedUser = PrismaAuthenticatedUser & {
-  permissions: RolePermissions
+  permissions: Permission[]
 }
 
 export type AuthenticationErrorCode =
   'user_not_found' |
-  'unauthenticated'
+  'unauthenticated' |
+  'unauthorized'
 
 export const AUTH_USER_SELECTED_FIELDS: Record<keyof PrismaAuthenticatedUser, true> = {
   avatar: true,

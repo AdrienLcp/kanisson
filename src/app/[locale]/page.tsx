@@ -6,7 +6,7 @@ const Home: React.FC<PageProps> = () => {
 
   return (
     <div>
-      Home
+      home
     </div>
   )
 }

@@ -7,6 +7,7 @@ import { Header } from '@/app/components/header'
 import { Main } from '@/app/components/main'
 import { getCommonMetadata } from '@/app/metadata'
 import { Providers } from '@/app/components/providers'
+import { Toaster } from '@/app/components/toaster'
 import { getAuthenticatedUser } from '@/authentication/actions/get-authenticated-user'
 import { buildI18n } from '@/i18n'
 import { getDictionary } from '@/i18n/server'
@@ -30,6 +31,10 @@ const RootLayout: React.FC<LayoutProps> = async ({ children, params }) => {
     ? authenticatedUserResponse.data
     : null
 
+  const authenticatedUserPermissions = authenticatedUser === null
+    ? []
+    : authenticatedUser.permissions
+
   return (
     <Providers
       dictionary={dictionary}
@@ -48,7 +53,9 @@ const RootLayout: React.FC<LayoutProps> = async ({ children, params }) => {
 
         <Footer />
 
-        <Navbar />
+        <Navbar authenticatedUserPermissions={authenticatedUserPermissions} />
+
+        <Toaster />
       </Container>
     </Providers>
   )

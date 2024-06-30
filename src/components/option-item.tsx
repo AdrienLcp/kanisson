@@ -16,6 +16,9 @@ export type Option <T extends Key> = {
   /** Whether the option item is disabled. */
   isDisabled?: boolean
 
+  /** Whether the option item is hidden. */
+  isHidden?: boolean
+
   /** Whether the option item is prefixed by a divider. */
   isPrefixedByDivider?: boolean
 
@@ -39,10 +42,15 @@ export function OptionItem <T extends Key> ({
   className,
   Icon,
   isDisabled,
+  isHidden,
   isPrefixedByDivider,
   isSelected,
   label
 }: Option<T>) {
+  if (isHidden === true) {
+    return null
+  }
+
   if (isPrefixedByDivider) {
     return <Separator />
   }

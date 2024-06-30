@@ -2,46 +2,36 @@
 
 import React from 'react'
 
+import type { Permission } from '@/authentication/permissions'
 import { Motion } from '@/components/motion'
 import { BottomBar } from '@/routes/components/bottom-bar'
 import { SideBar } from '@/routes/components/side-bar'
+import { useBreakpoints } from '@/hooks/breakpoints'
+
+export type NavBarProps = {
+  authenticatedUserPermissions: Permission[]
+}
 
 // Side bar above 992px
 // Bottom bar below 991px
-const NAVBAR_BREAKPOINT = 992
-
-const renderNavbar = (isMobile: boolean | null) => {
+const renderNavbar = (isMobile: boolean | null, navBarProps: NavBarProps) => {
   if (isMobile === null) {
     return null
   }
 
   if (isMobile) {
-    return <BottomBar />
+    return <BottomBar {...navBarProps} />
   }
 
-  return <SideBar />
+  return <SideBar {...navBarProps} />
 }
 
-export const Navbar: React.FC = () => {
-  const [isMobile, setIsMobile] = React.useState<boolean | null>(null)
-
-  React.useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < NAVBAR_BREAKPOINT)
-    }
-
-    handleResize()
-
-    window.addEventListener('resize', handleResize)
-
-    return () => {
-      window.removeEventListener('resize', handleResize)
-    }
-  }, [])
+export const Navbar: React.FC<NavBarProps> = (navBarProps) => {
+  const isMobile = useBreakpoints()
 
   return (
     <Motion animation='fade-in-slow'>
-      {renderNavbar(isMobile)}
+      {renderNavbar(isMobile, navBarProps)}
     </Motion>
   )
 }

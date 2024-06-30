@@ -1,5 +1,6 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
 import React from 'react'
 
 import { getAuthenticationErrorMessage } from '@/authentication/client'
@@ -12,13 +13,14 @@ import type { I18n } from '@/i18n'
 import { useI18n } from '@/i18n/client'
 import { PLAYLIST_RULES, playlistFormFields } from '@/playlists'
 import { createPlaylist, type PlaylistCreationErrorCode } from '@/playlists/actions/create-playlist'
+import { ROUTES } from '@/routes'
 
 import './create-playlist-form.styles.sass'
 
 type CreatePlaylistFormValidationErrors = ValidationErrors<keyof typeof playlistFormFields>
 
 const getValidationErrors = (errors: PlaylistCreationErrorCode[], i18n: I18n): CreatePlaylistFormValidationErrors => {
-  const commonErrors: string[] = []
+  const serverErrors: string[] = []
   const titleErrors: string[] = []
   const descriptionErrors: string[] = []
 
@@ -34,18 +36,19 @@ const getValidationErrors = (errors: PlaylistCreationErrorCode[], i18n: I18n): C
         titleErrors.push(i18n('playlists.errors.title-too-short', { min: PLAYLIST_RULES.TITLE_MIN_LENGTH }))
         break
       case 'unauthenticated':
+      case 'unauthorized':
       case 'user_not_found':
-        commonErrors.push(getAuthenticationErrorMessage(error, i18n))
+        serverErrors.push(getAuthenticationErrorMessage(error, i18n))
         break
       case 'bad_request':
       case 'internal_server_error':
-        commonErrors.push(getCommonErrorMessage(error, i18n))
+        serverErrors.push(getCommonErrorMessage(error, i18n))
         break
     }
   })
 
   return {
-    errors: commonErrors,
+    server: serverErrors,
     title: titleErrors,
     description: descriptionErrors
   }
@@ -54,6 +57,8 @@ const getValidationErrors = (errors: PlaylistCreationErrorCode[], i18n: I18n): C
 export const CreatePlaylistForm: React.FC = () => {
   const [validationErrors, setValidationErrors] = React.useState<CreatePlaylistFormValidationErrors>(undefined)
   const [isFormSubmitting, setIsFormSubmitting] = React.useState<boolean>(false)
+
+  const router = useRouter()
 
   const { i18n } = useI18n()
 
@@ -65,13 +70,24 @@ export const CreatePlaylistForm: React.FC = () => {
       if (playlistCreationResponse.status === 'error') {
         const errors = getValidationErrors(playlistCreationResponse.errors, i18n)
         setValidationErrors(errors)
+        return
       }
+
+      const createdPlaylist = playlistCreationResponse.data
+      router.push(`${ROUTES.edit}/${createdPlaylist.title}`)
     } catch (error) {
       console.error(error)
     } finally {
       setIsFormSubmitting(false)
     }
   }
+
+  React.useEffect(() => {
+    if (validationErrors !== undefined && validationErrors.server.length > 0) {
+      // Toaster notification
+      console.error(validationErrors.server)
+    }
+  }, [validationErrors])
 
   return (
     <Form
@@ -82,7 +98,7 @@ export const CreatePlaylistForm: React.FC = () => {
     >
       <TextField
         hasError={validationErrors !== undefined && validationErrors.title.length > 0}
-        // isRequired
+        isRequired
         label={i18n('playlists.form.fields.title.label')}
         name={playlistFormFields.title}
         placeholder={i18n('playlists.form.fields.title.placeholder')}

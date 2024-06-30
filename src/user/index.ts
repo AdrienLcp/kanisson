@@ -3,19 +3,14 @@ import type { Game, Playlist, User } from '@prisma/client'
 const USER_ROLES = ['admin', 'moderator', 'user'] as const
 export type UserRole = typeof USER_ROLES[number]
 
-type OmittedUserFields =
-  'accounts' |
-  'email' |
-  'emailVerified' |
-  'image' |
-  'name' |
-  'permissions' |
-  'role' |
-  'sessions' |
-  'status' |
-  'updatedAt'
+type PickedUserFields =
+  'avatar' |
+  'createdAt' |
+  'id' |
+  'pseudo' |
+  'role'
 
-type BasePublicUser = Omit<User, OmittedUserFields>
+type BasePublicUser = Pick<User, PickedUserFields>
 
 // Force UserRole type for role field
 export type PublicUser = BasePublicUser & {

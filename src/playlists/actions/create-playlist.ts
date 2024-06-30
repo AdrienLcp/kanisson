@@ -7,8 +7,8 @@ import type { AuthenticationErrorCode } from '@/authentication'
 import { getAuthenticatedUser } from '@/authentication/actions/get-authenticated-user'
 import { type CommonErrorCode, error , handleError, type Result, success } from '@/helpers/result'
 import prisma from '@/lib/prisma'
-import { type PlaylistErrorCode, playlistErrors, PLAYLIST_RULES, playlistFormFields } from '@/playlists'
 import { getZodErrorMessages } from '@/lib/zod'
+import { type PlaylistErrorCode, playlistErrors, PLAYLIST_RULES, playlistFormFields } from '@/playlists'
 
 export type PlaylistCreationErrorCode = PlaylistErrorCode | AuthenticationErrorCode | CommonErrorCode
 
@@ -25,31 +25,32 @@ const PlaylistCreationSchema = z.object({
     .optional()
 })
 
-const getPlaylistCreationErrorCode = (message: string): PlaylistCreationErrorCode => {
-  switch (message) {
-    case playlistErrors.descriptionTooLong:
-      return playlistErrors.descriptionTooLong
-    case playlistErrors.titleTooLong:
-      return playlistErrors.titleTooLong
-    case playlistErrors.titleTooShort:
-      return playlistErrors.titleTooShort
-    default:
-      return 'bad_request'
+const playlistErrorsCodes: string[] = Object.values(playlistErrors)
+
+const isPlaylistErrorCode = (errorCode: string): errorCode is PlaylistErrorCode => {
+  return playlistErrorsCodes.includes(errorCode)
+}
+
+const getPlaylistCreationZodErrorCode = (message: string): PlaylistCreationErrorCode => {
+  if (isPlaylistErrorCode(message)) {
+    return message
   }
+
+  return 'bad_request'
 }
 
 export const createPlaylist = async (formData: FormData): Promise<CreatePlaylistResponse> => {
   try {
-    const createPlaylistForm = {
+    const createPlaylistRequest = {
       title: formData.get(playlistFormFields.title),
       description: formData.get(playlistFormFields.description)
     }
 
-    const playlistCreationValidation = PlaylistCreationSchema.safeParse(createPlaylistForm)
+    const playlistCreationValidation = PlaylistCreationSchema.safeParse(createPlaylistRequest)
 
     if (playlistCreationValidation.error) {
       const zodErrorMessages = getZodErrorMessages(playlistCreationValidation.error)
-      const errorCodes = zodErrorMessages.map(message => getPlaylistCreationErrorCode(message))
+      const errorCodes = zodErrorMessages.map(message => getPlaylistCreationZodErrorCode(message))
 
       return error(errorCodes)
     }
@@ -62,10 +63,14 @@ export const createPlaylist = async (formData: FormData): Promise<CreatePlaylist
 
     const playlistCreator = authenticationResponse.data
 
+    if (!playlistCreator.permissions.includes('create_playlist')) {
+      return error('unauthorized')
+    }
+
     const newPlaylist = await prisma.playlist.create({
       data: {
-        title: 'request.title',
-        description: 'request.description',
+        title: playlistCreationValidation.data.title,
+        description: playlistCreationValidation.data.description,
         userId: playlistCreator.id
       }
     })

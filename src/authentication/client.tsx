@@ -67,6 +67,8 @@ export const getAuthenticationErrorMessage = (errorCode: AuthenticationErrorCode
   switch (errorCode) {
     case 'unauthenticated':
       return i18n('authentication.errors.unauthenticated')
+    case 'unauthorized':
+      return i18n('authentication.errors.unauthorized')
     case 'user_not_found':
     default:
       return i18n('authentication.errors.not-found')

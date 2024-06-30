@@ -7,6 +7,7 @@ import { classNames, type Style } from '@/helpers/styles'
 import { useI18n } from '@/i18n/client'
 import { Link } from '@/i18n/components/link'
 import { type NavLink, getCommonNavbarItems } from '@/routes'
+import type { NavBarProps } from '@/routes/components/navbar'
 
 import './bottom-bar.styles.sass'
 
@@ -18,11 +19,11 @@ const getBottomBarStyle = (bottomBarItems: NavLink[]) => {
   return bottomItemStyle
 }
 
-export const BottomBar: React.FC = () => {
+export const BottomBar: React.FC<NavBarProps> = ({ authenticatedUserPermissions }) => {
   const { i18n } = useI18n()
   const pathname = usePathname()
 
-  const bottomBarItems = getCommonNavbarItems(i18n)
+  const bottomBarItems = getCommonNavbarItems(i18n, authenticatedUserPermissions)
   const bottomBarStyle = getBottomBarStyle(bottomBarItems)
 
   return (
@@ -31,7 +32,11 @@ export const BottomBar: React.FC = () => {
         className='bottom-bar__list'
         style={bottomBarStyle}
       >
-        {bottomBarItems.map(({ ariaLabel, Icon, key, path }) => {
+        {bottomBarItems.map(({ ariaLabel, hasUserAccess, Icon, key, path }) => {
+          if (!hasUserAccess) {
+            return null
+          }
+
           const isSelected = pathname === path
 
           return (

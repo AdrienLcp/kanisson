@@ -1,4 +1,4 @@
-export type ValidationErrors <T extends string> = Record<T, string[]> & { errors: string[] } | undefined
+export type ValidationErrors <T extends string> = Record<T, string[]> & { server: string[] } | undefined
 
 export type CommonFormFieldProps = {
   /** Description to display below the input. */

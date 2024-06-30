@@ -2,7 +2,8 @@
   "authentication": {
     "errors": {
       "not-found": "The user does not exist",
-      "unauthenticated": "You must be authenticated"
+      "unauthenticated": "You must be authenticated",
+      "unauthorized": "You do not have the necessary rights"
     },
     "user-menu": {
       "menu-aria-label": "User menu",

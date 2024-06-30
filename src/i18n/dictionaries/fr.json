@@ -2,7 +2,8 @@
   "authentication": {
     "errors": {
       "not-found": "Cet utilisateur n'existe pas",
-      "unauthenticated": "Vous devez être connecté"
+      "unauthenticated": "Vous devez être connecté",
+      "unauthorized": "Vous n'avez pas les droits nécessaires"
     },
     "user-menu": {
       "menu-aria-label": "Menu de l'utilisateur",
