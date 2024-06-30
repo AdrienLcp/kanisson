@@ -5,10 +5,10 @@ import { z } from 'zod'
 
 import type { AuthenticationErrorCode } from '@/authentication'
 import { getAuthenticatedUser } from '@/authentication/actions/get-authenticated-user'
-import { type CommonErrorCode, error , handleError, type Result, success } from '@/helpers/result'
-import prisma from '@/lib/prisma'
+import { type CommonErrorCode, error, type Result, success, handleUnknownError } from '@/helpers/result'
+import prisma, { getPrismaError } from '@/lib/prisma'
 import { getZodErrorMessages } from '@/lib/zod'
-import { type PlaylistErrorCode, playlistErrors, PLAYLIST_RULES, playlistFormFields } from '@/playlists'
+import { type PlaylistErrorCode, playlistZodErrors, PLAYLIST_RULES, playlistFormFields } from '@/playlists'
 
 export type PlaylistCreationErrorCode = PlaylistErrorCode | AuthenticationErrorCode | CommonErrorCode
 
@@ -17,22 +17,22 @@ type CreatePlaylistResponse = Result<Playlist, PlaylistCreationErrorCode>
 const PlaylistCreationSchema = z.object({
   title: z
     .string()
-    .min(PLAYLIST_RULES.TITLE_MIN_LENGTH, { message: playlistErrors.titleTooShort })
-    .max(PLAYLIST_RULES.TITLE_MAX_LENGTH, { message: playlistErrors.titleTooLong }),
+    .min(PLAYLIST_RULES.TITLE_MIN_LENGTH, { message: playlistZodErrors.titleTooShort })
+    .max(PLAYLIST_RULES.TITLE_MAX_LENGTH, { message: playlistZodErrors.titleTooLong }),
   description: z
     .string()
-    .max(PLAYLIST_RULES.DESCRIPTION_MAX_LENGTH, { message: playlistErrors.descriptionTooLong })
+    .max(PLAYLIST_RULES.DESCRIPTION_MAX_LENGTH, { message: playlistZodErrors.descriptionTooLong })
     .optional()
 })
 
-const playlistErrorsCodes: string[] = Object.values(playlistErrors)
+const playlistZodErrorsCodes: string[] = Object.values(playlistZodErrors)
 
-const isPlaylistErrorCode = (errorCode: string): errorCode is PlaylistErrorCode => {
-  return playlistErrorsCodes.includes(errorCode)
+const isPlaylistZodErrorCode = (errorCode: string): errorCode is PlaylistErrorCode => {
+  return playlistZodErrorsCodes.includes(errorCode)
 }
 
 const getPlaylistCreationZodErrorCode = (message: string): PlaylistCreationErrorCode => {
-  if (isPlaylistErrorCode(message)) {
+  if (isPlaylistZodErrorCode(message)) {
     return message
   }
 
@@ -76,7 +76,23 @@ export const createPlaylist = async (formData: FormData): Promise<CreatePlaylist
     })
 
     return success(newPlaylist)
-  } catch (error) {
-    return handleError(error)
+  } catch (baseError) {
+    const prismaError = getPrismaError(baseError)
+
+    if (prismaError !== null) {
+      const playlistsPrismaErrors: PlaylistErrorCode[] = []
+
+      if (prismaError.code === 'unique_constraint_violation') {
+        if (prismaError.fields.includes(playlistFormFields.title)) {
+          playlistsPrismaErrors.push('title_already_exists')
+        }
+      }
+
+      if (playlistsPrismaErrors.length > 0) {
+        return error(playlistsPrismaErrors)
+      }
+    }
+
+    return handleUnknownError(baseError)
   }
 }

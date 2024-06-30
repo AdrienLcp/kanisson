@@ -34,9 +34,9 @@ export const error = <E extends string> (errors: Errors<E> = []): ErrorResult<E>
   return { errors: errorsList, status: 'error' }
 }
 
-export const handleError = <E extends string> (baseError: unknown, errors: Errors<E> = []): ErrorResult<E> => {
+export const handleUnknownError = (baseError: unknown): ErrorResult<CommonErrorCode> => {
   console.error(baseError)
-  return error(errors)
+  return error('internal_server_error')
 }
 
 export const success = <T> (data: T): SuccessResult<T> => {

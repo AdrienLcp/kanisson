@@ -58,6 +58,7 @@
   "playlists": {
     "errors": {
       "description-too-long": "La description doit contenir au maximum %{max} caractères",
+      "title-already-exists": "Ce titre de playlist existe déjà",
       "title-too-long": "Le titre doit contenir au maximum %{max} caractères",
       "title-too-short": "Le titre doit contenir au moins %{min} caractères"
     },

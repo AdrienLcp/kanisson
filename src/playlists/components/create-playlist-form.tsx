@@ -35,6 +35,9 @@ const getValidationErrors = (errors: PlaylistCreationErrorCode[], i18n: I18n): C
       case 'title_too_short':
         titleErrors.push(i18n('playlists.errors.title-too-short', { min: PLAYLIST_RULES.TITLE_MIN_LENGTH }))
         break
+      case 'title_already_exists':
+        titleErrors.push(i18n('playlists.errors.title-already-exists'))
+        break
       case 'unauthenticated':
       case 'unauthorized':
       case 'user_not_found':
