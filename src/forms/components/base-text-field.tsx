@@ -20,6 +20,7 @@ export const BaseTextField: React.FC<BaseTextFieldProps> = ({
   <TextField
     {...props}
     className={(values) => getReactAriaClassName(values, className, 'base-text-field')}
+    isRequired={isRequired}
   >
     <BaseField
       description={description}

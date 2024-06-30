@@ -64,6 +64,7 @@ export function ComboBox <T extends Key> ({
       {...props}
       className={(values) => getReactAriaClassName(values, className, 'combo-box')}
       isDisabled={isDisabled}
+      isRequired={isRequired}
       onOpenChange={(isOpen) => {
         setIsComboBoxMenuOpen(isOpen)
 

@@ -1,3 +1,5 @@
+import 'server-only'
+
 import { PrismaAdapter } from '@auth/prisma-adapter'
 import NextAuth, { getServerSession, type NextAuthOptions } from 'next-auth'
 import type { Adapter } from 'next-auth/adapters'

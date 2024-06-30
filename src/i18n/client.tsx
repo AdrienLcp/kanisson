@@ -64,7 +64,7 @@ export const I18nProvider: React.FC<I18nProviderProps> = ({ children, dictionary
   }
 
   return (
-    <I18nContext.Provider value={{ changeLocale, i18n, currentLocale: locale }}>
+    <I18nContext.Provider value={{ changeLocale, currentLocale: locale, i18n }}>
       {children}
     </I18nContext.Provider>
   )
