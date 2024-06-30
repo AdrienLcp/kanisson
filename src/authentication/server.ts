@@ -25,7 +25,7 @@ const authConfig = {
   ]
 } satisfies NextAuthOptions
 
-export default NextAuth(authConfig)
+export const auth = NextAuth(authConfig)
 
 export const getAuthSession = async () => {
   return getServerSession(authConfig)
