@@ -8,9 +8,9 @@ export const ROUTES = {
   contact: '/contact',
   edit: '/playlists/edit',
   home: '/',
-  profile: '/profile',
   search: '/search',
-  settings: '/settings'
+  settings: '/settings',
+  user: '/user'
 } as const
 
 export type RouteKey = keyof typeof ROUTES
@@ -44,10 +44,10 @@ export const getCommonNavbarItems = (i18n: I18n, userPermissions: Permission[]) 
       Icon: SearchIcon
     },
     {
-      ariaLabel: i18n('routes.playlists.create.link-aria-label'),
+      ariaLabel: i18n('routes.create.link-aria-label'),
       hasUserAccess: userPermissions.includes('create_playlist'),
       key: 'create',
-      label: i18n('routes.playlists.create.link-label'),
+      label: i18n('routes.create.link-label'),
       path: ROUTES.create,
       Icon: PlusCircleIcon
     }

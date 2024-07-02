@@ -1,7 +1,7 @@
 import type { Game, Playlist, Rating, User } from '@prisma/client'
 
+import type { UserRole } from '@/app/user'
 import type { Permission } from '@/authentication/permissions'
-import type { UserRole } from '@/user'
 
 type PickedUserFields =
   'avatar' |
@@ -25,9 +25,9 @@ export type AuthenticatedUser = PrismaAuthenticatedUser & {
 }
 
 export type AuthenticationErrorCode =
-  'user_not_found' |
   'unauthenticated' |
-  'unauthorized'
+  'unauthorized' |
+  'user_not_found'
 
 export const AUTH_USER_SELECTED_FIELDS: Record<keyof PrismaAuthenticatedUser, true> = {
   avatar: true,

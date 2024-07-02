@@ -1,16 +1,10 @@
-import type { Locale } from '@/i18n'
+type Param = Record<string, string | string[]> | null
 
-type CommonParams = {
-  locale: Locale
-}
+type Params <T extends Param> = T
 
-type Params <T> = T extends null
-  ? CommonParams
-  : CommonParams & T
-
-type PageParams <T> = {
+export type PageParams <T extends Param> = {
   params: Params<T>
 }
 
-export type PageProps <T = null> = Readonly<PageParams<T>>
-export type LayoutProps <T = null> = PageProps<T> & React.PropsWithChildren
+export type PageProps <T extends Param = null> = Readonly<PageParams<T>>
+export type LayoutProps <T extends Param = null> = PageProps<T> & React.PropsWithChildren

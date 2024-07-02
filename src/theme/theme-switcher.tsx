@@ -5,8 +5,7 @@ import React from 'react'
 
 import type { Option } from '@/components/option-item'
 import { Select } from '@/forms/components/select'
-import type { I18n } from '@/i18n'
-import { useI18n } from '@/i18n/client'
+import { type I18n, useI18n } from '@/i18n'
 import { type Theme, useTheme } from '@/theme'
 
 const getThemesOptions = (i18n: I18n) => {

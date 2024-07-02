@@ -1,16 +1,16 @@
 'use client'
 
 import { MailIcon, SettingsIcon } from 'lucide-react'
+import Link from 'next/link'
 import React from 'react'
 
 import { LoginButton } from '@/authentication/components/login-button'
 import { Button } from '@/components/button'
-import { Link } from '@/i18n/components/link'
-import { useI18n } from '@/i18n/client'
+import { Tooltip } from '@/components/tooltip'
+import { useI18n } from '@/i18n'
 import { ROUTES } from '@/routes'
 
 import './visitor-menu.styles.sass'
-import { Tooltip } from '@/components/tooltip'
 
 export const VisitorMenu: React.FC = () => {
   const { i18n } = useI18n()

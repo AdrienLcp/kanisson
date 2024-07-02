@@ -1,11 +1,11 @@
 'use client'
 
+import Link from 'next/link'
 import React from 'react'
 
-import { Logo } from '@/components/logo'
+import { Logo } from '@/app/components/logo'
 import { DEFAULT_ICON_SIZE } from '@/helpers/styles'
-import { Link } from '@/i18n/components/link'
-import { useI18n } from '@/i18n/client'
+import { useI18n } from '@/i18n'
 import { getCommonNavbarItems, ROUTES } from '@/routes'
 import type { NavBarProps } from '@/routes/components/navbar'
 

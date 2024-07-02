@@ -1,30 +1,25 @@
+'use client'
+
 import Polyglot from './polyglot'
+import React from 'react'
 
 import type { DotNestedKeys } from '@/helpers/strings'
-import type frenchDictionary from '@/i18n/dictionaries/fr.json'
+import { getStoredItem } from '@/helpers/local-storage'
+import { useProvidedContext } from '@/helpers/contexts'
+
+import englishDictionary from '@/i18n/dictionaries/en.json'
+import frenchDictionary from '@/i18n/dictionaries/fr.json'
 
 export const LOCALES = ['en', 'fr'] as const
-
 export type Locale = typeof LOCALES[number]
-
 export const DEFAULT_LOCALE: Locale = 'fr'
 
 export type Dictionary = typeof frenchDictionary
 export type I18n = typeof Polyglot.prototype.t
-export type I18NStringPaths = DotNestedKeys<Dictionary>
+export type I18NStringPath = DotNestedKeys<Dictionary>
 
 export const isLocale = (value: string): value is Locale => {
   return LOCALES.includes(value as Locale)
-}
-
-export const getValidLocale = (locale?: unknown) => {
-  if (typeof locale !== 'string') {
-    return DEFAULT_LOCALE
-  }
-
-  return isLocale(locale)
-    ? locale
-    : DEFAULT_LOCALE
 }
 
 export const buildI18n = (dictionary: Dictionary, locale?: Locale): I18n => {
@@ -34,25 +29,58 @@ export const buildI18n = (dictionary: Dictionary, locale?: Locale): I18n => {
 
   const currentPolyglot = new Polyglot({ phrases: dictionary, locale: currentLocale })
 
-  const i18n = (key: I18NStringPaths, options?: Record<string, string | number>) => {
+  const i18n = (key: I18NStringPath, options?: Record<string, string | number>) => {
     return currentPolyglot.t(key, options)
   }
 
   return i18n
 }
 
-export const isPathnameMissingLocale = (pathname: string) => {
-  return LOCALES.every(locale => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`)
+const localeDictionaries: Record<Locale, Dictionary> = {
+  en: englishDictionary,
+  fr: frenchDictionary
 }
 
-export const getPathnameWithoutLocale = (currentPathname: string) => {
-  if (!currentPathname) {
-    return '/'
+type I18nContextValue = {
+  changeLocale: (newLocale: Locale) => void
+  currentLocale: Locale
+  i18n: I18n
+}
+
+export const I18nContext = React.createContext<I18nContextValue | null>(null)
+
+export const I18nProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
+  const [currentLocale, setCurrentLocale] = React.useState<Locale>(DEFAULT_LOCALE)
+
+  const changeLocale = (newLocale: Locale) => {
+    if (isLocale(newLocale)) {
+      setCurrentLocale(newLocale)
+    }
   }
 
-  const pathnameWithoutLocale = currentPathname.substring(3)
+  React.useEffect(() => {
+    const favoriteLocale = getStoredItem('locale')
 
-  return pathnameWithoutLocale !== ''
-    ? pathnameWithoutLocale
-    : '/'
+    if (favoriteLocale !== undefined) {
+      setCurrentLocale(favoriteLocale)
+      return
+    }
+
+    const navigatorLanguage = navigator.language.slice(0, 2).toLowerCase()
+
+    if (isLocale(navigatorLanguage)) {
+      setCurrentLocale(navigatorLanguage)
+    }
+  }, [])
+
+  const currentDictionary = localeDictionaries[currentLocale] ?? frenchDictionary
+  const i18n = buildI18n(currentDictionary, currentLocale)
+
+  return (
+    <I18nContext.Provider value={{ changeLocale, currentLocale, i18n }}>
+      {children}
+    </I18nContext.Provider>
+  )
 }
+
+export const useI18n = () => useProvidedContext(I18nContext, 'i18n')

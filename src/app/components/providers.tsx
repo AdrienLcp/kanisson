@@ -3,17 +3,14 @@
 import React from 'react'
 
 import { AuthProvider, type AuthProviderProps } from '@/authentication/client'
-import { I18nProvider, type I18nProviderProps } from '@/i18n/client'
+import { I18nProvider } from '@/i18n'
 import { ThemeProvider } from '@/theme'
 import { HueProvider } from '@/theme/hue'
 
-type ProvidersProps =
-  AuthProviderProps &
-  I18nProviderProps &
-  React.PropsWithChildren
+type ProvidersProps = AuthProviderProps & React.PropsWithChildren
 
-export const Providers: React.FC<ProvidersProps> = ({ authenticatedUser, children, dictionary, locale }) => (
-  <I18nProvider dictionary={dictionary} locale={locale}>
+export const Providers: React.FC<ProvidersProps> = ({ authenticatedUser, children }) => (
+  <I18nProvider>
     <AuthProvider authenticatedUser={authenticatedUser}>
       <ThemeProvider>
         <HueProvider>

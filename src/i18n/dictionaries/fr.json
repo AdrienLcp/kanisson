@@ -1,4 +1,10 @@
 {
+  "app": {
+    "logo": {
+      "alt": "Logo de Kanisson"
+    },
+    "name": "Kanisson"
+  },
   "authentication": {
     "errors": {
       "not-found": "Cet utilisateur n'existe pas",
@@ -14,15 +20,6 @@
       "trigger-aria-label": "Ouvrir le menu utilisateur"
     }
   },
-  "components": {
-    "avatar": {
-      "common-alt": "Avatar commun d'utilisateur de Kanisson",
-      "user-alt": "Avatar de %{pseudo}"
-    },
-    "logo": {
-      "alt": "Logo de Kanisson"
-    }
-  },
   "errors": {
     "bad-request": "Requête incorrecte",
     "internal-server-error": "Une erreur est survenue, veuillez réessayer plus tard"
@@ -33,31 +30,6 @@
   "i18n": {
     "label": "Langue",
     "placeholder": "Choisis la langue du site"
-  },
-  "metadata": {
-    "category": "jeu",
-    "classification": "jeu en ligne",
-    "description": "Jouez, créez et partagez des blind tests en ligne !",
-    "keywords": {
-      "blind-test": "quiz musical",
-      "game": "jeu",
-      "music": "musique",
-      "quiz": "quiz",
-      "song": "chanson",
-      "sound": "son",
-      "soundtrack": "piste audio",
-      "track": "bande son"
-    },
-    "open-graph": {
-      "country-name": "France",
-      "alternate-locales": {
-        "0": "en"
-      }
-    },
-    "name": "Kanisson - Site de blind test",
-    "short-name": "Kanisson",
-    "short-description": "Site de blind test",
-    "suffix-title": "• Kanisson - Site de blind test"
   },
   "playlists": {
     "create": {
@@ -87,7 +59,6 @@
     "contact": {
       "link-label": "Contact",
       "link-aria-label": "Contacte nous",
-      "metadata-title": "Contact",
       "page-title": "Nous contacter",
       "error-messages": {
         "message": "Vous devez écrire un message"
@@ -107,42 +78,35 @@
         "success-message": "Message envoyé"
       }
     },
+    "create": {
+      "link-label": "Créer",
+      "link-aria-label": "Créer un blind test",
+      "page-title": "Créer un nouveau blind test"
+    },
+    "edit": {
+      "link-label": "Modifier",
+      "link-aria-label": "Modifie ton blind test",
+      "page-title": "Modifie ton blind test"
+    },
     "home": {
       "link-label": "Accueil",
       "link-aria-label": "Retour à l'accueil",
       "page-title": "Page d'accueil"
     },
-    "playlists": {
-      "create": {
-        "link-label": "Créer",
-        "link-aria-label": "Créer un blind test",
-        "metadata-title": "Créer un blind test",
-        "page-title": "Créer un nouveau blind test"
-      },
-      "edit": {
-        "link-label": "Modifier",
-        "link-aria-label": "Modifie ton blind test",
-        "metadata-title": "Modifie ton blind test",
-        "page-title": "Modifie ton blind test"
-      }
-    },
-    "profile": {
-      "link-label": "Profil",
-      "link-aria-label": "Accéder à votre profil",
-      "metadata-title": "Mon espace",
-      "page-title": "Mon espace"
-    },
     "search": {
       "link-label": "Rechercher",
       "link-aria-label": "Rechercher un blind test",
-      "metadata-title": "Chercher un blind test",
       "page-title": "Chercher un blind test"
     },
     "settings": {
       "link-label": "Paramètres",
       "link-aria-label": "Accéder à vos paramètres",
-      "metadata-title": "Paramètres",
       "page-title": "Paramètres du site"
+    },
+    "user": {
+      "link-label": "Profil",
+      "link-aria-label": "Accéder à votre profil",
+      "page-title": "Mon espace"
     }
   },
   "theme": {
@@ -192,6 +156,12 @@
           "aria-label": "Couleur jaune"
         }
       }
+    }
+  },
+  "user": {
+    "avatar": {
+      "common-alt": "Avatar commun d'utilisateur de Kanisson",
+      "user-alt": "Avatar de %{pseudo}"
     }
   }
 }

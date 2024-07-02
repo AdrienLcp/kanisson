@@ -1,18 +1,12 @@
 import type { Metadata } from 'next'
 
-import { type I18n, getValidLocale, type Locale } from '@/i18n'
-import { env } from '@/env'
+const title = 'Kanisson - Site de blind test'
+const shortName = 'Kanisson'
+const description = 'Jouez, créez et partagez des blind tests en ligne !'
+const baseUrl = 'https://www.kanisson.com'
+const creatorName = 'Adrien Lacourpaille'
 
-const baseUrl = env.NEXT_PUBLIC_BASE_URL
-
-export const getCommonMetadata = async (i18n: I18n, currentLocale?: Locale): Promise<Metadata> => {
-  const locale = getValidLocale(currentLocale)
-
-  const shortName = i18n('metadata.short-name')
-  const description = i18n('metadata.description')
-  const creatorName = 'Adrien Lacourpaille'
-  const title = i18n('metadata.name')
-
+export const getCommonMetadata = (): Metadata => {
   const commonMetadata: Metadata = {
     metadataBase: new URL(baseUrl),
     title: title,
@@ -28,14 +22,12 @@ export const getCommonMetadata = async (i18n: I18n, currentLocale?: Locale): Pro
     publisher: 'Vercel',
     referrer: 'origin',
     keywords: [
-      i18n('metadata.keywords.blind-test'),
-      i18n('metadata.keywords.game'),
-      i18n('metadata.keywords.music'),
-      i18n('metadata.keywords.quiz'),
-      i18n('metadata.keywords.song'),
-      i18n('metadata.keywords.sound'),
-      i18n('metadata.keywords.soundtrack'),
-      i18n('metadata.keywords.track')
+      'quiz musical',
+      'jeu',
+      'musique',
+      'quiz',
+      'chanson',
+      'bande son'
     ],
     creator: creatorName,
     robots: {
@@ -51,8 +43,8 @@ export const getCommonMetadata = async (i18n: I18n, currentLocale?: Locale): Pro
       email: true,
       url: true
     },
-    category: i18n('metadata.category'),
-    classification: i18n('metadata.classification'),
+    category: 'Jeu',
+    classification: 'Jeu en ligne',
     openGraph: {
       determiner: '',
       type: 'website',
@@ -61,12 +53,10 @@ export const getCommonMetadata = async (i18n: I18n, currentLocale?: Locale): Pro
       description: description,
       siteName: shortName,
       emails: ['kanisson@gmail.com'],
-      locale: locale,
+      locale: 'fr',
       images: [], // TODO
-      countryName: i18n('metadata.open-graph.country-name'),
-      alternateLocale: [
-        i18n('metadata.open-graph.alternate-locales.0')
-      ]
+      countryName: 'France',
+      alternateLocale: ['en']
     },
     twitter: {
       card: 'summary',
@@ -79,6 +69,6 @@ export const getCommonMetadata = async (i18n: I18n, currentLocale?: Locale): Pro
   return commonMetadata
 }
 
-export const getMetadataTitle = (i18n: I18n, title: string): string => {
-  return `${title} ${i18n('metadata.suffix-title')}`
+export const getMetadataTitle = (title: string): string => {
+  return `${title} • Kanisson - Site de blind test`
 }

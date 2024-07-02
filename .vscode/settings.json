@@ -29,7 +29,11 @@
       "language": "en,fr"
     },
     {
-      "filename": "src/app/manifest.ts",
+      "filename": "src/app/metadata.ts",
+      "language": "en,fr"
+    },
+    {
+      "filename": "src/app/**/layout.tsx",
       "language": "en,fr"
     }
   ],
@@ -48,7 +52,6 @@
     "formspree",
     "Kanisson",
     "Lacourpaille",
-    "localematcher",
     "Lucide",
     "Neuton",
     "nextjs"

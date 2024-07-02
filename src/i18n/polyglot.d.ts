@@ -1,4 +1,4 @@
-import type { Dictionary, I18NStringPaths, Locale } from '.'
+import type { Dictionary, I18NStringPath, Locale } from '.'
 
 declare type IPolyglotOptions = {
   phrases: Dictionary
@@ -7,7 +7,7 @@ declare type IPolyglotOptions = {
 
 declare class Polyglot {
   constructor (options: IPolyglotOptions)
-  t (key: I18NStringPaths, options?: Record<string, string | number>): string
+  t (key: I18NStringPath, options?: Record<string, string | number>): string
 }
 
 export = Polyglot

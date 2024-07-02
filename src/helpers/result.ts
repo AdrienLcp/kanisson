@@ -1,12 +1,11 @@
-import type { I18n } from '@/i18n'
-
 export type CommonErrorCode =
   'bad_request' |
-  'internal_server_error'
+  'internal_server_error' |
+  'not_found'
 
 type ErrorCode <E extends string> = E | CommonErrorCode
 
-type ErrorResult <E extends string> = {
+export type ErrorResult <E extends string> = {
   errors: Array<ErrorCode<E>>
   status: 'error'
 }
@@ -31,24 +30,11 @@ export const error = <E extends string> (errors: Errors<E> = []): ErrorResult<E>
     errorsList.push(...errors)
   }
 
-  return { errors: errorsList, status: 'error' }
-}
+  console.error(errorsList)
 
-export const handleUnknownError = (baseError: unknown): ErrorResult<CommonErrorCode> => {
-  console.error(baseError)
-  return error('internal_server_error')
+  return { errors: errorsList, status: 'error' }
 }
 
 export const success = <T> (data: T): SuccessResult<T> => {
   return { data, status: 'success' }
-}
-
-export const getCommonErrorMessage = (errorCode: CommonErrorCode, i18n: I18n): string => {
-  switch (errorCode) {
-    case 'bad_request':
-      return i18n('errors.bad-request')
-    case 'internal_server_error':
-    default:
-      return i18n('errors.internal-server-error')
-  }
 }

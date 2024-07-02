@@ -1,4 +1,10 @@
 {
+  "app": {
+    "logo": {
+      "alt": "Kanisson's logo"
+    },
+    "name": "Kanisson"
+  },
   "authentication": {
     "errors": {
       "not-found": "The user does not exist",
@@ -14,15 +20,6 @@
       "trigger-aria-label": "Open user menu"
     }
   },
-  "components": {
-    "avatar": {
-      "common-alt": "Common Kanisson's user avatar",
-      "user-alt": "%{pseudo}'s avatar"
-    },
-    "logo": {
-      "alt": "Kanisson's logo"
-    }
-  },
   "errors": {
     "bad-request": "Bad request",
     "internal-server-error": "An error occurred, please try again later"
@@ -33,31 +30,6 @@
   "i18n": {
     "label": "Lang",
     "placeholder": "Choose website language"
-  },
-  "metadata": {
-    "category": "game",
-    "classification": "online game",
-    "description": "Play, create and share online blind test games !",
-    "keywords": {
-      "blind-test": "blind test",
-      "game": "game",
-      "music": "music",
-      "quiz": "quiz",
-      "song": "song",
-      "sound": "sound",
-      "soundtrack": "soundtrack",
-      "track": "track"
-    },
-    "open-graph": {
-      "country-name": "England",
-      "alternate-locales": {
-        "0": "fr"
-      }
-    },
-    "name": "Kanisson - Blind test games",
-    "short-name": "Kanisson",
-    "short-description": "Blind test games",
-    "suffix-title": "• Kanisson - Blind test games"
   },
   "playlists": {
     "create": {
@@ -87,7 +59,6 @@
     "contact": {
       "link-label": "Contact",
       "link-aria-label": "Contact us",
-      "metadata-title": "Contact",
       "page-title": "Contact",
       "error-messages": {
         "message": "You need to write a message"
@@ -107,42 +78,35 @@
         "success-message": "Message sent"
       }
     },
+    "create": {
+      "link-label": "Create",
+      "link-aria-label": "Create blind test",
+      "page-title": "Create a new blind test"
+    },
+      "edit": {
+        "link-label": "Edit",
+        "link-aria-label": "Edit blind test",
+        "page-title": "Edit your blind test"
+      },
     "home": {
       "link-label": "Home",
       "link-aria-label": "Go to the home page",
       "page-title": "Home"
     },
-    "playlists": {
-      "create": {
-        "link-label": "Create",
-        "link-aria-label": "Create blind test",
-        "metadata-title": "Create a blind test",
-        "page-title": "Create a new blind test"
-      },
-      "edit": {
-        "link-label": "Edit",
-        "link-aria-label": "Edit blind test",
-        "metadata-title": "Edit your blind test",
-        "page-title": "Edit your blind test"
-      }
-    },
-    "profile": {
-      "link-label": "Profile",
-      "link-aria-label": "Go to your profile",
-      "metadata-title": "My space",
-      "page-title": "My space"
-    },
     "search": {
       "link-label": "Search",
       "link-aria-label": "Search a blind test",
-      "metadata-title": "Search a blind test",
       "page-title": "Search for a blind test"
     },
     "settings": {
       "link-label": "Settings",
       "link-aria-label": "Go to the settings",
-      "metadata-title": "Settings",
       "page-title": "Settings of the website"
+    },
+    "user": {
+      "link-label": "Profile",
+      "link-aria-label": "Go to your profile",
+      "page-title": "My space"
     }
   },
   "theme": {
@@ -192,6 +156,12 @@
           "aria-label": "Yellow color"
         }
       }
+    }
+  },
+  "user": {
+    "avatar": {
+      "common-alt": "Common Kanisson's user avatar",
+      "user-alt": "%{pseudo}'s avatar"
     }
   }
 }

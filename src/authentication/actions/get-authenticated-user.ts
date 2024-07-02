@@ -1,11 +1,12 @@
 'use server'
 
+import { getValidRole } from '@/app/user'
 import { AUTH_USER_SELECTED_FIELDS, type AuthenticatedUser, type AuthenticationErrorCode } from '@/authentication'
 import { getUserPermissions } from '@/authentication/permissions'
 import { getAuthSession } from '@/authentication/server'
-import { error, handleUnknownError, type Result, success } from '@/helpers/result'
+import { handleUnknownServerError } from '@/helpers/errors'
+import { error, type Result, success } from '@/helpers/result'
 import prisma from '@/lib/prisma'
-import { getValidRole } from '@/user'
 
 type GetAuthenticatedUserResponse = Result<AuthenticatedUser, AuthenticationErrorCode>
 
@@ -36,6 +37,6 @@ export const getAuthenticatedUser = async (): Promise<GetAuthenticatedUserRespon
 
     return success(authenticatedUser)
   } catch (error) {
-    return handleUnknownError(error)
+    return handleUnknownServerError(error)
   }
 }

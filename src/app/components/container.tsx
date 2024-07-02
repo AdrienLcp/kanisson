@@ -4,16 +4,13 @@ import React from 'react'
 
 import { classNames } from '@/helpers/styles'
 import { baseFont, titleFont } from '@/helpers/ui'
-import type { Locale } from '@/i18n'
+import { useI18n } from '@/i18n'
 import { useTheme } from '@/theme'
 import { useHue } from '@/theme/hue'
 
-type ContainerProps = React.PropsWithChildren & {
-  locale: Locale
-}
-
-export const Container: React.FC<ContainerProps> = ({ children, locale }) => {
+export const Container: React.FC<React.PropsWithChildren> = ({ children }) => {
   const { currentHue } = useHue()
+  const { currentLocale } = useI18n()
   const { isDarkModeActive } = useTheme()
 
   return (
@@ -24,7 +21,7 @@ export const Container: React.FC<ContainerProps> = ({ children, locale }) => {
         !isDarkModeActive && 'light',
         currentHue
       )}
-      lang={locale}
+      lang={currentLocale}
     >
       <body>
         {children}

@@ -1,4 +1,4 @@
-import type { UserRole } from '@/user'
+import type { UserRole } from '@/app/user'
 
 const USER_PERMISSIONS = [
   'create_playlist'
