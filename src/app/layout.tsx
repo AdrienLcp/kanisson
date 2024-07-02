@@ -8,7 +8,6 @@ import { Main } from '@/app/components/main'
 import { getCommonMetadata } from '@/app/metadata'
 import { Providers } from '@/app/components/providers'
 import { Toaster } from '@/app/components/toaster'
-import { getAuthenticatedUser } from '@/authentication/actions/get-authenticated-user'
 import type { LayoutProps } from '@/lib/next-js'
 import { Navbar } from '@/routes/components/navbar'
 
@@ -20,34 +19,24 @@ export const metadata: Metadata = {
   ...commonMetadata
 }
 
-const RootLayout: React.FC<LayoutProps> = async ({ children }) => {
-  const authenticatedUserResponse = await getAuthenticatedUser()
+const RootLayout: React.FC<LayoutProps> = ({ children }) => (
+  <Providers>
+    <Container>
 
-  const authenticatedUser = authenticatedUserResponse.status === 'success'
-    ? authenticatedUserResponse.data
-    : null
+      <Header />
 
-  const authenticatedUserPermissions = authenticatedUser === null
-    ? []
-    : authenticatedUser.permissions
+      <Main>
+        {children}
+      </Main>
 
-  return (
-    <Providers authenticatedUser={authenticatedUser}>
-      <Container>
-        <Header authenticatedUser={authenticatedUser} />
+      <Footer />
 
-        <Main>
-          {children}
-        </Main>
+      <Navbar />
 
-        <Footer />
+      <Toaster />
 
-        <Navbar authenticatedUserPermissions={authenticatedUserPermissions} />
-
-        <Toaster />
-      </Container>
-    </Providers>
-  )
-}
+    </Container>
+  </Providers>
+)
 
 export default RootLayout

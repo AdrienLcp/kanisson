@@ -1,0 +1,134 @@
+@import '@/styles/mixins'
+@import '@/styles/typography'
+
+.navbar
+  background-color: hsl(var(--background, 240 10% 3.9%))
+  border-top: var(--element-stroke, 2px) solid hsl(var(--border, 240 10% 3.9%))
+  max-height: var(--bottom-bar-height, 4.55rem)
+  position: fixed
+  bottom: 0
+  left: 0
+  right: 0
+
+  &__heading
+    display: none
+
+  &__list
+    display: flex
+    justify-content: center
+    margin: auto
+    width: clamp(150px, 90vw, 800px)
+
+    &__link
+      @include color-transition
+      @include flex-center
+      aspect-ratio: 1
+      border-bottom: var(--element-stroke, 2px) solid transparent
+      color: hsl(var(--foreground-light, 0 0% 68%))
+      height: calc(var(--bottom-bar-height, 4.55rem) - var(--element-stroke, 2px))
+      min-width: calc(100% / var(--bottom-bar-item-count, 4))
+      width: 100%
+
+      @media (hover: hover)
+        &:not(.selected):hover
+          color: hsl(var(--foreground, 0 0% 98%))
+
+      &:not(.selected):active
+        color: hsl(var(--muted, 240 3.7% 15.9%))
+
+      &.selected
+        border-bottom-color: hsl(var(--ring, 240 4.9% 83.9%))
+
+      &__label
+        @include label-medium
+        display: none
+        opacity: 0
+        position: absolute
+        top: 50%
+        transform: translate(-12rem, -50%)
+        transition-duration: var(--transition-150, 0)
+        transition-property: opacity, transform
+        transition-timing-function: var(--timing, ease-in-out)
+
+@media (width > 991px)
+  .navbar
+    border-right: var(--element-stroke, 2px) solid hsl(var(--border, 240 3.7% 15.9%))
+    border-top: none
+    display: flex
+    flex-direction: column
+    grid-area: side-bar
+    height: 100svh
+    inset: 0
+    justify-content: center
+    max-height: initial
+    padding-block: var(--layout-spacing-m, 1.94rem)
+    transition: width var(--transition-150, 0) var(--timing, ease-in-out)
+    width: var(--side-bar-rest-width, 3rem)
+
+    &__heading
+      border-radius: var(--radius-circular, 99px)
+      display: block
+      left: 50%
+      position: absolute
+      top: 10vh
+      transform: translate(-50%, -50%)
+
+      &__logo
+        margin-inline: auto
+        transition: transform var(--transition-150, 0) var(--timing, ease-in-out)
+        transform: scale(calc(1 / var(--side-bar-rest-divider, 4)))
+
+    &__list
+      display: initial
+      flex-direction: initial
+      justify-content: initial
+      margin: initial
+      width: initial
+
+      &__link
+        @include ghost-clickable
+        --side-bar-link-icon-size: 0.75rem
+        --side-bar-link-icon-width: calc(calc(var(--side-bar-rest-width, 3rem) / 2) + var(--side-bar-link-icon-size, 0.75rem))
+        aspect-ratio: auto
+        border-bottom: none
+        display: block
+        height: initial
+        min-width: initial
+        padding-block: var(--spacing-l, 0.55rem)
+        position: relative
+
+        &__label
+          display: block
+
+        &__icon
+          @include color-transition
+          background-color: hsl(var(--background, 240 10% 3.9%))
+          height: var(--side-bar-link-icon-size, 0.75rem)
+          padding-left: calc(var(--side-bar-rest-width, 3rem) / 2)
+          position: relative
+          transform: translate(calc(-50% + var(--side-bar-link-icon-size, 0.75rem)))
+          width: var(--side-bar-link-icon-width, 2.25rem)
+
+    &:hover
+      width: var(--side-bar-width, 12rem)
+
+      .navbar
+        &__heading__logo
+          transform: scale(1)
+
+          &:hover
+            transform: scale(0.8) rotate(360deg)
+
+        &__list__link
+          &.selected
+            background: red
+
+            & .navbar__list__link__icon
+              background: red
+
+          &__label
+            opacity: 1
+            transform: translate(calc(var(--side-bar-link-icon-width, 2.25rem) + 0.4ch), -50%)
+
+          &:hover .navbar__list__link__icon
+            background-color: transparent

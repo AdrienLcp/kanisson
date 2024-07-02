@@ -4,6 +4,8 @@ import { signOut } from 'next-auth/react'
 import React from 'react'
 
 import type { AuthenticatedUser, AuthenticationErrorCode } from '@/authentication'
+import { getAuthenticatedUser } from '@/authentication/actions/get-authenticated-user'
+import type { UserPermission } from '@/authentication/permissions'
 import { useProvidedContext } from '@/helpers/contexts'
 import type { I18n } from '@/i18n'
 
@@ -13,17 +15,15 @@ type Authentication =
   { status: 'unauthenticated' }
 
 type AuthenticationContextValue = {
+  authenticatedUser: AuthenticatedUser | null
+  authenticatedUserPermissions: UserPermission[]
   authentication: Authentication
   logout: () => void
 }
 
-export type AuthProviderProps = React.PropsWithChildren & {
-  authenticatedUser: AuthenticatedUser | null
-}
-
 const AuthenticationContext = React.createContext<AuthenticationContextValue | null>(null)
 
-export const AuthProvider: React.FC<AuthProviderProps> = ({ children, authenticatedUser }) => {
+export const AuthProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
   const [authentication, setAuthentication] = React.useState<Authentication>({ status: 'loading' })
 
   const logout = () => {
@@ -31,17 +31,39 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, authentica
     signOut()
   }
 
-  React.useEffect(() => {
-    if (authenticatedUser === null) {
-      setAuthentication({ status: 'unauthenticated' })
+  const loadUser = React.useCallback(async () => {
+    const authenticationResponse = await getAuthenticatedUser()
+
+    if (authenticationResponse.status === 'success') {
+      setAuthentication({
+        status: 'authenticated',
+        authenticatedUser: authenticationResponse.data
+      })
       return
     }
 
-    setAuthentication({ status: 'authenticated', authenticatedUser })
-  }, [authenticatedUser])
+    logout()
+  }, [])
+
+  React.useEffect(() => {
+    loadUser()
+  }, [loadUser])
+
+  const authenticatedUser = authentication.status === 'authenticated'
+    ? authentication.authenticatedUser
+    : null
+
+  const authenticatedUserPermissions = authenticatedUser?.permissions ?? []
+
+  const contextValue = {
+    authenticatedUser,
+    authenticatedUserPermissions,
+    authentication,
+    logout
+  }
 
   return (
-    <AuthenticationContext.Provider value={{ authentication, logout }}>
+    <AuthenticationContext.Provider value={contextValue}>
       {children}
     </AuthenticationContext.Provider>
   )
@@ -50,7 +72,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, authentica
 export const useAuthentication = () => useProvidedContext(AuthenticationContext, 'Authentication')
 
 type UserHookValue = {
-  authUser: AuthenticatedUser
+  authenticatedUser: AuthenticatedUser
 }
 
 export const useUser = (): UserHookValue => {
@@ -60,7 +82,7 @@ export const useUser = (): UserHookValue => {
     throw new Error('User needs to be authenticated to use this hook')
   }
 
-  return { authUser: authentication.authenticatedUser }
+  return { authenticatedUser: authentication.authenticatedUser }
 }
 
 export const getAuthenticationErrorMessage = (errorCode: AuthenticationErrorCode, i18n: I18n): string => {

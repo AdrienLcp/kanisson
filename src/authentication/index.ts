@@ -1,7 +1,7 @@
 import type { Game, Playlist, Rating, User } from '@prisma/client'
 
 import type { UserRole } from '@/app/user'
-import type { Permission } from '@/authentication/permissions'
+import type { UserPermission } from '@/authentication/permissions'
 
 type PickedUserFields =
   'avatar' |
@@ -21,7 +21,7 @@ type PrismaAuthenticatedUser = BaseAuthenticatedUser & {
 }
 
 export type AuthenticatedUser = PrismaAuthenticatedUser & {
-  permissions: Permission[]
+  permissions: UserPermission[]
 }
 
 export type AuthenticationErrorCode =

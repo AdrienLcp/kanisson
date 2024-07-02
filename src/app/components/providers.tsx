@@ -2,16 +2,14 @@
 
 import React from 'react'
 
-import { AuthProvider, type AuthProviderProps } from '@/authentication/client'
+import { AuthProvider } from '@/authentication/client'
 import { I18nProvider } from '@/i18n'
 import { ThemeProvider } from '@/theme'
 import { HueProvider } from '@/theme/hue'
 
-type ProvidersProps = AuthProviderProps & React.PropsWithChildren
-
-export const Providers: React.FC<ProvidersProps> = ({ authenticatedUser, children }) => (
+export const Providers: React.FC<React.PropsWithChildren> = ({ children }) => (
   <I18nProvider>
-    <AuthProvider authenticatedUser={authenticatedUser}>
+    <AuthProvider>
       <ThemeProvider>
         <HueProvider>
           {children}

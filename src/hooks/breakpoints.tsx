@@ -3,7 +3,7 @@ import React from 'react'
 const MOBILE_BREAKPOINT = 992
 
 export const useBreakpoints = () => {
-  const [isMobile, setIsMobile] = React.useState<boolean | null>(null)
+  const [isMobile, setIsMobile] = React.useState<boolean>(window.innerWidth < MOBILE_BREAKPOINT)
 
   React.useEffect(() => {
     const handleResize = () => {
