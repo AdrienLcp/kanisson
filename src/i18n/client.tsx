@@ -84,9 +84,6 @@ export const I18nProvider: React.FC<React.PropsWithChildren> = ({ children }) =>
     }
   }, [pathname])
 
-  React.useEffect(() => {
-  }, [currentLocale])
-
   const currentDictionary = localeDictionaries[currentLocale] ?? DEFAULT_DICTIONARY
   const i18n = buildI18n(currentDictionary, currentLocale)
 
