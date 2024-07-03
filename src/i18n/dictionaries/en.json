@@ -31,6 +31,39 @@
     "label": "Lang",
     "placeholder": "Choose website language"
   },
+  "metadata": {
+    "category": "game",
+    "classification": "online game",
+    "description": "Play, create and share online blind test games !",
+    "keywords": {
+      "blind-test": "blind test",
+      "game": "game",
+      "music": "music",
+      "quiz": "quiz",
+      "song": "song",
+      "sound": "sound",
+      "soundtrack": "soundtrack",
+      "track": "track"
+    },
+    "open-graph": {
+      "country-name": "England",
+      "alternate-locales": {
+        "0": "fr"
+      }
+    },
+    "name": "Kanisson - Blind test games",
+    "short-name": "Kanisson",
+    "page-titles": {
+      "contact": "Contact us",
+      "create": "Create a blind test",
+      "edit": "Edit a blind test",
+      "search": "Search for a blind test",
+      "settings": "Settings",
+      "user": "My space"
+    },
+    "short-description": "Blind test games",
+    "suffix-title": "• Kanisson - Blind test games"
+  },
   "playlists": {
     "create": {
       "submit-label": "Create",

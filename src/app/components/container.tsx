@@ -4,7 +4,7 @@ import React from 'react'
 
 import { classNames } from '@/helpers/styles'
 import { baseFont, titleFont } from '@/helpers/ui'
-import { useI18n } from '@/i18n'
+import { useI18n } from '@/i18n/client'
 import { useTheme } from '@/theme'
 import { useHue } from '@/theme/hue'
 

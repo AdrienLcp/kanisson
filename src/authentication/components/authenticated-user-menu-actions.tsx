@@ -9,7 +9,8 @@ import { type Key, ListBox } from 'react-aria-components'
 import { useAuthentication } from '@/authentication/client'
 import { ListBoxItem } from '@/components/list-box-item'
 import { type Option, OptionItem } from '@/components/option-item'
-import { type I18n, useI18n } from '@/i18n'
+import type { I18n } from '@/i18n'
+import { useI18n } from '@/i18n/client'
 import { ROUTES } from '@/routes'
 
 const getAuthenticatedUserMenuActions = (i18n: I18n, logout: () => void, router: AppRouterInstance) => {

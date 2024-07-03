@@ -8,7 +8,7 @@ import { Button } from '@/components/button'
 import { FormWrapper, type FormWrapperProps } from '@/forms/components/form-wrapper'
 import { isValidString } from '@/helpers/strings'
 import { classNames } from '@/helpers/styles'
-import { useI18n } from '@/i18n'
+import { useI18n } from '@/i18n/client'
 
 import './form.styles.sass'
 

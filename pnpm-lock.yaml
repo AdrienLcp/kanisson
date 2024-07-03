@@ -11,6 +11,9 @@ importers:
       '@auth/prisma-adapter':
         specifier: ^2.4.1
         version: 2.4.1(@prisma/client@5.14.0(prisma@5.16.1))
+      '@formatjs/intl-localematcher':
+        specifier: ^0.5.4
+        version: 0.5.4
       '@formspree/react':
         specifier: ^2.5.1
         version: 2.5.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -35,6 +38,9 @@ importers:
       lucide-react:
         specifier: ^0.381.0
         version: 0.381.0(react@18.3.1)
+      negotiator:
+        specifier: ^0.6.3
+        version: 0.6.3
       next:
         specifier: 14.2.3
         version: 14.2.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.6)
@@ -60,6 +66,9 @@ importers:
         specifier: ^3.23.8
         version: 3.23.8
     devDependencies:
+      '@types/negotiator':
+        specifier: ^0.6.3
+        version: 0.6.3
       '@types/node':
         specifier: ^20.14.9
         version: 20.14.9
@@ -955,6 +964,9 @@ packages:
 
   '@types/json5@0.0.29':
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
+
+  '@types/negotiator@0.6.3':
+    resolution: {integrity: sha512-JkXTOdKs5MF086b/pt8C3+yVp3iDUwG635L7oCH6HvJvvr6lSUU5oe/gLXnPEfYRROHjJIPgCV6cuAg8gGkntQ==}
 
   '@types/node@20.14.9':
     resolution: {integrity: sha512-06OCtnTXtWOZBJlRApleWndH4JsRVs1pDCc8dLSQp+7PpUpX3ePdHyeNSFTeSe7FtKyQkrlPvHwJOW3SLd8Oyg==}
@@ -1886,6 +1898,10 @@ packages:
 
   natural-compare@1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
+
+  negotiator@0.6.3:
+    resolution: {integrity: sha512-+EUsqGPLsM+j/zdChZjsnX51g4XrHFOIXwfnCVPGlQk/k5giakcKsuxCObBRu6DSm9opw/O6slWbJdghQM4bBg==}
+    engines: {node: '>= 0.6'}
 
   next-auth@4.24.7:
     resolution: {integrity: sha512-iChjE8ov/1K/z98gdKbn2Jw+2vLgJtVV39X+rCP5SGnVQuco7QOr19FRNGMIrD8d3LYhHWV9j9sKLzq1aDWWQQ==}
@@ -3626,6 +3642,8 @@ snapshots:
 
   '@types/json5@0.0.29': {}
 
+  '@types/negotiator@0.6.3': {}
+
   '@types/node@20.14.9':
     dependencies:
       undici-types: 5.26.5
@@ -4794,6 +4812,8 @@ snapshots:
   nanoid@3.3.7: {}
 
   natural-compare@1.4.0: {}
+
+  negotiator@0.6.3: {}
 
   next-auth@4.24.7(next@14.2.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.6))(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:

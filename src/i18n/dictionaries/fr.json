@@ -31,6 +31,39 @@
     "label": "Langue",
     "placeholder": "Choisis la langue du site"
   },
+  "metadata": {
+    "category": "jeu",
+    "classification": "jeu en ligne",
+    "description": "Jouez, créez et partagez des blind tests en ligne !",
+    "keywords": {
+      "blind-test": "quiz musical",
+      "game": "jeu",
+      "music": "musique",
+      "quiz": "quiz",
+      "song": "chanson",
+      "sound": "son",
+      "soundtrack": "piste audio",
+      "track": "bande son"
+    },
+    "open-graph": {
+      "country-name": "France",
+      "alternate-locales": {
+        "0": "en"
+      }
+    },
+    "name": "Kanisson - Site de blind test",
+    "page-titles": {
+      "contact": "Nous contacter",
+      "create": "Créer un blind test",
+      "edit": "Modifier un blind test",
+      "search": "Rechercher un blind test",
+      "settings": "Paramètres",
+      "user": "Mon espace"
+    },
+    "short-name": "Kanisson",
+    "short-description": "Site de blind test",
+    "suffix-title": "• Kanisson - Site de blind test"
+  },
   "playlists": {
     "create": {
       "submit-label": "Créer",

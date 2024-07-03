@@ -1,9 +1,9 @@
-import { PLAYLIST_RULES, type PlaylistFormField } from '@/app/playlists'
-import type { PlaylistCreationErrorCode } from '@/app/playlists/actions/create-playlist'
 import { getAuthenticationErrorMessage } from '@/authentication/client'
 import type { ValidationErrors } from '@/forms/validation-errors'
 import { getCommonErrorMessage } from '@/helpers/errors'
 import type { I18n } from '@/i18n'
+import { PLAYLIST_RULES, type PlaylistFormField } from '@/playlists'
+import type { PlaylistCreationErrorCode } from '@/playlists/actions/create-playlist'
 
 type CreatePlaylistFormValidationErrors = ValidationErrors<PlaylistFormField>
 

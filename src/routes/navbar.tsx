@@ -1,7 +1,6 @@
 'use client'
 
 import { HomeIcon, PlusCircleIcon, SearchIcon, type LucideIcon } from 'lucide-react'
-import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React from 'react'
 
@@ -11,7 +10,9 @@ import type { UserPermission } from '@/authentication/permissions'
 import { Motion } from '@/components/motion'
 import { classNames } from '@/helpers/styles'
 import { useBreakpoints } from '@/hooks/breakpoints'
-import { type I18n, useI18n } from '@/i18n'
+import type { I18n } from '@/i18n'
+import { useI18n } from '@/i18n/client'
+import { Link } from '@/i18n/components/link'
 import { ROUTES, type RouteKey, type RoutePath } from '@/routes'
 
 import './navbar.styles.sass'

@@ -7,7 +7,7 @@ import { Label } from '@/components/label'
 import { Pressable } from '@/components/pressable'
 import { Tooltip } from '@/components/tooltip'
 import { DEFAULT_ICON_SIZE, classNames } from '@/helpers/styles'
-import { useI18n } from '@/i18n'
+import { useI18n } from '@/i18n/client'
 import { HUES, useHue } from '@/theme/hue'
 
 import './hue-switcher.styles.sass'

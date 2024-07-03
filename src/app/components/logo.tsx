@@ -5,7 +5,7 @@ import React from 'react'
 
 import { Image } from '@/components/image'
 import type { ComponentSizes } from '@/helpers/ui'
-import { useI18n } from '@/i18n'
+import { useI18n } from '@/i18n/client'
 
 import smallLogo from '@/assets/images/logo/logo-48x48.png'
 import mediumLogo from '@/assets/images/logo/logo-128x128.png'

@@ -3,12 +3,12 @@
 import type { Playlist } from '@prisma/client'
 import { z } from 'zod'
 
-import type { PlaylistErrorCode } from '@/app/playlists'
 import type { AuthenticationErrorCode } from '@/authentication'
 import { getAuthSession } from '@/authentication/server'
 import { error, success, type Result } from '@/helpers/result'
 import { handleUnknownServerError } from '@/helpers/errors'
 import prisma from '@/lib/prisma'
+import type { PlaylistErrorCode } from '@/playlists'
 
 type GetPlaylistByIdErrorCode = AuthenticationErrorCode | PlaylistErrorCode
 type GetPlaylistByIdResponse = Result<Playlist, GetPlaylistByIdErrorCode>

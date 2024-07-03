@@ -5,7 +5,7 @@ import React from 'react'
 import { PageTitle } from '@/app/components/page-title'
 import { isValidString } from '@/helpers/strings'
 import { classNames } from '@/helpers/styles'
-import { useI18n } from '@/i18n'
+import { useI18n } from '@/i18n/client'
 import type { RouteKey } from '@/routes'
 
 import './page-wrapper.styles.sass'

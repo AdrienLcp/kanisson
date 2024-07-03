@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { PageWrapper } from '@/app/components/page-wrapper'
-import { ContactForm } from '@/app/contact/contact-form'
+import { ContactForm } from '@/app/[locale]/contact/contact-form'
 import type { PageProps } from '@/lib/next-js'
 
 const ContactPage: React.FC<PageProps> = () => (

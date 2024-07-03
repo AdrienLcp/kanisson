@@ -1,6 +1,6 @@
 import type { Game, Playlist, Rating, User } from '@prisma/client'
 
-import type { UserRole } from '@/app/user'
+import type { UserRole } from '@/user'
 import type { UserPermission } from '@/authentication/permissions'
 
 type PickedUserFields =

@@ -1,5 +1,5 @@
 import prisma from '@/lib/prisma'
-import { getValidRole, type PublicUser, PUBLIC_USER_SELECTED_FIELDS, type UserRole } from '@/app/user'
+import { getValidRole, type PublicUser, PUBLIC_USER_SELECTED_FIELDS, type UserRole } from '@/user'
 
 export const getUserById = async (id: string): Promise<PublicUser | null> => {
   try {

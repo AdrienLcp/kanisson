@@ -8,7 +8,8 @@ import { Image } from '@/components/image'
 import { isValidString } from '@/helpers/strings'
 import { type ResponsiveSize, classNames } from '@/helpers/styles'
 import type { ComponentSizes } from '@/helpers/ui'
-import { type I18n, useI18n } from '@/i18n'
+import type { I18n } from '@/i18n'
+import { useI18n } from '@/i18n/client'
 
 import './avatar.styles.sass'
 

@@ -12,7 +12,7 @@ import { StatusMessageBar } from '@/components/status-message'
 import { env } from '@/env'
 import type { ValueOf } from '@/helpers/objects'
 import { isValidString } from '@/helpers/strings'
-import { useI18n } from '@/i18n'
+import { useI18n } from '@/i18n/client'
 
 import './contact-form.styles.sass'
 

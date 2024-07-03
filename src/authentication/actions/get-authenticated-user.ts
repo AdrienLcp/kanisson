@@ -1,6 +1,6 @@
 'use server'
 
-import { getValidRole } from '@/app/user'
+import { getValidRole } from '@/user'
 import { AUTH_USER_SELECTED_FIELDS, type AuthenticatedUser, type AuthenticationErrorCode } from '@/authentication'
 import { getUserPermissions } from '@/authentication/permissions'
 import { getAuthSession } from '@/authentication/server'
@@ -11,6 +11,7 @@ import prisma from '@/lib/prisma'
 type GetAuthenticatedUserResponse = Result<AuthenticatedUser, AuthenticationErrorCode>
 
 export const getAuthenticatedUser = async (): Promise<GetAuthenticatedUserResponse> => {
+  console.log('server')
   try {
     const authSession = await getAuthSession()
 

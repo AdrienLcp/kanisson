@@ -4,7 +4,8 @@ import React from 'react'
 
 import type { Option } from '@/components/option-item'
 import { Select } from '@/forms/components/select'
-import { type Locale, useI18n } from '@/i18n'
+import type { Locale } from '@/i18n'
+import { useI18n } from '@/i18n/client'
 
 const localeOptions: Array<Option<Locale>> = [
   {

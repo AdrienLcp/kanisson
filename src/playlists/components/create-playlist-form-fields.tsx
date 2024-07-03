@@ -3,10 +3,10 @@
 import React from 'react'
 
 import type { ValidationErrors } from '@/forms/validation-errors'
-import { playlistFormFields, type PlaylistFormField } from '@/app/playlists'
 import { TextArea } from '@/forms/components/text-area'
 import { TextField } from '@/forms/components/text-field'
-import { useI18n } from '@/i18n'
+import { useI18n } from '@/i18n/client'
+import { playlistFormFields, type PlaylistFormField } from '@/playlists'
 
 type CreatePlaylistFormFieldsProps = {
   validationErrors: ValidationErrors<PlaylistFormField>

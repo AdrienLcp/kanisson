@@ -1,9 +1,11 @@
+'use client'
+
 import React from 'react'
 
 const MOBILE_BREAKPOINT = 992
 
 export const useBreakpoints = () => {
-  const [isMobile, setIsMobile] = React.useState<boolean>(window.innerWidth < MOBILE_BREAKPOINT)
+  const [isMobile, setIsMobile] = React.useState<boolean>(true)
 
   React.useEffect(() => {
     const handleResize = () => {

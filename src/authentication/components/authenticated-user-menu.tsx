@@ -2,13 +2,13 @@
 
 import React from 'react'
 
-import { Avatar } from '@/app/user/components/avatar'
+import { Avatar } from '@/user/components/avatar'
 import type { AuthenticatedUser } from '@/authentication'
 import { AuthenticatedUserMenuActions } from '@/authentication/components/authenticated-user-menu-actions'
 import { Dialog } from '@/components/dialog'
 import { Pressable } from '@/components/pressable'
 import { isValidString } from '@/helpers/strings'
-import { useI18n } from '@/i18n'
+import { useI18n } from '@/i18n/client'
 
 import './authenticated-user-menu.styles.sass'
 
