@@ -8,7 +8,7 @@ import { Main } from '@/app/components/main'
 import { getCommonMetadata } from '@/app/metadata'
 import { Providers } from '@/app/components/providers'
 import { Toaster } from '@/app/components/toaster'
-import type { LayoutProps } from '@/lib/next-js'
+import type { LayoutProps } from '@/lib/next'
 import { Navbar } from '@/routes/navbar'
 
 import '@/styles/base.sass'

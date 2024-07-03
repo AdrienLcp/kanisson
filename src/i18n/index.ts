@@ -28,11 +28,8 @@ export const getValidLocale = (locale: unknown) => {
     : DEFAULT_LOCALE
 }
 
-export const buildI18n = (dictionary: Dictionary, locale?: Locale): I18n => {
-  const currentLocale = isLocale(locale)
-    ? locale
-    : DEFAULT_LOCALE
-
+const buildI18n = (dictionary: Dictionary, locale: Locale): I18n => {
+  const currentLocale = getValidLocale(locale)
   const currentPolyglot = new Polyglot({ phrases: dictionary, locale: currentLocale })
 
   const i18n = (key: I18NStringPath, options?: Record<string, string | number>) => {
@@ -46,10 +43,19 @@ export const isPathnameMissingLocale = (pathname: string) => {
   return LOCALES.every(locale => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`)
 }
 
-export const localeDictionaries: Record<Locale, Dictionary> = {
+const localeDictionaries: Record<Locale, Dictionary> = {
   en: englishDictionary,
   fr: frenchDictionary
 }
 
-export const DEFAULT_DICTIONARY = localeDictionaries[DEFAULT_LOCALE] ?? frenchDictionary
+const DEFAULT_DICTIONARY = localeDictionaries[DEFAULT_LOCALE] ?? frenchDictionary
+
+const getDictionaryByLocale = (locale: Locale) => {
+  return localeDictionaries[locale] ?? DEFAULT_DICTIONARY
+}
+
+export const getI18n = (locale: Locale): I18n => {
+  const dictionary = getDictionaryByLocale(locale)
+  return buildI18n(dictionary, locale)
+}
 

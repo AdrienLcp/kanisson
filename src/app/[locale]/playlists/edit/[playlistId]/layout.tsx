@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import React from 'react'
 
 import { getCommonLocalizedMetadata, getLocalizedMetadataTitle } from '@/app/metadata'
-import { getI18n } from '@/i18n/server'
-import type { LayoutProps, PageParams } from '@/lib/next-js'
+import { getI18n } from '@/i18n'
+import type { LayoutProps, PageParams } from '@/lib/next'
 import { getPlaylistById } from '@/playlists/actions/get-playlist-by-id'
 
 type EditPlaylistParams = {
@@ -14,7 +14,7 @@ export const generateMetadata = async ({ params }: PageParams<EditPlaylistParams
   const locale = params.locale
   const playlistResponse = await getPlaylistById(params.playlistId)
 
-  const i18n = await getI18n(locale)
+  const i18n = getI18n(locale)
   const commonLocalizedMetadata = getCommonLocalizedMetadata(locale, i18n)
 
   if (playlistResponse.status === 'error') {

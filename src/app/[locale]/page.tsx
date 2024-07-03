@@ -1,6 +1,6 @@
 import React from 'react'
 
-import type { PageProps } from '@/lib/next-js'
+import type { PageProps } from '@/lib/next'
 
 const Home: React.FC<PageProps> = () => {
   return (

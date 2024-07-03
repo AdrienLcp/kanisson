@@ -5,8 +5,8 @@ import React from 'react'
 
 import { useProvidedContext } from '@/helpers/contexts'
 import { getStoredItem } from '@/helpers/local-storage'
-import { buildI18n, DEFAULT_DICTIONARY, DEFAULT_LOCALE, isLocale, isPathnameMissingLocale, localeDictionaries, type I18n, type Locale } from '@/i18n'
 import { isValidString } from '@/helpers/strings'
+import { DEFAULT_LOCALE, getI18n, isLocale, isPathnameMissingLocale, type I18n, type Locale } from '@/i18n'
 
 type I18nContextValue = {
   changeLocale: (newLocale: Locale) => void
@@ -31,7 +31,8 @@ const getRedirectPathname = (pathname: string | null, locale: Locale) => {
 
     return isHome
       ? '/'
-      : segments.splice(1, 1).join('/')
+      // : segments.splice(1, 1).join('/')
+      : `/${segments.splice(2).join('/')}`
   }
 
   const segments = pathname.split('/')
@@ -84,8 +85,7 @@ export const I18nProvider: React.FC<React.PropsWithChildren> = ({ children }) =>
     }
   }, [pathname])
 
-  const currentDictionary = localeDictionaries[currentLocale] ?? DEFAULT_DICTIONARY
-  const i18n = buildI18n(currentDictionary, currentLocale)
+  const i18n = getI18n(currentLocale)
 
   return (
     <I18nContext.Provider value={{ changeLocale, currentLocale, i18n }}>
