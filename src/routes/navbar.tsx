@@ -8,12 +8,13 @@ import React from 'react'
 import { Logo } from '@/app/components/logo'
 import { useAuthentication } from '@/authentication/client'
 import type { UserPermission } from '@/authentication/permissions'
+import { Motion } from '@/components/motion'
 import { classNames } from '@/helpers/styles'
+import { useBreakpoints } from '@/hooks/breakpoints'
 import { type I18n, useI18n } from '@/i18n'
 import { ROUTES, type RouteKey, type RoutePath } from '@/routes'
 
 import './navbar.styles.sass'
-import { useBreakpoints } from '@/hooks/breakpoints'
 
 export type NavLink = {
   ariaLabel: string
@@ -58,50 +59,54 @@ export const getNavbarItems = (i18n: I18n, userPermissions: UserPermission[]) =>
 export const Navbar: React.FC = () => {
   const pathname = usePathname()
 
-  const { authenticatedUserPermissions } = useAuthentication()
+  const { authentication, authenticatedUserPermissions } = useAuthentication()
   const isMobile = useBreakpoints()
   const { i18n } = useI18n()
 
   const links = getNavbarItems(i18n, authenticatedUserPermissions)
 
   return (
-    <aside className='navbar'>
-      {!isMobile && (
-        <div className='navbar__heading'>
-          <Link href={ROUTES.home} className='navbar__heading__logo'>
-            <Logo className='navbar__heading__logo' />
-          </Link>
-        </div>
-      )}
+    <aside>
+      <Motion animation='fade-in-slow' className='navbar'>
+        {!isMobile && (
+          <div className='navbar__heading'>
+            <Link href={ROUTES.home} className='navbar__heading__logo'>
+              <Logo className='navbar__heading__logo' />
+            </Link>
+          </div>
+        )}
 
-      <ul className='navbar__list'>
-        {links.map(({ ariaLabel, hasUserAccess, Icon, key, label, path }) => {
-          if (!hasUserAccess) {
-            return null
-          }
+        {authentication.status !== 'loading' && (
+          <Motion animation='fade-in'>
+            <ul className='navbar__list'>
+              {links.map(({ ariaLabel, hasUserAccess, Icon, key, label, path }) => {
+                if (!hasUserAccess) {
+                  return null
+                }
 
-          return (
-            <li key={key}>
-              <Link
-                aria-label={ariaLabel}
-                className={classNames('navbar__list__link', pathname === path && 'selected')}
-                href={path}
-              >
-                <span className='navbar__list__link__label'>
-                  {label}
-                </span>
+                return (
+                  <li key={key}>
+                    <Link
+                      aria-label={ariaLabel}
+                      className={classNames('navbar__list__link', pathname === path && 'selected')}
+                      href={path}
+                    >
+                      <span className='navbar__list__link__label'>
+                        {label}
+                      </span>
 
-                <Icon
-                  className='navbar__list__link__icon'
-                  size={isMobile ? '1.8rem' : '0.75rem'}
-                />
-              </Link>
-            </li>
-          )
-        })}
-      </ul>
+                      <Icon
+                        className='navbar__list__link__icon'
+                        size={isMobile ? '1.8rem' : '0.75rem'}
+                      />
+                    </Link>
+                  </li>
+                )
+              })}
+            </ul>
+          </Motion>
+        )}
+      </Motion>
     </aside>
   )
 }
-
-//! motion ?

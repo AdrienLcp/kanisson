@@ -12,6 +12,14 @@
 
   &__heading
     display: none
+    border-radius: var(--radius-circular, 99px)
+    left: 50%
+    position: absolute
+    top: 10vh
+    transform: translate(-50%, -50%)
+
+    &__logo
+      transition: transform var(--transition-150, 0) var(--timing, ease-in-out)
 
   &__list
     display: flex
@@ -66,17 +74,7 @@
     width: var(--side-bar-rest-width, 3rem)
 
     &__heading
-      border-radius: var(--radius-circular, 99px)
       display: block
-      left: 50%
-      position: absolute
-      top: 10vh
-      transform: translate(-50%, -50%)
-
-      &__logo
-        margin-inline: auto
-        transition: transform var(--transition-150, 0) var(--timing, ease-in-out)
-        transform: scale(calc(1 / var(--side-bar-rest-divider, 4)))
 
     &__list
       display: initial
@@ -113,18 +111,16 @@
       width: var(--side-bar-width, 12rem)
 
       .navbar
-        &__heading__logo
-          transform: scale(1)
-
-          &:hover
+        &__heading:hover .navbar__heading__logo
             transform: scale(0.8) rotate(360deg)
 
         &__list__link
           &.selected
-            background: red
+            pointer-events: none
+            background-color: hsl(var(--secondary, 240 3.7% 15.9%))
 
             & .navbar__list__link__icon
-              background: red
+              background-color: hsl(var(--secondary, 240 3.7% 15.9%))
 
           &__label
             opacity: 1
