@@ -4,8 +4,10 @@ import type { Theme } from '@/theme'
 
 type LocalStorage = {
   hue: Hue
+  isMuted: boolean
   locale: Locale
   theme: Theme
+  volume: number
 }
 
 type LocaleStorageKey = keyof LocalStorage

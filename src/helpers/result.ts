@@ -1,7 +1,7 @@
-export type CommonErrorCode =
-  'bad_request' |
-  'internal_server_error' |
-  'not_found'
+export type CommonErrorCode
+  = 'bad_request'
+  | 'internal_server_error'
+  | 'not_found'
 
 type ErrorCode <E extends string> = E | CommonErrorCode
 

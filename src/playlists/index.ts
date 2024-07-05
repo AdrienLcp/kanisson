@@ -12,11 +12,11 @@ export const playlistZodErrors = {
   titleTooShort: 'title_too_short'
 } as const
 
-export type PlaylistErrorCode =
-  ValueOf<typeof playlistZodErrors> |
-  'playlist_does_not_belong_to_you' |
-  'playlist_not_found' |
-  'title_already_exists'
+export type PlaylistErrorCode
+  = ValueOf<typeof playlistZodErrors>
+  | 'playlist_does_not_belong_to_you'
+  | 'playlist_not_found'
+  | 'title_already_exists'
 
 export const playlistFormFields = {
   title: 'title',

@@ -64,6 +64,9 @@
     "short-description": "Blind test games",
     "suffix-title": "• Kanisson - Blind test games"
   },
+  "player": {
+    "title": "Youtube player"
+  },
   "playlists": {
     "create": {
       "submit-label": "Create",

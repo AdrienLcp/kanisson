@@ -4,7 +4,7 @@ import type { Playlist } from '@prisma/client'
 import { z } from 'zod'
 
 import type { AuthenticationErrorCode } from '@/authentication'
-import { getAuthenticatedUser } from '@/authentication/actions/get-authenticated-user'
+import { getAuthenticatedUserWithPermission } from '@/authentication/permissions'
 import { handleUnknownServerError } from '@/helpers/errors'
 import { type CommonErrorCode, error, type Result, success } from '@/helpers/result'
 import prisma, { getPrismaError } from '@/lib/prisma'
@@ -49,17 +49,13 @@ export const createPlaylist = async (formData: FormData): Promise<CreatePlaylist
       return error(errorCodes)
     }
 
-    const authenticationResponse = await getAuthenticatedUser()
+    const authenticationResponse = await getAuthenticatedUserWithPermission('create_playlist')
 
     if (authenticationResponse.status === 'error') {
       return authenticationResponse
     }
 
     const playlistCreator = authenticationResponse.data
-
-    if (!playlistCreator.permissions.includes('create_playlist')) {
-      return error('unauthorized')
-    }
 
     const newPlaylist = await prisma.playlist.create({
       data: {

@@ -40,7 +40,7 @@ const getRedirectPathname = (pathname: string | null, locale: Locale) => {
   return segments.join('/')
 }
 
-export const I18nContext = React.createContext<I18nContextValue | null>(null)
+const I18nContext = React.createContext<I18nContextValue | null>(null)
 
 export const I18nProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
   const [currentLocale, setCurrentLocale] = React.useState<Locale>(DEFAULT_LOCALE)
@@ -56,6 +56,7 @@ export const I18nProvider: React.FC<React.PropsWithChildren> = ({ children }) =>
     const newPathname = getRedirectPathname(pathname, newLocale)
 
     if (newPathname !== pathname) {
+      setCurrentLocale(newLocale)
       router.push(newPathname)
     }
   }

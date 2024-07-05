@@ -64,6 +64,9 @@
     "short-description": "Site de blind test",
     "suffix-title": "• Kanisson - Site de blind test"
   },
+  "player": {
+    "title": "Player Youtube"
+  },
   "playlists": {
     "create": {
       "submit-label": "Créer",

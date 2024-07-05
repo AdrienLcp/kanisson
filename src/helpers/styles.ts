@@ -13,14 +13,14 @@ export const classNames = (...classes: ClassNames): string => {
   return classes.filter(Boolean).join(' ')
 }
 
-type ElementRenderProps =
-  ButtonRenderProps |
-  ComboBoxRenderProps |
-  ListBoxRenderProps |
-  PopoverRenderProps |
-  SelectRenderProps |
-  TextFieldRenderProps |
-  TooltipRenderProps
+type ElementRenderProps
+  = ButtonRenderProps
+  | ComboBoxRenderProps
+  | ListBoxRenderProps
+  | PopoverRenderProps
+  | SelectRenderProps
+  | TextFieldRenderProps
+  | TooltipRenderProps
 
 type RenderPropsValues <T extends ElementRenderProps> = T & {
   defaultClassName: string | undefined

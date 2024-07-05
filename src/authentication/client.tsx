@@ -9,10 +9,9 @@ import type { UserPermission } from '@/authentication/permissions'
 import { useProvidedContext } from '@/helpers/contexts'
 import type { I18n } from '@/i18n'
 
-type Authentication =
-  { status: 'authenticated', authenticatedUser: AuthenticatedUser } |
-  { status: 'loading' } |
-  { status: 'unauthenticated' }
+type Authentication
+  = { status: 'authenticated', authenticatedUser: AuthenticatedUser }
+  | { status: 'loading' | 'unauthenticated' }
 
 type AuthenticationContextValue = {
   authenticatedUser: AuthenticatedUser | null

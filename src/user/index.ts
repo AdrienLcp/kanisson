@@ -3,12 +3,12 @@ import type { Game, Playlist, User } from '@prisma/client'
 const USER_ROLES = ['admin', 'moderator', 'user'] as const
 export type UserRole = typeof USER_ROLES[number]
 
-type PickedUserFields =
-  'avatar' |
-  'createdAt' |
-  'id' |
-  'pseudo' |
-  'role'
+type PickedUserFields
+  = 'avatar'
+  | 'createdAt'
+  | 'id'
+  | 'pseudo'
+  | 'role'
 
 type BasePublicUser = Pick<User, PickedUserFields>
 

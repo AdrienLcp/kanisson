@@ -8,10 +8,9 @@ import { handleUnknownServerError } from '@/helpers/errors'
 import { error, type Result, success } from '@/helpers/result'
 import prisma from '@/lib/prisma'
 
-type GetAuthenticatedUserResponse = Result<AuthenticatedUser, AuthenticationErrorCode>
+export type GetAuthenticatedUserResponse = Result<AuthenticatedUser, AuthenticationErrorCode>
 
 export const getAuthenticatedUser = async (): Promise<GetAuthenticatedUserResponse> => {
-  console.log('server')
   try {
     const authSession = await getAuthSession()
 
