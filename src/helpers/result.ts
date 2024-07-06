@@ -1,3 +1,5 @@
+import { getArrayFromStrings } from './strings'
+
 export type CommonErrorCode
   = 'bad_request'
   | 'internal_server_error'
@@ -15,23 +17,13 @@ type SuccessResult <T> = {
   status: 'success'
 }
 
-export type Result <T, E extends string> = ErrorResult<E> | SuccessResult<T>
+export type Result <T, E extends string = CommonErrorCode> = ErrorResult<E> | SuccessResult<T>
 
 type Errors <E extends string> = Array<ErrorCode<E>> | ErrorCode<E>
 
 export const error = <E extends string> (errors: Errors<E> = []): ErrorResult<E> => {
-  const errorsList: Array<ErrorCode<E>> = []
-
-  if (typeof errors === 'string') {
-    errorsList.push(errors)
-  }
-
-  if (Array.isArray(errors)) {
-    errorsList.push(...errors)
-  }
-
+  const errorsList = getArrayFromStrings(errors)
   console.error(errorsList)
-
   return { errors: errorsList, status: 'error' }
 }
 

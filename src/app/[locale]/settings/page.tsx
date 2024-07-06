@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { PageWrapper } from '@/app/components/page-wrapper'
-import { LocaleSwitcher } from '@/i18n/components/locale-switcher'
+import { LocaleSwitcher } from '@/i18n/locale-switcher'
 import { HueSwitcher } from '@/theme/hue-switcher'
 import { ThemeSwitcher } from '@/theme/theme-switcher'
 

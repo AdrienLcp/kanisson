@@ -6,7 +6,7 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -110,13 +110,14 @@ model Rating {
 model Track {
   id           String       @id @default(cuid())
   playlistId   String
-  youtubeTitle String
-  duration     Int
+  baseTitle    String
+  duration     Int          @default(30)
   title        String
   artist       String
   image        String?
-  start        Int          @default(30)
-  isValid      Boolean      @default(false)
+  source       String       @default("youtube")
+  url          String
+  start        Int          @default(10)
   playlist     Playlist     @relation(fields: [playlistId], references: [id])
 }
 

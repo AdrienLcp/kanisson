@@ -1,8 +1,6 @@
 'use client'
 
 import { LogOutIcon, MailIcon, SettingsIcon, UserIcon } from 'lucide-react'
-import type { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime'
-import { useRouter } from 'next/navigation'
 import React from 'react'
 import { type Key, ListBox } from 'react-aria-components'
 
@@ -12,26 +10,27 @@ import { type Option, OptionItem } from '@/components/option-item'
 import type { I18n } from '@/i18n'
 import { useI18n } from '@/i18n/client'
 import { ROUTES } from '@/routes'
+import { useNavigation, type Navigate } from '@/routes/navigation'
 
-const getAuthenticatedUserMenuActions = (i18n: I18n, logout: () => void, router: AppRouterInstance) => {
+const getAuthenticatedUserMenuActions = (i18n: I18n, logout: () => void, navigate: Navigate) => {
   const authenticatedUserMenuActions: Array<Option<string>> = [
     {
       Icon: UserIcon,
       key: 'user',
       label: i18n('routes.user.link-label'),
-      onClick: () => router.push(ROUTES.user)
+      onClick: () => navigate(ROUTES.user)
     },
     {
       Icon: MailIcon,
       key: 'contact',
       label: i18n('routes.contact.link-label'),
-      onClick: () => router.push(ROUTES.contact)
+      onClick: () => navigate(ROUTES.contact)
     },
     {
       Icon: SettingsIcon,
       key: 'settings',
       label: i18n('routes.settings.link-label'),
-      onClick: () => router.push(ROUTES.settings)
+      onClick: () => navigate(ROUTES.settings)
     },
     {
       Icon: LogOutIcon,
@@ -59,10 +58,9 @@ const handleActionClick = (key: Key, items: Array<Option<string>>) => {
 export const AuthenticatedUserMenuActions: React.FC = () => {
   const { logout } = useAuthentication()
   const { i18n } = useI18n()
+  const navigate = useNavigation()
 
-  const router = useRouter()
-
-  const authenticatedUserMenuActions = getAuthenticatedUserMenuActions(i18n, logout, router)
+  const authenticatedUserMenuActions = getAuthenticatedUserMenuActions(i18n, logout, navigate)
 
   return (
     <ListBox

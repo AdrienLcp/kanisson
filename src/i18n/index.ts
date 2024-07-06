@@ -1,4 +1,5 @@
 import Polyglot from './polyglot'
+import { z } from 'zod'
 
 import { isValidString, type DotNestedKeys } from '@/helpers/strings'
 
@@ -13,6 +14,8 @@ export type Dictionary = typeof frenchDictionary
 
 export type I18n = typeof Polyglot.prototype.t
 export type I18NStringPath = DotNestedKeys<Dictionary>
+
+export const LocaleSchema = z.enum(LOCALES)
 
 export const isLocale = (value: unknown): value is Locale => {
   if (!isValidString(value)) {

@@ -7,16 +7,16 @@ import { isValidString } from '@/helpers/strings'
 import { getStoredItem, storeItem } from '@/helpers/local-storage'
 import { Player } from '@/player/components/player'
 
-const DEFAULT_PLAYER_VOLUME = 50
 const PLAYER_MIN_VOLUME = 0
 const PLAYER_MAX_VOLUME = 100
+const DEFAULT_PLAYER_VOLUME = PLAYER_MAX_VOLUME / 2
 
 type PlayerContextValue = {
   changeTrack: (trackId: string) => void
   changeVolume: (volume: number) => void
   pauseTrack: () => void
   playTrack: () => void
-  stopTrack: () => void
+  stopPlayer: () => void
   toggleMute: () => void
 }
 
@@ -30,7 +30,6 @@ export const PlayerProvider: React.FC<React.PropsWithChildren> = ({ children }) 
 
   const changeTrack = (trackId: string) => {
     setTrackId(trackId)
-    setIsPlaying(true)
   }
 
   const changeVolume = (volume: number) => {
@@ -54,7 +53,7 @@ export const PlayerProvider: React.FC<React.PropsWithChildren> = ({ children }) 
     setIsPlaying(false)
   }
 
-  const stopTrack = () => {
+  const stopPlayer = () => {
     setIsPlaying(false)
     setTrackId(null)
   }
@@ -84,7 +83,7 @@ export const PlayerProvider: React.FC<React.PropsWithChildren> = ({ children }) 
     changeVolume,
     pauseTrack,
     playTrack,
-    stopTrack,
+    stopPlayer,
     toggleMute
   }
 

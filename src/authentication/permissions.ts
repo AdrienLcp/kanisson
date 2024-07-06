@@ -1,9 +1,11 @@
 import { getAuthenticatedUser, type GetAuthenticatedUserResponse } from '@/authentication/actions/get-authenticated-user'
 import { error, success } from '@/helpers/result'
+import { getArrayFromStrings } from '@/helpers/strings'
 import type { UserRole } from '@/user'
 
 const USER_PERMISSIONS = [
-  'create_playlist'
+  'create_playlist',
+  'search_tracks'
 ] as const
 
 const MODERATOR_PERMISSIONS = [
@@ -29,14 +31,21 @@ export const getUserPermissions = (role: UserRole) => {
   return permissions[role] ?? permissions.user
 }
 
-export const getAuthenticatedUserWithPermission = async (permission: UserPermission): Promise<GetAuthenticatedUserResponse> => {
+type UserPermissions = UserPermission | UserPermission[]
+
+export const getAuthenticatedUserWithPermissions = async (permissions: UserPermissions): Promise<GetAuthenticatedUserResponse> => {
   const authenticatedUser = await getAuthenticatedUser()
 
   if (authenticatedUser.status === 'error') {
     return error(authenticatedUser.errors)
   }
 
-  if (!authenticatedUser.data.permissions.includes(permission)) {
+  const requiredPermissions = getArrayFromStrings(permissions)
+  const userPermissions = getUserPermissions(authenticatedUser.data.role)
+
+  const isUserAuthorized = requiredPermissions.every(permission => userPermissions.includes(permission))
+
+  if (!isUserAuthorized) {
     return error('unauthorized')
   }
 

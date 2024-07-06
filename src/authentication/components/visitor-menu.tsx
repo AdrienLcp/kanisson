@@ -5,9 +5,9 @@ import React from 'react'
 
 import { LoginButton } from '@/authentication/components/login-button'
 import { Button } from '@/components/button'
+import { Link } from '@/components/link'
 import { Tooltip } from '@/components/tooltip'
 import { useI18n } from '@/i18n/client'
-import { Link } from '@/i18n/components/link'
 import { ROUTES } from '@/routes'
 
 import './visitor-menu.styles.sass'

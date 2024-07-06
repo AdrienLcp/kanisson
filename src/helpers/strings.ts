@@ -32,3 +32,17 @@ export const normalizeString = (string: string): string => {
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
 }
+
+export const getArrayFromStrings = <T extends string> (values: T | T[]): T[] => {
+  const array: T[] = []
+
+  if (typeof values === 'string') {
+    array.push(values)
+  }
+
+  if (Array.isArray(values)) {
+    array.push(...values)
+  }
+
+  return array
+}

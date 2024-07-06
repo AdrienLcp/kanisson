@@ -4,6 +4,6 @@ export const notAwaited = <T>(promise: Promise<T>): void => {
   })
 }
 
-export const wait = (delay: number) => {
+export const sleep = (delay: number) => {
   return new Promise((resolve) => setTimeout(resolve, delay))
 }

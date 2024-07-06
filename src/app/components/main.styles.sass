@@ -1,0 +1,9 @@
+.main
+  transition-duration: var(--transition-300, 0)
+  transition-property: filter, opacity, transform
+  transition-timing-function: var(--timing, ease-in-out)
+
+  &.page-transition
+    opacity: 0
+    transform: translateY(1rem)
+    filter: blur(12px)

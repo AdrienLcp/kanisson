@@ -41,7 +41,7 @@ export const AuthProvider: React.FC<React.PropsWithChildren> = ({ children }) =>
       return
     }
 
-    logout()
+    setAuthentication({ status: 'unauthenticated' })
   }, [])
 
   React.useEffect(() => {
