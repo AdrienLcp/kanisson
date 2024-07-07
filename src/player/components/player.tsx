@@ -10,13 +10,13 @@ import { useI18n } from '@/i18n/client'
 import './player.styles.sass'
 
 type PlayerProps = BaseReactPlayerProps & {
-  trackId?: string | null
+  trackUrl?: string | null
 }
 
-export const Player: React.FC<PlayerProps> = ({ trackId, ...props }) => {
+export const Player: React.FC<PlayerProps> = ({ trackUrl, ...props }) => {
   const { i18n } = useI18n()
 
-  if (!isValidString(trackId)) {
+  if (!isValidString(trackUrl)) {
     return null
   }
 
@@ -24,8 +24,8 @@ export const Player: React.FC<PlayerProps> = ({ trackId, ...props }) => {
     <ReactPlayer
       {...props}
       className='player'
-      url={`https://www.youtube.com/watch?v=${trackId}`}
       title={i18n('player.title')}
+      url={trackUrl}
       youtube={{ playerVars: { autoplay: 1 } }}
     />
   )

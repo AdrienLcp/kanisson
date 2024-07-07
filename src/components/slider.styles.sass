@@ -1,0 +1,28 @@
+@import '@/styles/mixins'
+
+.slider
+  display: flex
+  flex-direction: column
+  gap: var(--spacing-m, 0.55rem)
+
+  &__heading
+    display: flex
+    gap: var(--spacing-m, 0.55rem)
+    justify-content: space-between
+
+  &__track
+    background-color: hsl(var(--border, 240 3.7% 15.9%))
+    border-radius: var(--radius-circular, 99px)
+    cursor: pointer
+    height: calc(var(--element-stroke, 2px) * 3)
+    width: 100%
+
+    &__thumb
+      aspect-ratio: 1
+      background-color: hsl(var(--primary, 0 0% 98%))
+      border-radius: var(--radius-circular, 99px)
+      top: 50%
+      width: var(--size-50, 0.68rem)
+
+  &[data-disabled='true']
+    @include disabled

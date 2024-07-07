@@ -3,21 +3,25 @@
 import React from 'react'
 
 import { useProvidedContext } from '@/helpers/contexts'
-import { isValidString } from '@/helpers/strings'
 import { getStoredItem, storeItem } from '@/helpers/local-storage'
+import { isValidString } from '@/helpers/strings'
 import { Player } from '@/player/components/player'
 
-const PLAYER_MIN_VOLUME = 0
-const PLAYER_MAX_VOLUME = 100
+export const PLAYER_MIN_VOLUME = 0
+export const PLAYER_MAX_VOLUME = 100
 const DEFAULT_PLAYER_VOLUME = PLAYER_MAX_VOLUME / 2
 
 type PlayerContextValue = {
   changeTrack: (trackId: string) => void
   changeVolume: (volume: number) => void
+  isPlayerMuted: boolean
+  isPlaying: boolean
   pauseTrack: () => void
+  playerVolume: number
   playTrack: () => void
   stopPlayer: () => void
   toggleMute: () => void
+  trackUrl: string | null
 }
 
 const PlayerContext = React.createContext<PlayerContextValue | null>(null)
@@ -26,10 +30,10 @@ export const PlayerProvider: React.FC<React.PropsWithChildren> = ({ children }) 
   const [isPlayerMuted, setIsPlayerMuted] = React.useState<boolean>(false)
   const [isPlaying, setIsPlaying] = React.useState<boolean>(true)
   const [playerVolume, setPlayerVolume] = React.useState<number>(DEFAULT_PLAYER_VOLUME)
-  const [trackId, setTrackId] = React.useState<string | null>(null)
+  const [trackUrl, setTrackUrl] = React.useState<string | null>(null)
 
-  const changeTrack = (trackId: string) => {
-    setTrackId(trackId)
+  const changeTrack = (trackUrl: string) => {
+    setTrackUrl(trackUrl)
   }
 
   const changeVolume = (volume: number) => {
@@ -55,7 +59,7 @@ export const PlayerProvider: React.FC<React.PropsWithChildren> = ({ children }) 
 
   const stopPlayer = () => {
     setIsPlaying(false)
-    setTrackId(null)
+    setTrackUrl(null)
   }
 
   const toggleMute = () => {
@@ -81,19 +85,23 @@ export const PlayerProvider: React.FC<React.PropsWithChildren> = ({ children }) 
   const playerContextValue: PlayerContextValue = {
     changeTrack,
     changeVolume,
+    isPlayerMuted,
+    isPlaying,
     pauseTrack,
+    playerVolume,
     playTrack,
     stopPlayer,
-    toggleMute
+    toggleMute,
+    trackUrl
   }
 
   return (
     <PlayerContext.Provider value={playerContextValue}>
       {children}
 
-      {isValidString(trackId) && (
+      {isValidString(trackUrl) && (
         <Player
-          trackId={trackId}
+          trackUrl={trackUrl}
           volume={playerVolume}
           muted={isPlayerMuted}
           playing={isPlaying}

@@ -1,7 +1,9 @@
 import type { Track } from '@prisma/client'
 
-type BaseTrackPickedFields
-  = 'title'
+type TrackResultPickedFields
+  = 'id'
+  | 'image'
+  | 'title'
   | 'url'
 
-export type BaseTrack = Pick<Track, BaseTrackPickedFields>
+export type TrackResult = Pick<Track, TrackResultPickedFields>

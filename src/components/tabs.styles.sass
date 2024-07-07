@@ -1,0 +1,25 @@
+@import '@/styles/mixins'
+@import '@/styles/typography'
+
+.tabs
+  display: flex
+  flex-direction: column
+  gap: var(--spacing-m, 0.55rem)
+
+  &__heading
+    display: flex
+
+    &__item
+      @include focusable
+      @include ghost-clickable
+      align-items: center
+      border-radius: var(--radius-s, 5px)
+      cursor: pointer
+      display: flex
+      gap: var(--spacing-xs, 0.21rem)
+      justify-content: center
+      padding: var(--spacing-xs, 0.21rem) var(--spacing-m, 0.55rem)
+      width: 100%
+
+      &[data-selected='true']
+        background-color: hsl(var(--secondary))

@@ -65,7 +65,8 @@
     "suffix-title": "• Kanisson - Site de blind test"
   },
   "player": {
-    "title": "Player Youtube"
+    "title": "Player Youtube",
+    "volume": "Volume"
   },
   "playlists": {
     "create": {
@@ -193,6 +194,19 @@
         }
       }
     }
+  },
+  "tracks": {
+    "list": {
+      "title": "Ajoutées"
+    },
+    "search": {
+      "title": "Chercher",
+      "label": "Chercher un son",
+      "load-more": "Charger plus de résultats",
+      "placeholder": "Chansons, musique de film, etc...",
+      "search-required": "Vous devez écrire quelque chose pour lancer la recherche"
+    },
+    "tabs-aria-label": "Onglets des sons"
   },
   "user": {
     "avatar": {

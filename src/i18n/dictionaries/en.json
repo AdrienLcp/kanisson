@@ -65,7 +65,8 @@
     "suffix-title": "• Kanisson - Blind test games"
   },
   "player": {
-    "title": "Youtube player"
+    "title": "Youtube player",
+    "volume": "Volume"
   },
   "playlists": {
     "create": {
@@ -193,6 +194,19 @@
         }
       }
     }
+  },
+  "tracks": {
+    "list": {
+      "title": "Added"
+    },
+    "search": {
+      "title": "Search",
+      "label": "Search for a track",
+      "load-more": "Load more results",
+      "placeholder": "Queen, Madonna, etc...",
+      "search-required": "You must enter a search term"
+    },
+    "tabs-aria-label": "Tracks tabs"
   },
   "user": {
     "avatar": {

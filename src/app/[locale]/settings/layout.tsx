@@ -10,13 +10,13 @@ export const generateMetadata = async ({ params }: PageParams): Promise<Metadata
   const i18n = getI18n(locale)
 
   const commonLocalizedMetadata = getCommonLocalizedMetadata(locale, i18n)
-  const contactPageMetadataTitle = getLocalizedMetadataTitle(i18n, i18n('metadata.page-titles.contact'))
+  const settingsPageMetadataTitle = getLocalizedMetadataTitle(i18n, i18n('metadata.page-titles.settings'))
 
   return {
     ...commonLocalizedMetadata,
-    title: contactPageMetadataTitle,
-    openGraph: { ...commonLocalizedMetadata.openGraph, title: contactPageMetadataTitle },
-    twitter: { ...commonLocalizedMetadata.twitter, title: contactPageMetadataTitle }
+    title: settingsPageMetadataTitle,
+    openGraph: { ...commonLocalizedMetadata.openGraph, title: settingsPageMetadataTitle },
+    twitter: { ...commonLocalizedMetadata.twitter, title: settingsPageMetadataTitle }
   }
 }
 

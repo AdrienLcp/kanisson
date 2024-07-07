@@ -1,4 +1,8 @@
 @import '@/styles/forms'
+@import '@/styles/mixins'
 
 .text-field
   @include form-control
+
+  &:disabled
+    @include disabled

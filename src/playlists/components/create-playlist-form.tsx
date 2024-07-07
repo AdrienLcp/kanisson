@@ -13,6 +13,10 @@ import { createPlaylist } from '@/playlists/actions/create-playlist'
 import { getPlaylistCreationValidationErrors } from '@/playlists/components/create-playlist-form.errors'
 import { CreatePlaylistFormFields } from '@/playlists/components/create-playlist-form-fields'
 import { ROUTES } from '@/routes'
+import type { TrackResult } from '@/tracks'
+import { Tracks } from '@/tracks/components/tracks'
+
+import './create-playlist-form.styles.sass'
 
 export const CreatePlaylistForm: React.FC = () => {
   const [isFormSubmitting, setIsFormSubmitting] = React.useState<boolean>(false)
@@ -44,14 +48,23 @@ export const CreatePlaylistForm: React.FC = () => {
     }
   }
 
+  const addTrackToPlaylist = (track: TrackResult) => {
+    console.log(track)
+  }
+
   return (
-    <Form
-      action={handleFormSubmit}
-      isDisabled={isFormSubmitting}
-      submitLabel={i18n('playlists.create.submit-label')}
-      validationErrors={validationErrors}
-    >
-      <CreatePlaylistFormFields validationErrors={validationErrors} />
-    </Form>
+    <section className='create-playlist-form'>
+      <Form
+        action={handleFormSubmit}
+        hasRequiredFields
+        isDisabled={isFormSubmitting}
+        submitLabel={i18n('playlists.create.submit-label')}
+        validationErrors={validationErrors}
+      >
+        <CreatePlaylistFormFields validationErrors={validationErrors} />
+      </Form>
+
+      <Tracks addTrackToPlaylist={addTrackToPlaylist} />
+    </section>
   )
 }

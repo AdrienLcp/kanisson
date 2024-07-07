@@ -1,6 +1,5 @@
 'use server'
 
-import type { Track } from '@prisma/client'
 import { z } from 'zod'
 
 import type { AuthenticationErrorCode } from '@/authentication'
@@ -8,16 +7,23 @@ import { getAuthenticatedUserWithPermissions } from '@/authentication/permission
 import { env } from '@/env'
 import { handleUnknownServerError } from '@/helpers/errors'
 import { error, success, type Result } from '@/helpers/result'
-import { getValidLocale, LocaleSchema, type Locale } from '@/i18n'
-import type { YoutubeSearchResult } from '@/youtube'
+import { LocaleSchema, type Locale } from '@/i18n'
+import type { TrackResult } from '@/tracks'
+import { getTrackFromYoutubeSearchResult, type YoutubeSearchResult } from '@/youtube'
+import { isValidString } from '@/helpers/strings'
 
 export type SearchTracksRequest = {
   search: string
   locale?: Locale
-  // pageToken?: string
+  pageToken?: string
 }
 
-type SearchTracksResponse = Result<Track[], AuthenticationErrorCode>
+type SearchTracksSuccessResponse = {
+  tracks: TrackResult[]
+  nextPageToken: string
+}
+
+type SearchTracksResponse = Result<SearchTracksSuccessResponse, AuthenticationErrorCode>
 
 const BASE_URL = 'https://www.googleapis.com/youtube/v3/search'
 const MAX_RESULT_COUNT = 3
@@ -25,7 +31,8 @@ const YOUTUBE_API_KEY = env.YOUTUBE_API_KEY
 
 const TrackSearchSchema = z.object({
   search: z.string().min(1),
-  locale: LocaleSchema.optional()
+  locale: LocaleSchema.optional(),
+  pageToken: z.string().optional()
 })
 
 export const getTracksBySearch = async (request: SearchTracksRequest): Promise<SearchTracksResponse> => {
@@ -42,31 +49,35 @@ export const getTracksBySearch = async (request: SearchTracksRequest): Promise<S
       return authenticationResponse
     }
 
-    const { search, locale } = requestValidation.data
-
-    const currentLocale = getValidLocale(locale)
-
     const trackSearchParams = new URLSearchParams({
       part: 'snippet',
-      q: search,
+      q: requestValidation.data.search,
       key: YOUTUBE_API_KEY,
       maxResults: MAX_RESULT_COUNT.toString(),
       type: 'video',
       videoEmbeddable: 'true',
-      relevanceLanguage: currentLocale,
       order: 'relevance',
       eventType: 'completed'
     })
 
+    if (isValidString(requestValidation.data.pageToken)) {
+      trackSearchParams.set('pageToken', requestValidation.data.pageToken)
+    }
+
+    if (isValidString(requestValidation.data.locale)) {
+      trackSearchParams.set('relevanceLanguage', requestValidation.data.locale)
+    }
+
     const youtubeResponse = await fetch(`${BASE_URL}?${trackSearchParams.toString()}`)
-    const youtubeSearchResultItems: YoutubeSearchResult[] = await youtubeResponse.json()
+    const youtubeSearchResult: YoutubeSearchResult = await youtubeResponse.json()
+    const tracks: TrackResult[] = youtubeSearchResult.items.map((item) => getTrackFromYoutubeSearchResult(item))
 
-    const tracks: Track[] = youtubeSearchResultItems.map((item) => ({
-      title: item.snippet.title,
-      url: `https://www.youtube.com/watch?v=${item.id.videoId}`
-    }))
+    const tracksSearchResponse: SearchTracksSuccessResponse = {
+      tracks,
+      nextPageToken: youtubeSearchResult.nextPageToken
+    }
 
-    return success(tracksData.items)
+    return success(tracksSearchResponse)
   } catch (error) {
     return handleUnknownServerError(error)
   }

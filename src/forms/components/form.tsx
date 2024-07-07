@@ -13,6 +13,9 @@ import { useI18n } from '@/i18n/client'
 import './form.styles.sass'
 
 type FormProps = ReactAriaFormProps & FormWrapperProps & {
+  /** Displays required message and asterisk if true */
+  hasRequiredFields?: boolean
+
   /** Disable all children controls if true. */
   isDisabled?: boolean
 
@@ -30,6 +33,7 @@ export const Form: React.FC<FormProps> = ({
   children,
   className,
   errorMessage,
+  hasRequiredFields,
   isDisabled,
   isSubmitButtonDisabled,
   SubmitIcon,
@@ -57,9 +61,11 @@ export const Form: React.FC<FormProps> = ({
           {children}
         </fieldset>
 
-        <span className='form__required-fields'>
-          {i18n('forms.required-asterisk')}
-        </span>
+        {hasRequiredFields && (
+          <span className='form__required-fields'>
+            {i18n('forms.required-asterisk')}
+          </span>
+        )}
 
         {isValidString(submitLabel) && (
           <Button

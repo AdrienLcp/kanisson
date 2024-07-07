@@ -46,22 +46,6 @@ type ButtonProps = ReactAriaButtonProps & {
   variant?: ButtonVariant
 }
 
-const getButtonIcon = (Icon?: LucideIcon, isLoading?: boolean) => {
-  if (Icon == null) {
-    return null
-  }
-
-  if (isLoading === true) {
-    return (
-      <Motion animation='infinite-rotate'>
-        <LoaderCircleIcon className='button__icon' size={20} />
-      </Motion>
-    )
-  }
-
-  return <Icon className='button__icon' />
-}
-
 const getButtonClassName = (
   values: ButtonRenderProps & { defaultClassName: string | undefined },
   className: ReactAriaButtonProps['className'],
@@ -78,6 +62,22 @@ const getButtonClassName = (
   )
 
   return getReactAriaClassName(values, className, buttonBaseClassName)
+}
+
+const renderButtonIcon = (Icon?: LucideIcon, isLoading?: boolean) => {
+  if (Icon == null) {
+    return null
+  }
+
+  if (isLoading === true) {
+    return (
+      <Motion animation='infinite-rotate'>
+        <LoaderCircleIcon className='button__icon' size={20} />
+      </Motion>
+    )
+  }
+
+  return <Icon className='button__icon' />
 }
 
 /**
@@ -100,7 +100,7 @@ export const Button: React.FC<ButtonProps> = ({
     isDisabled={isDisabled || isLoading}
   >
     <>
-      {getButtonIcon(Icon, isLoading)}
+      {renderButtonIcon(Icon, isLoading)}
       {children}
     </>
   </Pressable>
