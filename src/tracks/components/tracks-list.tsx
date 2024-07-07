@@ -2,14 +2,10 @@ import React from 'react'
 
 import './tracks-list.styles.sass'
 
-type TracksListProps = {
-
-}
-
-export const TracksList: React.FC<TracksListProps> = () => {
+export const TracksList: React.FC = () => {
   return (
     <div className='tracks-list'>
-      playlist's tracks
+      playlist tracks list
     </div>
   )
 }

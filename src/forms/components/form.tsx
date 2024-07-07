@@ -32,7 +32,7 @@ type FormProps = ReactAriaFormProps & FormWrapperProps & {
 export const Form: React.FC<FormProps> = ({
   children,
   className,
-  errorMessage,
+  statusMessage,
   hasRequiredFields,
   isDisabled,
   isSubmitButtonDisabled,
@@ -46,7 +46,7 @@ export const Form: React.FC<FormProps> = ({
 
   return (
     <FormWrapper
-      errorMessage={errorMessage}
+      statusMessage={statusMessage}
       subtitle={subtitle}
       title={title}
     >

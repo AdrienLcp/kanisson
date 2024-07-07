@@ -38,7 +38,7 @@ export const TracksSearch: React.FC<TracksSearchProps> = ({ addTrackToPlaylist }
       if (result.status === 'success') {
         setPreviousSearch(request.search)
         setNextPageToken(result.data.nextPageToken)
-        setTracksResult(previousTracks => previousTracks.concat(result.data.tracks))
+        return result.data.tracks
       }
     } catch (error) {
       handleUnknownClientError(error, i18n)
@@ -47,7 +47,7 @@ export const TracksSearch: React.FC<TracksSearchProps> = ({ addTrackToPlaylist }
     }
   }
 
-  const loadTracks = (formData: FormData) => {
+  const loadTracks = async (formData: FormData) => {
     const search = formData.get(trackSearchFormField.search)
 
     if (!isValidString(search)) {
@@ -64,11 +64,15 @@ export const TracksSearch: React.FC<TracksSearchProps> = ({ addTrackToPlaylist }
       search
     }
 
-    searchTracks(request)
+    const tracks = await searchTracks(request)
+
+    if (tracks !== undefined) {
+      setTracksResult(tracks)
+    }
   }
 
-  const loadMoreTracks = () => {
-    if (nextPageToken == null || previousSearch == null) {
+  const loadMoreTracks = async () => {
+    if (nextPageToken === null || previousSearch === null) {
       return
     }
 
@@ -78,7 +82,11 @@ export const TracksSearch: React.FC<TracksSearchProps> = ({ addTrackToPlaylist }
       search: previousSearch
     }
 
-    searchTracks(request)
+    const tracks = await searchTracks(request)
+
+    if (tracks !== undefined) {
+      setTracksResult(previousTracks => previousTracks.concat(tracks))
+    }
   }
 
   return (

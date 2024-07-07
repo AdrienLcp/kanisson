@@ -18,8 +18,14 @@
       display: flex
       gap: var(--spacing-xs, 0.21rem)
       justify-content: center
-      padding: var(--spacing-xs, 0.21rem) var(--spacing-m, 0.55rem)
+      padding: var(--spacing-s, 0.38rem) var(--spacing-l, 0.68rem)
       width: 100%
 
       &[data-selected='true']
         background-color: hsl(var(--secondary))
+
+  &__content
+    border: var(--element-stroke, 2px) solid hsl(var(--border, 240 3.7% 15.9%))
+    border-radius: var(--element-radius, 5px)
+    min-height: 25vh
+    padding: var(--spacing-l, 0.68rem)

@@ -8,7 +8,7 @@ import { Button } from '@/components/button'
 import { Form } from '@/forms/components/form'
 import { TextArea } from '@/forms/components/text-area'
 import { TextField } from '@/forms/components/text-field'
-import { StatusMessageBar } from '@/components/status-message'
+import { type StatusMessage, StatusMessageBar } from '@/components/status-message'
 import { env } from '@/env'
 import type { ValueOf } from '@/helpers/objects'
 import { isValidString } from '@/helpers/strings'
@@ -52,7 +52,7 @@ const FORM_SPREE_KEY = env.NEXT_PUBLIC_FORM_SPREE_KEY
 
 export const ContactForm: React.FC = () => {
   const [state, handleSubmit] = useForm<ContactFormFields>(FORM_SPREE_KEY)
-  const [errorMessage, setErrorMessage] = React.useState<string | null>(null)
+  const [statusMessage, setStatusMessage] = React.useState<StatusMessage | null>(null)
 
   const { i18n } = useI18n()
 
@@ -71,7 +71,10 @@ export const ContactForm: React.FC = () => {
     const values = getContactFormValues(formData)
 
     if (values === null) {
-      setErrorMessage(i18n('routes.contact.error-messages.message'))
+      setStatusMessage({
+        message: i18n('routes.contact.error-messages.message'),
+        type: 'error'
+      })
       return
     }
 
@@ -82,8 +85,8 @@ export const ContactForm: React.FC = () => {
     <Form
       action={handleContactFormSubmit}
       className='contact-form'
-      errorMessage={errorMessage}
       isDisabled={state.submitting}
+      statusMessage={statusMessage}
     >
       <div className='contact-form__fields'>
         <TextField

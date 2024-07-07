@@ -47,7 +47,11 @@ export function Tabs <T extends string> ({ ariaLabel, tabs, ...props }: TabsProp
       </TabList>
 
       {tabs.map(({ Content, id }) => (
-        <TabPanel id={id} key={id}>
+        <TabPanel
+          className='tabs__content'
+          id={id}
+          key={id}
+        >
           {Content}
         </TabPanel>
       ))}

@@ -1,14 +1,13 @@
 import React from 'react'
 
-import { StatusMessageBar } from '@/components/status-message'
-import { isValidString } from '@/helpers/strings'
+import { type StatusMessage, StatusMessageBar } from '@/components/status-message'
 import { areValidChildren } from '@/lib/react'
 
 import './form-wrapper.styles.sass'
 
 export type FormWrapperProps = React.PropsWithChildren & {
   /** Displays a red message on top of the form if provided. */
-  errorMessage?: string | null
+  statusMessage?: StatusMessage | null
 
   /** Optional subtitle to display above the title. */
   subtitle?: React.ReactNode
@@ -19,7 +18,7 @@ export type FormWrapperProps = React.PropsWithChildren & {
 
 export const FormWrapper: React.FC<FormWrapperProps> = ({
   children,
-  errorMessage,
+  statusMessage,
   subtitle,
   title
 }) => (
@@ -40,9 +39,7 @@ export const FormWrapper: React.FC<FormWrapperProps> = ({
       </header>
     )}
 
-    {isValidString(errorMessage) && (
-      <StatusMessageBar status={{  message: errorMessage, type: 'error' }} />
-    )}
+    <StatusMessageBar status={statusMessage} />
 
     {children}
   </section>

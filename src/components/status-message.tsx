@@ -23,7 +23,7 @@ type StatusMessageProps = {
   className?: string
 
   /** The status message to display. */
-  status: StatusMessage | null
+  status?: StatusMessage | null
 }
 
 const statusMessageIconMap: Record<StatusMessageType, LucideIcon> = {
@@ -33,7 +33,7 @@ const statusMessageIconMap: Record<StatusMessageType, LucideIcon> = {
 }
 
 export const StatusMessageBar: React.FC<StatusMessageProps> = ({ className, status }) => {
-  if (status === null) {
+  if (status == null) {
     return null
   }
 
