@@ -15,7 +15,7 @@ type TrackCardProps = {
 }
 
 export const TrackCard: React.FC<TrackCardProps> = ({ addTrackToPlaylist, track }) => {
-  const [hasImageError, setHasImageError] = React.useState<boolean>(false)
+  const [hasImageError, setHasImageError] = React.useState<boolean>(true)
 
   const renderImage = (url: string | null) => {
     if (url === null || hasImageError) {
