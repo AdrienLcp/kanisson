@@ -11,11 +11,19 @@
     justify-content: space-between
 
   &__track
+    @include color-transition
     background-color: hsl(var(--border, 240 3.7% 15.9%))
     border-radius: var(--radius-circular, 99px)
     cursor: pointer
     height: calc(var(--element-stroke, 2px) * 3)
     width: 100%
+
+    @media (hover: hover)
+      &:hover
+        background-color: hsla(var(--border, 240 3.7% 20%) / var(--hover-alpha, 0.92))
+
+    &:active
+      background-color: hsla(var(--border, 240 3.7% 20%) / var(--active-alpha, 0.84))
 
     &__thumb
       aspect-ratio: 1
@@ -23,6 +31,13 @@
       border-radius: var(--radius-circular, 99px)
       top: 50%
       width: var(--size-50, 0.68rem)
+
+      @media (hover: hover)
+        &:hover
+          background-color: hsla(var(--primary, 0 0% 98%) / var(--hover-alpha, 0.92))
+
+      &:active
+        background-color: hsla(var(--primary, 0 0% 98%) / var(--active-alpha, 0.84))
 
   &[data-disabled='true']
     @include disabled

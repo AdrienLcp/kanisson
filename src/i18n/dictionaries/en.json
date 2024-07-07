@@ -199,6 +199,9 @@
     "list": {
       "title": "Added"
     },
+    "modal": {
+      "title": "Update a track"
+    },
     "search": {
       "title": "Search",
       "label": "Search for a track",

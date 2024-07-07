@@ -1,6 +1,8 @@
 @layer sizes
   :root
-    --base-size: clamp(0.95rem, calc(0.75rem + 0.85vw), 2.15rem)
+    // Base size is set in html font-size property
+    // Then we can index all other sizes from it with rem units
+    --base-size: clamp(1.2rem, calc(0.75rem + 0.85vw), 1.75rem)
 
     --size-10: 0.01rem
     --size-20: 0.21rem

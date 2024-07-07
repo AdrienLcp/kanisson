@@ -28,7 +28,7 @@ const PlayerContext = React.createContext<PlayerContextValue | null>(null)
 
 export const PlayerProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
   const [isPlayerMuted, setIsPlayerMuted] = React.useState<boolean>(false)
-  const [isPlaying, setIsPlaying] = React.useState<boolean>(true)
+  const [isPlaying, setIsPlaying] = React.useState<boolean>(false)
   const [playerVolume, setPlayerVolume] = React.useState<number>(DEFAULT_PLAYER_VOLUME)
   const [trackUrl, setTrackUrl] = React.useState<string | null>(null)
 

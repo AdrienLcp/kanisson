@@ -3,9 +3,7 @@
 import React from 'react'
 
 import type { TrackResult } from '@/tracks'
-import { TrackCard } from '@/tracks/components/track-card'
-
-import './tracks-search-list.styles.sass'
+import { TrackItem } from '@/tracks/components/track-item'
 
 type TracksSearchListProps = {
   addTrackToPlaylist: (track: TrackResult) => void
@@ -16,10 +14,10 @@ export const TracksSearchList: React.FC<TracksSearchListProps> = ({ addTrackToPl
   return (
     <ul>
       {tracks.map(track => (
-        <li key={track.id}>
-          <TrackCard
-            track={track}
+        <li key={track.id} style={{ width: '100%' }}>
+          <TrackItem
             addTrackToPlaylist={addTrackToPlaylist}
+            track={track}
           />
         </li>
       ))}

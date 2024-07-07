@@ -199,6 +199,9 @@
     "list": {
       "title": "Ajoutées"
     },
+    "modal": {
+      "title": "Modifier un son"
+    },
     "search": {
       "title": "Chercher",
       "label": "Chercher un son",

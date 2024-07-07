@@ -1,4 +1,7 @@
-import NextImage, { type ImageProps } from 'next/image'
+'use client'
+
+import { ImageIcon } from 'lucide-react'
+import NextImage, { type ImageProps as NextImageProps } from 'next/image'
 import React from 'react'
 
 import { classNames } from '@/helpers/styles'
@@ -7,13 +10,33 @@ import './image.styles.sass'
 
 const DEFAULT_IMAGE_SIZE = 52
 
-export const Image: React.FC<ImageProps> = ({ className, ...props }) => (
-  <NextImage
-    fetchPriority='low'
-    loading='lazy'
-    height={DEFAULT_IMAGE_SIZE}
-    width={DEFAULT_IMAGE_SIZE}
-    {...props}
-    className={classNames('image', className)}
-  />
-)
+type ImageProps = Omit<NextImageProps, 'src'> & {
+  src?: NextImageProps['src'] |null
+}
+
+export const Image: React.FC<ImageProps> = ({
+  className,
+  height = DEFAULT_IMAGE_SIZE,
+  src,
+  width = DEFAULT_IMAGE_SIZE,
+  ...props
+}) => {
+  const [hasImageError, setHasImageError] = React.useState<boolean>(true)
+
+  if (hasImageError || src == null) {
+    return <ImageIcon height={height} width={width} />
+  }
+
+  return (
+    <NextImage
+      fetchPriority='low'
+      loading='lazy'
+      onError={() => setHasImageError(true)}
+      src={src}
+      {...props}
+      height={height}
+      className={classNames('image', className)}
+      width={width}
+    />
+  )
+}

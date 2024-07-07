@@ -1,0 +1,36 @@
+.modal-overlay
+  animation: modal-overlay-fade-in var(--transition-150, 0) var(--timing, ease-in-out) forwards
+  background-color: hsla(var(--background, 0 0% 98%) / 0.08)
+  inset: 0
+  position: fixed
+
+.modal
+  animation: modal-fade-in var(--transition-150, 0) var(--timing, ease-in-out) forwards
+  background-color: hsl(var(--background, 240 10% 3.9%))
+  border-radius: var(--radius-m, 8px)
+  box-shadow: var(--shadow-m)
+  display: flex
+  flex-direction: column
+  gap: var(--spacing-m, 0.55rem)
+  left: 50%
+  max-width: 90vw
+  min-width: min(320px, 95vw)
+  opacity: 0
+  padding: var(--spacing-s, 0.38rem) var(--spacing-l, 0.68rem) var(--spacing-l, 0.68rem)
+  position: fixed
+  top: 45%
+  transform: translate(-50%, -50%)
+  width: min(fit-content, 100ch)
+
+  &__heading
+    align-items: center
+    display: flex
+    justify-content: space-between
+
+@keyframes modal-overlay-fade-in
+  to
+    backdrop-filter: blur(2px)
+
+@keyframes modal-fade-in
+  to
+    opacity: 1
