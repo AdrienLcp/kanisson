@@ -2,22 +2,22 @@
 
 import { XIcon } from 'lucide-react'
 import React from 'react'
-import { Dialog, DialogTrigger, Heading, Modal as ReactAriaModal } from 'react-aria-components'
+import { Dialog, DialogTrigger, Heading, Modal as ReactAriaModal, type DialogTriggerProps } from 'react-aria-components'
 
 import { Button } from '@/components/button'
 import { classNames } from '@/helpers/styles'
 
 import './modal.styles.sass'
 
-type ModalProps = React.PropsWithChildren & {
+type ModalProps = React.PropsWithChildren & DialogTriggerProps &{
   className?: string
   title?: string
   Trigger: React.ReactNode
 }
 
-export const Modal: React.FC<ModalProps> = ({ children, className, title, Trigger }) => {
+export const Modal: React.FC<ModalProps> = ({ children, className, title, Trigger, ...props }) => {
   return (
-    <DialogTrigger>
+    <DialogTrigger {...props}>
       {Trigger}
 
       <ReactAriaModal>
@@ -26,7 +26,7 @@ export const Modal: React.FC<ModalProps> = ({ children, className, title, Trigge
             <>
               <div className='modal-overlay' onClick={close} />
 
-              <div className={classNames('modal', className)}>
+              <div className='modal'>
                 <Heading
                   className='modal__heading'
                   slot='title'
@@ -43,7 +43,9 @@ export const Modal: React.FC<ModalProps> = ({ children, className, title, Trigge
                   />
                 </Heading>
 
-                {children}
+                <div className={classNames('modal__content', className)}>
+                  {children}
+                </div>
               </div>
             </>
           )}

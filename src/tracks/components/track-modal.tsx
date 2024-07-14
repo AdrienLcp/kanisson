@@ -3,6 +3,7 @@
 import { PauseIcon, PlayIcon, SquareIcon } from 'lucide-react'
 import React from 'react'
 
+import { AnimatedAudioLines } from '@/assets/icons/animated-audio-lines'
 import { Button } from '@/components/button'
 // import { useI18n } from '@/i18n/client'
 import { usePlayer } from '@/player'
@@ -36,6 +37,8 @@ export const TrackModal: React.FC<TrackModalProps> = ({ track }) => {
           onPress={isPlaying ? handlePauseTrack : handlePlayTrack}
           size='icon'
         />
+
+        <AnimatedAudioLines isActive={isPlaying} />
 
         <Button
           Icon={SquareIcon}

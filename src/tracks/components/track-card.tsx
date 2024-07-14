@@ -1,5 +1,6 @@
 'use client'
 
+import { PencilIcon } from 'lucide-react'
 import React from 'react'
 
 import { Image } from '@/components/image'
@@ -21,16 +22,22 @@ export const TrackCard: React.FC<TrackCardProps> = ({ addTrackToPlaylist, track 
 
   return (
     <Pressable className='track-card'>
-      <div className='track-card__thumbnail'>
-        <Image
-          alt={track.title}
-          height={TRACK_CARD_IMAGE_SIZE}
-          src={track.image}
-          width={TRACK_CARD_IMAGE_SIZE}
-        />
+      <div className='track-card__content'>
+        <div className='track-card__content__thumbnail'>
+          <Image
+            alt={track.title}
+            height={TRACK_CARD_IMAGE_SIZE}
+            src={track.image}
+            width={TRACK_CARD_IMAGE_SIZE}
+          />
+        </div>
+
+        <span className='track-card__content__title'>
+          {track.title}
+        </span>
       </div>
 
-      {track.title}
+      <PencilIcon className='track-card__edit-icon' size='0.75rem' />
     </Pressable>
   )
 }

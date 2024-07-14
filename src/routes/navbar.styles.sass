@@ -64,14 +64,16 @@
     border-top: none
     display: flex
     flex-direction: column
-    grid-area: side-bar
     height: 100svh
-    inset: 0
     justify-content: center
     max-height: initial
     padding-block: var(--layout-spacing-m, 1.94rem)
+    position: relative
     transition: width var(--transition-150, 0) var(--timing, ease-in-out)
     width: var(--side-bar-rest-width, 3rem)
+
+    &__wrapper
+      grid-area: side-bar
 
     &__heading
       display: block

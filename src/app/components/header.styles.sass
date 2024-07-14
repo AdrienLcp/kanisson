@@ -1,5 +1,4 @@
 .header
-  --padding-inline: calc(var(--header-height) / 3)
   align-items: center
   background-color: hsl(var(--background, 240 10% 3.9%))
   display: flex
@@ -8,9 +7,4 @@
   grid-area: header
   height: var(--header-height, 1.94rem)
   justify-content: space-between
-  padding-inline: var(--padding-inline)
-
-  @media (width > 991px)
-    inset: 0
-    padding-inline: calc(var(--padding-inline) + var(--side-bar-width, 12rem))  var(--padding-inline)
-    position: fixed
+  padding-inline: calc(var(--header-height) / 3)

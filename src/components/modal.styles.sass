@@ -16,7 +16,7 @@
   max-width: 90vw
   min-width: min(320px, 95vw)
   opacity: 0
-  padding: var(--spacing-s, 0.38rem) var(--spacing-l, 0.68rem) var(--spacing-l, 0.68rem)
+  padding: var(--spacing-s, 0.38rem)
   position: fixed
   top: 45%
   transform: translate(-50%, -50%)
@@ -26,6 +26,12 @@
     align-items: center
     display: flex
     justify-content: space-between
+
+    &__title
+      padding-inline: var(--spacing-l, 0.68rem)
+
+  &__content
+    padding: var(--spacing-s, 0.38rem) var(--spacing-l, 0.68rem) var(--spacing-l, 0.68rem)
 
 @keyframes modal-overlay-fade-in
   to

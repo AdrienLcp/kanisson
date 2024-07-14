@@ -6,15 +6,31 @@
   align-items: center
   border-radius: var(--radius-s, 5px)
   display: flex
-  gap: var(--spacing-s, 0.38rem)
-  justify-content: flex-start
+  gap: var(--spacing-m, 0.55rem)
+  justify-content: space-between
   padding: var(--spacing-s, 0.38rem)
+  padding-inline-end: var(--spacing-l, 0.68rem)
   width: 100%
 
-  &__thumbnail
-    @include flex-center
-    aspect-ratio: 1
-    border-radius: var(--radius-xs, 3px)
-    overflow: hidden
-    width: 32px
+  &__content
+    align-items: center
+    display: flex
+    gap: var(--spacing-s, 0.38rem)
+
+    &__thumbnail
+      @include flex-center
+      aspect-ratio: 1
+      border-radius: var(--radius-xs, 3px)
+      overflow: hidden
+      width: 1rem
+
+    &__title
+      @include text-ellipsis(40ch)
+
+  &__edit-icon
+    opacity: 0
+    transition: opacity var(--transition-150, 0) var(--timing, ease-in-out)
+
+  &:hover .track-card__edit-icon
+    opacity: 1
 

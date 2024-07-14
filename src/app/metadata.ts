@@ -8,8 +8,8 @@ const description = 'Jouez, créez et partagez des blind tests en ligne !'
 const baseUrl = 'https://www.kanisson.com'
 const creatorName = 'Adrien Lacourpaille'
 
-export const getCommonMetadata = (): Metadata => {
-  const commonMetadata: Metadata = {
+export const getBaseMetadata = (): Metadata => {
+  const baseMetadata: Metadata = {
     metadataBase: new URL(baseUrl),
     title: title,
     description: description,
@@ -68,18 +68,18 @@ export const getCommonMetadata = (): Metadata => {
     }
   }
 
-  return commonMetadata
+  return baseMetadata
 }
 
-export const getCommonLocalizedMetadata = (currentLocale: Locale, i18n: I18n): Metadata => {
-  const commonMetadata = getCommonMetadata()
+export const getBaseLocalizedMetadata = (currentLocale: Locale, i18n: I18n): Metadata => {
+  const baseMetadata = getBaseMetadata()
 
   const shortName = i18n('metadata.short-name')
   const description = i18n('metadata.description')
   const title = i18n('metadata.name')
 
   const localizedMetadata: Metadata = {
-    ...commonMetadata,
+    ...baseMetadata,
     title,
     description,
     applicationName: shortName,
@@ -96,7 +96,7 @@ export const getCommonLocalizedMetadata = (currentLocale: Locale, i18n: I18n): M
       i18n('metadata.keywords.track')
     ],
     openGraph: {
-      ...commonMetadata.openGraph,
+      ...baseMetadata.openGraph,
       title,
       description,
       siteName: shortName,

@@ -22,7 +22,7 @@ html
   accent-color: hsl(var(--ring, 240 4.9% 83.9%))
   caret-color: hsl(var(--ring, 240 4.9% 83.9%))
   color-scheme: dark light
-  font-size: var(--base-size, clamp(0.5rem, calc(0.4rem + 1vw), 1.5rem))
+  font-size: var(--base-size, clamp(1.2rem, calc(0.75rem + 0.85vw), 1.75rem))
   scroll-behavior: smooth
   scroll-padding: var(--layout-spacing-l, 2.33rem)
 
@@ -55,8 +55,6 @@ input, button, textarea, select
     grid-template-areas: 'side-bar header' 'side-bar main' 'side-bar footer'
     grid-template-columns: auto 1fr
     grid-template-rows: auto 1fr auto
-    padding-inline-start: var(--side-bar-rest-width, 3rem)
 
   main
-    padding-block: calc(var(--layout-spacing-m, 1.94rem) + var(--header-height, 4.55rem)) var(--layout-spacing-m, 1.94rem)
-    width: min(var(--main-max-width, 1160px), 100% - calc(var(--layout-spacing-m, 1.94rem) + var(--side-bar-rest-width, 0)))
+    width: min(var(--main-max-width, 1160px), calc(100% - var(--layout-spacing-m, 1.94rem)))

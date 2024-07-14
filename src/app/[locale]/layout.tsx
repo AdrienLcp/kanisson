@@ -10,7 +10,7 @@ export const generateMetadata = async ({ params }: PageParams): Promise<Metadata
   const i18n = getI18n(locale)
 
   const baseLocalizedMetadata = getBaseLocalizedMetadata(locale, i18n)
-  const contactPageMetadataTitle = getLocalizedMetadataTitle(i18n, i18n('metadata.page-titles.contact'))
+  const contactPageMetadataTitle = getLocalizedMetadataTitle(i18n, i18n('metadata.name'))
 
   return {
     ...baseLocalizedMetadata,
@@ -20,5 +20,5 @@ export const generateMetadata = async ({ params }: PageParams): Promise<Metadata
   }
 }
 
-const ContactLayout: React.FC<LayoutProps> = ({ children }) => (<>{children}</>)
-export default ContactLayout
+const HomeLayout: React.FC<LayoutProps> = ({ children }) => (<>{children}</>)
+export default HomeLayout

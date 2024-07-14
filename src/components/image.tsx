@@ -17,6 +17,7 @@ type ImageProps = Omit<NextImageProps, 'src'> & {
 export const Image: React.FC<ImageProps> = ({
   className,
   height = DEFAULT_IMAGE_SIZE,
+  onError,
   src,
   width = DEFAULT_IMAGE_SIZE,
   ...props
@@ -27,11 +28,19 @@ export const Image: React.FC<ImageProps> = ({
     return <ImageIcon height={height} width={width} />
   }
 
+  const handleImageError = (event: React.SyntheticEvent<HTMLImageElement, Event>) => {
+    setHasImageError(true)
+
+    if (typeof onError === 'function') {
+      onError(event)
+    }
+  }
+
   return (
     <NextImage
       fetchPriority='low'
       loading='lazy'
-      onError={() => setHasImageError(true)}
+      onError={handleImageError}
       src={src}
       {...props}
       height={height}

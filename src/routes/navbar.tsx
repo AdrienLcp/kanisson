@@ -67,7 +67,7 @@ export const Navbar: React.FC = () => {
   const links = getNavbarItems(i18n, authenticatedUserPermissions)
 
   return (
-    <aside>
+    <aside className='navbar__wrapper'>
       <Motion animation='fade-in-slow' className='navbar'>
         {!isMobile && (
           <div className='navbar__heading'>
@@ -98,7 +98,7 @@ export const Navbar: React.FC = () => {
 
                       <Icon
                         className='navbar__list__link__icon'
-                        size={isMobile ? '1.8rem' : '0.75rem'}
+                        size={isMobile ? '1.5rem' : '0.75rem'}
                       />
                     </Link>
                   </li>
