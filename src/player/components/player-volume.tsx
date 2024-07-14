@@ -5,6 +5,7 @@ import React from 'react'
 
 import { Button } from '@/components/button'
 import { Slider } from '@/components/slider'
+import { classNames } from '@/helpers/styles'
 import { useI18n } from '@/i18n/client'
 import { PLAYER_MAX_VOLUME, PLAYER_MIN_VOLUME, usePlayer } from '@/player'
 
@@ -26,28 +27,46 @@ const getVolumeIcon = (isMuted: boolean, volume: number) => {
   return Volume2Icon
 }
 
-export const PlayerVolume: React.FC = () => {
+type PlayerVolumeProps = {
+  isHorizontal?: boolean
+}
+
+export const PlayerVolume: React.FC<PlayerVolumeProps> = ({ isHorizontal = false }) => {
+  const [isSliderVisible, setIsSliderVisible] = React.useState<boolean>(isHorizontal)
+
   const { i18n } = useI18n()
   const { changeVolume, isPlayerMuted, playerVolume, toggleMute } = usePlayer()
 
-  return (
-    <div className='player-volume'>
-      <Slider
-        className='player-volume__slider'
-        isDisabled={isPlayerMuted}
-        label={i18n('player.volume')}
-        maxValue={PLAYER_MAX_VOLUME}
-        minValue={PLAYER_MIN_VOLUME}
-        onChange={changeVolume}
-        step={1}
-        value={playerVolume}
-      />
+  const label = i18n('player.volume')
 
-      <Button
-        Icon={getVolumeIcon(isPlayerMuted, playerVolume)}
-        onPress={toggleMute}
-        size='icon'
-      />
+  return (
+    <div
+      className={classNames('player-volume', !isHorizontal && 'vertical')}
+      onMouseLeave={() => setIsSliderVisible(false)}
+    >
+      <div className={classNames('player-volume__slider', !isSliderVisible && 'hidden')}>
+        <Slider
+          isDisabled={isPlayerMuted}
+          label={label}
+          maxValue={PLAYER_MAX_VOLUME}
+          minValue={PLAYER_MIN_VOLUME}
+          onChange={changeVolume}
+          orientation={isHorizontal ? 'horizontal' : 'vertical'}
+          step={1}
+          value={playerVolume}
+        />
+      </div>
+
+      <div
+        className='player-volume__button'
+        onMouseEnter={() => setIsSliderVisible(true)}
+      >
+        <Button
+          Icon={getVolumeIcon(isPlayerMuted, playerVolume)}
+          onPress={toggleMute}
+          size='icon'
+        />
+      </div>
     </div>
   )
 }

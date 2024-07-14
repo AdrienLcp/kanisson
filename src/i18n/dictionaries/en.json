@@ -65,6 +65,7 @@
     "suffix-title": "• Kanisson - Blind test games"
   },
   "player": {
+    "error": "An error occurred while loading the track",
     "title": "Youtube player",
     "volume": "Volume"
   },
@@ -209,7 +210,8 @@
       "placeholder": "Queen, Madonna, etc...",
       "search-required": "You must enter a search term"
     },
-    "tabs-aria-label": "Tracks tabs"
+    "tabs-aria-label": "Tracks tabs",
+    "thumbnail-alt": "Audio track thumbnail %{title}"
   },
   "user": {
     "avatar": {

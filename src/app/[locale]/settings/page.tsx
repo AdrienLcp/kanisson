@@ -9,16 +9,17 @@ import { ThemeSwitcher } from '@/theme/theme-switcher'
 import './page.styles.sass'
 
 const SettingsPage: React.FC = () => (
-  <PageWrapper titleRouteKey='settings'>
-    <div className='settings-page'>
-      <PlayerVolume />
+  <PageWrapper
+    className='settings-page'
+    titleRouteKey='settings'
+  >
+    <PlayerVolume isHorizontal />
 
-      <LocaleSwitcher />
+    <LocaleSwitcher />
 
-      <ThemeSwitcher />
+    <ThemeSwitcher />
 
-      <HueSwitcher />
-    </div>
+    <HueSwitcher />
   </PageWrapper>
 )
 

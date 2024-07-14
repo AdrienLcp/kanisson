@@ -10,17 +10,15 @@ type TracksSearchListProps = {
   tracks: TrackResult[]
 }
 
-export const TracksSearchList: React.FC<TracksSearchListProps> = ({ addTrackToPlaylist, tracks }) => {
-  return (
-    <ul>
-      {tracks.map(track => (
-        <li key={track.id} style={{ width: '100%' }}>
-          <TrackItem
-            addTrackToPlaylist={addTrackToPlaylist}
-            track={track}
-          />
-        </li>
-      ))}
-    </ul>
-  )
-}
+export const TracksSearchList: React.FC<TracksSearchListProps> = ({ addTrackToPlaylist, tracks }) => (
+  <ul>
+    {tracks.map(track => (
+      <li key={track.id}>
+        <TrackItem
+          addTrackToPlaylist={addTrackToPlaylist}
+          track={track}
+        />
+      </li>
+    ))}
+  </ul>
+)

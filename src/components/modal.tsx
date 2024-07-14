@@ -26,7 +26,7 @@ export const Modal: React.FC<ModalProps> = ({ children, className, title, Trigge
             <>
               <div className='modal-overlay' onClick={close} />
 
-              <div className='modal'>
+              <section className='modal'>
                 <Heading
                   className='modal__heading'
                   slot='title'
@@ -46,7 +46,7 @@ export const Modal: React.FC<ModalProps> = ({ children, className, title, Trigge
                 <div className={classNames('modal__content', className)}>
                   {children}
                 </div>
-              </div>
+              </section>
             </>
           )}
         </Dialog>

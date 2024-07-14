@@ -12,10 +12,11 @@
 
   &__track
     @include color-transition
+    --slider-track-size: calc(var(--element-stroke, 2px) * 3)
     background-color: hsl(var(--border, 240 3.7% 15.9%))
     border-radius: var(--radius-circular, 99px)
     cursor: pointer
-    height: calc(var(--element-stroke, 2px) * 3)
+    height: var(--slider-track-size, 6px)
     width: 100%
 
     @media (hover: hover)
@@ -38,6 +39,30 @@
 
       &:active
         background-color: hsla(var(--primary, 0 0% 98%) / var(--active-alpha, 0.84))
+
+  &.vertical
+    position: relative
+    width: var(--slider-track-size, 6px)
+
+    & .slider
+      &__heading
+        bottom: calc(100% + var(--spacing-s, 0.38rem))
+        left: 50%
+        position: absolute
+        transform: translateX(-50%)
+
+        &__label
+          @include hidden
+
+      &__track
+        height: min(120px, 80svh)
+        position: absolute
+        bottom: 100%
+        width: var(--slider-track-size, 6px)
+
+        &__thumb
+          left: 50%
+          top: auto
 
   &[data-disabled='true']
     @include disabled

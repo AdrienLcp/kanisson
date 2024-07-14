@@ -13,21 +13,27 @@ type SliderProps = Omit<ReactAriaSliderProps, 'onChange'> & {
   onChange?: (value: number) => void
 }
 
-export const Slider: React.FC<SliderProps> = ({ className, label, onChange, ...props }) => {
+export const Slider: React.FC<SliderProps> = ({ className, label, onChange, orientation, ...props }) => {
   const handleSliderValueChange = (value: number | number[]) => {
     if (typeof onChange === 'function') {
       onChange(Array.isArray(value) ? value[0] : value)
     }
   }
 
+  const isVertical = orientation === 'vertical'
+
   return (
     <ReactAriaSlider
       {...props}
+      aria-label={isVertical ? label : undefined}
       onChange={handleSliderValueChange}
-      className={(values) => getReactAriaClassName(values, className, 'slider')}
+      orientation={orientation}
+      className={(values) => getReactAriaClassName(values, className, 'slider', isVertical && 'vertical')}
     >
       <div className='slider__heading'>
-        <Label>{label}</Label>
+        <Label className='slider__heading__label'>
+          {isVertical ? null : label}
+        </Label>
 
         <SliderOutput />
       </div>

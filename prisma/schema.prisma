@@ -112,8 +112,8 @@ model Track {
   playlistId   String
   baseTitle    String
   duration     Int          @default(30)
-  title        String
-  artist       String
+  title        String?
+  artist       String?
   image        String?
   source       String       @default("youtube")
   url          String

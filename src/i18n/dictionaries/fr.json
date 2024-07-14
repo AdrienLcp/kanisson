@@ -65,6 +65,7 @@
     "suffix-title": "• Kanisson - Site de blind test"
   },
   "player": {
+    "error": "Une erreur est survenue lors du chargement de la piste audio",
     "title": "Player Youtube",
     "volume": "Volume"
   },
@@ -209,7 +210,8 @@
       "placeholder": "Chansons, musique de film, etc...",
       "search-required": "Vous devez écrire quelque chose pour lancer la recherche"
     },
-    "tabs-aria-label": "Onglets des sons"
+    "tabs-aria-label": "Onglets des sons",
+    "thumbnail-alt": "Vignette de la piste audio %{title}"
   },
   "user": {
     "avatar": {

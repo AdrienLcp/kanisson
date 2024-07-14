@@ -31,7 +31,7 @@ export const PageWrapper: React.FC<PageWrapperProps> = ({ children, className, t
         </header>
       )}
 
-      <div className='page-wrapper__content'>
+      <div className={className}>
         {children}
       </div>
     </div>

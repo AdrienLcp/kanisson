@@ -5,6 +5,7 @@ import React from 'react'
 
 import { Image } from '@/components/image'
 import { Pressable } from '@/components/pressable'
+import { useI18n } from '@/i18n/client'
 import type { TrackResult } from '@/tracks'
 
 import './track-card.styles.sass'
@@ -16,16 +17,15 @@ export type TrackCardProps = {
   track: TrackResult
 }
 
-export const TrackCard: React.FC<TrackCardProps> = ({ addTrackToPlaylist, track }) => {
-
-  console.log(addTrackToPlaylist)
+export const TrackCard: React.FC<TrackCardProps> = ({ track }) => {
+  const { i18n } = useI18n()
 
   return (
     <Pressable className='track-card'>
       <div className='track-card__content'>
         <div className='track-card__content__thumbnail'>
           <Image
-            alt={track.title}
+            alt={i18n('tracks.thumbnail-alt', { title: track.baseTitle })}
             height={TRACK_CARD_IMAGE_SIZE}
             src={track.image}
             width={TRACK_CARD_IMAGE_SIZE}
@@ -33,7 +33,7 @@ export const TrackCard: React.FC<TrackCardProps> = ({ addTrackToPlaylist, track 
         </div>
 
         <span className='track-card__content__title'>
-          {track.title}
+          {track.baseTitle}
         </span>
       </div>
 

@@ -11,7 +11,7 @@ import './image.styles.sass'
 const DEFAULT_IMAGE_SIZE = 52
 
 type ImageProps = Omit<NextImageProps, 'src'> & {
-  src?: NextImageProps['src'] |null
+  src?: NextImageProps['src'] | null
 }
 
 export const Image: React.FC<ImageProps> = ({
@@ -22,7 +22,7 @@ export const Image: React.FC<ImageProps> = ({
   width = DEFAULT_IMAGE_SIZE,
   ...props
 }) => {
-  const [hasImageError, setHasImageError] = React.useState<boolean>(true)
+  const [hasImageError, setHasImageError] = React.useState<boolean>(false)
 
   if (hasImageError || src == null) {
     return <ImageIcon height={height} width={width} />

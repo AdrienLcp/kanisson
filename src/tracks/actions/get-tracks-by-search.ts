@@ -4,13 +4,13 @@ import { z } from 'zod'
 
 import type { AuthenticationErrorCode } from '@/authentication'
 import { getAuthenticatedUserWithPermissions } from '@/authentication/permissions'
+import { getTrackFromYoutubeSearchResult, type YoutubeSearchResult } from '@/datasources/youtube'
 import { env } from '@/env'
 import { handleUnknownServerError } from '@/helpers/errors'
 import { error, success, type Result } from '@/helpers/result'
 import { LocaleSchema, type Locale } from '@/i18n'
-import type { TrackResult } from '@/tracks'
-import { getTrackFromYoutubeSearchResult, type YoutubeSearchResult } from '@/youtube'
 import { isValidString } from '@/helpers/strings'
+import type { TrackResult } from '@/tracks'
 
 export type SearchTracksRequest = {
   search: string
@@ -26,7 +26,7 @@ type SearchTracksSuccessResponse = {
 type SearchTracksResponse = Result<SearchTracksSuccessResponse, AuthenticationErrorCode>
 
 const BASE_URL = 'https://www.googleapis.com/youtube/v3/search'
-const MAX_RESULT_COUNT = 3
+const TRACK_SEARCH_MAX_RESULT_COUNT = 3
 const YOUTUBE_API_KEY = env.YOUTUBE_API_KEY
 
 const TrackSearchSchema = z.object({
@@ -53,7 +53,7 @@ export const getTracksBySearch = async (request: SearchTracksRequest): Promise<S
       part: 'snippet',
       q: requestValidation.data.search,
       key: YOUTUBE_API_KEY,
-      maxResults: MAX_RESULT_COUNT.toString(),
+      maxResults: TRACK_SEARCH_MAX_RESULT_COUNT.toString(),
       type: 'video',
       videoEmbeddable: 'true',
       order: 'relevance',

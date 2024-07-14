@@ -1,3 +1,5 @@
+@import '@/styles/mixins'
+
 .player-volume
   align-items: center
   display: flex
@@ -5,3 +7,19 @@
 
   &__slider
     flex-grow: 1
+
+  &.vertical
+    position: relative
+    width: fit-content
+
+    & .player-volume__slider
+      @include flex-center
+      bottom: 100%
+      padding-block: var(--spacing-s, 0.38rem)
+      position: absolute
+      transition: opacity var(--transition-250, 0) var(--timing, ease-in-out)
+      width: var(--element-size, 1.62rem)
+
+      &.hidden
+        @include hidden
+        opacity: 0

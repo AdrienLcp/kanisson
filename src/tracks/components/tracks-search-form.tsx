@@ -53,9 +53,7 @@ export const TracksSearchForm: React.FC<TracksSearchFormProps> = ({
 
       {hasResults && (
         <div className='tracks-search-form__results-list'>
-          <div>
-            {children}
-          </div>
+          {children}
 
           <div className='tracks-search-form__results-list__footer'>
             <Button
